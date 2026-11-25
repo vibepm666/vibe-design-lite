@@ -926,13 +926,11 @@
         var check = window.WA_FORM.validate(projectForm);
         if (!check.ok) {
           tip("请完善标红的表单项", "warning");
-          if (check.firstBad) {
+          if (check.firstBad && window.WA_FORM && typeof WA_FORM.focusValidatedField === "function") {
+            WA_FORM.focusValidatedField(projectForm, check.firstBad);
+          } else if (check.firstBad) {
             try {
-              var focusEl =
-                window.WA_COMBO && typeof window.WA_COMBO.focusTarget === "function"
-                  ? window.WA_COMBO.focusTarget(check.firstBad)
-                  : check.firstBad;
-              if (focusEl) focusEl.focus();
+              check.firstBad.focus();
             } catch (e) {}
           }
           return;

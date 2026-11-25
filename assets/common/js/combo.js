@@ -93,10 +93,8 @@
     list.className = "wa-combo__list";
     list.setAttribute("role", "listbox");
     list.hidden = true;
-    if (selectId) {
-      list.id = selectId + "-list";
-      trigger.setAttribute("aria-controls", list.id);
-    }
+    if (select.id) list.id = select.id + "-list";
+    trigger.setAttribute("aria-controls", list.id);
 
     function placeholderText() {
       var i;
@@ -212,10 +210,10 @@
     }
 
     select.classList.add("wa-combo__native");
-    select.setAttribute("tabindex", "-1");
-    select.setAttribute("aria-hidden", "true");
     select.parentNode.insertBefore(combo, select);
     combo.appendChild(select);
+    select.setAttribute("tabindex", "-1");
+    select.setAttribute("aria-hidden", "true");
     control.appendChild(trigger);
     control.appendChild(trail);
     combo.appendChild(control);

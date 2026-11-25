@@ -63,6 +63,23 @@
     return { ok: ok, firstBad: firstBad };
   }
 
+  function resolveFocusEl(field) {
+    if (!field) return null;
+    if (window.WA_COMBO && typeof window.WA_COMBO.focusTarget === "function") {
+      return window.WA_COMBO.focusTarget(field) || field;
+    }
+    return field;
+  }
+
+  function focusValidatedField(form, field) {
+    if (!form || !field) return;
+    var focusEl = resolveFocusEl(field);
+    form.__waSuppressFocusClear = focusEl;
+    try {
+      focusEl.focus();
+    } catch (err) {}
+  }
+
   function bindForm(form) {
     if (!form || form.getAttribute("data-wa-form-bound") === "1") return;
     form.setAttribute("data-wa-form-bound", "1");
@@ -72,15 +89,7 @@
       var result = validate(form);
       if (!result.ok) {
         flash("warning", "请完善标红的表单项");
-        if (result.firstBad) {
-          try {
-            var focusEl =
-              window.WA_COMBO && typeof window.WA_COMBO.focusTarget === "function"
-                ? window.WA_COMBO.focusTarget(result.firstBad)
-                : result.firstBad;
-            if (focusEl) focusEl.focus();
-          } catch (err) {}
-        }
+        if (result.firstBad) focusValidatedField(form, result.firstBad);
         return;
       }
       /* 业务页自行处理提交；演示表单给成功反馈 */
@@ -130,6 +139,33 @@
 
     form.addEventListener("input", clearItemErrorOnEdit);
     form.addEventListener("change", clearItemErrorOnEdit);
+
+    form.addEventListener("focusin", function (e) {
+      var t = e.target;
+      if (!t || !t.closest) return;
+      if (
+        !t.closest("input, textarea, select, .wa-combo__trigger, .wa-combo__clear") &&
+        !t.classList.contains("wa-combo__trigger")
+      ) {
+        return;
+      }
+      var item = t.closest(".wa-form-item");
+      if (!item) return;
+      var suppress = form.__waSuppressFocusClear;
+      if (suppress) {
+        var skip =
+          t === suppress ||
+          suppress === t ||
+          (suppress.contains && suppress.contains(t));
+        if (!skip && suppress.id && t.id === suppress.id) skip = true;
+        if (skip) {
+          form.__waSuppressFocusClear = null;
+          return;
+        }
+        form.__waSuppressFocusClear = null;
+      }
+      if (item.classList.contains("is-error")) setItemError(item, "");
+    });
   }
 
   function bindValidate(root) {
@@ -149,6 +185,7 @@
     validate: validate,
     clearErrors: clearErrors,
     setItemError: setItemError,
+    focusValidatedField: focusValidatedField,
   };
 
   if (document.readyState === "loading") {

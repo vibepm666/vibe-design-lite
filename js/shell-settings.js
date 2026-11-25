@@ -82,7 +82,9 @@
       if (window.WA_FORM && typeof WA_FORM.validate === "function") {
         var check = WA_FORM.validate(profileForm);
         if (!check.ok) {
-          if (check.firstBad) {
+          if (check.firstBad && typeof WA_FORM.focusValidatedField === "function") {
+            WA_FORM.focusValidatedField(profileForm, check.firstBad);
+          } else if (check.firstBad) {
             try {
               check.firstBad.focus();
             } catch (err) {}
@@ -112,7 +114,9 @@
       if (window.WA_FORM && typeof WA_FORM.validate === "function") {
         var check = WA_FORM.validate(securityForm);
         if (!check.ok) {
-          if (check.firstBad) {
+          if (check.firstBad && typeof WA_FORM.focusValidatedField === "function") {
+            WA_FORM.focusValidatedField(securityForm, check.firstBad);
+          } else if (check.firstBad) {
             try {
               check.firstBad.focus();
             } catch (err) {}
@@ -132,7 +136,9 @@
           WA_FORM.setItemError(itemNew, "新密码至少 8 位");
         }
         customBad = true;
-        if (next) {
+        if (next && typeof WA_FORM.focusValidatedField === "function") {
+          WA_FORM.focusValidatedField(securityForm, next);
+        } else if (next) {
           try {
             next.focus();
           } catch (err) {}
@@ -142,7 +148,9 @@
           WA_FORM.setItemError(itemAgain, "两次输入的新密码不一致");
         }
         customBad = true;
-        if (again) {
+        if (again && typeof WA_FORM.focusValidatedField === "function") {
+          WA_FORM.focusValidatedField(securityForm, again);
+        } else if (again) {
           try {
             again.focus();
           } catch (err) {}
@@ -210,7 +218,9 @@
       if (window.WA_FORM && typeof WA_FORM.validate === "function") {
         var check = WA_FORM.validate(emailForm);
         if (!check.ok) {
-          if (check.firstBad) {
+          if (check.firstBad && typeof WA_FORM.focusValidatedField === "function") {
+            WA_FORM.focusValidatedField(emailForm, check.firstBad);
+          } else if (check.firstBad) {
             try {
               check.firstBad.focus();
             } catch (err) {}
