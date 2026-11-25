@@ -21,8 +21,6 @@
 
 ## 预览截图
 
-> 圆角与阴影已烘焙进 PNG（GitHub README 会剥离 `<img>` 的 `style`）。换图后在本机运行：`python scripts/frame-screenshots.py`（请用未处理的原图，勿重复叠加）。
-
 **落地首页** · `index.html`
 
 <p align="center"><img src="./screenshot/vibe-design-lite-01.png" alt="落地首页" width="900" /></p>
