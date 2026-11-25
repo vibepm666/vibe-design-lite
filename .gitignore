@@ -10,3 +10,7 @@ desktop.ini
 .idea/
 .vscode/
 *.code-workspace
+
+# 本地截图备份，勿入库
+screenshot/*副本*
+screenshot/*copy*
