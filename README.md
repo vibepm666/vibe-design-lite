@@ -21,33 +21,49 @@
 
 ## 预览截图
 
+> 预览图带圆角描边，便于在 README 中与背景区分；GitHub 上可正常渲染下列 HTML。
+
 **落地首页** · `index.html`
 
-![落地首页](./screenshot/vibe-design-lite-01.png)
+<p align="center">
+  <img src="./screenshot/vibe-design-lite-01.png" alt="落地首页" width="960" style="max-width:100%;border:1px solid #e4e4e8;border-radius:12px;box-shadow:0 4px 24px rgba(17,17,19,0.06);" />
+</p>
 
 **常用组件** · `components.html`
 
-![常用组件](./screenshot/vibe-design-lite-02.png)
+<p align="center">
+  <img src="./screenshot/vibe-design-lite-02.png" alt="常用组件" width="960" style="max-width:100%;border:1px solid #e4e4e8;border-radius:12px;box-shadow:0 4px 24px rgba(17,17,19,0.06);" />
+</p>
 
 **登录页** · `login.html`
 
-![登录页](./screenshot/vibe-design-lite-03.png)
+<p align="center">
+  <img src="./screenshot/vibe-design-lite-03.png" alt="登录页" width="960" style="max-width:100%;border:1px solid #e4e4e8;border-radius:12px;box-shadow:0 4px 24px rgba(17,17,19,0.06);" />
+</p>
 
 **工作台概览** · `shell-dashboard.html`（亮色）
 
-![工作台概览](./screenshot/vibe-design-lite-04.png)
+<p align="center">
+  <img src="./screenshot/vibe-design-lite-04.png" alt="工作台概览" width="960" style="max-width:100%;border:1px solid #e4e4e8;border-radius:12px;box-shadow:0 4px 24px rgba(17,17,19,0.06);" />
+</p>
 
 **数据列表** · `shell-data.html`（亮色）
 
-![数据列表](./screenshot/vibe-design-lite-05.png)
+<p align="center">
+  <img src="./screenshot/vibe-design-lite-05.png" alt="数据列表" width="960" style="max-width:100%;border:1px solid #e4e4e8;border-radius:12px;box-shadow:0 4px 24px rgba(17,17,19,0.06);" />
+</p>
 
 **卡片列表** · `shell-cards.html`（暗色）
 
-![卡片列表](./screenshot/vibe-design-lite-06.png)
+<p align="center">
+  <img src="./screenshot/vibe-design-lite-06.png" alt="卡片列表" width="960" style="max-width:100%;border:1px solid #e4e4e8;border-radius:12px;box-shadow:0 4px 24px rgba(17,17,19,0.06);" />
+</p>
 
 **表单页面** · `shell-form.html`（暗色）
 
-![表单页面](./screenshot/vibe-design-lite-07.png)
+<p align="center">
+  <img src="./screenshot/vibe-design-lite-07.png" alt="表单页面" width="960" style="max-width:100%;border:1px solid #e4e4e8;border-radius:12px;box-shadow:0 4px 24px rgba(17,17,19,0.06);" />
+</p>
 
 ---
 
