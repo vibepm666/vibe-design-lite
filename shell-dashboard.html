@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>工作台 / 营销概览 — Vibe Design Lite | VibePM</title>
+  <meta name="description" content="Vibe Design Lite 工作台：营销站概览样板，含快捷入口、指标、趋势图、柱状图与落地页表现表。" />
+  <meta name="keywords" content="Vibe Design Lite,工作台,营销概览,仪表盘,静态模板,VibePM" />
+  <meta name="author" content="VibePM" />
+  <meta name="theme-color" content="#13c7c2" />
+  <script src="./assets/common/js/theme.js"></script>
+  <link rel="stylesheet" href="./vendor/fontawesome_free/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/common/css/global.css" />
+  <link rel="stylesheet" href="./assets/common/css/chrome.css" />
+  <link rel="stylesheet" href="./assets/common/css/components.css" />
+  <link rel="stylesheet" href="./css/shell.css" />
+  <script src="./assets/common/js/shell-boot.js"></script>
+  <link rel="stylesheet" href="./css/shell-dashboard.css" />
+  <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml">
+  <noscript><style>body.wa-app-page{visibility:visible!important}</style></noscript>
+</head>
+<body class="wa-app-page">
+  <div class="wa-app" id="wa-app" data-wa-app data-shell-page="dashboard">
+    <div data-shell-content>
+      <section class="wa-app__panel">
+        <div class="wa-shell-pagehead wa-shell-pagehead--detail">
+          <div class="wa-shell-pagehead__main">
+            <div class="wa-shell-pagehead__title-row">
+              <h2>营销概览</h2>
+            </div>
+            <p class="wa-shell-pagehead__meta">
+              <span>数据概览与近期表现，接入业务后替换指标与图表即可。</span>
+            </p>
+          </div>
+          <div class="wa-shell-pagehead__actions">
+            <button
+              type="button"
+              class="wa-btn wa-btn--secondary wa-dash__refresh"
+              data-dash-refresh
+              aria-label="刷新"
+            >
+              <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
+            </button>
+            <div class="wa-field wa-field--select wa-dash__range">
+              <label class="wa-sr-only" for="dash-range-preset">时间范围</label>
+              <select
+                class="wa-field__select"
+                id="dash-range-preset"
+                data-wa-combo
+                data-wa-combo-clear="0"
+                data-dash-range
+                aria-label="选择时间范围"
+              >
+                <option value="7d" selected>近 7 天</option>
+                <option value="30d">近 30 天</option>
+                <option value="90d">近 90 天</option>
+              </select>
+            </div>
+            <div class="wa-dash__dates" role="group" aria-label="日期范围">
+              <div class="wa-field wa-field--icon wa-dash__date">
+                <i class="fa-solid fa-calendar wa-field__icon" aria-hidden="true"></i>
+                <label class="wa-sr-only" for="dash-date-start">开始日期</label>
+                <input
+                  class="wa-field__input"
+                  id="dash-date-start"
+                  type="date"
+                  value="2026-11-15"
+                  data-wa-field-input
+                  data-dash-date-start
+                />
+              </div>
+              <span class="wa-dash__date-sep" aria-hidden="true">至</span>
+              <div class="wa-field wa-field--icon wa-dash__date">
+                <i class="fa-solid fa-calendar wa-field__icon" aria-hidden="true"></i>
+                <label class="wa-sr-only" for="dash-date-end">结束日期</label>
+                <input
+                  class="wa-field__input"
+                  id="dash-date-end"
+                  type="date"
+                  value="2026-11-21"
+                  data-wa-field-input
+                  data-dash-date-end
+                />
+              </div>
+            </div>
+            <button type="button" class="wa-btn wa-btn--secondary wa-dash__export" data-dash-export aria-label="导出">
+              <i class="fa-solid fa-download" aria-hidden="true"></i>
+              <span class="wa-dash__export-label">导出</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="wa-dash">
+          <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+            <defs>
+              <linearGradient id="wa-dash-spark-fill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="var(--wa-color-primary)" stop-opacity="0.35" />
+                <stop offset="100%" stop-color="var(--wa-color-primary)" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient id="wa-dash-trend-fill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="var(--wa-color-primary)" stop-opacity="0.28" />
+                <stop offset="100%" stop-color="var(--wa-color-primary)" stop-opacity="0.02" />
+              </linearGradient>
+              <linearGradient id="wa-dash-bar-fill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="var(--wa-color-primary)" stop-opacity="1" />
+                <stop offset="100%" stop-color="var(--wa-color-primary)" stop-opacity="0.72" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <div class="wa-dash__kpis" aria-label="核心指标">
+            <article class="wa-dash__kpi">
+              <p class="wa-dash__kpi-label">
+                <span class="wa-dash__kpi-label-main">
+                  <span class="wa-dash__kpi-icon" aria-hidden="true"><i class="fa-solid fa-users"></i></span>
+                  访客 UV
+                </span>
+                <em class="wa-dash__kpi-chip"><i class="fa-solid fa-caret-up" aria-hidden="true"></i> 8.2%</em>
+              </p>
+              <div class="wa-dash__kpi-main">
+                <div class="wa-dash__kpi-figure">
+                  <p class="wa-dash__kpi-value">12,480</p>
+                  <p class="wa-dash__kpi-foot">环比上期 11,530 · 较上周 +6.1%</p>
+                </div>
+                <div class="wa-dash__spark" aria-hidden="true">
+                  <svg viewBox="0 0 72 36" preserveAspectRatio="none">
+                    <path class="wa-dash__spark-area" d="M0 28 L12 24 L24 26 L36 18 L48 20 L60 12 L72 8 L72 36 L0 36 Z" />
+                    <path class="wa-dash__spark-line" d="M0 28 L12 24 L24 26 L36 18 L48 20 L60 12 L72 8" />
+                  </svg>
+                </div>
+              </div>
+            </article>
+            <article class="wa-dash__kpi">
+              <p class="wa-dash__kpi-label">
+                <span class="wa-dash__kpi-label-main">
+                  <span class="wa-dash__kpi-icon" aria-hidden="true"><i class="fa-solid fa-user-plus"></i></span>
+                  有效线索
+                </span>
+                <em class="wa-dash__kpi-chip"><i class="fa-solid fa-caret-up" aria-hidden="true"></i> 12.4%</em>
+              </p>
+              <div class="wa-dash__kpi-main">
+                <div class="wa-dash__kpi-figure">
+                  <p class="wa-dash__kpi-value">186</p>
+                  <p class="wa-dash__kpi-foot">提交有效率 39% · 目标 42%</p>
+                </div>
+                <div class="wa-dash__spark" aria-hidden="true">
+                  <svg viewBox="0 0 72 36" preserveAspectRatio="none">
+                    <path class="wa-dash__spark-area" d="M0 30 L12 27 L24 24 L36 26 L48 18 L60 16 L72 10 L72 36 L0 36 Z" />
+                    <path class="wa-dash__spark-line" d="M0 30 L12 27 L24 24 L36 26 L48 18 L60 16 L72 10" />
+                  </svg>
+                </div>
+              </div>
+            </article>
+            <article class="wa-dash__kpi">
+              <p class="wa-dash__kpi-label">
+                <span class="wa-dash__kpi-label-main">
+                  <span class="wa-dash__kpi-icon" aria-hidden="true"><i class="fa-solid fa-percent"></i></span>
+                  转化率
+                </span>
+                <em class="wa-dash__kpi-chip is-down"><i class="fa-solid fa-caret-down" aria-hidden="true"></i> 0.2pt</em>
+              </p>
+              <div class="wa-dash__kpi-main">
+                <div class="wa-dash__kpi-figure">
+                  <p class="wa-dash__kpi-value">3.8%</p>
+                  <p class="wa-dash__kpi-foot">目标 4.0% · 距目标差 0.2pt</p>
+                </div>
+                <div class="wa-dash__spark" aria-hidden="true">
+                  <svg viewBox="0 0 72 36" preserveAspectRatio="none">
+                    <path class="wa-dash__spark-area" d="M0 22 L12 24 L24 20 L36 18 L48 19 L60 16 L72 14 L72 36 L0 36 Z" />
+                    <path class="wa-dash__spark-line" d="M0 22 L12 24 L24 20 L36 18 L48 19 L60 16 L72 14" />
+                  </svg>
+                </div>
+              </div>
+            </article>
+            <article class="wa-dash__kpi">
+              <p class="wa-dash__kpi-label">
+                <span class="wa-dash__kpi-label-main">
+                  <span class="wa-dash__kpi-icon" aria-hidden="true"><i class="fa-solid fa-paper-plane"></i></span>
+                  表单提交
+                </span>
+                <em class="wa-dash__kpi-chip"><i class="fa-solid fa-caret-up" aria-hidden="true"></i> 9.6%</em>
+              </p>
+              <div class="wa-dash__kpi-main">
+                <div class="wa-dash__kpi-figure">
+                  <p class="wa-dash__kpi-value">474</p>
+                  <p class="wa-dash__kpi-foot">曝光 8,486 · 曝光提交率 5.6%</p>
+                </div>
+                <div class="wa-dash__spark" aria-hidden="true">
+                  <svg viewBox="0 0 72 36" preserveAspectRatio="none">
+                    <path class="wa-dash__spark-area" d="M0 26 L12 20 L24 22 L36 16 L48 18 L60 12 L72 6 L72 36 L0 36 Z" />
+                    <path class="wa-dash__spark-line" d="M0 26 L12 20 L24 22 L36 16 L48 18 L60 12 L72 6" />
+                  </svg>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- 与 KPI 同为 4 列：主区跨 3 列，右侧栏 = 表单提交同宽 -->
+          <div class="wa-dash__body">
+            <div class="wa-dash__main">
+              <div class="wa-dash__charts">
+                <section class="wa-dash__panel" aria-labelledby="dash-trend-title">
+                  <div class="wa-dash__panel-head">
+                    <div>
+                      <h3 id="dash-trend-title">访问趋势</h3>
+                      <p>独立访客与转化次数对照</p>
+                    </div>
+                    <div class="wa-dash__legend">
+                      <span><i aria-hidden="true"></i> UV</span>
+                      <span class="is-sec"><i aria-hidden="true"></i> 转化</span>
+                    </div>
+                  </div>
+                  <div class="wa-dash__trend-wrap">
+                    <!-- 左右铺满：0 / 84 / 168 / 252 / 336 / 420 / 504（viewBox 504） -->
+                    <div class="wa-dash__chart-plot-row">
+                      <div class="wa-dash__axis-y" aria-hidden="true">
+                        <span>14k</span><span>12k</span><span>10k</span><span>8k</span><span>6k</span>
+                      </div>
+                      <svg class="wa-dash__trend-svg" viewBox="0 0 504 222" role="img" aria-label="近七日访问与转化折线图">
+                        <line class="grid" x1="0" y1="14" x2="504" y2="14" />
+                        <line class="grid" x1="0" y1="64" x2="504" y2="64" />
+                        <line class="grid" x1="0" y1="114" x2="504" y2="114" />
+                        <line class="grid" x1="0" y1="164" x2="504" y2="164" />
+                        <line class="grid" x1="0" y1="214" x2="504" y2="214" />
+                        <path class="area" d="M0 191.5 L84 159 L168 169 L252 131.5 L336 141.5 L420 61.5 L504 24 L504 214 L0 214 Z" />
+                        <path class="line" d="M0 191.5 L84 159 L168 169 L252 131.5 L336 141.5 L420 61.5 L504 24" />
+                        <path class="line-sec" d="M0 204 L84 199 L168 201.5 L252 186.5 L336 191.5 L420 159 L504 144" />
+                        <circle class="dot" cx="0" cy="191.5" r="3.2" />
+                        <circle class="dot" cx="84" cy="159" r="3.2" />
+                        <circle class="dot" cx="168" cy="169" r="3.2" />
+                        <circle class="dot" cx="252" cy="131.5" r="3.2" />
+                        <circle class="dot" cx="336" cy="141.5" r="3.2" />
+                        <circle class="dot" cx="420" cy="61.5" r="3.2" />
+                        <circle class="dot" cx="504" cy="24" r="3.2" />
+                      </svg>
+                    </div>
+                    <div class="wa-dash__axis-x wa-dash__axis-x--edge" aria-hidden="true">
+                      <span>11-15</span><span>11-16</span><span>11-17</span><span>11-18</span><span>11-19</span><span>11-20</span><span>11-21</span>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="wa-dash__panel" aria-labelledby="dash-bars-title">
+                  <div class="wa-dash__panel-head">
+                    <div>
+                      <h3 id="dash-bars-title">每日提交</h3>
+                      <p>表单提交量</p>
+                    </div>
+                    <div class="wa-dash__legend">
+                      <span><i aria-hidden="true"></i> 提交</span>
+                    </div>
+                  </div>
+                  <div class="wa-dash__trend-wrap">
+                    <div class="wa-dash__chart-plot-row">
+                      <div class="wa-dash__axis-y" aria-hidden="true">
+                        <span>120</span><span>90</span><span>60</span><span>30</span><span>0</span>
+                      </div>
+                      <svg class="wa-dash__trend-svg wa-dash__bars-svg" viewBox="0 0 504 222" role="img" aria-label="所选区间每日表单提交柱状图">
+                        <line class="grid" x1="0" y1="14" x2="504" y2="14" />
+                        <line class="grid" x1="0" y1="64" x2="504" y2="64" />
+                        <line class="grid" x1="0" y1="114" x2="504" y2="114" />
+                        <line class="grid" x1="0" y1="164" x2="504" y2="164" />
+                        <line class="grid" x1="0" y1="214" x2="504" y2="214" />
+                        <rect class="bar" x="22" y="134" width="28" height="80" rx="5" />
+                        <rect class="bar" x="94" y="127.3" width="28" height="86.7" rx="5" />
+                        <rect class="bar" x="166" y="139" width="28" height="75" rx="5" />
+                        <rect class="bar" x="238" y="100.7" width="28" height="113.3" rx="5" />
+                        <rect class="bar" x="310" y="110.7" width="28" height="103.3" rx="5" />
+                        <rect class="bar" x="382" y="65.7" width="28" height="148.3" rx="5" />
+                        <rect class="bar bar-peak" x="454" y="30.7" width="28" height="183.3" rx="5" />
+                        <text class="bar-val" x="36" y="126" text-anchor="middle">48</text>
+                        <text class="bar-val" x="108" y="119.3" text-anchor="middle">52</text>
+                        <text class="bar-val" x="180" y="131" text-anchor="middle">45</text>
+                        <text class="bar-val" x="252" y="92.7" text-anchor="middle">68</text>
+                        <text class="bar-val" x="324" y="102.7" text-anchor="middle">62</text>
+                        <text class="bar-val" x="396" y="57.7" text-anchor="middle">89</text>
+                        <text class="bar-val bar-val-peak" x="468" y="24" text-anchor="middle">110</text>
+                      </svg>
+                    </div>
+                    <div class="wa-dash__axis-x" aria-hidden="true">
+                      <span>11-15</span><span>11-16</span><span>11-17</span><span>11-18</span><span>11-19</span><span>11-20</span><span>11-21</span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+
+              <div class="wa-dash__stats">
+                <section class="wa-dash__panel wa-dash__donut-card" aria-labelledby="dash-pagetype-title">
+                  <div class="wa-dash__panel-head">
+                    <div>
+                      <h3 id="dash-pagetype-title">落地页类型</h3>
+                      <p>所选区间 UV 构成</p>
+                    </div>
+                  </div>
+                  <!-- 对齐 prototype-demo charts.md：左环右例 / --inline 单行图例 -->
+                  <div class="wa-dash__donut-layout">
+                    <div class="wa-dash__donut-chart">
+                      <div class="wa-dash__donut-host" role="img" aria-label="落地页 UV 合计 12180">
+                        <!-- conic-gradient 圆环，分段接缝更干净 -->
+                        <div class="wa-dash__donut-ring" aria-hidden="true"></div>
+                        <div class="wa-dash__donut-center">
+                          <strong>12,180</strong>
+                          <span>总 UV</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="wa-dash__donut-legend-wrap">
+                      <ul class="wa-dash__donut-legend wa-dash__donut-legend--inline">
+                        <li class="wa-dash__donut-legend-item">
+                          <div class="wa-dash__donut-legend-name-row">
+                            <i class="wa-dash__donut-legend-dot is-1" aria-hidden="true"></i>
+                            <span class="wa-dash__donut-legend-label">活动页</span>
+                          </div>
+                          <div class="wa-dash__donut-legend-meta">
+                            <span class="wa-dash__donut-legend-value">4,260</span>
+                            <span class="wa-dash__donut-legend-pct">35.0%</span>
+                          </div>
+                        </li>
+                        <li class="wa-dash__donut-legend-item">
+                          <div class="wa-dash__donut-legend-name-row">
+                            <i class="wa-dash__donut-legend-dot is-2" aria-hidden="true"></i>
+                            <span class="wa-dash__donut-legend-label">产品页</span>
+                          </div>
+                          <div class="wa-dash__donut-legend-meta">
+                            <span class="wa-dash__donut-legend-value">3,180</span>
+                            <span class="wa-dash__donut-legend-pct">26.1%</span>
+                          </div>
+                        </li>
+                        <li class="wa-dash__donut-legend-item">
+                          <div class="wa-dash__donut-legend-name-row">
+                            <i class="wa-dash__donut-legend-dot is-3" aria-hidden="true"></i>
+                            <span class="wa-dash__donut-legend-label">表单页</span>
+                          </div>
+                          <div class="wa-dash__donut-legend-meta">
+                            <span class="wa-dash__donut-legend-value">2,140</span>
+                            <span class="wa-dash__donut-legend-pct">17.6%</span>
+                          </div>
+                        </li>
+                        <li class="wa-dash__donut-legend-item">
+                          <div class="wa-dash__donut-legend-name-row">
+                            <i class="wa-dash__donut-legend-dot is-4" aria-hidden="true"></i>
+                            <span class="wa-dash__donut-legend-label">专题页</span>
+                          </div>
+                          <div class="wa-dash__donut-legend-meta">
+                            <span class="wa-dash__donut-legend-value">1,620</span>
+                            <span class="wa-dash__donut-legend-pct">13.3%</span>
+                          </div>
+                        </li>
+                        <li class="wa-dash__donut-legend-item">
+                          <div class="wa-dash__donut-legend-name-row">
+                            <i class="wa-dash__donut-legend-dot is-5" aria-hidden="true"></i>
+                            <span class="wa-dash__donut-legend-label">品牌页</span>
+                          </div>
+                          <div class="wa-dash__donut-legend-meta">
+                            <span class="wa-dash__donut-legend-value">980</span>
+                            <span class="wa-dash__donut-legend-pct">8.0%</span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="wa-dash__panel" aria-labelledby="dash-device-title">
+                  <div class="wa-dash__panel-head">
+                    <div>
+                      <h3 id="dash-device-title">设备分布</h3>
+                      <p>用户访问终端占比</p>
+                    </div>
+                  </div>
+                  <ul class="wa-dash__devices">
+                    <li>
+                      <span class="wa-dash__device-icon" aria-hidden="true"><i class="fa-solid fa-desktop"></i></span>
+                      <div class="wa-dash__device-body">
+                        <div class="wa-dash__device-top"><strong>桌面端</strong><span>58%</span></div>
+                        <div class="wa-dash__device-track"><i style="width:58%"></i></div>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="wa-dash__device-icon" aria-hidden="true"><i class="fa-solid fa-mobile"></i></span>
+                      <div class="wa-dash__device-body">
+                        <div class="wa-dash__device-top"><strong>移动端</strong><span>32%</span></div>
+                        <div class="wa-dash__device-track"><i style="width:32%"></i></div>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="wa-dash__device-icon" aria-hidden="true"><i class="fa-solid fa-tablet"></i></span>
+                      <div class="wa-dash__device-body">
+                        <div class="wa-dash__device-top"><strong>平板</strong><span>7%</span></div>
+                        <div class="wa-dash__device-track"><i style="width:7%"></i></div>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="wa-dash__device-icon" aria-hidden="true"><i class="fa-solid fa-tv"></i></span>
+                      <div class="wa-dash__device-body">
+                        <div class="wa-dash__device-top"><strong>智能电视</strong><span>3%</span></div>
+                        <div class="wa-dash__device-track"><i style="width:3%"></i></div>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="wa-dash__device-icon" aria-hidden="true"><i class="fa-solid fa-ellipsis"></i></span>
+                      <div class="wa-dash__device-body">
+                        <div class="wa-dash__device-top"><strong>其他</strong><span>1%</span></div>
+                        <div class="wa-dash__device-track"><i style="width:1%"></i></div>
+                      </div>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+
+              <section class="wa-dash__panel" aria-labelledby="dash-pages-title">
+                <div class="wa-dash__panel-head">
+                  <div>
+                    <h3 id="dash-pages-title">落地页表现</h3>
+                    <p>按 UV 排序 · 近 7 日</p>
+                  </div>
+                  <a class="wa-link" href="./shell-cards.html">查看全部</a>
+                </div>
+                <div class="wa-dash__table-wrap">
+                  <table class="wa-dash__table">
+                    <thead>
+                      <tr>
+                        <th scope="col">落地页</th>
+                        <th scope="col">UV</th>
+                        <th scope="col">转化率</th>
+                        <th scope="col">状态</th>
+                        <th class="wa-dash__table-op" scope="col">查看</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="wa-dash__page">
+                            <span class="wa-dash__page-mark" aria-hidden="true"><i class="fa-solid fa-bolt"></i></span>
+                            <span>
+                              <strong>双十一活动页</strong>
+                              <span>活动 · 主推</span>
+                            </span>
+                          </div>
+                        </td>
+                        <td><span class="wa-dash__num">4,260</span></td>
+                        <td>
+                          <span class="wa-dash__bar-mini" aria-hidden="true"><i style="width:78%"></i></span>
+                          <span class="wa-dash__rate is-good">3.9%</span>
+                        </td>
+                        <td><span class="wa-badge wa-badge--run">投放中</span></td>
+                        <td class="wa-dash__table-op"><a class="wa-link" href="./shell-cards.html">查看</a></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="wa-dash__page">
+                            <span class="wa-dash__page-mark" aria-hidden="true"><i class="fa-solid fa-cube"></i></span>
+                            <span>
+                              <strong>产品介绍 · Pro</strong>
+                              <span>产品</span>
+                            </span>
+                          </div>
+                        </td>
+                        <td><span class="wa-dash__num">3,180</span></td>
+                        <td>
+                          <span class="wa-dash__bar-mini" aria-hidden="true"><i style="width:60%"></i></span>
+                          <span class="wa-dash__rate">3.0%</span>
+                        </td>
+                        <td><span class="wa-badge wa-badge--run">投放中</span></td>
+                        <td class="wa-dash__table-op"><a class="wa-link" href="./shell-cards.html">查看</a></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="wa-dash__page">
+                            <span class="wa-dash__page-mark" aria-hidden="true"><i class="fa-solid fa-file-pen"></i></span>
+                            <span>
+                              <strong>免费试用申请</strong>
+                              <span>表单</span>
+                            </span>
+                          </div>
+                        </td>
+                        <td><span class="wa-dash__num">2,140</span></td>
+                        <td>
+                          <span class="wa-dash__bar-mini" aria-hidden="true"><i style="width:100%"></i></span>
+                          <span class="wa-dash__rate is-good">5.2%</span>
+                        </td>
+                        <td><span class="wa-badge wa-badge--ok">已完成</span></td>
+                        <td class="wa-dash__table-op"><a class="wa-link" href="./shell-cards.html">查看</a></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="wa-dash__page">
+                            <span class="wa-dash__page-mark" aria-hidden="true"><i class="fa-solid fa-book"></i></span>
+                            <span>
+                              <strong>设计资源专题</strong>
+                              <span>专题</span>
+                            </span>
+                          </div>
+                        </td>
+                        <td><span class="wa-dash__num">1,620</span></td>
+                        <td>
+                          <span class="wa-dash__bar-mini" aria-hidden="true"><i style="width:66%"></i></span>
+                          <span class="wa-dash__rate">3.3%</span>
+                        </td>
+                        <td><span class="wa-badge wa-badge--run">投放中</span></td>
+                        <td class="wa-dash__table-op"><a class="wa-link" href="./shell-cards.html">查看</a></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="wa-dash__page">
+                            <span class="wa-dash__page-mark" aria-hidden="true"><i class="fa-solid fa-book-open"></i></span>
+                            <span>
+                              <strong>春季品牌故事</strong>
+                              <span>品牌</span>
+                            </span>
+                          </div>
+                        </td>
+                        <td><span class="wa-dash__num">980</span></td>
+                        <td>
+                          <span class="wa-dash__bar-mini" aria-hidden="true"><i style="width:42%"></i></span>
+                          <span class="wa-dash__rate">2.2%</span>
+                        </td>
+                        <td><span class="wa-badge wa-badge--warn">待优化</span></td>
+                        <td class="wa-dash__table-op"><a class="wa-link" href="./shell-cards.html">查看</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+
+            <aside class="wa-dash__side" aria-label="侧栏">
+              <section class="wa-dash__panel wa-dash__panel--menu" aria-labelledby="dash-menu-title">
+                <div class="wa-dash__panel-head">
+                  <div>
+                    <h3 id="dash-menu-title">功能列表</h3>
+                    <p>常用入口</p>
+                  </div>
+                </div>
+                <nav class="wa-dash__menu" aria-label="功能列表">
+                  <a class="wa-dash__menu-item" href="./shell-data.html">
+                    <span class="wa-dash__menu-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+                    <span>
+                      <strong>新建落地页</strong>
+                      <span>活动 / 产品页</span>
+                    </span>
+                  </a>
+                  <a class="wa-dash__menu-item" href="./shell-cards.html">
+                    <span class="wa-dash__menu-icon" aria-hidden="true"><i class="fa-solid fa-table-cells-large"></i></span>
+                    <span>
+                      <strong>落地页卡片</strong>
+                      <span>封面与状态</span>
+                    </span>
+                  </a>
+                  <a class="wa-dash__menu-item" href="./showcase.html">
+                    <span class="wa-dash__menu-icon" aria-hidden="true"><i class="fa-solid fa-layer-group"></i></span>
+                    <span>
+                      <strong>展示区块</strong>
+                      <span>营销组件</span>
+                    </span>
+                  </a>
+                  <a class="wa-dash__menu-item" href="./shell-messages.html">
+                    <span class="wa-dash__menu-icon" aria-hidden="true"><i class="fa-solid fa-bell"></i></span>
+                    <span>
+                      <strong>消息中心</strong>
+                      <span>3 条未读</span>
+                    </span>
+                  </a>
+                  <a class="wa-dash__menu-item" href="./shell-settings.html">
+                    <span class="wa-dash__menu-icon" aria-hidden="true"><i class="fa-solid fa-gear"></i></span>
+                    <span>
+                      <strong>系统设置</strong>
+                      <span>账号与偏好</span>
+                    </span>
+                  </a>
+                </nav>
+              </section>
+
+              <section class="wa-dash__panel" aria-labelledby="dash-todo-title">
+                <div class="wa-dash__panel-head">
+                  <div>
+                    <h3 id="dash-todo-title">待办列表</h3>
+                  </div>
+                  <a class="wa-link" href="./shell-cards.html">查看更多</a>
+                </div>
+                <ul class="wa-dash__todos">
+                  <li>
+                    <label class="wa-check wa-dash__todo-check">
+                      <input type="checkbox" aria-label="审核本周新增企业客户" />
+                      <span class="wa-dash__todo-body">
+                        <strong>审核本周新增企业客户</strong>
+                        <span>今天 18:00</span>
+                      </span>
+                    </label>
+                    <span class="wa-dash__todo-tag is-urgent">高优</span>
+                  </li>
+                  <li>
+                    <label class="wa-check wa-dash__todo-check">
+                      <input type="checkbox" aria-label="导出上月收入明细" />
+                      <span class="wa-dash__todo-body">
+                        <strong>导出上月收入明细</strong>
+                        <span>今天 17:30</span>
+                      </span>
+                    </label>
+                    <span class="wa-dash__todo-tag is-finance">财务</span>
+                  </li>
+                  <li>
+                    <label class="wa-check wa-dash__todo-check">
+                      <input type="checkbox" aria-label="同步渠道归因报表" />
+                      <span class="wa-dash__todo-body">
+                        <strong>同步渠道归因报表</strong>
+                        <span>明天</span>
+                      </span>
+                    </label>
+                    <span class="wa-dash__todo-tag is-ops">运营</span>
+                  </li>
+                  <li>
+                    <label class="wa-check wa-dash__todo-check">
+                      <input type="checkbox" aria-label="确认设备端埋点口径" />
+                      <span class="wa-dash__todo-body">
+                        <strong>确认设备端埋点口径</strong>
+                        <span>本周五</span>
+                      </span>
+                    </label>
+                    <span class="wa-dash__todo-tag is-data">数据</span>
+                  </li>
+                  <li>
+                    <label class="wa-check wa-dash__todo-check">
+                      <input type="checkbox" aria-label="核对流量漏斗转化异常" />
+                      <span class="wa-dash__todo-body">
+                        <strong>核对流量漏斗转化异常</strong>
+                        <span>今天 12:00</span>
+                      </span>
+                    </label>
+                    <span class="wa-dash__todo-tag is-urgent">高优</span>
+                  </li>
+                  <li>
+                    <label class="wa-check wa-dash__todo-check">
+                      <input type="checkbox" aria-label="更新销售排行样本量" />
+                      <span class="wa-dash__todo-body">
+                        <strong>更新销售排行样本量</strong>
+                        <span>周三</span>
+                      </span>
+                    </label>
+                    <span class="wa-dash__todo-tag is-ops">运营</span>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="wa-dash__panel" aria-labelledby="dash-source-title">
+                <div class="wa-dash__panel-head">
+                  <div>
+                    <h3 id="dash-source-title">流量来源</h3>
+                    <p>所选区间 UV 占比 Top5</p>
+                  </div>
+                </div>
+                <div class="wa-dash__sources">
+                  <div class="wa-dash__source">
+                    <div class="wa-dash__source-top"><strong>直接访问</strong><span>35%</span></div>
+                    <div class="wa-dash__source-track"><div class="wa-dash__source-fill" style="width:35%"></div></div>
+                  </div>
+                  <div class="wa-dash__source">
+                    <div class="wa-dash__source-top"><strong>自然搜索</strong><span>29%</span></div>
+                    <div class="wa-dash__source-track"><div class="wa-dash__source-fill" style="width:29%"></div></div>
+                  </div>
+                  <div class="wa-dash__source">
+                    <div class="wa-dash__source-top"><strong>社交媒体</strong><span>17%</span></div>
+                    <div class="wa-dash__source-track"><div class="wa-dash__source-fill" style="width:17%"></div></div>
+                  </div>
+                  <div class="wa-dash__source">
+                    <div class="wa-dash__source-top"><strong>邮件触达</strong><span>11%</span></div>
+                    <div class="wa-dash__source-track"><div class="wa-dash__source-fill" style="width:11%"></div></div>
+                  </div>
+                  <div class="wa-dash__source">
+                    <div class="wa-dash__source-top"><strong>外链引荐</strong><span>8%</span></div>
+                    <div class="wa-dash__source-track"><div class="wa-dash__source-fill" style="width:8%"></div></div>
+                  </div>
+                </div>
+              </section>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="./assets/common/js/message.js"></script>
+  <script src="./assets/common/js/confirm.js"></script>
+  <script src="./assets/common/js/field.js"></script>
+  <script src="./assets/common/js/combo.js"></script>
+  <script src="./assets/common/js/page-loading.js"></script>
+  <script src="./assets/common/js/app-shell.js"></script>
+  <script src="./js/shell.js"></script>
+  <script src="./js/shell-dashboard.js"></script>
+</body>
+</html>

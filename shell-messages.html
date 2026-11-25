@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>工作台 / 消息中心 — Vibe Design Lite | VibePM</title>
+  <meta name="description" content="Vibe Design Lite 工作台：消息中心样板。" />
+  <meta name="keywords" content="Vibe Design Lite,工作台,消息中心,静态模板,VibePM" />
+  <meta name="author" content="VibePM" />
+  <meta name="theme-color" content="#13c7c2" />
+  <script src="./assets/common/js/theme.js"></script>
+  <link rel="stylesheet" href="./vendor/fontawesome_free/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/common/css/global.css" />
+  <link rel="stylesheet" href="./assets/common/css/chrome.css" />
+  <link rel="stylesheet" href="./assets/common/css/components.css" />
+  <link rel="stylesheet" href="./css/shell.css" />
+  <script src="./assets/common/js/shell-boot.js"></script>
+  <link rel="stylesheet" href="./css/shell-messages.css" />
+  <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml">
+  <noscript><style>body.wa-app-page{visibility:visible!important}</style></noscript>
+</head>
+<body class="wa-app-page">
+  <div class="wa-app" id="wa-app" data-wa-app data-shell-page="messages">
+    <div data-shell-content>
+      <section class="wa-app__panel">
+        <div class="wa-app__panel-head">
+          <h2>消息中心</h2>
+          <p>系统通知与协作消息样板；可按未读 / 全部切换。</p>
+        </div>
+
+        <div class="wa-shell-msg-toolbar">
+          <div class="wa-tabs__list" role="tablist" aria-label="消息筛选">
+            <button type="button" class="wa-tabs__tab is-active" role="tab" aria-selected="true" data-msg-tab="all">全部</button>
+            <button type="button" class="wa-tabs__tab" role="tab" aria-selected="false" data-msg-tab="unread">未读</button>
+            <button type="button" class="wa-tabs__tab" role="tab" aria-selected="false" data-msg-tab="system">系统</button>
+          </div>
+          <button type="button" class="wa-btn wa-btn--secondary" id="msg-read-all">
+            <i class="fa-solid fa-check-double" aria-hidden="true"></i>
+            全部已读
+          </button>
+        </div>
+
+        <div class="wa-shell-messages" id="msg-list" aria-label="消息列表">
+          <article class="wa-shell-msg is-unread" data-msg-kind="system">
+            <div class="wa-shell-msg__mark" aria-hidden="true"><i class="fa-solid fa-circle-info"></i></div>
+            <div class="wa-shell-msg__body">
+              <div class="wa-shell-msg__head">
+                <strong>系统维护通知</strong>
+                <div class="wa-shell-msg__meta">
+                  <time datetime="2026-11-21T09:00">今天 09:00</time>
+                  <button type="button" class="wa-link" data-msg-read>标为已读</button>
+                </div>
+              </div>
+              <p>今晚 23:00–23:30 进行例行维护，工作台可能短暂不可用。</p>
+            </div>
+          </article>
+          <article class="wa-shell-msg is-unread" data-msg-kind="collab">
+            <div class="wa-shell-msg__mark" aria-hidden="true"><i class="fa-solid fa-user"></i></div>
+            <div class="wa-shell-msg__body">
+              <div class="wa-shell-msg__head">
+                <strong>陈可 更新了工单</strong>
+                <div class="wa-shell-msg__meta">
+                  <time datetime="2026-11-20T14:30">昨天 14:30</time>
+                  <a class="wa-link" href="./shell-detail.html?id=t1">查看</a>
+                </div>
+              </div>
+              <p>工单「登录页验证码无法发送」已标记为处理中，请关注进展。</p>
+            </div>
+          </article>
+          <article class="wa-shell-msg" data-msg-kind="system">
+            <div class="wa-shell-msg__mark" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="wa-shell-msg__body">
+              <div class="wa-shell-msg__head">
+                <strong>登录提醒</strong>
+                <div class="wa-shell-msg__meta">
+                  <time datetime="2026-11-19T18:05">3 天前</time>
+                  <a class="wa-link" href="./shell-settings.html?tab=security">去设置</a>
+                </div>
+              </div>
+              <p>你的账号在新设备登录。如非本人操作，请立即修改密码。</p>
+            </div>
+          </article>
+          <article class="wa-shell-msg" data-msg-kind="collab">
+            <div class="wa-shell-msg__mark" aria-hidden="true"><i class="fa-solid fa-folder"></i></div>
+            <div class="wa-shell-msg__body">
+              <div class="wa-shell-msg__head">
+                <strong>项目状态变更</strong>
+                <div class="wa-shell-msg__meta">
+                  <time datetime="2026-11-18T09:15">4 天前</time>
+                  <a class="wa-link" href="./shell-data.html">查看列表</a>
+                </div>
+              </div>
+              <p>「双十一活动页」已从待启动变为进行中。</p>
+            </div>
+          </article>
+          <article class="wa-shell-msg is-unread" data-msg-kind="system">
+            <div class="wa-shell-msg__mark" aria-hidden="true"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+            <div class="wa-shell-msg__body">
+              <div class="wa-shell-msg__head">
+                <strong>资源同步完成</strong>
+                <div class="wa-shell-msg__meta">
+                  <time datetime="2026-11-21T11:20">今天 11:20</time>
+                  <button type="button" class="wa-link" data-msg-read>标为已读</button>
+                </div>
+              </div>
+              <p>卡片列表样板与样式已同步到 lite 预览目录。</p>
+            </div>
+          </article>
+          <article class="wa-shell-msg is-unread" data-msg-kind="collab">
+            <div class="wa-shell-msg__mark" aria-hidden="true"><i class="fa-solid fa-at"></i></div>
+            <div class="wa-shell-msg__body">
+              <div class="wa-shell-msg__head">
+                <strong>李晓雯 提到了你</strong>
+                <div class="wa-shell-msg__meta">
+                  <time datetime="2026-11-21T10:05">今天 10:05</time>
+                  <a class="wa-link" href="./shell-detail.html?id=t2">查看</a>
+                </div>
+              </div>
+              <p>在「导出报表增加时间筛选」中请你补充验收标准。</p>
+            </div>
+          </article>
+          <article class="wa-shell-msg is-unread" data-msg-kind="collab">
+            <div class="wa-shell-msg__mark" aria-hidden="true"><i class="fa-solid fa-comment"></i></div>
+            <div class="wa-shell-msg__body">
+              <div class="wa-shell-msg__head">
+                <strong>周倩 回复了你</strong>
+                <div class="wa-shell-msg__meta">
+                  <time datetime="2026-11-20T17:40">昨天 17:40</time>
+                  <a class="wa-link" href="./shell-detail.html?id=t4">查看</a>
+                </div>
+              </div>
+              <p>暗色主题表格边框已给出候选色值，请确认对比度。</p>
+            </div>
+          </article>
+          <article class="wa-shell-msg" data-msg-kind="system">
+            <div class="wa-shell-msg__mark" aria-hidden="true"><i class="fa-solid fa-bell"></i></div>
+            <div class="wa-shell-msg__body">
+              <div class="wa-shell-msg__head">
+                <strong>周报提醒</strong>
+                <div class="wa-shell-msg__meta">
+                  <time datetime="2026-11-20T09:00">昨天 09:00</time>
+                  <button type="button" class="wa-link" data-msg-read>标为已读</button>
+                </div>
+              </div>
+              <p>本周工作台样板迭代纪要已生成，可在消息中心查看摘要。</p>
+            </div>
+          </article>
+          <article class="wa-shell-msg" data-msg-kind="collab">
+            <div class="wa-shell-msg__mark" aria-hidden="true"><i class="fa-solid fa-user-check"></i></div>
+            <div class="wa-shell-msg__body">
+              <div class="wa-shell-msg__head">
+                <strong>工单已转派给你</strong>
+                <div class="wa-shell-msg__meta">
+                  <time datetime="2026-11-19T15:22">3 天前</time>
+                  <a class="wa-link" href="./shell-detail.html?id=t7">查看</a>
+                </div>
+              </div>
+              <p>「上传大图偶发超时」已由孙浩转派，请在今日跟进。</p>
+            </div>
+          </article>
+          <article class="wa-shell-msg" data-msg-kind="system">
+            <div class="wa-shell-msg__mark" aria-hidden="true"><i class="fa-solid fa-key"></i></div>
+            <div class="wa-shell-msg__body">
+              <div class="wa-shell-msg__head">
+                <strong>密码即将过期</strong>
+                <div class="wa-shell-msg__meta">
+                  <time datetime="2026-11-18T20:00">4 天前</time>
+                  <a class="wa-link" href="./shell-settings.html?tab=security">去设置</a>
+                </div>
+              </div>
+              <p>演示账号密码将在 7 天后过期，建议提前在系统设置中更新。</p>
+            </div>
+          </article>
+          <article class="wa-shell-msg" data-msg-kind="collab">
+            <div class="wa-shell-msg__mark" aria-hidden="true"><i class="fa-solid fa-table-cells-large"></i></div>
+            <div class="wa-shell-msg__body">
+              <div class="wa-shell-msg__head">
+                <strong>赵宁 分享了卡片列表</strong>
+                <div class="wa-shell-msg__meta">
+                  <time datetime="2026-11-17T14:08">5 天前</time>
+                  <a class="wa-link" href="./shell-cards.html">查看</a>
+                </div>
+              </div>
+              <p>新增「卡片列表」样板，可用于封面摘要类资源展示。</p>
+            </div>
+          </article>
+          <article class="wa-shell-msg" data-msg-kind="system">
+            <div class="wa-shell-msg__mark" aria-hidden="true"><i class="fa-solid fa-circle-check"></i></div>
+            <div class="wa-shell-msg__body">
+              <div class="wa-shell-msg__head">
+                <strong>备份成功</strong>
+                <div class="wa-shell-msg__meta">
+                  <time datetime="2026-11-16T22:30">6 天前</time>
+                  <button type="button" class="wa-link" data-msg-read>标为已读</button>
+                </div>
+              </div>
+              <p>工作台静态资源夜间备份已完成，保留最近 7 个版本。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="./assets/common/js/message.js"></script>
+  <script src="./assets/common/js/confirm.js"></script>
+  <script src="./assets/common/js/page-loading.js"></script>
+  <script src="./assets/common/js/app-shell.js"></script>
+  <script src="./js/shell.js"></script>
+  <script src="./js/shell-messages.js"></script>
+</body>
+</html>

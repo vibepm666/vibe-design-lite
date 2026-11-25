@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>工作台 / 异常页面 — Vibe Design Lite | VibePM</title>
+  <meta name="description" content="Vibe Design Lite 工作台：异常页面（无权限）样板。" />
+  <meta name="keywords" content="Vibe Design Lite,工作台,异常页面,无权限,403,静态模板,VibePM" />
+  <meta name="author" content="VibePM" />
+  <meta name="theme-color" content="#13c7c2" />
+  <script src="./assets/common/js/theme.js"></script>
+  <link rel="stylesheet" href="./vendor/fontawesome_free/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/common/css/global.css" />
+  <link rel="stylesheet" href="./assets/common/css/chrome.css" />
+  <link rel="stylesheet" href="./assets/common/css/components.css" />
+  <link rel="stylesheet" href="./css/shell.css" />
+  <script src="./assets/common/js/shell-boot.js"></script>
+  <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml">
+  <noscript><style>body.wa-app-page{visibility:visible!important}</style></noscript>
+</head>
+<body class="wa-app-page">
+  <div class="wa-app" id="wa-app" data-wa-app data-shell-page="exception">
+    <div data-shell-content>
+      <section class="wa-app__panel">
+        <div class="wa-shell-exception" role="alert">
+          <div class="wa-shell-exception__icon" aria-hidden="true">
+            <i class="fa-solid fa-lock"></i>
+          </div>
+          <h2 class="wa-shell-exception__title">无权访问</h2>
+          <p class="wa-shell-exception__desc">当前账号没有查看该资源的权限。可返回工作台，或联系管理员开通。</p>
+          <div class="wa-shell-exception__actions">
+            <a class="wa-btn wa-btn--primary" href="./shell-dashboard.html">返回概览</a>
+            <a class="wa-btn wa-btn--secondary" href="./shell-data.html">数据列表</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="./assets/common/js/message.js"></script>
+  <script src="./assets/common/js/confirm.js"></script>
+  <script src="./assets/common/js/page-loading.js"></script>
+  <script src="./assets/common/js/app-shell.js"></script>
+  <script src="./js/shell.js"></script>
+</body>
+</html>

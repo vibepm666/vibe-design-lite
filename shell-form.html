@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>工作台 / 表单页面 — Vibe Design Lite | VibePM</title>
+  <meta name="description" content="Vibe Design Lite 工作台：表单页面样板。" />
+  <meta name="keywords" content="Vibe Design Lite,工作台,基础后台,表单页,工单,静态模板,VibePM" />
+  <meta name="author" content="VibePM" />
+  <meta name="theme-color" content="#13c7c2" />
+  <script src="./assets/common/js/theme.js"></script>
+  <link rel="stylesheet" href="./vendor/fontawesome_free/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/common/css/global.css" />
+  <link rel="stylesheet" href="./assets/common/css/chrome.css" />
+  <link rel="stylesheet" href="./assets/common/css/components.css" />
+  <link rel="stylesheet" href="./css/shell.css" />
+  <script src="./assets/common/js/shell-boot.js"></script>
+  <link rel="stylesheet" href="./css/shell-form.css" />
+  <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml">
+  <noscript><style>body.wa-app-page{visibility:visible!important}</style></noscript>
+</head>
+<body class="wa-app-page">
+  <div class="wa-app" id="wa-app" data-wa-app data-shell-page="form" data-crumb-extra="新建工单">
+    <div data-shell-content>
+      <section class="wa-app__panel wa-shell-form-page">
+        <div class="wa-shell-pagehead wa-shell-pagehead--form">
+          <div class="wa-shell-pagehead__main">
+            <h2 id="form-title">新建工单</h2>
+            <p id="form-sub">带 <span class="wa-req">*</span> 为必填项；按分区填写后可存草稿或直接提交。</p>
+          </div>
+          <div class="wa-shell-form-complete" aria-live="polite">
+            <span>填写完成度</span>
+            <div class="wa-shell-form-complete__row">
+              <div class="wa-progress" aria-hidden="true">
+                <div class="wa-progress__bar" data-form-complete-bar style="width: 0%"></div>
+              </div>
+              <strong data-form-complete>0%</strong>
+            </div>
+          </div>
+        </div>
+
+        <form class="wa-form wa-shell-form-stack" id="ticket-page-form" data-wa-validate novalidate>
+          <article class="wa-shell-block">
+            <header class="wa-shell-block__head wa-shell-block__head--stack">
+              <h3>基本信息</h3>
+              <p>标题、类型与影响面，用于列表检索与分派。</p>
+            </header>
+            <div class="wa-shell-form__grid wa-shell-form__grid--3">
+              <div class="wa-form-item wa-shell-form__span" data-validate="required" data-error="请输入工单标题" data-form-required>
+                <label class="wa-label" for="ticket-title">工单标题 <span class="wa-req" aria-hidden="true">*</span></label>
+                <div class="wa-field">
+                  <input class="wa-field__input" id="ticket-title" name="title" type="text" placeholder="一句话说明现象，例如：登录页验证码无法发送" data-wa-field-input required />
+                  <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+                </div>
+                <p class="wa-field__error" role="alert"></p>
+              </div>
+              <div class="wa-form-item" data-validate="required" data-error="请选择类型" data-form-required>
+                <label class="wa-label" for="ticket-type">类型 <span class="wa-req" aria-hidden="true">*</span></label>
+                <div class="wa-field wa-field--select">
+                  <select class="wa-field__select" id="ticket-type" name="type" data-wa-combo data-wa-combo-clear="0" data-placeholder="请选择类型" required>
+                    <option value="" disabled selected>请选择类型</option>
+                    <option value="故障">故障</option>
+                    <option value="咨询">咨询</option>
+                    <option value="需求">需求</option>
+                    <option value="投诉">投诉</option>
+                  </select>
+                </div>
+                <p class="wa-field__error" role="alert"></p>
+              </div>
+              <div class="wa-form-item" data-validate="required" data-error="请选择优先级" data-form-required>
+                <label class="wa-label" for="ticket-priority">优先级 <span class="wa-req" aria-hidden="true">*</span></label>
+                <div class="wa-field wa-field--select">
+                  <select class="wa-field__select" id="ticket-priority" name="priority" data-wa-combo data-wa-combo-clear="0" required>
+                    <option value="" disabled selected>请选择优先级</option>
+                    <option value="P0">P0</option>
+                    <option value="P1">P1</option>
+                    <option value="P2">P2</option>
+                    <option value="P3">P3</option>
+                  </select>
+                </div>
+                <p class="wa-field__error" role="alert"></p>
+              </div>
+              <div class="wa-form-item" data-validate="required" data-error="请选择渠道" data-form-required>
+                <label class="wa-label" for="ticket-channel">来源渠道 <span class="wa-req" aria-hidden="true">*</span></label>
+                <div class="wa-field wa-field--select">
+                  <select class="wa-field__select" id="ticket-channel" name="channel" data-wa-combo data-wa-combo-clear="0" required>
+                    <option value="" disabled selected>请选择渠道</option>
+                    <option value="站内反馈">站内反馈</option>
+                    <option value="邮件">邮件</option>
+                    <option value="电话">电话</option>
+                    <option value="企微">企微</option>
+                  </select>
+                </div>
+                <p class="wa-field__error" role="alert"></p>
+              </div>
+              <div class="wa-form-item">
+                <label class="wa-label" for="ticket-severity">严重程度</label>
+                <div class="wa-field wa-field--select">
+                  <select class="wa-field__select" id="ticket-severity" name="severity" data-wa-combo>
+                    <option value="一般" selected>一般</option>
+                    <option value="较重">较重</option>
+                    <option value="严重">严重</option>
+                    <option value="紧急">紧急</option>
+                  </select>
+                </div>
+              </div>
+              <div class="wa-form-item">
+                <label class="wa-label" for="ticket-customer">客户等级</label>
+                <div class="wa-field wa-field--select">
+                  <select class="wa-field__select" id="ticket-customer" name="customer" data-wa-combo>
+                    <option value="普通" selected>普通</option>
+                    <option value="重点">重点</option>
+                    <option value="战略">战略</option>
+                  </select>
+                </div>
+              </div>
+              <div class="wa-form-item">
+                <label class="wa-label" for="ticket-bizline">业务线</label>
+                <div class="wa-field wa-field--select">
+                  <select class="wa-field__select" id="ticket-bizline" name="bizline" data-wa-combo>
+                    <option value="增长" selected>增长</option>
+                    <option value="平台">平台</option>
+                    <option value="商业化">商业化</option>
+                    <option value="基础体验">基础体验</option>
+                  </select>
+                </div>
+              </div>
+              <div class="wa-form-item wa-shell-form__span">
+                <label class="wa-label">影响模块 <span class="wa-hint">最多选 3 个</span></label>
+                <div class="wa-chip-group" data-ticket-tags role="group" aria-label="影响模块">
+                  <button type="button" class="wa-chip wa-chip--option" data-tag="登录">登录</button>
+                  <button type="button" class="wa-chip wa-chip--option" data-tag="短信">短信</button>
+                  <button type="button" class="wa-chip wa-chip--option" data-tag="消息中心">消息中心</button>
+                  <button type="button" class="wa-chip wa-chip--option" data-tag="上传">上传</button>
+                  <button type="button" class="wa-chip wa-chip--option" data-tag="权限">权限</button>
+                  <button type="button" class="wa-chip wa-chip--option" data-tag="移动端">移动端</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-block">
+            <header class="wa-shell-block__head wa-shell-block__head--stack">
+              <h3>受理与排期</h3>
+              <p>分派责任人，并约定期望解决时间与影响面。</p>
+            </header>
+            <div class="wa-shell-form__grid wa-shell-form__grid--3">
+              <div class="wa-form-item" data-validate="required" data-error="请输入提交人" data-form-required>
+                <label class="wa-label" for="ticket-reporter">提交人 <span class="wa-req" aria-hidden="true">*</span></label>
+                <div class="wa-field">
+                  <input class="wa-field__input" id="ticket-reporter" name="reporter" type="text" placeholder="提交人姓名" data-wa-field-input required />
+                  <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+                </div>
+                <p class="wa-field__error" role="alert"></p>
+              </div>
+              <div class="wa-form-item">
+                <label class="wa-label" for="ticket-assignee">受理人</label>
+                <div class="wa-field">
+                  <input class="wa-field__input" id="ticket-assignee" name="assignee" type="text" placeholder="受理人（可选）" data-wa-field-input />
+                  <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+                </div>
+              </div>
+              <div class="wa-form-item" data-validate="required" data-error="请选择期望解决时间" data-form-required>
+                <label class="wa-label" for="ticket-due">期望解决 <span class="wa-req" aria-hidden="true">*</span></label>
+                <div class="wa-field wa-field--icon">
+                  <i class="fa-solid fa-calendar wa-field__icon" aria-hidden="true"></i>
+                  <input class="wa-field__input" id="ticket-due" name="due" type="datetime-local" data-wa-field-input required />
+                  <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true">
+                    <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <p class="wa-field__error" role="alert"></p>
+              </div>
+              <div class="wa-form-item">
+                <label class="wa-label" for="ticket-product">所属产品</label>
+                <div class="wa-field wa-field--select">
+                  <select class="wa-field__select" id="ticket-product" name="product" data-wa-combo>
+                    <option value="会员中心" selected>会员中心</option>
+                    <option value="工作台">工作台</option>
+                    <option value="消息中心">消息中心</option>
+                    <option value="门户">门户</option>
+                  </select>
+                </div>
+              </div>
+              <div class="wa-form-item">
+                <label class="wa-label" for="ticket-status">状态</label>
+                <div class="wa-field wa-field--select">
+                  <select class="wa-field__select" id="ticket-status" name="status" data-wa-combo>
+                    <option value="待受理" selected>待受理</option>
+                    <option value="处理中">处理中</option>
+                    <option value="待确认">待确认</option>
+                    <option value="已关闭">已关闭</option>
+                  </select>
+                </div>
+              </div>
+              <div class="wa-form-item">
+                <label class="wa-label" for="ticket-watcher">关注人</label>
+                <div class="wa-field">
+                  <input class="wa-field__input" id="ticket-watcher" name="watcher" type="text" placeholder="关注人（可选）" data-wa-field-input />
+                  <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+                </div>
+              </div>
+              <div class="wa-form-item">
+                <label class="wa-label" for="ticket-impact">影响范围</label>
+                <div class="wa-field">
+                  <input class="wa-field__input" id="ticket-impact" name="impact" type="text" placeholder="例如：约 12% 新用户" data-wa-field-input />
+                  <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+                </div>
+              </div>
+              <div class="wa-form-item">
+                <label class="wa-label" for="ticket-region">影响区域</label>
+                <div class="wa-field wa-field--select">
+                  <select class="wa-field__select" id="ticket-region" name="region" data-wa-combo>
+                    <option value="全国" selected>全国</option>
+                    <option value="华东">华东</option>
+                    <option value="华北">华北</option>
+                    <option value="华南">华南</option>
+                  </select>
+                </div>
+              </div>
+              <div class="wa-form-item">
+                <label class="wa-label" for="ticket-sla">SLA 档位</label>
+                <div class="wa-field wa-field--select">
+                  <select class="wa-field__select" id="ticket-sla" name="sla" data-wa-combo>
+                    <option value="标准" selected>标准</option>
+                    <option value="加速">加速</option>
+                    <option value="特急">特急</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-block">
+            <header class="wa-shell-block__head wa-shell-block__head--stack">
+              <h3>问题详情</h3>
+              <p>补充现象、环境与期望结果，便于接手人快速定位。</p>
+            </header>
+            <div class="wa-shell-form__grid wa-shell-form__grid--3">
+              <div class="wa-form-item wa-shell-form__span" data-validate="required" data-error="请填写问题描述" data-form-required>
+                <label class="wa-label" for="ticket-note">问题描述 <span class="wa-req" aria-hidden="true">*</span></label>
+                <div class="wa-field wa-field--textarea">
+                  <textarea class="wa-field__textarea" id="ticket-note" name="note" rows="4" maxlength="500" placeholder="描述现象、复现步骤与当前影响" data-wa-field-input required></textarea>
+                </div>
+                <p class="wa-field__error" role="alert"></p>
+              </div>
+              <div class="wa-form-item">
+                <label class="wa-label" for="ticket-env">复现环境</label>
+                <div class="wa-field wa-field--textarea">
+                  <textarea class="wa-field__textarea" id="ticket-env" name="env" rows="4" maxlength="300" placeholder="浏览器 / 系统 / 环境 / 账号特征等" data-wa-field-input></textarea>
+                </div>
+              </div>
+              <div class="wa-form-item">
+                <label class="wa-label" for="ticket-expect">期望结果</label>
+                <div class="wa-field wa-field--textarea">
+                  <textarea class="wa-field__textarea" id="ticket-expect" name="expect" rows="4" maxlength="300" placeholder="例如：验证码 5 秒内下发；失败时给出明确提示" data-wa-field-input></textarea>
+                </div>
+              </div>
+              <div class="wa-form-item">
+                <label class="wa-label" for="ticket-workaround">临时方案</label>
+                <div class="wa-field wa-field--textarea">
+                  <textarea class="wa-field__textarea" id="ticket-workaround" name="workaround" rows="4" maxlength="300" placeholder="可先行采用的绕过或降级方案（可选）" data-wa-field-input></textarea>
+                </div>
+              </div>
+              <div class="wa-form-item wa-shell-form__span">
+                <label class="wa-label" for="ticket-fileInput">附件上传</label>
+                <div
+                  class="wa-dropzone"
+                  id="ticket-dropzone"
+                  data-wa-dropzone="ticket-fileInput"
+                  data-wa-max-size="10mb"
+                  data-wa-max-files="8"
+                  role="button"
+                  tabindex="0"
+                  aria-label="上传附件"
+                >
+                  <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+                  <span class="wa-dropzone__title" data-wa-dropzone-hint>点击或拖拽文件到此处</span>
+                  <span class="wa-dropzone__tip">支持截图、日志与压缩包：JPG / PNG / PDF / ZIP / LOG，单文件不超过 10MB</span>
+                </div>
+                <ul
+                  class="wa-dropzone-list"
+                  data-wa-dropzone-list="ticket-fileInput"
+                  hidden
+                  aria-label="已选附件"
+                ></ul>
+                <input
+                  type="file"
+                  class="wa-file-input"
+                  id="ticket-fileInput"
+                  name="attachments"
+                  multiple
+                  accept=".jpg,.jpeg,.png,.pdf,.zip,.log,.txt,image/jpeg,image/png,application/pdf,application/zip,text/plain"
+                />
+              </div>
+            </div>
+          </article>
+
+          <div class="wa-shell-form-foot">
+            <p class="wa-shell-form-foot__hint" data-form-remain>还有 7 项必填未完成</p>
+            <div class="wa-shell-form-foot__actions">
+              <a class="wa-link" id="form-cancel" href="./shell-detail.html?id=t1">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                取消
+              </a>
+              <button type="button" class="wa-btn wa-btn--secondary" id="ticket-draft">存草稿</button>
+              <button type="submit" class="wa-btn wa-btn--primary" id="ticket-submit">创建工单</button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <script src="./assets/common/js/message.js"></script>
+  <script src="./assets/common/js/confirm.js"></script>
+  <script src="./assets/common/js/field.js"></script>
+  <script src="./assets/common/js/form.js"></script>
+  <script src="./assets/common/js/dropzone.js"></script>
+  <script src="./assets/common/js/combo.js"></script>
+  <script src="./assets/common/js/page-loading.js"></script>
+  <script src="./assets/common/js/app-shell.js"></script>
+  <script src="./js/shell.js"></script>
+  <script src="./js/shell-form.js"></script>
+</body>
+</html>

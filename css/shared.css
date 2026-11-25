@@ -1,0 +1,252 @@
+/**
+ * 多页共用版式（landing / section / 营销卡面）
+ * 由各页 css/<page>.css @import；HTML 不直接链本文件
+ */
+
+/* —— 范围背景（landing cover） —— */
+body.wa-landing-cover {
+  --wa-landing-hue: 0deg;
+  --wa-landing-hue-bias: -4deg;
+  --wa-landing-sat: 1.04;
+  background-color: color-mix(in srgb, var(--wa-color-primary) 10%, #eef1f8);
+}
+
+.wa-landing-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.wa-landing-bg__image,
+.wa-landing-bg__glow,
+.wa-landing-bg__aura,
+.wa-landing-bg__dots {
+  position: absolute;
+  inset: 0;
+}
+
+.wa-landing-bg__image {
+  z-index: 0;
+  background-image: url("../assets/images/bg.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: hue-rotate(calc(var(--wa-landing-hue) + var(--wa-landing-hue-bias))) saturate(var(--wa-landing-sat));
+  transition: filter 0.35s ease;
+}
+
+.wa-landing-bg__image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--wa-color-primary) 8%, transparent);
+  mix-blend-mode: soft-light;
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.wa-landing-bg__glow {
+  z-index: 1;
+  opacity: 0.62;
+  mix-blend-mode: multiply;
+  transition: opacity 0.35s ease, background 0.35s ease;
+  background:
+    radial-gradient(
+      ellipse 100% 72% at 8% 0%,
+      color-mix(in srgb, var(--wa-color-primary) 34%, transparent),
+      transparent 56%
+    ),
+    radial-gradient(
+      ellipse 80% 60% at 100% 100%,
+      color-mix(in srgb, var(--wa-color-primary) 26%, transparent),
+      transparent 54%
+    ),
+    radial-gradient(
+      ellipse 55% 45% at 82% 16%,
+      color-mix(in srgb, var(--wa-color-primary) 18%, transparent),
+      transparent 60%
+    ),
+    linear-gradient(
+      155deg,
+      color-mix(in srgb, var(--wa-color-primary) 12%, transparent) 0%,
+      transparent 48%,
+      color-mix(in srgb, var(--wa-color-primary) 10%, transparent) 100%
+    );
+}
+
+.wa-landing-bg__aura {
+  z-index: 2;
+  opacity: 0.72;
+  background:
+    radial-gradient(ellipse 90% 70% at 8% -5%, rgba(var(--wa-color-primary-rgb), 0.14), transparent 55%),
+    radial-gradient(ellipse 70% 55% at 98% 12%, rgba(255, 255, 255, 0.35), transparent 50%),
+    radial-gradient(ellipse 60% 50% at 50% 105%, rgba(var(--wa-color-primary-rgb), 0.08), transparent 55%),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--wa-color-primary) 3%, #f5f6f8) 0%,
+      #f4f5f7 45%,
+      #f6f7f9 100%
+    );
+}
+
+.wa-landing-bg__dots {
+  z-index: 3;
+  opacity: 0.45;
+  background-image: radial-gradient(rgba(var(--wa-color-primary-rgb), 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 75%);
+}
+
+html[data-theme="dark"] body.wa-landing-cover {
+  background-color: color-mix(in srgb, var(--wa-color-primary) 4%, #0c0d10);
+}
+
+html[data-theme="dark"] .wa-landing-bg__image {
+  filter: hue-rotate(calc(var(--wa-landing-hue) + var(--wa-landing-hue-bias)))
+    saturate(var(--wa-landing-sat)) brightness(0.58) contrast(1.05);
+  opacity: 0.98;
+}
+
+html[data-theme="dark"] .wa-landing-bg__image::after {
+  opacity: 0.18;
+}
+
+html[data-theme="dark"] .wa-landing-bg__glow {
+  mix-blend-mode: soft-light;
+  opacity: 0.42;
+}
+
+html[data-theme="dark"] .wa-landing-bg__aura {
+  opacity: 0.78;
+  background:
+    radial-gradient(ellipse 90% 70% at 8% -5%, rgba(var(--wa-color-primary-rgb), 0.1), transparent 55%),
+    radial-gradient(ellipse 70% 55% at 98% 12%, rgba(255, 255, 255, 0.04), transparent 50%),
+    radial-gradient(ellipse 60% 50% at 50% 105%, rgba(var(--wa-color-primary-rgb), 0.06), transparent 55%),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--wa-color-primary) 3%, #141518) 0%,
+      #101114 50%,
+      #0c0d10 100%
+    );
+}
+
+.wa-section__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  height: 30px;
+  margin: 0 auto 14px;
+  padding: 0 12px;
+  border-radius: var(--wa-radius-pill);
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--wa-color-text-secondary);
+}
+
+.wa-section__eyebrow i {
+  font-size: 0.6875rem;
+  color: var(--wa-color-text-secondary);
+}
+
+html[data-theme="dark"] .wa-section__eyebrow {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+/* —— Sections：块间距基准 88 —— */
+.wa-section {
+  margin-top: 88px;
+  padding: 0;
+  scroll-margin-top: 88px;
+}
+
+.wa-section:first-of-type,
+.wa-hero + .wa-section {
+  margin-top: 72px;
+}
+
+@media (max-width: 960px) {
+  .wa-section {
+    margin-top: 64px;
+  }
+
+  .wa-section:first-of-type,
+  .wa-hero + .wa-section {
+    margin-top: 56px;
+  }
+}
+
+@media (max-width: 720px) {
+  .wa-section {
+    margin-top: 48px;
+  }
+
+  .wa-section:first-of-type,
+  .wa-hero + .wa-section {
+    margin-top: 40px;
+  }
+
+  .wa-section__head {
+    margin-bottom: 24px;
+  }
+
+  .wa-section__title {
+    font-size: clamp(24px, 7vw, 32px);
+  }
+
+  .wa-section__desc {
+    font-size: 14px;
+  }
+}
+
+.wa-section--muted {
+  background: transparent;
+  border-block: none;
+}
+
+.wa-section__head {
+  max-width: 40em;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.wa-section__title {
+  margin: 0 0 14px;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.wa-section__desc {
+  max-width: 40em;
+  margin: 0 auto;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--wa-color-text-secondary);
+}
+
+/* —— 共用卡片面：玻璃底 + 细边 —— */
+.wa-feature,
+.wa-value,
+.wa-export-card,
+.wa-step,
+.wa-theme-studio,
+.wa-faq__item {
+  background: var(--wa-color-glass);
+  border: 1px solid var(--wa-color-glass-border, var(--wa-color-border-1));
+  border-radius: var(--wa-radius);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--wa-shadow-card, var(--wa-shadow-soft));
+}

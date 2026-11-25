@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>工作台 / 数据列表 — Vibe Design Lite | VibePM</title>
+  <meta name="description" content="Vibe Design Lite 工作台：数据列表与新建/查看/编辑弹层。" />
+  <meta name="keywords" content="Vibe Design Lite,工作台,基础后台,侧栏布局,应用壳,静态模板,lite-site,VibePM" />
+  <meta name="author" content="VibePM" />
+  <meta name="theme-color" content="#13c7c2" />
+  <script src="./assets/common/js/theme.js"></script>
+  <link rel="stylesheet" href="./vendor/fontawesome_free/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/common/css/global.css" />
+  <link rel="stylesheet" href="./assets/common/css/chrome.css" />
+  <link rel="stylesheet" href="./assets/common/css/components.css" />
+  <link rel="stylesheet" href="./css/shell.css" />
+  <script src="./assets/common/js/shell-boot.js"></script>
+  <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml">
+  <noscript><style>body.wa-app-page{visibility:visible!important}</style></noscript>
+</head>
+<body class="wa-app-page">
+  <div class="wa-app" id="wa-app" data-wa-app data-shell-page="data">
+    <!-- 侧栏 + 顶栏由 WA_APP_SHELL.mountFrame 注入（js/shell.js） -->
+    <div data-shell-content>
+      <section class="wa-app__panel">
+<div class="wa-app__panel-head">
+            <h2>数据列表</h2>
+            <p>支持筛选、导出与新建 / 查看 / 编辑。复制列结构后改成业务字段即可。</p>
+          </div>
+          <div class="wa-table-shell">
+            <div class="wa-table-toolbar wa-table-toolbar--with-filters">
+              <div class="wa-table-toolbar__start">
+                <div class="wa-table-toolbar__actions">
+                  <button type="button" class="wa-btn wa-btn--primary" data-shell-create>
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                    新建
+                  </button>
+                  <button type="button" class="wa-btn wa-btn--secondary" data-kit-table-export>
+                    <i class="fa-solid fa-download" aria-hidden="true"></i>
+                    导出
+                  </button>
+                </div>
+                <p class="wa-table-toolbar__meta" data-shell-selection hidden>
+                  已选 <strong data-shell-selection-count>0</strong> 项<button type="button" class="wa-link" data-shell-clear-selection>清空</button>
+                </p>
+              </div>
+              <div class="wa-table-filters" data-shell-filters>
+                <div class="wa-field wa-field--icon wa-table-filters__search">
+                  <i class="fa-solid fa-magnifying-glass wa-field__icon" aria-hidden="true"></i>
+                  <span class="wa-sr-only">关键词</span>
+                  <input
+                    class="wa-field__input"
+                    type="text"
+                    placeholder="搜索编号 / 名称 / 城市 / 负责人"
+                    data-shell-project-filter
+                    data-wa-field-input
+                    autocomplete="off"
+                  />
+                  <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true">
+                    <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div class="wa-field wa-field--select wa-table-filters__select">
+                  <select class="wa-field__select" data-shell-filter-status data-wa-combo data-wa-combo-clear data-placeholder="状态" aria-label="状态">
+                    <option value="">全部状态</option>
+                    <option value="待启动">待启动</option>
+                    <option value="进行中">进行中</option>
+                    <option value="已完成">已完成</option>
+                  </select>
+                </div>
+                <div class="wa-field wa-field--select wa-table-filters__select">
+                  <select class="wa-field__select" data-shell-filter-type data-wa-combo data-wa-combo-clear data-placeholder="类型" aria-label="类型">
+                    <option value="">全部类型</option>
+                    <option value="官网">官网</option>
+                    <option value="活动">活动</option>
+                    <option value="落地页">落地页</option>
+                    <option value="产品">产品</option>
+                    <option value="工具">工具</option>
+                    <option value="文档">文档</option>
+                    <option value="表单">表单</option>
+                    <option value="门户">门户</option>
+                    <option value="资源">资源</option>
+                    <option value="专题">专题</option>
+                    <option value="展示">展示</option>
+                    <option value="原型">原型</option>
+                  </select>
+                </div>
+                <div class="wa-field wa-field--select wa-table-filters__select">
+                  <select class="wa-field__select" data-shell-filter-priority data-wa-combo data-wa-combo-clear data-placeholder="优先级" aria-label="优先级">
+                    <option value="">全部优先级</option>
+                    <option value="高">高</option>
+                    <option value="中">中</option>
+                    <option value="低">低</option>
+                  </select>
+                </div>
+                <button type="button" class="wa-btn wa-btn--ghost" data-shell-filter-reset>
+                  <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+                  重置
+                </button>
+              </div>
+            </div>
+            <div class="wa-table-wrap">
+              <table class="wa-table" data-kit-table>
+                <colgroup>
+                  <col class="wa-col-check" />
+                  <col class="wa-col-index" />
+                  <col class="wa-col-name" />
+                  <col class="wa-col-type" />
+                  <col class="wa-col-city" />
+                  <col class="wa-col-owner" />
+                  <col class="wa-col-status" />
+                  <col class="wa-col-priority" />
+                  <col class="wa-col-progress" />
+                  <col class="wa-col-updated" />
+                  <col class="wa-col-ops" />
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th class="wa-table__check" scope="col">
+                      <label class="wa-check"><input type="checkbox" data-kit-table-check-all aria-label="全选" /></label>
+                    </th>
+                    <th class="wa-table__index" scope="col">编号</th>
+                    <th scope="col">名称</th>
+                    <th scope="col">类型</th>
+                    <th scope="col">城市</th>
+                    <th scope="col">负责人</th>
+                    <th scope="col">状态</th>
+                    <th scope="col">优先级</th>
+                    <th scope="col">进度</th>
+                    <th scope="col">最后更新</th>
+                    <th class="wa-table__ops" scope="col">操作</th>
+                  </tr>
+                </thead>
+                <tbody data-kit-table-body>
+                </tbody>
+              </table>
+              <div class="wa-empty wa-table-empty" data-kit-table-empty hidden role="status">
+                <i class="fa-solid fa-inbox wa-empty__icon" aria-hidden="true"></i>
+                <p class="wa-empty__title">暂无数据</p>
+              </div>
+            </div>
+            <nav class="wa-pagination" aria-label="分页">
+              <div class="wa-pagination__actions">
+                <button type="button" class="wa-btn wa-btn--secondary" data-shell-select="page">
+                  <i class="fa-solid fa-square-check" aria-hidden="true"></i>
+                  全选当页
+                </button>
+                <button type="button" class="wa-btn wa-btn--secondary" data-shell-select="all">
+                  <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+                  全选所有
+                </button>
+                <button type="button" class="wa-btn wa-btn--secondary" data-shell-batch="delete">
+                  <i class="fa-solid fa-trash" aria-hidden="true"></i>
+                  删除选中
+                </button>
+                <button type="button" class="wa-btn wa-btn--secondary" data-shell-batch="status">
+                  <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+                  设置状态
+                </button>
+              </div>
+              <div class="wa-pagination__end">
+                <p class="wa-pagination__info" data-shell-page-info>共 0 条 · 第 1 / 1 页</p>
+                <div class="wa-pagination__controls" data-shell-page-controls></div>
+              </div>
+            </nav>
+          </div>
+      </section>
+    </div>
+  </div>
+
+
+  <div class="wa-modal" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" aria-hidden="true" data-project-mode="create">
+    <div class="wa-modal__overlay" data-modal-close></div>
+    <div class="wa-modal__panel" tabindex="-1" role="document">
+      <div class="wa-modal__header">
+        <h2 class="wa-modal__title" id="project-modal-title">新建项目</h2>
+        <button type="button" class="wa-modal__close" data-modal-close aria-label="关闭">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="wa-modal__body">
+        <div class="wa-project-view" data-project-view hidden>
+          <dl class="wa-project-view__list">
+            <div class="wa-project-view__row">
+              <dt>名称</dt>
+              <dd data-view-field="name">—</dd>
+            </div>
+            <div class="wa-project-view__row">
+              <dt>类型</dt>
+              <dd data-view-field="type">—</dd>
+            </div>
+            <div class="wa-project-view__row">
+              <dt>城市</dt>
+              <dd data-view-field="city">—</dd>
+            </div>
+            <div class="wa-project-view__row">
+              <dt>负责人</dt>
+              <dd data-view-field="owner">—</dd>
+            </div>
+            <div class="wa-project-view__row">
+              <dt>优先级</dt>
+              <dd data-view-field="priority">—</dd>
+            </div>
+            <div class="wa-project-view__row">
+              <dt>进度</dt>
+              <dd data-view-field="progress">—</dd>
+            </div>
+            <div class="wa-project-view__row">
+              <dt>状态</dt>
+              <dd data-view-field="status">—</dd>
+            </div>
+            <div class="wa-project-view__row">
+              <dt>最后更新</dt>
+              <dd data-view-field="updated">—</dd>
+            </div>
+          </dl>
+        </div>
+        <form class="wa-form" id="project-form" data-wa-validate novalidate>
+          <div class="wa-form-item" data-validate="required" data-error="请输入项目名称">
+            <label class="wa-label" for="project-name">名称 <span class="wa-req" aria-hidden="true">*</span></label>
+            <div class="wa-field">
+              <input class="wa-field__input" id="project-name" name="name" type="text" placeholder="请输入项目名称" data-wa-field-input required />
+              <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+            </div>
+            <p class="wa-field__error" role="alert"></p>
+          </div>
+          <div class="wa-form-item" data-validate="required" data-error="请选择类型">
+            <label class="wa-label" for="project-type">类型 <span class="wa-req" aria-hidden="true">*</span></label>
+            <div class="wa-field wa-field--select">
+              <select class="wa-field__select" id="project-type" name="type" data-wa-combo data-wa-combo-clear="0" data-placeholder="请选择类型" required>
+                <option value="" disabled selected>请选择类型</option>
+                <option value="官网">官网</option>
+                <option value="活动">活动</option>
+                <option value="落地页">落地页</option>
+                <option value="产品">产品</option>
+                <option value="工具">工具</option>
+                <option value="文档">文档</option>
+                <option value="表单">表单</option>
+                <option value="门户">门户</option>
+                <option value="资源">资源</option>
+                <option value="专题">专题</option>
+                <option value="展示">展示</option>
+                <option value="原型">原型</option>
+              </select>
+            </div>
+            <p class="wa-field__error" role="alert"></p>
+          </div>
+          <div class="wa-form-item" data-validate="required" data-error="请输入城市">
+            <label class="wa-label" for="project-city">城市 <span class="wa-req" aria-hidden="true">*</span></label>
+            <div class="wa-field">
+              <input class="wa-field__input" id="project-city" name="city" type="text" placeholder="城市" data-wa-field-input required />
+              <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+            </div>
+            <p class="wa-field__error" role="alert"></p>
+          </div>
+          <div class="wa-form-item" data-validate="required" data-error="请输入负责人">
+            <label class="wa-label" for="project-owner">负责人 <span class="wa-req" aria-hidden="true">*</span></label>
+            <div class="wa-field">
+              <input class="wa-field__input" id="project-owner" name="owner" type="text" placeholder="负责人" data-wa-field-input required />
+              <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+            </div>
+            <p class="wa-field__error" role="alert"></p>
+          </div>
+          <div class="wa-form-item" data-validate="required" data-error="请选择优先级">
+            <label class="wa-label" for="project-priority">优先级 <span class="wa-req" aria-hidden="true">*</span></label>
+            <div class="wa-field wa-field--select">
+              <select class="wa-field__select" id="project-priority" name="priority" data-wa-combo data-wa-combo-clear="0" required>
+                <option value="" disabled>请选择优先级</option>
+                <option value="高">高</option>
+                <option value="中" selected>中</option>
+                <option value="低">低</option>
+              </select>
+            </div>
+            <p class="wa-field__error" role="alert"></p>
+          </div>
+          <div class="wa-form-item">
+            <div class="wa-slider-head">
+              <label class="wa-label" for="project-progress">进度</label>
+              <span class="wa-slider__value" data-wa-slider-value aria-hidden="true">0%</span>
+            </div>
+            <div class="wa-slider" data-wa-slider data-wa-slider-suffix="%">
+              <input
+                class="wa-slider__input"
+                id="project-progress"
+                name="progress"
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              />
+            </div>
+          </div>
+          <div class="wa-form-item">
+            <label class="wa-label" for="project-status">状态</label>
+            <div class="wa-field wa-field--select">
+              <select class="wa-field__select" id="project-status" name="status" data-wa-combo>
+                <option value="待启动">待启动</option>
+                <option value="进行中" selected>进行中</option>
+                <option value="已完成">已完成</option>
+              </select>
+            </div>
+          </div>
+          <div class="wa-form-item">
+            <label class="wa-label" for="project-updated">最后更新</label>
+            <div class="wa-field wa-field--icon">
+              <i class="fa-solid fa-calendar wa-field__icon" aria-hidden="true"></i>
+              <input class="wa-field__input" id="project-updated" name="updated" type="datetime-local" data-wa-field-input />
+              <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true">
+                <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="wa-modal__footer">
+        <button type="button" class="wa-btn wa-btn--secondary" data-modal-close>取消</button>
+        <button type="button" class="wa-btn wa-btn--secondary" id="project-view-edit" hidden>
+          <i class="fa-solid fa-pen" aria-hidden="true"></i>
+          编辑
+        </button>
+        <button type="button" class="wa-btn wa-btn--primary" id="project-submit">创建</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wa-modal" id="status-modal" role="dialog" aria-modal="true" aria-labelledby="status-modal-title" aria-hidden="true">
+    <div class="wa-modal__overlay" data-modal-close></div>
+    <div class="wa-modal__panel" tabindex="-1" role="document">
+      <div class="wa-modal__header">
+        <h2 class="wa-modal__title" id="status-modal-title">设置状态</h2>
+        <button type="button" class="wa-modal__close" data-modal-close aria-label="关闭">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="wa-modal__body">
+        <p style="margin: 0 0 12px; color: var(--wa-text-secondary, #64748b); font-size: 0.875rem; line-height: 1.5">将对已勾选的行批量更新状态，并刷新「最后更新」时间。</p>
+        <div class="wa-form-item" style="margin: 0">
+          <label class="wa-label" for="batch-status">目标状态</label>
+          <div class="wa-field wa-field--select">
+            <select class="wa-field__select" id="batch-status" name="batchStatus" data-wa-combo>
+              <option value="待启动">待启动</option>
+              <option value="进行中" selected>进行中</option>
+              <option value="已完成">已完成</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="wa-modal__footer">
+        <button type="button" class="wa-btn wa-btn--secondary" data-modal-close>取消</button>
+        <button type="button" class="wa-btn wa-btn--primary" id="status-submit">应用</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/common/js/message.js"></script>
+  <script src="./assets/common/js/modal.js"></script>
+  <script src="./assets/common/js/confirm.js"></script>
+  <script src="./assets/common/js/field.js"></script>
+  <script src="./assets/common/js/form.js"></script>
+  <script src="./assets/common/js/combo.js"></script>
+  <script src="./assets/common/js/slider.js"></script>
+  <script src="./assets/common/js/dropdown.js"></script>
+  <script src="./assets/common/js/table.js"></script>
+  <script src="./assets/common/js/page-loading.js"></script>
+  <script src="./assets/common/js/app-shell.js"></script>
+  <script src="./js/shell.js"></script>
+  <script src="./js/shell-data.js"></script>
+</body>
+</html>

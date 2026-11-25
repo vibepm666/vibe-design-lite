@@ -1,0 +1,130 @@
+.wa-shell-form-complete {
+  display: grid;
+  gap: 6px;
+  min-width: 200px;
+  color: var(--wa-color-text-secondary, var(--wa-color-muted));
+  font-size: 0.75rem;
+}
+
+.wa-shell-form-complete__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wa-shell-form-complete strong {
+  flex: 0 0 auto;
+  min-width: 2.75em;
+  color: var(--wa-color-text);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: right;
+}
+
+.wa-shell-form-complete .wa-progress {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 120px;
+}
+
+.wa-shell-form-page {
+  padding-bottom: 0;
+}
+
+.wa-app__body:has(.wa-shell-form-page) {
+  padding-bottom: 20px;
+}
+
+.wa-form.wa-shell-form-stack {
+  max-width: none;
+  width: 100%;
+  display: grid;
+  gap: 20px;
+}
+
+.wa-shell-form-stack .wa-shell-block {
+  display: grid;
+  gap: 18px;
+  padding: 22px 24px;
+}
+
+.wa-shell-form-stack .wa-shell-block__head {
+  margin-bottom: 0;
+}
+
+.wa-shell-form__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px 24px;
+  width: 100%;
+}
+
+.wa-shell-form__grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.wa-shell-form-stack .wa-form-item,
+.wa-shell-form-stack .wa-field {
+  width: 100%;
+  min-width: 0;
+}
+
+.wa-shell-form__span {
+  grid-column: 1 / -1;
+}
+
+.wa-hint {
+  margin-left: 6px;
+  color: var(--wa-color-muted);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.wa-shell-form-foot {
+  position: sticky;
+  bottom: 4px;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 16px;
+  padding: 12px 16px;
+  border: 1px solid var(--wa-color-border-1, var(--wa-color-border));
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--wa-color-surface) 92%, transparent);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+.wa-shell-form-foot__hint {
+  margin: 0;
+  color: var(--wa-color-text-secondary, var(--wa-color-muted));
+  font-size: 0.8125rem;
+}
+
+.wa-shell-form-foot__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 1100px) {
+  .wa-shell-form__grid,
+  .wa-shell-form__grid--3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .wa-shell-form__grid,
+  .wa-shell-form__grid--3 {
+    grid-template-columns: 1fr;
+  }
+
+  .wa-shell-form-foot {
+    position: static;
+  }
+}

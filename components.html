@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>常用组件 — Vibe Design Lite | VibePM</title>
+  <meta name="description" content="Vibe Design Lite 常用组件橱窗：按钮、表单、标签、卡片、表格、进度、吐司与弹窗等可复用控件示意，便于轻站快速对照接入。" />
+  <meta name="keywords" content="Vibe Design Lite,常用组件,按钮,表单,卡片,表格,弹窗,吐司,标签,进度条,轻站,VibePM" />
+  <meta name="author" content="VibePM" />
+  <meta name="theme-color" content="#13c7c2" />
+  <script src="./assets/common/js/theme.js"></script>
+  <link rel="stylesheet" href="./vendor/fontawesome_free/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/common/css/global.css" />
+  <link rel="stylesheet" href="./assets/common/css/chrome.css" />
+  <link rel="stylesheet" href="./assets/common/css/components.css" />
+  <link rel="stylesheet" href="./css/components.css" />
+  <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml">
+</head>
+<body id="top" class="wa-landing-cover">
+  <div class="wa-landing-bg" aria-hidden="true">
+    <div class="wa-landing-bg__image"></div>
+    <div class="wa-landing-bg__glow"></div>
+    <div class="wa-landing-bg__aura"></div>
+    <div class="wa-landing-bg__dots"></div>
+  </div>
+
+  <div class="wa-shell">
+    <div class="wa-nav-shell">
+      <div class="wa-nav-shell__inner">
+        <header class="wa-nav wa-nav--card">
+          <a class="wa-brand" href="./index.html" aria-label="Vibe Design Lite，返回首页">
+            <span class="wa-brand__mark" aria-hidden="true"><i class="fa-solid fa-table-columns"></i></span>
+            <span class="wa-brand__name">Vibe Design Lite</span>
+          </a>
+
+          <nav class="wa-nav__links" aria-label="主导航">
+            <a href="./index.html">模板首页</a>
+            <a href="./components.html" aria-current="page">常用组件</a>
+            <a href="./showcase.html">展示区块</a>
+            <a href="./login.html" target="_blank" rel="noopener noreferrer">登录页面</a>
+            <a href="./shell-dashboard.html" target="_blank" rel="noopener noreferrer">工作台模板</a>
+            <a href="./tool.html" target="_blank" rel="noopener noreferrer">单页模板</a>
+          </nav>
+
+          <div class="wa-nav__actions">
+            <button type="button" class="wa-nav__icon-btn wa-nav__icon-btn--aux" data-modal-open="wechat-modal" aria-label="关注公众号" title="关注公众号">
+              <i class="fa-brands fa-weixin" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              class="wa-nav__icon-btn wa-nav__icon-btn--aux"
+              data-wa-theme-toggle
+              aria-pressed="false"
+              aria-label="切换主题"
+              title="切换主题"
+            >
+              <i class="fa-regular fa-moon" aria-hidden="true"></i>
+            </button>
+            <a
+              class="wa-nav__icon-btn wa-nav__icon-btn--aux"
+              href="https://www.vibepm.net/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="网站首页"
+              title="网站首页"
+            >
+              <i class="fa-solid fa-house" aria-hidden="true"></i>
+            </a>
+            <a
+              class="wa-btn wa-btn--primary wa-btn--sm wa-nav__home"
+              href="https://www.vibepm.net/home/templates/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="免费获取"
+            >
+              <i class="fa-solid fa-gift" aria-hidden="true"></i>
+              <span class="wa-nav__home-label">免费获取</span>
+            </a>
+            <button
+              type="button"
+              class="wa-nav__toggle"
+              data-nav-toggle
+              aria-expanded="false"
+              aria-controls="nav-drawer"
+              aria-label="打开菜单"
+            >
+              <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+          </div>
+        </header>
+
+        <div class="wa-nav__drawer" id="nav-drawer" data-nav-drawer>
+          <nav aria-label="移动导航">
+            <a href="./index.html">介绍首页</a>
+            <a href="./components.html" aria-current="page">常用组件</a>
+            <a href="./showcase.html">展示区块</a>
+            <a href="./login.html" target="_blank" rel="noopener noreferrer">登录页面</a>
+            <a href="./shell-dashboard.html" target="_blank" rel="noopener noreferrer">工作台模板</a>
+            <a href="./tool.html" target="_blank" rel="noopener noreferrer">单页模板</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <main class="wa-main">
+      <section class="wa-section" id="components">
+        <div class="wa-container">
+          <div class="wa-section__head">
+            <p class="wa-section__eyebrow"><i class="fa-solid fa-puzzle-piece" aria-hidden="true"></i> Common Kit</p>
+            <h2 class="wa-section__title">常用组件</h2>
+            <p class="wa-section__desc">按钮、表单、标签、卡片、表格、进度、轻提示与弹窗等常用控件橱窗，可随品牌主色即时换肤。</p>
+          </div>
+
+          <div class="wa-kit">
+            <article class="wa-kit__card" id="kit-cards">
+              <header class="wa-kit__head">
+                <h3>常用卡片</h3>
+                <span>投影 · 描边 · 促销 · 表面动效 · 进度 / 头像 / CTA</span>
+              </header>
+
+              <div class="wa-card-grid">
+                <div class="wa-card wa-card--shadow">
+                  <h4 class="wa-card__title">卡片 · 投影</h4>
+                  <p class="wa-card__desc">纯白卡面 + soft 投影，层级清晰不抢眼。</p>
+                  <hr class="wa-card__split" />
+                  <p class="wa-card__desc">适合内容展示与信息分组。</p>
+                </div>
+                <div class="wa-card">
+                  <h4 class="wa-card__title">卡片 · 描边</h4>
+                  <p class="wa-card__desc">无投影平面卡，适合弱层级说明。</p>
+                  <hr class="wa-card__split" />
+                  <p class="wa-card__desc">常用于次级说明区。</p>
+                </div>
+                <div class="wa-card wa-card--promo">
+                  <p class="wa-card__kicker">推荐方案</p>
+                  <p class="wa-card__price">
+                    <span class="wa-card__price-currency">¥</span>199<span class="wa-card__price-unit">/月</span>
+                  </p>
+                  <p class="wa-card__desc">会员头图式主色渐变锚点卡，角上半透明装饰圆。</p>
+                  <button type="button" class="wa-btn" data-kit-message="success" data-kit-message-text="开通成功">立即开通</button>
+                </div>
+              </div>
+
+              <div class="wa-card-grid">
+                <div class="wa-card wa-card--shadow wa-shine">
+                  <h4 class="wa-card__title">悬停扫光</h4>
+                  <p class="wa-card__desc">悬停时斜向高光扫过表面，适合强调可点击内容卡。</p>
+                  <hr class="wa-card__split" />
+                  <p class="wa-card__desc">surface-fx · shine</p>
+                </div>
+                <div class="wa-card wa-card--shadow wa-border-flow">
+                  <h4 class="wa-card__title">流光边框</h4>
+                  <p class="wa-card__desc">悬停时主色高光沿边框旋转，适合定价或重点方案卡。</p>
+                  <hr class="wa-card__split" />
+                  <p class="wa-card__desc">surface-fx · border-flow</p>
+                </div>
+                <div class="wa-card wa-card--shadow wa-lift">
+                  <h4 class="wa-card__title">悬停抬起</h4>
+                  <p class="wa-card__desc">悬停上移并加强阴影，不跟鼠标，适合功能入口卡。</p>
+                  <hr class="wa-card__split" />
+                  <p class="wa-card__desc">surface-fx · lift</p>
+                </div>
+              </div>
+
+              <div class="wa-card-grid">
+                <div class="wa-card wa-card--shadow">
+                  <h4 class="wa-card__title">使用进度</h4>
+                  <div class="wa-card__meter">
+                    <div class="wa-card__meter-head">
+                      <span>存储配额</span>
+                      <strong>68%</strong>
+                    </div>
+                    <div class="wa-progress" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" aria-label="存储配额">
+                      <span class="wa-progress__bar" style="width: 68%"></span>
+                    </div>
+                  </div>
+                  <div class="wa-card__meter">
+                    <div class="wa-card__meter-head">
+                      <span>交付准时率</span>
+                      <strong>91%</strong>
+                    </div>
+                    <div class="wa-progress" role="progressbar" aria-valuenow="91" aria-valuemin="0" aria-valuemax="100" aria-label="交付准时率">
+                      <span class="wa-progress__bar" style="width: 91%"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="wa-card wa-card--shadow">
+                  <h4 class="wa-card__title">功能卡片</h4>
+                  <p class="wa-card__desc">纯白卡面 + soft 投影；适合内容展示，不做悬停位移。</p>
+                  <div class="wa-card__avatars" aria-label="协作者">
+                    <span class="wa-avatar">LC</span>
+                    <span class="wa-avatar wa-avatar--strong">HW</span>
+                    <span class="wa-avatar">RK</span>
+                    <span class="wa-avatar wa-avatar--muted">+8</span>
+                  </div>
+                </div>
+                <div class="wa-card wa-card--shadow wa-card--cta">
+                  <h4 class="wa-card__title">升级 Pro</h4>
+                  <p class="wa-card__desc">解锁高级自动化与优先支持，帮助团队更快交付。</p>
+                  <button type="button" class="wa-btn wa-btn--primary" data-kit-message="success" data-kit-message-text="已开始免费试用">开始免费试用</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="wa-kit__card" id="kit-buttons">
+              <header class="wa-kit__head">
+                <h3>常用按钮</h3>
+                <span>类型 · 尺寸 · 下拉菜单</span>
+              </header>
+              <div class="wa-kit__block">
+                <p class="wa-kit__label">类型</p>
+                <div class="wa-kit__row">
+                  <button type="button" class="wa-btn wa-btn--primary"><i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> 主要按钮</button>
+                  <button type="button" class="wa-btn wa-btn--soft"><i class="fa-solid fa-pen" aria-hidden="true"></i> 柔和按钮</button>
+                  <button type="button" class="wa-btn wa-btn--outline"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> 描边按钮</button>
+                  <button type="button" class="wa-btn wa-btn--secondary"><i class="fa-solid fa-gear" aria-hidden="true"></i> 中性按钮</button>
+                  <button type="button" class="wa-btn wa-btn--ghost"><i class="fa-solid fa-download" aria-hidden="true"></i> 幽灵按钮</button>
+                  <a class="wa-link" href="#top"><i class="fa-solid fa-link" aria-hidden="true"></i> 文字链接</a>
+                </div>
+              </div>
+              <div class="wa-kit__block">
+                <p class="wa-kit__label">尺寸与状态</p>
+                <div class="wa-kit__row">
+                  <button type="button" class="wa-btn wa-btn--primary wa-btn--lg">大按钮</button>
+                  <button type="button" class="wa-btn wa-btn--primary">默认</button>
+                  <button type="button" class="wa-btn wa-btn--primary wa-btn--sm">小按钮</button>
+                  <button type="button" class="wa-btn wa-btn--primary wa-btn--pill">胶囊按钮</button>
+                  <button type="button" class="wa-btn wa-btn--secondary is-disabled" disabled>禁用</button>
+                </div>
+              </div>
+              <div class="wa-kit__block">
+                <p class="wa-kit__label">下拉菜单</p>
+                <div class="wa-kit__row">
+                  <div class="wa-dropdown" data-wa-dropdown>
+                    <button type="button" class="wa-btn wa-btn--outline wa-dropdown__trigger" data-wa-dropdown-trigger aria-expanded="false" aria-haspopup="menu">
+                      更多操作
+                      <i class="fa-solid fa-chevron-down wa-dropdown__chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="wa-dropdown__menu" role="menu" hidden data-wa-dropdown-menu>
+                      <li role="none">
+                        <button type="button" class="wa-dropdown__item" role="menuitem" data-kit-dropdown-action="edit">
+                          <i class="fa-solid fa-pen" aria-hidden="true"></i> 编辑
+                        </button>
+                      </li>
+                      <li role="none">
+                        <button type="button" class="wa-dropdown__item" role="menuitem" data-kit-dropdown-action="copy">
+                          <i class="fa-solid fa-link" aria-hidden="true"></i> 复制链接
+                        </button>
+                      </li>
+                      <li role="none"><hr class="wa-dropdown__sep" /></li>
+                      <li role="none">
+                        <button type="button" class="wa-dropdown__item" role="menuitem" data-kit-dropdown-action="delete">
+                          <i class="fa-solid fa-trash" aria-hidden="true"></i> 删除
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="wa-dropdown" data-wa-dropdown>
+                    <button type="button" class="wa-btn wa-btn--soft wa-dropdown__trigger" data-wa-dropdown-trigger aria-expanded="false" aria-haspopup="menu">
+                      导出
+                      <i class="fa-solid fa-chevron-down wa-dropdown__chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="wa-dropdown__menu" role="menu" hidden data-wa-dropdown-menu>
+                      <li role="none">
+                        <button type="button" class="wa-dropdown__item" role="menuitem" data-kit-dropdown-action="pdf">
+                          <i class="fa-solid fa-file-pdf" aria-hidden="true"></i> 导出 PDF
+                        </button>
+                      </li>
+                      <li role="none">
+                        <button type="button" class="wa-dropdown__item" role="menuitem" data-kit-dropdown-action="png">
+                          <i class="fa-solid fa-image" aria-hidden="true"></i> 导出图片
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="wa-kit__card" id="kit-tags">
+              <header class="wa-kit__head">
+                <h3>常用标签</h3>
+                <span>标签 · 徽章 · 选项组 · 工具提示</span>
+              </header>
+              <div class="wa-kit__block">
+                <p class="wa-kit__label">标签 · 徽章 · 工具提示</p>
+                <div class="wa-kit__row">
+                  <span class="wa-chip"><i class="fa-solid fa-tag" aria-hidden="true"></i> 中性标签</span>
+                  <span class="wa-chip wa-chip--accent"><i class="fa-solid fa-star" aria-hidden="true"></i> 强调标签</span>
+                  <span class="wa-chip wa-chip--marked"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> 信息标签</span>
+                  <span class="wa-badge wa-badge--outline">v1.0</span>
+                  <span class="wa-badge wa-badge--accent"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> PRO</span>
+                  <span class="wa-tooltip" tabindex="0" aria-label="悬停或聚焦时显示说明">
+                    ?
+                    <span class="wa-tooltip__bubble" role="tooltip">
+                      <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                      悬停或聚焦时显示说明
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div class="wa-kit__block">
+                <p class="wa-kit__label">选项组</p>
+                <div class="wa-chip-group" data-wa-chip-group role="radiogroup" aria-label="状态筛选">
+                  <button type="button" class="wa-chip wa-chip--option wa-chip--accent is-active" role="radio" aria-checked="true">草稿箱</button>
+                  <button type="button" class="wa-chip wa-chip--option wa-chip--marked" role="radio" aria-checked="false">审阅中</button>
+                  <button type="button" class="wa-chip wa-chip--option wa-chip--marked" role="radio" aria-checked="false">已发布</button>
+                  <button type="button" class="wa-chip wa-chip--option wa-chip--marked" role="radio" aria-checked="false">已归档</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="wa-kit__card">
+              <header class="wa-kit__head">
+                <h3>分段标签</h3>
+                <span>面包屑 · 分段选择 · 胶囊选项卡</span>
+              </header>
+              <div class="wa-kit__block">
+                <p class="wa-kit__label">面包屑</p>
+                <nav class="wa-crumbs" aria-label="面包屑">
+                  <a href="./index.html" class="wa-crumbs__home">
+                    <i class="fa-solid fa-house" aria-hidden="true"></i>
+                    首页
+                  </a>
+                  <span class="wa-crumbs__sep" aria-hidden="true">/</span>
+                  <a href="./components.html">常用组件</a>
+                  <span class="wa-crumbs__sep" aria-hidden="true">/</span>
+                  <span class="wa-crumbs__current" aria-current="page">标签</span>
+                </nav>
+              </div>
+              <div class="wa-kit__block">
+                <p class="wa-kit__label">分段选择器</p>
+                <div class="wa-segment" data-wa-segment role="radiogroup" aria-label="链接类型">
+                  <button type="button" class="wa-segment__item" role="radio" aria-checked="false" data-wa-segment-item>视频链接</button>
+                  <button type="button" class="wa-segment__item" role="radio" aria-checked="false" data-wa-segment-item>达人链接</button>
+                  <button type="button" class="wa-segment__item is-active" role="radio" aria-checked="true" data-wa-segment-item>视频词条</button>
+                </div>
+              </div>
+              <div class="wa-kit__block">
+                <p class="wa-kit__label">胶囊选项卡</p>
+                <div class="wa-tabs" data-wa-tabs>
+                  <div class="wa-tabs__list" role="tablist" aria-label="组件演示切换">
+                    <button type="button" class="wa-tabs__tab is-active" id="kit-tab-overview" role="tab" aria-selected="true" aria-controls="kit-panel-overview" data-wa-tab="overview">标签</button>
+                    <button type="button" class="wa-tabs__tab" id="kit-tab-form" role="tab" aria-selected="false" aria-controls="kit-panel-form" data-wa-tab="form" tabindex="-1">表单</button>
+                    <button type="button" class="wa-tabs__tab" id="kit-tab-feedback" role="tab" aria-selected="false" aria-controls="kit-panel-feedback" data-wa-tab="feedback" tabindex="-1">反馈</button>
+                  </div>
+                  <div class="wa-tabs__panels">
+                    <div class="wa-tabs__panel is-active" id="kit-panel-overview" role="tabpanel" aria-labelledby="kit-tab-overview" data-wa-tab-panel="overview">品牌按钮、表单控件与反馈组件可随主色换肤，适合落地页直接复用。</div>
+                    <div class="wa-tabs__panel" id="kit-panel-form" role="tabpanel" aria-labelledby="kit-tab-form" data-wa-tab-panel="form" hidden>覆盖输入、下拉、多行文本、复选与单选，并支持校验态与提示文案。</div>
+                    <div class="wa-tabs__panel" id="kit-panel-feedback" role="tabpanel" aria-labelledby="kit-tab-feedback" data-wa-tab-panel="feedback" hidden>轻提示、吐司、右侧通知与弹窗可按场景组合；危险操作可用红色确认钮。</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="wa-kit__card">
+              <header class="wa-kit__head">
+                <h3>头像与进度</h3>
+                <span>Avatar · 连续条 · 分段条</span>
+              </header>
+              <div class="wa-kit__block">
+                <p class="wa-kit__label">头像组</p>
+                <div class="wa-avatar-group" aria-label="协作成员">
+                  <span class="wa-avatar">LC</span>
+                  <span class="wa-avatar wa-avatar--strong">HW</span>
+                  <span class="wa-avatar">RK</span>
+                  <span class="wa-avatar wa-avatar--muted">+8</span>
+                </div>
+              </div>
+              <div class="wa-kit__block">
+                <p class="wa-kit__label">连续进度 · 68%</p>
+                <div class="wa-progress" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" aria-label="额度">
+                  <span class="wa-progress__bar" style="width: 68%"></span>
+                </div>
+              </div>
+              <div class="wa-kit__block">
+                <p class="wa-kit__label">分段进度 · 4/6</p>
+                <div class="wa-progress-seg" role="img" aria-label="六段进度，已完成四段">
+                  <span class="wa-progress-seg__item is-on"></span>
+                  <span class="wa-progress-seg__item is-on"></span>
+                  <span class="wa-progress-seg__item is-on"></span>
+                  <span class="wa-progress-seg__item is-on"></span>
+                  <span class="wa-progress-seg__item"></span>
+                  <span class="wa-progress-seg__item"></span>
+                </div>
+              </div>
+            </article>
+
+            <article class="wa-kit__card" id="kit-forms">
+              <header class="wa-kit__head">
+                <h3>表单组件</h3>
+                <span>上传 · 输入框 · 下拉 · 多选 / 单选 · 开关 · 提交校验</span>
+              </header>
+              <form class="wa-form wa-kit__form" id="kit-form" novalidate>
+                <div class="wa-form-item" data-validate="required" data-error="请输入姓名">
+                  <label class="wa-label" for="kit-name">姓名 <span class="wa-req">*</span></label>
+                  <div class="wa-field wa-field--icon">
+                    <i class="fa-solid fa-user wa-field__icon" aria-hidden="true"></i>
+                    <input class="wa-field__input" id="kit-name" name="name" type="text" placeholder="请输入姓名" value="" autocomplete="off" data-wa-field-input />
+                    <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+                  </div>
+                  <p class="wa-field__hint">聚焦且有内容时显示清空按钮</p>
+                  <p class="wa-field__error" role="alert"></p>
+                </div>
+                <div class="wa-form-item" data-validate="email" data-error="请输入有效的邮箱地址">
+                  <label class="wa-label" for="kit-email">邮箱 <span class="wa-req">*</span></label>
+                  <div class="wa-field">
+                    <input class="wa-field__input" id="kit-email" name="email" type="email" placeholder="name@example.com" value="" autocomplete="off" data-wa-field-input />
+                    <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+                  </div>
+                  <p class="wa-field__error" role="alert"></p>
+                </div>
+                <div class="wa-form-item">
+                  <label class="wa-label" for="kit-role">角色</label>
+                  <div class="wa-field wa-field--select">
+                    <select class="wa-field__select" id="kit-role" name="role" data-wa-combo>
+                      <option value="" selected disabled>请选择</option>
+                      <option value="pm">产品经理</option>
+                      <option value="design">设计师</option>
+                      <option value="dev">前端开发</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="wa-form-item">
+                  <label class="wa-label" for="kit-phone">手机号</label>
+                  <div class="wa-field wa-field--icon">
+                    <i class="fa-solid fa-mobile-screen wa-field__icon" aria-hidden="true"></i>
+                    <input class="wa-field__input" id="kit-phone" name="phone" type="tel" placeholder="请输入手机号" value="13800138000" autocomplete="off" data-wa-field-input />
+                    <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+                  </div>
+                </div>
+                <div class="wa-form-item">
+                  <label class="wa-label" for="kit-note">备注</label>
+                  <div class="wa-field wa-field--textarea">
+                    <textarea class="wa-field__textarea" id="kit-note" name="note" rows="3" maxlength="300" placeholder="补充说明…"></textarea>
+                  </div>
+                </div>
+                <div class="wa-form-item">
+                  <label class="wa-label" for="kit-fileInput">文件上传</label>
+                  <div
+                    class="wa-dropzone"
+                    id="kit-dropzone"
+                    data-wa-dropzone="kit-fileInput"
+                    data-wa-max-size="10mb"
+                    data-wa-max-files="8"
+                    role="button"
+                    tabindex="0"
+                    aria-label="上传文件"
+                  >
+                    <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+                    <span class="wa-dropzone__title" data-wa-dropzone-hint>点击或拖拽文件到此处</span>
+                    <span class="wa-dropzone__tip">支持 JPG / PNG / PDF / ZIP 格式，单文件不超过 10MB</span>
+                  </div>
+                  <ul
+                    class="wa-dropzone-list"
+                    data-wa-dropzone-list="kit-fileInput"
+                    hidden
+                    aria-label="已选文件"
+                  ></ul>
+                  <input
+                    type="file"
+                    class="wa-file-input"
+                    id="kit-fileInput"
+                    multiple
+                    accept=".jpg,.jpeg,.png,.pdf,.zip,image/jpeg,image/png,application/pdf,application/zip"
+                  />
+                </div>
+                <div class="wa-form-item">
+                  <label class="wa-label" for="kit-slider">滑块</label>
+                  <div class="wa-slider" data-wa-slider>
+                    <input
+                      class="wa-slider__input"
+                      id="kit-slider"
+                      name="intensity"
+                      type="range"
+                      min="0"
+                      max="100"
+                      value="40"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      aria-valuenow="40"
+                    />
+                  </div>
+                </div>
+                <div class="wa-kit__choice">
+                  <div class="wa-kit__choice-col">
+                    <p class="wa-label">复选框</p>
+                    <div class="wa-kit__choice-list wa-kit__choice-list--inline">
+                      <label class="wa-check"><input type="checkbox" name="remember" checked /> 记住我</label>
+                      <label class="wa-check"><input type="checkbox" name="subscribe" /> 订阅更新</label>
+                    </div>
+                  </div>
+                  <div class="wa-kit__choice-col">
+                    <p class="wa-label">单选框</p>
+                    <div class="wa-kit__choice-list wa-kit__choice-list--inline" role="radiogroup" aria-label="可见性">
+                      <label class="wa-radio"><input type="radio" name="kit-vis" value="public" checked /> 公开</label>
+                      <label class="wa-radio"><input type="radio" name="kit-vis" value="private" /> 私有</label>
+                    </div>
+                  </div>
+                  <div class="wa-kit__choice-col">
+                    <p class="wa-label">开关</p>
+                    <div class="wa-kit__choice-list wa-kit__choice-list--inline wa-switch-group wa-switch-group--inline">
+                      <label class="wa-switch"><input type="checkbox" name="mail" role="switch" checked /> 邮件通知</label>
+                      <label class="wa-switch"><input type="checkbox" name="desktop" role="switch" /> 桌面提醒</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="wa-form__actions">
+                  <button type="submit" class="wa-btn wa-btn--primary">提交</button>
+                  <button type="reset" class="wa-btn wa-btn--secondary">重置</button>
+                </div>
+              </form>
+            </article>
+
+            <article class="wa-kit__card" id="kit-feedback">
+              <header class="wa-kit__head">
+                <h3>反馈提示</h3>
+                <span>吐司提示 · 通知 · 轻提示 · 弹窗交互 · Alert · 空状态</span>
+              </header>
+              <div class="wa-kit__block">
+                <p class="wa-kit__label">吐司提示</p>
+                <div class="wa-kit__row">
+                  <button type="button" class="wa-btn wa-btn--soft" data-kit-message="info"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> 信息吐司</button>
+                  <button type="button" class="wa-btn wa-btn--soft" data-kit-message="success"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> 成功吐司</button>
+                  <button type="button" class="wa-btn wa-btn--soft" data-kit-message="warning"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> 警告吐司</button>
+                  <button type="button" class="wa-btn wa-btn--soft" data-kit-message="error"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i> 错误吐司</button>
+                </div>
+              </div>
+              <div class="wa-kit__block">
+                <p class="wa-kit__label">右侧通知</p>
+                <div class="wa-kit__row">
+                  <button type="button" class="wa-btn wa-btn--soft" data-kit-notify="info"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> 信息通知</button>
+                  <button type="button" class="wa-btn wa-btn--soft" data-kit-notify="success"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> 成功通知</button>
+                  <button type="button" class="wa-btn wa-btn--soft" data-kit-notify="warning"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> 警告通知</button>
+                  <button type="button" class="wa-btn wa-btn--soft" data-kit-notify="error"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i> 错误通知</button>
+                </div>
+              </div>
+              <div class="wa-kit__block">
+                <p class="wa-kit__label">轻提示</p>
+                <div class="wa-kit__row">
+                  <button type="button" class="wa-btn wa-btn--soft" data-kit-toast="info"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> 信息提示</button>
+                  <button type="button" class="wa-btn wa-btn--soft" data-kit-toast="success"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> 成功提示</button>
+                  <button type="button" class="wa-btn wa-btn--soft" data-kit-toast="warning"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> 警告提示</button>
+                  <button type="button" class="wa-btn wa-btn--soft" data-kit-toast="error"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i> 错误提示</button>
+                </div>
+              </div>
+              <div class="wa-kit__block">
+                <p class="wa-kit__label">弹窗交互</p>
+                <div class="wa-kit__row">
+                  <button type="button" class="wa-btn wa-btn--primary" data-modal-open="demo-modal"><i class="fa-solid fa-window-maximize" aria-hidden="true"></i> 标准弹窗</button>
+                  <button type="button" class="wa-btn wa-btn--outline" data-modal-open="wechat-modal"><i class="fa-brands fa-weixin" aria-hidden="true"></i> 微信弹窗</button>
+                  <button type="button" class="wa-btn wa-btn--outline" data-kit-confirm><i class="fa-solid fa-circle-question" aria-hidden="true"></i> 确认弹窗</button>
+                </div>
+              </div>
+              <div class="wa-kit__block">
+                <p class="wa-kit__label">页内提示</p>
+                <div class="wa-alert" role="status">
+                  <i class="fa-solid fa-circle-info wa-alert__mark" aria-hidden="true"></i>
+                  <span class="wa-alert__body">切换分段标签可查看不同面板文案。</span>
+                </div>
+                <div class="wa-alert wa-alert--strong" role="status" style="margin-top: 10px">
+                  <i class="fa-solid fa-circle-exclamation wa-alert__mark" aria-hidden="true"></i>
+                  <span class="wa-alert__body"><b>已开通。</b>权益即时生效。</span>
+                </div>
+              </div>
+              <div class="wa-kit__block">
+                <p class="wa-kit__label">空状态</p>
+                <div class="wa-empty" role="status">
+                  <i class="fa-solid fa-inbox wa-empty__icon" aria-hidden="true"></i>
+                  <p class="wa-empty__title">暂无结果</p>
+                  <p class="wa-empty__desc">处理完成后显示在这里。</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="wa-kit__card" id="kit-table">
+              <header class="wa-kit__head">
+                <h3>表格与指标</h3>
+                <span>指标卡 · 工具栏 · 原生表格 · 状态标签 · 行操作</span>
+              </header>
+
+              <div class="wa-stat-card">
+                <div class="wa-stat-row">
+                  <div class="wa-stat">
+                    <p class="wa-stat__title"><i class="fa-solid fa-eye" aria-hidden="true"></i> 页面浏览</p>
+                    <p class="wa-stat__value">1,289,604</p>
+                  </div>
+                  <div class="wa-stat">
+                    <p class="wa-stat__title"><i class="fa-solid fa-chart-column" aria-hidden="true"></i> 成交额</p>
+                    <p class="wa-stat__value">¥12,680.50</p>
+                  </div>
+                  <div class="wa-stat">
+                    <p class="wa-stat__title"><i class="fa-solid fa-percent" aria-hidden="true"></i> 转化率</p>
+                    <p class="wa-stat__value">12.6%</p>
+                  </div>
+                  <div class="wa-stat">
+                    <p class="wa-stat__title"><i class="fa-solid fa-clock" aria-hidden="true"></i> 秒杀结束</p>
+                    <p class="wa-stat__value" data-kit-countdown>01:49:26</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wa-table-shell">
+                <div class="wa-table-toolbar">
+                  <div>
+                    <h4 class="wa-table-toolbar__title">项目列表</h4>
+                    <p class="wa-table-toolbar__sub">2 分钟前更新</p>
+                  </div>
+                  <div class="wa-table-toolbar__actions">
+                    <div class="wa-field wa-field--icon">
+                      <i class="fa-solid fa-magnifying-glass wa-field__icon" aria-hidden="true"></i>
+                      <span class="wa-sr-only">搜索</span>
+                      <input
+                        class="wa-field__input"
+                        type="text"
+                        placeholder="搜索名称 / 城市 / 负责人"
+                        data-kit-table-filter
+                        data-wa-field-input
+                        autocomplete="off"
+                      />
+                      <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true">
+                        <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                    <button type="button" class="wa-btn wa-btn--secondary wa-btn--sm" data-kit-table-export>
+                      <i class="fa-solid fa-download" aria-hidden="true"></i>
+                      导出
+                    </button>
+                  </div>
+                </div>
+                <div class="wa-table-wrap">
+                  <table class="wa-table" data-kit-table>
+                    <thead>
+                      <tr>
+                        <th class="wa-table__check" scope="col">
+                          <label class="wa-check"><input type="checkbox" data-kit-table-check-all aria-label="全选" /></label>
+                        </th>
+                        <th scope="col">名称</th>
+                        <th scope="col">城市</th>
+                        <th scope="col">负责人</th>
+                        <th scope="col">数量</th>
+                        <th scope="col">状态</th>
+                        <th class="wa-table__ops" scope="col">操作</th>
+                      </tr>
+                    </thead>
+                    <tbody data-kit-table-body>
+                      <tr>
+                        <td class="wa-table__check"><label class="wa-check"><input type="checkbox" aria-label="选择演示项目 A" /></label></td>
+                        <td data-col="name" data-label="名称">演示项目 A</td>
+                        <td data-label="城市">上海</td>
+                        <td data-label="负责人">王立群</td>
+                        <td data-label="数量">36</td>
+                        <td data-col="status" data-label="状态"><span class="wa-badge wa-badge--run">进行中</span></td>
+                        <td class="wa-table__ops">
+                          <div class="wa-dropdown" data-wa-dropdown>
+                            <button type="button" class="wa-btn wa-btn--ghost wa-dropdown__trigger" data-wa-dropdown-trigger aria-expanded="false" aria-haspopup="menu" aria-label="更多">
+                              <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+                            </button>
+                            <ul class="wa-dropdown__menu" role="menu" hidden data-wa-dropdown-menu>
+                              <li role="none"><button type="button" class="wa-dropdown__item" role="menuitem" data-kit-dropdown-action="view"><i class="fa-solid fa-eye" aria-hidden="true"></i> 查看</button></li>
+                              <li role="none"><button type="button" class="wa-dropdown__item" role="menuitem" data-kit-dropdown-action="copy"><i class="fa-solid fa-copy" aria-hidden="true"></i> 复制</button></li>
+                              <li role="none"><hr class="wa-dropdown__sep" /></li>
+                              <li role="none"><button type="button" class="wa-dropdown__item wa-dropdown__item--danger" role="menuitem" data-kit-dropdown-action="delete"><i class="fa-solid fa-trash" aria-hidden="true"></i> 删除</button></li>
+                            </ul>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="wa-table__check"><label class="wa-check"><input type="checkbox" aria-label="选择演示项目 B" /></label></td>
+                        <td data-col="name" data-label="名称">演示项目 B</td>
+                        <td data-label="城市">杭州</td>
+                        <td data-label="负责人">李晓雯</td>
+                        <td data-label="数量">18</td>
+                        <td data-col="status" data-label="状态"><span class="wa-badge wa-badge--ok">已完成</span></td>
+                        <td class="wa-table__ops">
+                          <div class="wa-dropdown" data-wa-dropdown>
+                            <button type="button" class="wa-btn wa-btn--ghost wa-dropdown__trigger" data-wa-dropdown-trigger aria-expanded="false" aria-haspopup="menu" aria-label="更多">
+                              <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+                            </button>
+                            <ul class="wa-dropdown__menu" role="menu" hidden data-wa-dropdown-menu>
+                              <li role="none"><button type="button" class="wa-dropdown__item" role="menuitem" data-kit-dropdown-action="view"><i class="fa-solid fa-eye" aria-hidden="true"></i> 查看</button></li>
+                              <li role="none"><button type="button" class="wa-dropdown__item" role="menuitem" data-kit-dropdown-action="copy"><i class="fa-solid fa-copy" aria-hidden="true"></i> 复制</button></li>
+                              <li role="none"><hr class="wa-dropdown__sep" /></li>
+                              <li role="none"><button type="button" class="wa-dropdown__item wa-dropdown__item--danger" role="menuitem" data-kit-dropdown-action="delete"><i class="fa-solid fa-trash" aria-hidden="true"></i> 删除</button></li>
+                            </ul>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="wa-table__check"><label class="wa-check"><input type="checkbox" aria-label="选择演示项目 C" /></label></td>
+                        <td data-col="name" data-label="名称">演示项目 C</td>
+                        <td data-label="城市">深圳</td>
+                        <td data-label="负责人">陈可</td>
+                        <td data-label="数量">24</td>
+                        <td data-col="status" data-label="状态"><span class="wa-badge wa-badge--warn">待审核</span></td>
+                        <td class="wa-table__ops">
+                          <div class="wa-dropdown" data-wa-dropdown>
+                            <button type="button" class="wa-btn wa-btn--ghost wa-dropdown__trigger" data-wa-dropdown-trigger aria-expanded="false" aria-haspopup="menu" aria-label="更多">
+                              <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+                            </button>
+                            <ul class="wa-dropdown__menu" role="menu" hidden data-wa-dropdown-menu>
+                              <li role="none"><button type="button" class="wa-dropdown__item" role="menuitem" data-kit-dropdown-action="view"><i class="fa-solid fa-eye" aria-hidden="true"></i> 查看</button></li>
+                              <li role="none"><button type="button" class="wa-dropdown__item" role="menuitem" data-kit-dropdown-action="copy"><i class="fa-solid fa-copy" aria-hidden="true"></i> 复制</button></li>
+                              <li role="none"><hr class="wa-dropdown__sep" /></li>
+                              <li role="none"><button type="button" class="wa-dropdown__item wa-dropdown__item--danger" role="menuitem" data-kit-dropdown-action="delete"><i class="fa-solid fa-trash" aria-hidden="true"></i> 删除</button></li>
+                            </ul>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="wa-table__check"><label class="wa-check"><input type="checkbox" aria-label="选择演示项目 D" /></label></td>
+                        <td data-col="name" data-label="名称">演示项目 D</td>
+                        <td data-label="城市">北京</td>
+                        <td data-label="负责人">赵宁</td>
+                        <td data-label="数量">9</td>
+                        <td data-col="status" data-label="状态"><span class="wa-badge wa-badge--run">进行中</span></td>
+                        <td class="wa-table__ops">
+                          <div class="wa-dropdown" data-wa-dropdown>
+                            <button type="button" class="wa-btn wa-btn--ghost wa-dropdown__trigger" data-wa-dropdown-trigger aria-expanded="false" aria-haspopup="menu" aria-label="更多">
+                              <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+                            </button>
+                            <ul class="wa-dropdown__menu" role="menu" hidden data-wa-dropdown-menu>
+                              <li role="none"><button type="button" class="wa-dropdown__item" role="menuitem" data-kit-dropdown-action="view"><i class="fa-solid fa-eye" aria-hidden="true"></i> 查看</button></li>
+                              <li role="none"><button type="button" class="wa-dropdown__item" role="menuitem" data-kit-dropdown-action="copy"><i class="fa-solid fa-copy" aria-hidden="true"></i> 复制</button></li>
+                              <li role="none"><hr class="wa-dropdown__sep" /></li>
+                              <li role="none"><button type="button" class="wa-dropdown__item wa-dropdown__item--danger" role="menuitem" data-kit-dropdown-action="delete"><i class="fa-solid fa-trash" aria-hidden="true"></i> 删除</button></li>
+                            </ul>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="wa-table__check"><label class="wa-check"><input type="checkbox" aria-label="选择演示项目 E" /></label></td>
+                        <td data-col="name" data-label="名称">演示项目 E</td>
+                        <td data-label="城市">成都</td>
+                        <td data-label="负责人">周敏</td>
+                        <td data-label="数量">42</td>
+                        <td data-col="status" data-label="状态"><span class="wa-badge wa-badge--ok">已完成</span></td>
+                        <td class="wa-table__ops">
+                          <div class="wa-dropdown" data-wa-dropdown>
+                            <button type="button" class="wa-btn wa-btn--ghost wa-dropdown__trigger" data-wa-dropdown-trigger aria-expanded="false" aria-haspopup="menu" aria-label="更多">
+                              <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+                            </button>
+                            <ul class="wa-dropdown__menu" role="menu" hidden data-wa-dropdown-menu>
+                              <li role="none"><button type="button" class="wa-dropdown__item" role="menuitem" data-kit-dropdown-action="view"><i class="fa-solid fa-eye" aria-hidden="true"></i> 查看</button></li>
+                              <li role="none"><button type="button" class="wa-dropdown__item" role="menuitem" data-kit-dropdown-action="copy"><i class="fa-solid fa-copy" aria-hidden="true"></i> 复制</button></li>
+                              <li role="none"><hr class="wa-dropdown__sep" /></li>
+                              <li role="none"><button type="button" class="wa-dropdown__item wa-dropdown__item--danger" role="menuitem" data-kit-dropdown-action="delete"><i class="fa-solid fa-trash" aria-hidden="true"></i> 删除</button></li>
+                            </ul>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="wa-empty wa-table-empty" data-kit-table-empty hidden role="status">
+                    <i class="fa-solid fa-inbox wa-empty__icon" aria-hidden="true"></i>
+                    <p class="wa-empty__title">暂无数据</p>
+                  </div>
+                </div>
+                <nav class="wa-pagination" aria-label="分页" data-kit-pagination>
+                  <div class="wa-pagination__actions">
+                    <button type="button" class="wa-btn wa-btn--secondary wa-btn--sm" data-kit-batch="delete">
+                      <i class="fa-solid fa-trash" aria-hidden="true"></i>
+                      删除选中
+                    </button>
+                    <button type="button" class="wa-btn wa-btn--secondary wa-btn--sm" data-kit-batch="status">
+                      <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+                      设置状态
+                    </button>
+                  </div>
+                  <div class="wa-pagination__end">
+                    <p class="wa-pagination__info">共 24 条 · 第 1 / 5 页</p>
+                    <div class="wa-pagination__controls">
+                      <button type="button" class="wa-pagination__btn" disabled aria-label="上一页" data-kit-page="prev">
+                        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                      </button>
+                      <button type="button" class="wa-pagination__btn is-active" aria-current="page" data-kit-page="1">1</button>
+                      <button type="button" class="wa-pagination__btn" data-kit-page="2">2</button>
+                      <button type="button" class="wa-pagination__btn" data-kit-page="3">3</button>
+                      <span class="wa-pagination__ellipsis" aria-hidden="true">…</span>
+                      <button type="button" class="wa-pagination__btn" data-kit-page="5">5</button>
+                      <button type="button" class="wa-pagination__btn" aria-label="下一页" data-kit-page="next">
+                        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+    </main>
+
+    <footer class="wa-footer">
+      <div class="wa-footer__inner">
+        <div class="wa-footer__meta">
+          <span>© 2026 <a href="https://www.vibepm.net" target="_blank" rel="noopener noreferrer">VibePM</a></span>
+          <span class="wa-footer__sep" aria-hidden="true">·</span>
+          <span>Agent 产品协作与设计资产分享平台</span>
+        </div>
+        <nav class="wa-footer__links" aria-label="页脚导航">
+          <a href="https://www.vibepm.net" target="_blank" rel="noopener noreferrer">网站首页</a>
+          <span class="wa-footer__sep" aria-hidden="true">·</span>
+          <a href="#" data-modal-open="wechat-modal">关注我们</a>
+          <span class="wa-footer__sep" aria-hidden="true">·</span>
+          <a href="https://work.weixin.qq.com/kfid/kfc30961678e9017618" target="_blank" rel="noopener noreferrer">联系客服</a>
+          <span class="wa-footer__sep" aria-hidden="true">·</span>
+          <a href="https://my.feishu.cn/share/base/form/shrcnSIcBulea59IXEePDCgpOse" target="_blank" rel="noopener noreferrer">建议反馈</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
+  <div class="wa-float-tools" aria-label="快捷工具">
+    <a class="wa-float-tools__btn" href="./index.html#cta" title="咨询">
+      <i class="fa-solid fa-comment-dots" aria-hidden="true"></i>
+      <span>咨询</span>
+    </a>
+    <button type="button" class="wa-float-tools__btn" data-modal-open="wechat-modal" title="公众号">
+      <i class="fa-brands fa-weixin" aria-hidden="true"></i>
+      <span>公众号</span>
+    </button>
+    <a class="wa-float-tools__btn wa-float-tools__btn--top" href="#top" title="返回顶部" data-back-top>
+      <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+      <span>TOP</span>
+    </a>
+  </div>
+
+
+  <div class="wa-modal" id="demo-modal" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title" aria-hidden="true">
+    <div class="wa-modal__overlay" aria-hidden="true"></div>
+    <div class="wa-modal__panel" tabindex="-1" role="document">
+      <div class="wa-modal__header">
+        <h2 class="wa-modal__title" id="demo-modal-title">示例弹窗</h2>
+        <button type="button" class="wa-modal__close" data-modal-close aria-label="关闭">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="wa-modal__body">
+        <p style="margin:0;line-height:1.65;color:var(--wa-color-text-secondary)">标准弹窗结构：标题栏、正文与页脚操作区，可直接复用。</p>
+      </div>
+      <div class="wa-modal__footer">
+        <button type="button" class="wa-btn wa-btn--secondary" data-modal-close>取消</button>
+        <button type="button" class="wa-btn wa-btn--primary" data-modal-close>确认</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wa-modal wa-modal--wechat" id="wechat-modal" role="dialog" aria-modal="true" aria-labelledby="wechat-modal-title" aria-hidden="true">
+    <div class="wa-modal__overlay" aria-hidden="true"></div>
+    <div class="wa-modal__dialog">
+      <div class="wa-modal__panel" tabindex="-1" role="document">
+        <div class="wa-modal__body wa-modal__body--wechat">
+          <h2 class="wa-modal__wechat-title" id="wechat-modal-title">关注微信公众号</h2>
+          <p class="wa-modal__desc">扫描二维码关注VibePM公众号，获取最新AI产品协作与热门工具分享</p>
+          <div class="wa-modal__qr">
+            <img src="https://www.vibepm.net/assets/images/qrcode_gzh.png" alt="微信公众号二维码" width="200" height="200" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+      <button type="button" class="wa-modal__close wa-modal__close--float" data-modal-close aria-label="关闭">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="wa-modal" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" aria-hidden="true">
+    <div class="wa-modal__overlay" aria-hidden="true"></div>
+    <div class="wa-modal__panel" tabindex="-1" role="document">
+      <div class="wa-modal__header">
+        <h2 class="wa-modal__title" id="contact-modal-title">预约演示</h2>
+        <button type="button" class="wa-modal__close" data-modal-close aria-label="关闭">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="wa-modal__body">
+        <p style="margin:0 0 14px;line-height:1.65;color:var(--wa-color-text-secondary)">虚构表单示意，替换为真实邮箱或第三方表单即可。</p>
+        <form class="wa-form" onsubmit="return false;">
+          <div class="wa-form-item">
+            <label class="wa-label" for="contact-email">工作邮箱</label>
+            <div class="wa-field">
+              <input class="wa-field__input" id="contact-email" type="email" placeholder="you@company.com" autocomplete="off" />
+            </div>
+          </div>
+          <div class="wa-form-item">
+            <label class="wa-label" for="contact-note">想了解什么</label>
+            <div class="wa-field wa-field--textarea">
+              <textarea class="wa-field__textarea" id="contact-note" rows="3" maxlength="300" placeholder="例如：落地页改版、活动专题…"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="wa-modal__footer">
+        <button type="button" class="wa-btn wa-btn--secondary" data-modal-close>关闭</button>
+        <button type="button" class="wa-btn wa-btn--primary" data-modal-close data-kit-message="success" data-kit-message-text="提交成功">提交</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/common/js/toast.js"></script>
+  <script src="./assets/common/js/message.js"></script>
+  <script src="./assets/common/js/notify.js"></script>
+  <script src="./assets/common/js/field.js"></script>
+  <script src="./assets/common/js/confirm.js"></script>
+  <script src="./assets/common/js/dropdown.js"></script>
+  <script src="./assets/common/js/modal.js"></script>
+  <script src="./assets/common/js/combo.js"></script>
+  <script src="./assets/common/js/tabs.js"></script>
+  <script src="./assets/common/js/dropzone.js"></script>
+  <script src="./assets/common/js/slider.js"></script>
+  <script src="./assets/common/js/form.js"></script>
+  <script src="./assets/common/js/choice.js"></script>
+  <script src="./assets/common/js/table.js"></script>
+  <script src="./js/shared.js"></script>
+  <script src="./js/components.js"></script>
+</body>
+</html>

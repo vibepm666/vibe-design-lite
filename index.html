@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vibe Design Lite — 轻量静态落地页模板 | VibePM</title>
+  <meta name="description" content="Vibe Design Lite：纯静态 HTML/CSS/JS 轻站模板，含落地介绍、组件橱窗、展示区块，以及可选登录页与工作台样板；复制目录改品牌即可预览。" />
+  <meta name="keywords" content="Vibe Design Lite,落地页模板,轻站,静态站,工作台,lite-site,VibePM,组件橱窗,FAQ" />
+  <meta name="author" content="VibePM" />
+  <meta name="theme-color" content="#13c7c2" />
+  <script src="./assets/common/js/theme.js"></script>
+  <link rel="stylesheet" href="./vendor/fontawesome_free/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/common/css/global.css" />
+  <link rel="stylesheet" href="./assets/common/css/chrome.css" />
+  <link rel="stylesheet" href="./assets/common/css/components.css" />
+  <link rel="stylesheet" href="./css/index.css" />
+  <link rel="stylesheet" href="./assets/effects/hero-accent-stroke/hero-accent-stroke.css" />
+  <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml">
+</head>
+<body id="top" class="wa-landing-cover">
+  <div class="wa-landing-bg" aria-hidden="true">
+    <div class="wa-landing-bg__image"></div>
+    <div class="wa-landing-bg__glow"></div>
+    <div class="wa-landing-bg__aura"></div>
+    <div class="wa-landing-bg__dots"></div>
+  </div>
+
+  <div class="wa-shell">
+    <div class="wa-nav-shell">
+      <div class="wa-nav-shell__inner">
+        <header class="wa-nav wa-nav--card">
+          <a class="wa-brand" href="#top" aria-label="Vibe Design Lite，返回顶部">
+            <span class="wa-brand__mark" aria-hidden="true"><i class="fa-solid fa-table-columns"></i></span>
+            <span class="wa-brand__name">Vibe Design Lite</span>
+          </a>
+
+          <nav class="wa-nav__links" aria-label="主导航">
+            <a href="./index.html" aria-current="page">模板首页</a>
+            <a href="./components.html">常用组件</a>
+            <a href="./showcase.html">展示区块</a>
+            <a href="./login.html" target="_blank" rel="noopener noreferrer">登录页面</a>
+            <a href="./shell-dashboard.html" target="_blank" rel="noopener noreferrer">工作台模板</a>
+            <a href="./tool.html" target="_blank" rel="noopener noreferrer">单页模板</a>
+          </nav>
+
+          <div class="wa-nav__actions">
+            <button type="button" class="wa-nav__icon-btn wa-nav__icon-btn--aux" data-modal-open="wechat-modal" aria-label="关注公众号" title="关注公众号">
+              <i class="fa-brands fa-weixin" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              class="wa-nav__icon-btn wa-nav__icon-btn--aux"
+              data-wa-theme-toggle
+              aria-pressed="false"
+              aria-label="切换主题"
+              title="切换主题"
+            >
+              <i class="fa-regular fa-moon" aria-hidden="true"></i>
+            </button>
+            <a
+              class="wa-nav__icon-btn wa-nav__icon-btn--aux"
+              href="https://www.vibepm.net/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="网站首页"
+              title="网站首页"
+            >
+              <i class="fa-solid fa-house" aria-hidden="true"></i>
+            </a>
+            <a
+              class="wa-btn wa-btn--primary wa-btn--sm wa-nav__home"
+              href="https://www.vibepm.net/home/templates/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="免费获取"
+            >
+              <i class="fa-solid fa-gift" aria-hidden="true"></i>
+              <span class="wa-nav__home-label">免费获取</span>
+            </a>
+            <button
+              type="button"
+              class="wa-nav__toggle"
+              data-nav-toggle
+              aria-expanded="false"
+              aria-controls="nav-drawer"
+              aria-label="打开菜单"
+            >
+              <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+          </div>
+        </header>
+
+        <div class="wa-nav__drawer" id="nav-drawer" data-nav-drawer>
+          <nav aria-label="移动导航">
+            <a href="./index.html" aria-current="page">介绍首页</a>
+            <a href="./components.html">常用组件</a>
+            <a href="./showcase.html">展示区块</a>
+            <a href="./login.html" target="_blank" rel="noopener noreferrer">登录页面</a>
+            <a href="./shell-dashboard.html" target="_blank" rel="noopener noreferrer">工作台模板</a>
+            <a href="./tool.html" target="_blank" rel="noopener noreferrer">单页模板</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <main class="wa-main">
+      <section class="wa-hero wa-hero--pro">
+        <div class="wa-container">
+          <div class="wa-hero__copy">
+            <p class="wa-hero__eyebrow"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> 纯静态 · 零构建</p>
+            <h1 class="wa-hero__title">
+              <span class="wa-hero__sub">
+                纯静态轻站模板 无需从零搭建
+                <span class="wa-hero__accent">轻量落地页 · 工作台 · 小工具<svg class="wa-hero__accent-stroke" viewBox="0 0 282 18" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9.5C22 4.8 52 2.6 84 3.4c34 .9 66 5.2 100 5.8 26 .5 52-1.8 78-4.2 6.4-.6 12.2-.8 16.8.4 1.6.4 1.8 2.6.2 3.2-10 3.6-24 4.8-38 5.4-36 1.4-72 .2-107-1.6C99 10.8 66 7.2 34 8.6 20 9.2 9.5 11.2 4.2 12.2 2.2 12.6 1.4 10.6 3 9.5Z"/></svg></span>
+              </span>
+            </h1>
+            <p class="wa-hero__lead">覆盖轻量落地页、工作台样板与单页小工具：原生 HTML / CSS / JS，不依赖前端框架，无需构建。内置明暗主题、主色换肤、常用组件与展示区块，修改品牌与页面内容即可交付。</p>
+            <div class="wa-hero__actions">
+              <a class="wa-btn wa-btn--primary wa-btn--lg" href="./components.html">
+                <i class="fa-solid fa-puzzle-piece" aria-hidden="true"></i>
+                常用组件
+              </a>
+              <a class="wa-btn wa-btn--soft wa-btn--lg" href="./showcase.html">
+                <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+                展示区块
+              </a>
+              <a
+                class="wa-btn wa-btn--soft wa-btn--lg"
+                href="./shell-dashboard.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fa-solid fa-table-columns" aria-hidden="true"></i>
+                工作台模板
+              </a>
+            </div>
+          </div>
+
+          <div class="wa-hero-demo" aria-label="产品界面示意">
+            <div class="wa-stage">
+              <div class="wa-stage__chrome">
+                <div class="wa-stage__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                <span class="wa-stage__meta">Vibe Design Lite</span>
+                <span class="wa-stage__status">
+                  <span class="wa-stage__status-light">LIGHT</span>
+                  <span class="wa-stage__status-dark">DARK</span>
+                </span>
+              </div>
+              <div class="wa-hero-demo__screens" aria-hidden="true">
+                <div class="wa-admin-skel">
+                  <aside class="wa-admin-skel__side">
+                    <div class="wa-admin-skel__brand">
+                      <span class="wa-admin-skel__logo"></span>
+                      <span class="wa-admin-skel__bar wa-admin-skel__bar--sm" style="width: 56%"></span>
+                    </div>
+                    <div class="wa-admin-skel__nav">
+                      <span class="wa-admin-skel__nav-item is-active"></span>
+                      <span class="wa-admin-skel__nav-item"></span>
+                      <span class="wa-admin-skel__nav-item"></span>
+                      <span class="wa-admin-skel__nav-item"></span>
+                      <span class="wa-admin-skel__nav-item"></span>
+                      <span class="wa-admin-skel__nav-item"></span>
+                    </div>
+                  </aside>
+                  <div class="wa-admin-skel__main">
+                    <div class="wa-admin-skel__top">
+                      <span class="wa-admin-skel__bar" style="width: 28%"></span>
+                      <div class="wa-admin-skel__top-tools">
+                        <span class="wa-admin-skel__chip"></span>
+                        <span class="wa-admin-skel__dot"></span>
+                        <span class="wa-admin-skel__dot"></span>
+                        <span class="wa-admin-skel__avatar"></span>
+                      </div>
+                    </div>
+                    <div class="wa-admin-skel__stats">
+                      <div class="wa-admin-skel__stat"></div>
+                      <div class="wa-admin-skel__stat"></div>
+                      <div class="wa-admin-skel__stat"></div>
+                      <div class="wa-admin-skel__stat"></div>
+                    </div>
+                    <div class="wa-admin-skel__panel">
+                      <div class="wa-admin-skel__panel-head">
+                        <span class="wa-admin-skel__bar" style="width: 22%"></span>
+                        <span class="wa-admin-skel__bar wa-admin-skel__bar--sm" style="width: 12%"></span>
+                      </div>
+                      <div class="wa-admin-skel__rows">
+                        <span class="wa-admin-skel__row"></span>
+                        <span class="wa-admin-skel__row"></span>
+                        <span class="wa-admin-skel__row"></span>
+                        <span class="wa-admin-skel__row"></span>
+                        <span class="wa-admin-skel__row"></span>
+                        <span class="wa-admin-skel__row"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wa-section" id="features">
+        <div class="wa-container">
+          <div class="wa-section__head">
+            <p class="wa-section__eyebrow"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Highlights</p>
+            <h2 class="wa-section__title">核心特色</h2>
+            <p class="wa-section__desc">从静态交付、设计 Token 到组件区块与窄屏适配，复制目录改品牌即可用于产品介绍与营销交付。</p>
+          </div>
+          <div class="wa-features">
+            <article class="wa-feature">
+              <div class="wa-feature__icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
+              <h3 class="wa-feature__title">纯静态 · 零构建</h3>
+              <p class="wa-feature__text">原生 HTML / CSS / JS，无需框架与构建，打开即可改、即可预览。</p>
+            </article>
+            <article class="wa-feature">
+              <div class="wa-feature__icon"><i class="fa-solid fa-copy" aria-hidden="true"></i></div>
+              <h3 class="wa-feature__title">复制即可修改</h3>
+              <p class="wa-feature__text">拷贝本目录到新站点，修改品牌与页面内容，三步就能本地预览。</p>
+            </article>
+            <article class="wa-feature">
+              <div class="wa-feature__icon"><i class="fa-solid fa-swatchbook" aria-hidden="true"></i></div>
+              <h3 class="wa-feature__title">Token 规范体系</h3>
+              <p class="wa-feature__text">颜色、圆角、间距、阴影统一收在 CSS 变量；一处定义、全站引用，改规范即可联动控件与区块。</p>
+            </article>
+            <article class="wa-feature">
+              <div class="wa-feature__icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></div>
+              <h3 class="wa-feature__title">明暗与主色换肤</h3>
+              <p class="wa-feature__text">顶栏可切换亮暗模式、点选主色预览；偏好本地记忆，刷新后仍保持所选皮肤。</p>
+            </article>
+            <article class="wa-feature">
+              <div class="wa-feature__icon"><i class="fa-solid fa-icons" aria-hidden="true"></i></div>
+              <h3 class="wa-feature__title">矢量图标体系</h3>
+              <p class="wa-feature__text">内置 Font Awesome 7 Free 本地字体图标（solid / regular / brands），覆盖常见业务场景；小工具页可用 Free CDN。</p>
+            </article>
+            <article class="wa-feature">
+              <div class="wa-feature__icon"><i class="fa-solid fa-puzzle-piece" aria-hidden="true"></i></div>
+              <h3 class="wa-feature__title">整合常用组件</h3>
+              <p class="wa-feature__text">按钮、表单、标签、反馈、表格等控件可对照接入，覆盖多数轻站场景。</p>
+            </article>
+            <article class="wa-feature">
+              <div class="wa-feature__icon"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></div>
+              <h3 class="wa-feature__title">丰富展示区块</h3>
+              <p class="wa-feature__text">步骤胶囊、提示卡、流程瓷砖等营销版块，可按需拷到业务页进行调整。</p>
+            </article>
+            <article class="wa-feature">
+              <div class="wa-feature__icon"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i></div>
+              <h3 class="wa-feature__title">窄屏及移动端兼容</h3>
+              <p class="wa-feature__text">顶栏、栅格与关键区块按断点自适应，手机与平板可直接预览，无需另起一套布局。</p>
+            </article>
+            <article class="wa-feature">
+              <div class="wa-feature__icon"><i class="fa-solid fa-folder-tree" aria-hidden="true"></i></div>
+              <h3 class="wa-feature__title">文件结构灵活</h3>
+              <p class="wa-feature__text">相关区块与示范页面可删，或按需精简代码，保留最小骨架也能正常打开。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="wa-section wa-section--muted" id="value">
+        <div class="wa-container">
+          <div class="wa-section__head">
+            <p class="wa-section__eyebrow"><i class="fa-solid fa-handshake" aria-hidden="true"></i> Why</p>
+            <h2 class="wa-section__title">交付价值</h2>
+            <p class="wa-section__desc">从复制预览到品牌换肤、拼装改稿与按需裁剪，缩短落地页、工作台与内部 Demo 的交付路径。</p>
+          </div>
+          <div class="wa-value-grid">
+            <article class="wa-value">
+              <span class="wa-value__index" aria-hidden="true">01</span>
+              <div class="wa-value__content">
+                <p class="wa-value__kicker">开箱即用</p>
+                <h3 class="wa-value__title">复制目录就能演示</h3>
+                <p class="wa-value__text">纯静态、零构建，拷贝目录改品牌即可本地预览；首屏、分区与 CTA 骨架已就位。</p>
+              </div>
+            </article>
+            <article class="wa-value">
+              <span class="wa-value__index" aria-hidden="true">02</span>
+              <div class="wa-value__content">
+                <p class="wa-value__kicker">品牌落地</p>
+                <h3 class="wa-value__title">Token 与换肤一次对齐</h3>
+                <p class="wa-value__text">改规范变量即可联动全站；顶栏切明暗、点选主色并本地记忆，配合图标资源快速贴近 VI。</p>
+              </div>
+            </article>
+            <article class="wa-value">
+              <span class="wa-value__index" aria-hidden="true">03</span>
+              <div class="wa-value__content">
+                <p class="wa-value__kicker">少从零拼</p>
+                <h3 class="wa-value__title">组件与区块对照接入</h3>
+                <p class="wa-value__text">常用控件橱窗与展示样板覆盖多数轻站场景，拷到业务页改文案即可，少从空白栅格起步。</p>
+              </div>
+            </article>
+            <article class="wa-value">
+              <span class="wa-value__index" aria-hidden="true">04</span>
+              <div class="wa-value__content">
+                <p class="wa-value__kicker">按需交付</p>
+                <h3 class="wa-value__title">能裁剪也能走查窄屏</h3>
+                <p class="wa-value__text">示范页与区块可删、结构可精简；断点自适应下手机与平板可直接预览，交付前走查更省事。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="wa-section" id="kit">
+        <div class="wa-container">
+          <div class="wa-section__head">
+            <p class="wa-section__eyebrow"><i class="fa-solid fa-puzzle-piece" aria-hidden="true"></i> Components</p>
+            <h2 class="wa-section__title">常用组件</h2>
+            <p class="wa-section__desc">按钮、表单、标签、反馈与表格等可复用控件入口，点击进入橱窗对照。</p>
+          </div>
+
+          <div class="wa-template-head"><h3>控件速览</h3><span>6 类入口</span></div>
+          <div class="wa-export-grid wa-export-grid--3">
+            <a class="wa-export-card" href="./components.html#kit-cards">
+              <span class="wa-export-card__ext">CARD</span>
+              <h3>常用卡片</h3>
+              <p>投影 · 描边 · CTA</p>
+            </a>
+            <a class="wa-export-card" href="./components.html#kit-buttons">
+              <span class="wa-export-card__ext">BTN</span>
+              <h3>常用按钮</h3>
+              <p>类型 · 尺寸 · 下拉</p>
+            </a>
+            <a class="wa-export-card" href="./components.html#kit-forms">
+              <span class="wa-export-card__ext">FORM</span>
+              <h3>表单组件</h3>
+              <p>输入 · 校验 · 上传</p>
+            </a>
+            <a class="wa-export-card" href="./components.html#kit-tags">
+              <span class="wa-export-card__ext">TAG</span>
+              <h3>常用标签</h3>
+              <p>Chip · Badge · 选项组</p>
+            </a>
+            <a class="wa-export-card" href="./components.html#kit-feedback">
+              <span class="wa-export-card__ext">FEED</span>
+              <h3>反馈提示</h3>
+              <p>吐司 · 弹窗 · 空状态</p>
+            </a>
+            <a class="wa-export-card" href="./components.html#kit-table">
+              <span class="wa-export-card__ext">TABLE</span>
+              <h3>表格指标</h3>
+              <p>筛选 · 状态 · 操作</p>
+            </a>
+          </div>
+
+          <div class="wa-export-grid wa-export-grid--2">
+            <a class="wa-export-card" href="./components.html">
+              <span class="wa-export-card__ext">KIT</span>
+              <h3>完整橱窗</h3>
+              <p>按钮、表单、标签与反馈可复用</p>
+            </a>
+            <a class="wa-export-card" href="./showcase.html">
+              <span class="wa-export-card__ext">BLOCK</span>
+              <h3>展示区块</h3>
+              <p>步骤胶囊、提示卡与流程瓷砖</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="wa-section wa-section--muted" id="theme">
+        <div class="wa-container">
+          <div class="wa-section__head">
+            <p class="wa-section__eyebrow"><i class="fa-solid fa-palette" aria-hidden="true"></i> Theme Style</p>
+            <h2 class="wa-section__title">主题风格</h2>
+            <p class="wa-section__desc">主色、明暗与强调色全局联动，接入品牌 VI 时无需逐页改样式。</p>
+          </div>
+          <div class="wa-theme-studio">
+            <div class="wa-theme-studio__row">
+              <div class="wa-theme-studio__controls">
+                <div class="wa-theme-studio__intro">
+                  <h3>品牌主色 · 即时预览</h3>
+                  <p>点选色板，右侧即时展示主色联动效果。可按品牌 VI 扩展 token，全站自动继承。</p>
+                </div>
+                <div class="wa-theme-studio__panel">
+                  <span class="wa-theme-studio__swatches-label">预置主题色</span>
+                  <div class="wa-swatches" role="list" aria-label="主题色" data-theme-swatches>
+                    <button class="wa-swatch is-active" type="button" data-color="#13C7C2" data-label="清新青" style="background:#13C7C2" title="清新青" aria-label="清新青"></button>
+                    <button class="wa-swatch" type="button" data-color="#6C5CE7" data-label="品牌紫" style="background:#6C5CE7" title="品牌紫" aria-label="品牌紫"></button>
+                    <button class="wa-swatch" type="button" data-color="#165DFF" data-label="科技蓝" style="background:#165DFF" title="科技蓝" aria-label="科技蓝"></button>
+                    <button class="wa-swatch" type="button" data-color="#27AE60" data-label="生机绿" style="background:#27AE60" title="生机绿" aria-label="生机绿"></button>
+                    <button class="wa-swatch" type="button" data-color="#E74C3C" data-label="活力橙" style="background:#E74C3C" title="活力橙" aria-label="活力橙"></button>
+                  </div>
+                  <p class="wa-swatch-label" data-swatch-label>当前：清新青 · #13C7C2</p>
+                </div>
+                <ul class="wa-theme-points" aria-label="主题能力">
+                  <li>
+                    <span class="wa-theme-points__icon" aria-hidden="true"><i class="fa-solid fa-droplet"></i></span>
+                    <span><strong>当前主色</strong>五套预置，可扩展 hex</span>
+                  </li>
+                  <li>
+                    <span class="wa-theme-points__icon" aria-hidden="true"><i class="fa-solid fa-circle-half-stroke"></i></span>
+                    <span><strong>明暗模式</strong>亮色 / 暗色跨页保持</span>
+                  </li>
+                  <li>
+                    <span class="wa-theme-points__icon" aria-hidden="true"><i class="fa-solid fa-sliders"></i></span>
+                    <span><strong>设计风格</strong>圆角与图表全局联动</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="wa-theme-preview" aria-label="当前主题预览">
+                <div class="wa-theme-preview__head">
+                  <span>当前主题预览</span>
+                  <span class="wa-theme-preview__tag">效果预览</span>
+                </div>
+                <div class="wa-theme-preview__bar" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                <div class="wa-theme-preview__cards" aria-hidden="true">
+                  <article class="wa-theme-preview__card wa-theme-preview__card--accent wa-theme-preview__card--stack">
+                    <span class="wa-theme-preview__card-icon" aria-hidden="true"><i class="fa-solid fa-droplet"></i></span>
+                    <div class="wa-theme-preview__card-body">
+                      <span>当前主色</span>
+                      <strong data-preview-hex>#13C7C2</strong>
+                    </div>
+                  </article>
+                  <article class="wa-theme-preview__card wa-theme-preview__card--stack wa-theme-preview__card--has-badge">
+                    <em class="wa-theme-preview__card-delta"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i>+12.4%</em>
+                    <span class="wa-theme-preview__card-icon" aria-hidden="true"><i class="fa-solid fa-yen-sign"></i></span>
+                    <div class="wa-theme-preview__card-body">
+                      <span>销售额</span>
+                      <strong>¥128,430</strong>
+                    </div>
+                  </article>
+                  <article class="wa-theme-preview__card">
+                    <span class="wa-theme-preview__card-label">Tab 标签</span>
+                    <div class="wa-theme-preview__card-tabs">
+                      <span class="is-active">概览</span>
+                      <span>明细</span>
+                      <span>设置</span>
+                    </div>
+                  </article>
+                  <article class="wa-theme-preview__card">
+                    <span class="wa-theme-preview__card-label">占比圆环</span>
+                    <div class="wa-theme-preview__ring-group">
+                      <div class="wa-theme-preview__ring-item">
+                        <div class="wa-theme-preview__card-ring">
+                          <svg viewBox="0 0 36 36" aria-hidden="true">
+                            <circle cx="18" cy="18" r="14" fill="none" stroke="currentColor" stroke-width="4" opacity="0.18"></circle>
+                            <circle cx="18" cy="18" r="14" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="58 100" stroke-linecap="round" transform="rotate(-90 18 18)"></circle>
+                          </svg>
+                          <span>58%</span>
+                        </div>
+                        <span class="wa-theme-preview__ring-label">已完成</span>
+                      </div>
+                      <div class="wa-theme-preview__ring-item">
+                        <div class="wa-theme-preview__card-ring">
+                          <svg viewBox="0 0 36 36" aria-hidden="true">
+                            <circle cx="18" cy="18" r="14" fill="none" stroke="currentColor" stroke-width="4" opacity="0.18"></circle>
+                            <circle cx="18" cy="18" r="14" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="24 100" stroke-linecap="round" transform="rotate(-90 18 18)"></circle>
+                          </svg>
+                          <span>24%</span>
+                        </div>
+                        <span class="wa-theme-preview__ring-label">进行中</span>
+                      </div>
+                      <div class="wa-theme-preview__ring-item">
+                        <div class="wa-theme-preview__card-ring">
+                          <svg viewBox="0 0 36 36" aria-hidden="true">
+                            <circle cx="18" cy="18" r="14" fill="none" stroke="currentColor" stroke-width="4" opacity="0.18"></circle>
+                            <circle cx="18" cy="18" r="14" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="18 100" stroke-linecap="round" transform="rotate(-90 18 18)"></circle>
+                          </svg>
+                          <span>18%</span>
+                        </div>
+                        <span class="wa-theme-preview__ring-label">待处理</span>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="wa-theme-preview__card">
+                    <div class="wa-theme-preview__card-top">
+                      <span class="wa-theme-preview__card-label">转化率</span>
+                      <strong class="wa-theme-preview__card-value is-sm">6.8%</strong>
+                    </div>
+                    <div class="wa-theme-preview__card-chart">
+                      <span style="height:38%"></span><span style="height:52%"></span><span style="height:42%"></span><span style="height:58%"></span><span style="height:46%"></span><span style="height:72%"></span><span style="height:64%"></span><span style="height:55%"></span><span style="height:80%"></span><span style="height:88%"></span>
+                    </div>
+                  </article>
+                  <article class="wa-theme-preview__card">
+                    <div class="wa-theme-preview__card-top">
+                      <span class="wa-theme-preview__card-label">任务进度</span>
+                      <strong class="wa-theme-preview__card-value is-sm">72%</strong>
+                    </div>
+                    <div class="wa-theme-preview__card-progress"><span style="width:72%"></span></div>
+                    <div class="wa-theme-preview__card-foot">
+                      <span>较上周 <strong class="is-up">+8.2%</strong></span>
+                      <span>剩余 3 项</span>
+                    </div>
+                  </article>
+
+                </div>
+                <p class="wa-theme-preview__note">主色变更后按钮、链接、图表与卡片强调色将全站同步更新</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wa-section" id="workflow">
+        <div class="wa-container">
+          <div class="wa-section__head">
+            <p class="wa-section__eyebrow"><i class="fa-solid fa-route" aria-hidden="true"></i> Workflow</p>
+            <h2 class="wa-section__title">使用流程</h2>
+            <p class="wa-section__desc">从模板复制到可演示页面，按步骤推进即可。</p>
+          </div>
+          <div class="wa-steps">
+            <div class="wa-step"><span class="wa-step__num">1</span><strong>对照样板</strong><span>预览页面、组件与主题</span></div>
+            <div class="wa-step"><span class="wa-step__num">2</span><strong>复制模板</strong><span>拷贝本目录作为修改模板</span></div>
+            <div class="wa-step"><span class="wa-step__num">3</span><strong>修改内容</strong><span>按需求改品牌信息与内容</span></div>
+            <div class="wa-step"><span class="wa-step__num">4</span><strong>按需精简</strong><span>删除多余的页面与区块</span></div>
+            <div class="wa-step"><span class="wa-step__num">5</span><strong>联调交付</strong><span>接真实链接与表单后交付</span></div>
+          </div>
+          <div class="wa-workflow-cta">
+            <a class="wa-btn wa-btn--primary wa-btn--lg" href="./showcase.html">
+              <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+              查看展示区块
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="wa-section" id="faq">
+        <div class="wa-container">
+          <div class="wa-section__head">
+            <p class="wa-section__eyebrow"><i class="fa-regular fa-circle-question" aria-hidden="true"></i> FAQ</p>
+            <h2 class="wa-section__title">常见问题</h2>
+            <p class="wa-section__desc">复制本模板时的常见取舍；上线前请换成产品真实问答。</p>
+          </div>
+          <div class="wa-faq" data-faq data-faq-accordion>
+            <div class="wa-faq__item is-open">
+              <button type="button" class="wa-faq__q" aria-expanded="true">
+                <span class="wa-faq__label"><span class="wa-faq__index" aria-hidden="true">1</span>这套 Vibe Design Lite 模板适合做什么？</span>
+                <span class="wa-faq__toggle" aria-hidden="true"></span>
+              </button>
+              <div class="wa-faq__a">适合轻量落地页、产品介绍、单页小工具，以及用登录页 + 工作台样板做的基础后台示意。原生 HTML / CSS / JS，不依赖前端框架、无需构建；内置明暗主题、常用组件与展示区块，改品牌与文案即可交付。</div>
+            </div>
+            <div class="wa-faq__item">
+              <button type="button" class="wa-faq__q" aria-expanded="false">
+                <span class="wa-faq__label"><span class="wa-faq__index" aria-hidden="true">2</span>Vibe Design Lite 与 Web / Pro 有何区别？</span>
+                <span class="wa-faq__toggle" aria-hidden="true"></span>
+              </button>
+              <div class="wa-faq__a">Vibe Design Lite 是轻量化的纯静态站模板，覆盖落地页、工作台样板与单页小工具。<a href="../web/index.html" target="_blank" rel="noopener noreferrer">Vibe Design Web</a> 面向官网 / 落地页，整合完整前端组件库与布局、区块资源，配合 Agent 选型生成页面。<a href="../pro/index.html" target="_blank" rel="noopener noreferrer">Vibe Design Pro</a> 则是完整管理后台（Vue / Arco 等），与 Lite 工作台不是同一套。要纯静态轻交付选 Lite；要 Web 母版与区块库存选 Web；要正式中后台选 Pro。</div>
+            </div>
+            <div class="wa-faq__item">
+              <button type="button" class="wa-faq__q" aria-expanded="false">
+                <span class="wa-faq__label"><span class="wa-faq__index" aria-hidden="true">3</span>这套模板可以进行哪些修改？</span>
+                <span class="wa-faq__toggle" aria-hidden="true"></span>
+              </button>
+              <div class="wa-faq__a">你可以在现有模板的基础上修改品牌 LOGO、名称、主题色，同时还可以新增页面或删除页面，以及对页面结构和样式进行修改，也可以完善和新增相关的交互组件。</div>
+            </div>
+            <div class="wa-faq__item">
+              <button type="button" class="wa-faq__q" aria-expanded="false">
+                <span class="wa-faq__label"><span class="wa-faq__index" aria-hidden="true">4</span>必须保留色板 / 主题预览吗？</span>
+                <span class="wa-faq__toggle" aria-hidden="true"></span>
+              </button>
+              <div class="wa-faq__a">不必。页内「品牌主色 · 即时预览」仅供演示，正式站可整段删除，在 global.css 写死主色即可。顶栏明暗切换与色板预览是两回事，可单独保留。</div>
+            </div>
+            <div class="wa-faq__item">
+              <button type="button" class="wa-faq__q" aria-expanded="false">
+                <span class="wa-faq__label"><span class="wa-faq__index" aria-hidden="true">5</span>导航里的其它页面都必须保留吗？</span>
+                <span class="wa-faq__toggle" aria-hidden="true"></span>
+              </button>
+              <div class="wa-faq__a">不必。组件橱窗、展示样板、登录页、工作台与单页模板都是可选示范：纯营销站可删对应文件并去掉导航入口；需要对照控件、拷贝区块或做基础后台示意时再保留。</div>
+            </div>
+            <div class="wa-faq__item">
+              <button type="button" class="wa-faq__q" aria-expanded="false">
+                <span class="wa-faq__label"><span class="wa-faq__index" aria-hidden="true">6</span>单页模板和落地多页是什么关系？</span>
+                <span class="wa-faq__toggle" aria-hidden="true"></span>
+              </button>
+              <div class="wa-faq__a">单页模板把样式与脚本内联在同一文件，可单独拷走改造成小工具页；与落地多页共用视觉语言，但不依赖本站 assets 分包。导航里可新窗口打开预览。</div>
+            </div>
+            <div class="wa-faq__item">
+              <button type="button" class="wa-faq__q" aria-expanded="false">
+                <span class="wa-faq__label"><span class="wa-faq__index" aria-hidden="true">7</span>我要怎么开始使用这套模板？</span>
+                <span class="wa-faq__toggle" aria-hidden="true"></span>
+              </button>
+              <div class="wa-faq__a">请先读本目录 <code>说明文档.md</code>（母版使用说明，人与 Agent 均可参考），再说明站点用途与品牌后改分区与页面。也可以用技能包 <code>prototype-demo</code> 将本母版生成到项目 <code>web/</code> 或 <code>admin/</code>，再继续修改。</div>
+            </div>
+          </div>
+          <div class="wa-faq-foot">
+            <button type="button" class="wa-btn wa-btn--outline" data-modal-open="prompt-examples-modal">
+              <i class="fa-solid fa-comments" aria-hidden="true"></i>
+              提示词示例参考
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="wa-cta" id="cta">
+        <div class="wa-container">
+          <div class="wa-cta__panel">
+            <div class="wa-cta__copy">
+              <h2 class="wa-cta__title">纯静态轻站模板，快速搭建轻量网站</h2>
+              <p class="wa-cta__desc">修改品牌与页面内容，精简多余的页面与区块，即可变成可交付网站。</p>
+            </div>
+            <div class="wa-cta__actions">
+              <a
+                class="wa-btn wa-btn--lg wa-cta__btn-primary"
+                href="https://www.vibepm.net/home/templates/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fa-solid fa-gift" aria-hidden="true"></i>
+                免费获取
+              </a>
+              <button type="button" class="wa-btn wa-btn--lg wa-cta__btn-ghost" data-modal-open="contact-modal">
+                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                联系我们
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wa-footer">
+      <div class="wa-footer__inner">
+        <div class="wa-footer__meta">
+          <span>© 2026 <a href="https://www.vibepm.net" target="_blank" rel="noopener noreferrer">VibePM</a></span>
+          <span class="wa-footer__sep" aria-hidden="true">·</span>
+          <span>Agent 产品协作与设计资产分享平台</span>
+        </div>
+        <nav class="wa-footer__links" aria-label="页脚导航">
+          <a href="https://www.vibepm.net" target="_blank" rel="noopener noreferrer">网站首页</a>
+          <span class="wa-footer__sep" aria-hidden="true">·</span>
+          <a href="#" data-modal-open="wechat-modal">关注我们</a>
+          <span class="wa-footer__sep" aria-hidden="true">·</span>
+          <a href="https://work.weixin.qq.com/kfid/kfc30961678e9017618" target="_blank" rel="noopener noreferrer">联系客服</a>
+          <span class="wa-footer__sep" aria-hidden="true">·</span>
+          <a href="https://my.feishu.cn/share/base/form/shrcnSIcBulea59IXEePDCgpOse" target="_blank" rel="noopener noreferrer">建议反馈</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
+  <div class="wa-float-tools" aria-label="快捷工具">
+    <a class="wa-float-tools__btn" href="https://work.weixin.qq.com/kfid/kfc30961678e9017618" title="咨询" target="_blank" rel="noopener noreferrer">
+      <i class="fa-solid fa-comment-dots" aria-hidden="true"></i>
+      <span>咨询</span>
+    </a>
+    <button type="button" class="wa-float-tools__btn" data-modal-open="wechat-modal" title="公众号">
+      <i class="fa-brands fa-weixin" aria-hidden="true"></i>
+      <span>公众号</span>
+    </button>
+    <a class="wa-float-tools__btn wa-float-tools__btn--top" href="#top" title="返回顶部" data-back-top>
+      <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+      <span>TOP</span>
+    </a>
+  </div>
+
+  <div class="wa-modal" id="demo-modal" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title" aria-hidden="true">
+    <div class="wa-modal__overlay" data-modal-close></div>
+    <div class="wa-modal__panel" tabindex="-1" role="document">
+      <div class="wa-modal__header">
+        <h2 class="wa-modal__title" id="demo-modal-title">示例弹窗</h2>
+        <button type="button" class="wa-modal__close" data-modal-close aria-label="关闭">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="wa-modal__body">
+        <p style="margin:0;line-height:1.65;color:var(--wa-color-text-secondary)">标准弹窗结构：标题栏、正文与页脚操作区，可直接复用。</p>
+      </div>
+      <div class="wa-modal__footer">
+        <button type="button" class="wa-btn wa-btn--secondary" data-modal-close>取消</button>
+        <button type="button" class="wa-btn wa-btn--primary" data-modal-close>确认</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="wa-modal wa-modal--wechat" id="wechat-modal" role="dialog" aria-modal="true" aria-labelledby="wechat-modal-title" aria-hidden="true">
+    <div class="wa-modal__overlay" data-modal-close></div>
+    <div class="wa-modal__dialog">
+      <div class="wa-modal__panel" tabindex="-1" role="document">
+        <div class="wa-modal__body wa-modal__body--wechat">
+          <h2 class="wa-modal__wechat-title" id="wechat-modal-title">关注微信公众号</h2>
+          <p class="wa-modal__desc">扫描二维码关注VibePM公众号，获取最新AI产品协作与热门工具分享</p>
+          <div class="wa-modal__qr">
+            <img src="https://www.vibepm.net/assets/images/qrcode_gzh.png" alt="微信公众号二维码" width="200" height="200" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+      <button type="button" class="wa-modal__close wa-modal__close--float" data-modal-close aria-label="关闭">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="wa-modal wa-modal--prompt-examples" id="prompt-examples-modal" role="dialog" aria-modal="true" aria-labelledby="prompt-examples-modal-title" aria-hidden="true">
+    <div class="wa-modal__overlay" data-modal-close></div>
+    <div class="wa-modal__panel" tabindex="-1" role="document">
+      <div class="wa-modal__header">
+        <h2 class="wa-modal__title" id="prompt-examples-modal-title">提示词示例参考</h2>
+        <button type="button" class="wa-modal__close" data-modal-close aria-label="关闭">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="wa-modal__body">
+        <p class="wa-prompt-ex__lead">使用 Agent 打开模板后，可以参考下面的提示词示例，对页面或布局进行修改。</p>
+        <ul class="wa-prompt-ex">
+          <li>
+            <span class="wa-prompt-ex__tag">起步</span>
+            <div class="wa-prompt-ex__body">
+              <p class="wa-prompt-ex__desc">先读说明文档，再说站点用途与品牌，在本目录上直接改。</p>
+              <q class="wa-prompt-ex__quote">请先阅读说明文档.md；我想做 XX 产品落地页，把品牌名、主色和首页文案改成我们的，其它示范页先保留。</q>
+            </div>
+          </li>
+          <li>
+            <span class="wa-prompt-ex__tag">工作台</span>
+            <div class="wa-prompt-ex__body">
+              <p class="wa-prompt-ex__desc">先读说明文档，再说后台用途与模块，从 shell 样板改起。</p>
+              <q class="wa-prompt-ex__quote">请先阅读说明文档.md；我想做 XX 运营后台，从 shell-dashboard 改品牌与侧栏菜单，概览指标和列表字段换成我们的，其它 shell 示范页先保留。</q>
+            </div>
+          </li>
+          <li>
+            <span class="wa-prompt-ex__tag">风格</span>
+            <div class="wa-prompt-ex__body">
+              <p class="wa-prompt-ex__desc">说明目标主色，并要求亮暗一起同步。</p>
+              <q class="wa-prompt-ex__quote">把品牌主色改成 #2563EB，亮暗 token 一起同步</q>
+            </div>
+          </li>
+          <li>
+            <span class="wa-prompt-ex__tag">布局</span>
+            <div class="wa-prompt-ex__body">
+              <p class="wa-prompt-ex__desc">说明顶栏形态，必要时补上窄屏表现。</p>
+              <q class="wa-prompt-ex__quote">导航栏改为通栏导航布局，窄屏仍折叠为抽屉</q>
+            </div>
+          </li>
+          <li>
+            <span class="wa-prompt-ex__tag">版式</span>
+            <div class="wa-prompt-ex__body">
+              <p class="wa-prompt-ex__desc">说明目标内容宽度，避免只改单个区块。</p>
+              <q class="wa-prompt-ex__quote">把页面默认内容宽度增加到 1280px</q>
+            </div>
+          </li>
+          <li>
+            <span class="wa-prompt-ex__tag">页面</span>
+            <div class="wa-prompt-ex__body">
+              <p class="wa-prompt-ex__desc">说明新页面用途，并要求挂上导航入口。</p>
+              <q class="wa-prompt-ex__quote">新增定价页 pricing.html，并同步顶栏与抽屉导航</q>
+            </div>
+          </li>
+          <li>
+            <span class="wa-prompt-ex__tag">区块</span>
+            <div class="wa-prompt-ex__body">
+              <p class="wa-prompt-ex__desc">说明位置、展现形式，并带上要写入的内容要点。</p>
+              <q class="wa-prompt-ex__quote">在首页新增一个功能特色区块，以卡片 + 三列展示，卡片布局和样式参考展示区块页面中的默认卡片组，相关内容如下：XXX</q>
+            </div>
+          </li>
+          <li>
+            <span class="wa-prompt-ex__tag">样板</span>
+            <div class="wa-prompt-ex__body">
+              <p class="wa-prompt-ex__desc">说明要从展示样板拷贝哪类版块、放到哪里。</p>
+              <q class="wa-prompt-ex__quote">从展示样板拷贝步骤胶囊到首页工作流区</q>
+            </div>
+          </li>
+          <li>
+            <span class="wa-prompt-ex__tag">全局</span>
+            <div class="wa-prompt-ex__body">
+              <p class="wa-prompt-ex__desc">说明要把本页哪套样式收入全局复用。</p>
+              <q class="wa-prompt-ex__quote">将首页功能特色卡片样式收入全局，其它页可直接复用</q>
+            </div>
+          </li>
+          <li>
+            <span class="wa-prompt-ex__tag">样式</span>
+            <div class="wa-prompt-ex__body">
+              <p class="wa-prompt-ex__desc">说明要改的按钮与目标形态。</p>
+              <q class="wa-prompt-ex__quote">把 FAQ 下方按钮样式改为描边按钮</q>
+            </div>
+          </li>
+          <li>
+            <span class="wa-prompt-ex__tag">精简</span>
+            <div class="wa-prompt-ex__body">
+              <p class="wa-prompt-ex__desc">说明要删的示范页，并同步导航入口。</p>
+              <q class="wa-prompt-ex__quote">删除登录页、工作台模板与单页模板，并去掉对应导航</q>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="wa-modal" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" aria-hidden="true">
+    <div class="wa-modal__overlay" data-modal-close></div>
+    <div class="wa-modal__panel" tabindex="-1" role="document">
+      <div class="wa-modal__header">
+        <h2 class="wa-modal__title" id="contact-modal-title">预约演示</h2>
+        <button type="button" class="wa-modal__close" data-modal-close aria-label="关闭">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="wa-modal__body">
+        <p style="margin:0 0 14px;line-height:1.65;color:var(--wa-color-text-secondary)">虚构表单示意，替换为真实邮箱或第三方表单即可。</p>
+        <form class="wa-form" onsubmit="return false;">
+          <div class="wa-form-item">
+            <label class="wa-label" for="contact-email">工作邮箱</label>
+            <div class="wa-field">
+              <input class="wa-field__input" id="contact-email" type="email" placeholder="you@company.com" autocomplete="off" />
+            </div>
+          </div>
+          <div class="wa-form-item">
+            <label class="wa-label" for="contact-note">想了解什么</label>
+            <div class="wa-field wa-field--textarea">
+              <textarea class="wa-field__textarea" id="contact-note" rows="3" placeholder="例如：落地页改版、活动专题…"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="wa-modal__footer">
+        <button type="button" class="wa-btn wa-btn--secondary" data-modal-close>关闭</button>
+        <button type="button" class="wa-btn wa-btn--primary" data-modal-close data-kit-message="success" data-kit-message-text="提交成功">提交</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/common/js/toast.js"></script>
+  <script src="./assets/common/js/message.js"></script>
+  <script src="./assets/common/js/modal.js"></script>
+  <script src="./js/shared.js"></script>
+  <script src="./assets/effects/hero-accent-stroke/hero-accent-stroke.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+</html>

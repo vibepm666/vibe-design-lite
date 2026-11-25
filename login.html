@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>登录 — Vibe Design Lite | VibePM</title>
+  <meta name="description" content="Vibe Design Lite 静态登录页模板：居中账号卡片，含校验、忘记密码 / 注册弹层与第三方登录示意；无 Vue / Arco。" />
+  <meta name="keywords" content="Vibe Design Lite,登录页,账号登录,静态模板,lite-site,VibePM" />
+  <meta name="author" content="VibePM" />
+  <meta name="theme-color" content="#13c7c2" />
+  <script src="./assets/common/js/theme.js"></script>
+  <link rel="stylesheet" href="./vendor/fontawesome_free/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/common/css/global.css" />
+  <link rel="stylesheet" href="./assets/common/css/chrome.css" />
+  <link rel="stylesheet" href="./assets/common/css/components.css" />
+  <link rel="stylesheet" href="./css/login.css" />
+  <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml">
+</head>
+<body class="wa-landing-cover wa-login-page">
+  <div class="wa-landing-bg" aria-hidden="true">
+    <div class="wa-landing-bg__image"></div>
+    <div class="wa-landing-bg__glow"></div>
+    <div class="wa-landing-bg__aura"></div>
+    <div class="wa-landing-bg__dots"></div>
+  </div>
+
+  <main class="wa-login">
+    <div class="wa-login__card">
+      <div class="wa-login__head">
+        <a class="wa-login__logo" href="./index.html" aria-label="返回首页">
+          <span class="wa-brand__mark" aria-hidden="true"><i class="fa-solid fa-table-columns"></i></span>
+        </a>
+        <h1 class="wa-login__title">欢迎回来</h1>
+        <p class="wa-login__lead">登录后即可进入工作台继续协作</p>
+      </div>
+
+      <form class="wa-form wa-login__form" id="login-form" novalidate>
+        <div class="wa-form-item" data-login-field="user">
+          <label class="wa-label" for="login-user">登录账号</label>
+          <div class="wa-field wa-field--icon">
+            <i class="fa-solid fa-user wa-field__icon" aria-hidden="true"></i>
+            <input class="wa-field__input" id="login-user" name="user" type="text" autocomplete="username" placeholder="请输入登录账号" value="admin" data-wa-field-input />
+            <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-regular fa-circle-xmark" aria-hidden="true"></i></button>
+          </div>
+          <p class="wa-field__error" data-login-error="user">用户名不能为空</p>
+        </div>
+
+        <div class="wa-form-item" data-login-field="password">
+          <label class="wa-label" for="login-password">登录密码</label>
+          <div class="wa-field wa-field--icon">
+            <i class="fa-solid fa-lock wa-field__icon" aria-hidden="true"></i>
+            <input class="wa-field__input" id="login-password" name="password" type="password" autocomplete="current-password" placeholder="请输入登录密码" value="123456" data-wa-field-input />
+            <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-regular fa-circle-xmark" aria-hidden="true"></i></button>
+            <button type="button" class="wa-login__toggle-pwd" data-toggle-password="login-password" aria-label="显示密码">
+              <i class="fa-solid fa-eye" aria-hidden="true"></i>
+            </button>
+          </div>
+          <p class="wa-field__error" data-login-error="password">密码不能为空</p>
+        </div>
+
+        <div class="wa-login__row">
+          <label class="wa-check">
+            <input type="checkbox" id="login-remember" checked />
+            <span>记住密码</span>
+          </label>
+          <button type="button" class="wa-login__link" data-modal-open="forget-modal">忘记密码</button>
+        </div>
+
+        <button type="submit" class="wa-btn wa-btn--primary wa-login__submit" id="login-submit">
+          <i class="fa-solid fa-arrow-right-to-bracket" aria-hidden="true"></i>
+          登录
+        </button>
+        <button type="button" class="wa-login__register" data-modal-open="register-modal">注册账号</button>
+
+        <div class="wa-login__social">
+          <p class="wa-login__social-label">其它登录方式</p>
+          <div class="wa-login__social-list" role="group" aria-label="其它登录方式">
+            <button type="button" class="wa-login__social-btn" data-social="微信" aria-label="微信登录">
+              <i class="fa-brands fa-weixin" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="wa-login__social-btn" data-social="QQ" aria-label="QQ 登录">
+              <i class="fa-brands fa-qq" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="wa-login__social-btn" data-social="支付宝" aria-label="支付宝登录">
+              <i class="fa-brands fa-alipay" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <a class="wa-login__back" href="./index.html">
+      <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+      <span>返回首页</span>
+    </a>
+  </main>
+
+  <div class="wa-modal" id="forget-modal" role="dialog" aria-modal="true" aria-labelledby="forget-title" aria-hidden="true">
+    <div class="wa-modal__overlay" data-modal-close></div>
+    <div class="wa-modal__panel" tabindex="-1" role="document">
+      <div class="wa-modal__header">
+        <h2 class="wa-modal__title" id="forget-title">重置密码</h2>
+        <button type="button" class="wa-modal__close" data-modal-close aria-label="关闭">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="wa-modal__body">
+        <form class="wa-form" id="forget-form" novalidate>
+          <div class="wa-form-item" data-forget-field="email">
+            <label class="wa-label" for="forget-email">邮箱 <span class="wa-req" aria-hidden="true">*</span></label>
+            <div class="wa-field wa-field--suffix">
+              <input class="wa-field__input" id="forget-email" type="email" placeholder="请输入邮箱" autocomplete="email" data-wa-field-input />
+              <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-regular fa-circle-xmark" aria-hidden="true"></i></button>
+              <button type="button" class="wa-login__send" data-send-code="forget">发送验证码</button>
+            </div>
+            <p class="wa-field__error" data-forget-error="email">请输入邮箱</p>
+          </div>
+          <div class="wa-form-item" data-forget-field="code">
+            <label class="wa-label" id="forget-code-label">验证码 <span class="wa-req" aria-hidden="true">*</span></label>
+            <div class="wa-otp" data-otp="forget" role="group" aria-labelledby="forget-code-label">
+              <input class="wa-otp__cell" type="text" inputmode="numeric" maxlength="1" aria-label="第 1 位" autocomplete="one-time-code" />
+              <input class="wa-otp__cell" type="text" inputmode="numeric" maxlength="1" aria-label="第 2 位" />
+              <input class="wa-otp__cell" type="text" inputmode="numeric" maxlength="1" aria-label="第 3 位" />
+              <input class="wa-otp__cell" type="text" inputmode="numeric" maxlength="1" aria-label="第 4 位" />
+              <input class="wa-otp__cell" type="text" inputmode="numeric" maxlength="1" aria-label="第 5 位" />
+              <input class="wa-otp__cell" type="text" inputmode="numeric" maxlength="1" aria-label="第 6 位" />
+            </div>
+            <input type="hidden" id="forget-code" value="" />
+            <p class="wa-field__error" data-forget-error="code">请输入验证码</p>
+          </div>
+          <div class="wa-form-item" data-forget-field="password">
+            <label class="wa-label" for="forget-password">新密码 <span class="wa-req" aria-hidden="true">*</span></label>
+            <div class="wa-field">
+              <input class="wa-field__input" id="forget-password" type="password" placeholder="至少 6 位" autocomplete="new-password" data-wa-field-input />
+              <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-regular fa-circle-xmark" aria-hidden="true"></i></button>
+            </div>
+            <p class="wa-field__error" data-forget-error="password">请输入新密码</p>
+          </div>
+          <div class="wa-form-item" data-forget-field="confirm">
+            <label class="wa-label" for="forget-confirm">确认密码 <span class="wa-req" aria-hidden="true">*</span></label>
+            <div class="wa-field">
+              <input class="wa-field__input" id="forget-confirm" type="password" placeholder="请再次输入密码" autocomplete="new-password" data-wa-field-input />
+              <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-regular fa-circle-xmark" aria-hidden="true"></i></button>
+            </div>
+            <p class="wa-field__error" data-forget-error="confirm">请再次输入密码</p>
+          </div>
+          <p class="wa-login__hint">示意流程：邮箱验证码 → 设置新密码。演示验证码 <code>123456</code>。</p>
+        </form>
+      </div>
+      <div class="wa-modal__footer">
+        <button type="button" class="wa-btn wa-btn--secondary" data-modal-close>取消</button>
+        <button type="button" class="wa-btn wa-btn--primary" id="forget-submit">确认重置</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wa-modal" id="register-modal" role="dialog" aria-modal="true" aria-labelledby="register-title" aria-hidden="true">
+    <div class="wa-modal__overlay" data-modal-close></div>
+    <div class="wa-modal__panel" tabindex="-1" role="document">
+      <div class="wa-modal__header">
+        <h2 class="wa-modal__title" id="register-title">注册账号</h2>
+        <button type="button" class="wa-modal__close" data-modal-close aria-label="关闭">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="wa-modal__body">
+        <form class="wa-form" id="register-form" novalidate>
+          <div class="wa-form-item" data-register-field="user">
+            <label class="wa-label" for="register-user">用户名 <span class="wa-req" aria-hidden="true">*</span></label>
+            <div class="wa-field">
+              <input class="wa-field__input" id="register-user" type="text" placeholder="请输入用户名" autocomplete="username" data-wa-field-input />
+              <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-regular fa-circle-xmark" aria-hidden="true"></i></button>
+            </div>
+            <p class="wa-field__error" data-register-error="user">请输入用户名</p>
+          </div>
+          <div class="wa-form-item" data-register-field="email">
+            <label class="wa-label" for="register-email">邮箱 <span class="wa-req" aria-hidden="true">*</span></label>
+            <div class="wa-field wa-field--suffix">
+              <input class="wa-field__input" id="register-email" type="email" placeholder="请输入邮箱" autocomplete="email" data-wa-field-input />
+              <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-regular fa-circle-xmark" aria-hidden="true"></i></button>
+              <button type="button" class="wa-login__send" data-send-code="register">发送验证码</button>
+            </div>
+            <p class="wa-field__error" data-register-error="email">请输入邮箱</p>
+          </div>
+          <div class="wa-form-item" data-register-field="code">
+            <label class="wa-label" id="register-code-label">验证码 <span class="wa-req" aria-hidden="true">*</span></label>
+            <div class="wa-otp" data-otp="register" role="group" aria-labelledby="register-code-label">
+              <input class="wa-otp__cell" type="text" inputmode="numeric" maxlength="1" aria-label="第 1 位" autocomplete="one-time-code" />
+              <input class="wa-otp__cell" type="text" inputmode="numeric" maxlength="1" aria-label="第 2 位" />
+              <input class="wa-otp__cell" type="text" inputmode="numeric" maxlength="1" aria-label="第 3 位" />
+              <input class="wa-otp__cell" type="text" inputmode="numeric" maxlength="1" aria-label="第 4 位" />
+              <input class="wa-otp__cell" type="text" inputmode="numeric" maxlength="1" aria-label="第 5 位" />
+              <input class="wa-otp__cell" type="text" inputmode="numeric" maxlength="1" aria-label="第 6 位" />
+            </div>
+            <input type="hidden" id="register-code" value="" />
+            <p class="wa-field__error" data-register-error="code">请输入验证码</p>
+          </div>
+          <div class="wa-form-item" data-register-field="password">
+            <label class="wa-label" for="register-password">密码 <span class="wa-req" aria-hidden="true">*</span></label>
+            <div class="wa-field">
+              <input class="wa-field__input" id="register-password" type="password" placeholder="至少 6 位" autocomplete="new-password" data-wa-field-input />
+              <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-regular fa-circle-xmark" aria-hidden="true"></i></button>
+            </div>
+            <p class="wa-field__error" data-register-error="password">请输入密码</p>
+          </div>
+          <div class="wa-form-item" data-register-field="confirm">
+            <label class="wa-label" for="register-confirm">确认密码 <span class="wa-req" aria-hidden="true">*</span></label>
+            <div class="wa-field">
+              <input class="wa-field__input" id="register-confirm" type="password" placeholder="请再次输入密码" autocomplete="new-password" data-wa-field-input />
+              <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-regular fa-circle-xmark" aria-hidden="true"></i></button>
+            </div>
+            <p class="wa-field__error" data-register-error="confirm">请再次输入密码</p>
+          </div>
+          <p class="wa-login__hint">示意注册：邮箱验证后即可创建账号。演示验证码 <code>123456</code>。</p>
+        </form>
+      </div>
+      <div class="wa-modal__footer">
+        <button type="button" class="wa-btn wa-btn--secondary" data-modal-close>取消</button>
+        <button type="button" class="wa-btn wa-btn--primary" id="register-submit">注册</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/common/js/message.js"></script>
+  <script src="./assets/common/js/field.js"></script>
+  <script src="./js/login.js"></script>
+</body>
+</html>

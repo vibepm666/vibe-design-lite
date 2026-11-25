@@ -1,0 +1,77 @@
+/* Hero accent handwritten underline stroke */
+.wa-hero__accent {
+  display: block;
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0.08em auto 0;
+  padding-bottom: 0.42em;
+  overflow-x: clip;
+  color: transparent;
+  background: linear-gradient(
+    105deg,
+    color-mix(in srgb, var(--wa-color-primary) 78%, #fff) 0%,
+    var(--wa-color-primary) 52%,
+    color-mix(in srgb, var(--wa-color-primary) 90%, #fff) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.wa-hero__accent-stroke {
+  position: absolute;
+  left: var(--wa-accent-left, 0%);
+  right: auto;
+  bottom: 0.02em;
+  /* SVG 为替换元素：须显式 width；路径已落入 viewBox，再禁溢出 */
+  width: calc(100% - var(--wa-accent-left, 0%) - var(--wa-accent-right, 1%));
+  max-width: 100%;
+  height: 0.48em;
+  overflow: hidden;
+  pointer-events: none;
+  color: #ffe566;
+  opacity: 0;
+  transform: rotate(var(--wa-accent-rot, -1deg)) scaleX(0.08);
+  transform-origin: left center;
+  will-change: transform, opacity;
+  box-sizing: border-box;
+}
+
+.wa-hero__accent-stroke.is-ready {
+  animation: wa-accent-draw var(--wa-accent-dur, 0.95s) cubic-bezier(0.22, 0.82, 0.2, 1) var(--wa-accent-delay, 0.28s) forwards;
+}
+
+.wa-hero__accent-stroke path {
+  fill: currentColor;
+}
+
+html[data-theme="dark"] .wa-hero__accent-stroke {
+  color: #f5d84a;
+}
+
+@keyframes wa-accent-draw {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--wa-accent-rot, -1deg)) scaleX(0.08);
+  }
+  18% {
+    opacity: 0.55;
+  }
+  72% {
+    opacity: var(--wa-accent-opacity, 0.92);
+  }
+  100% {
+    opacity: var(--wa-accent-opacity, 0.92);
+    transform: rotate(var(--wa-accent-rot, -1deg)) scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-hero__accent-stroke,
+  .wa-hero__accent-stroke.is-ready {
+    animation: none;
+    opacity: var(--wa-accent-opacity, 0.92);
+    transform: rotate(var(--wa-accent-rot, -1deg)) scaleX(1);
+  }
+}

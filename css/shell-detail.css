@@ -1,0 +1,411 @@
+.wa-shell-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 16px;
+  align-items: start;
+}
+
+.wa-shell-detail-layout__main,
+.wa-shell-detail-layout__side {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.wa-shell-kv {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px 20px;
+  margin: 0;
+}
+
+.wa-shell-kv__item {
+  min-width: 0;
+}
+
+.wa-shell-kv__item--full {
+  grid-column: 1 / -1;
+}
+
+.wa-shell-kv__item dt {
+  margin: 0 0 4px;
+  color: var(--wa-color-text-secondary, var(--wa-color-muted));
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.wa-shell-kv__item dd {
+  margin: 0;
+  color: var(--wa-color-text);
+  font-size: 14px;
+  line-height: 1.55;
+  word-break: break-word;
+}
+
+.wa-shell-kv__item .wa-chip-group--readonly {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.wa-shell-attach-list {
+  list-style: none;
+  margin: 2px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  max-width: 28rem;
+}
+
+.wa-shell-attach-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--wa-color-border-1, var(--wa-color-border));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--wa-color-fill-1, rgba(17, 17, 19, 0.04)) 70%, var(--wa-color-surface));
+  color: var(--wa-color-text);
+}
+
+.wa-shell-attach-list__icon {
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--wa-color-primary-soft, color-mix(in srgb, var(--wa-color-primary) 12%, transparent));
+  color: var(--wa-color-primary, #13c7c2);
+  font-size: 0.95rem;
+}
+
+.wa-shell-attach-list__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.wa-shell-attach-list__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-weight: 550;
+  line-height: 1.35;
+}
+
+.wa-shell-attach-list__meta {
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: var(--wa-color-muted);
+}
+
+.wa-shell-tabs__meta {
+  margin-left: auto;
+  color: var(--wa-color-text-secondary, var(--wa-color-muted));
+  font-size: 0.75rem;
+}
+
+.wa-shell-timeline-list,
+.wa-shell-people,
+.wa-shell-change-list,
+.wa-shell-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wa-shell-timeline-list__item,
+.wa-shell-people li,
+.wa-shell-change-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--wa-color-border-1, var(--wa-color-border));
+}
+
+.wa-shell-timeline-list__item:last-child,
+.wa-shell-people li:last-child,
+.wa-shell-change-list li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.wa-shell-timeline-list__item > i,
+.wa-shell-change-list li > i {
+  flex: 0 0 1.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+  color: var(--wa-color-muted);
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.wa-shell-timeline-list__item.is-done > i,
+.wa-shell-timeline-list__item.is-active > i {
+  color: var(--wa-color-primary, #13c7c2);
+}
+
+.wa-shell-change-list li > i {
+  color: var(--wa-color-primary, #13c7c2);
+  font-size: 0.75rem;
+}
+
+.wa-shell-timeline-list__item strong,
+.wa-shell-people strong,
+.wa-shell-change-list strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  color: var(--wa-color-text);
+}
+
+.wa-shell-timeline-list__item span,
+.wa-shell-change-list__body > span {
+  color: var(--wa-color-text-secondary, var(--wa-color-muted));
+  font-size: 0.75rem;
+}
+
+.wa-shell-people li {
+  align-items: center;
+  gap: 12px;
+}
+
+.wa-shell-people__avatar {
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--wa-color-primary, #13c7c2) 14%, transparent);
+  color: var(--wa-color-primary, #13c7c2);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.wa-shell-people__body {
+  min-width: 0;
+  flex: 1;
+}
+
+.wa-shell-people__body strong {
+  margin-bottom: 6px;
+}
+
+.wa-shell-people__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.wa-shell-people__tags span {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--wa-color-fill-1, color-mix(in srgb, var(--wa-color-border) 35%, transparent));
+  color: var(--wa-color-text-secondary, var(--wa-color-muted));
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.wa-shell-change-list__body {
+  min-width: 0;
+  flex: 1;
+}
+
+.wa-shell-change-list strong em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--wa-color-text-secondary, var(--wa-color-muted));
+}
+
+.wa-shell-change-list strong em.is-to {
+  color: var(--wa-color-primary, #13c7c2);
+}
+
+.wa-shell-change-list__arrow {
+  display: inline-block;
+  margin: 0 6px;
+  color: var(--wa-color-text-secondary, var(--wa-color-muted));
+  font-weight: 500;
+}
+
+.wa-shell-progress__value {
+  margin: 0 0 10px;
+  font-size: 1.75rem;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  color: var(--wa-color-text);
+}
+
+.wa-shell-progress__hint {
+  margin: 10px 0 0;
+  color: var(--wa-color-text-secondary, var(--wa-color-muted));
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.wa-shell-stat {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.wa-shell-stat > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.wa-shell-stat dt {
+  margin: 0;
+  color: var(--wa-color-text-secondary, var(--wa-color-muted));
+  font-size: 0.8125rem;
+}
+
+.wa-shell-stat dd {
+  margin: 0;
+  color: var(--wa-color-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.wa-shell-stat dd.is-warn {
+  color: #d97706;
+}
+
+.wa-shell-steps {
+  display: grid;
+  gap: 0;
+}
+
+.wa-shell-steps li {
+  display: grid;
+  grid-template-columns: 1.25rem minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  position: relative;
+  padding-bottom: 14px;
+}
+
+.wa-shell-steps li:last-child {
+  padding-bottom: 0;
+}
+
+.wa-shell-steps li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: calc(0.625rem - 1px);
+  top: 1.25rem;
+  bottom: 0;
+  width: 2px;
+  background: var(--wa-color-border-1, var(--wa-color-border));
+}
+
+.wa-shell-steps__dot {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 2px solid var(--wa-color-border);
+  background: var(--wa-color-surface);
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 0.625rem;
+  line-height: 1;
+}
+
+.wa-shell-steps__dot i {
+  display: none;
+  line-height: 1;
+}
+
+.wa-shell-steps li.is-done .wa-shell-steps__dot,
+.wa-shell-steps li.is-current .wa-shell-steps__dot {
+  border-color: var(--wa-color-primary, #13c7c2);
+  background: var(--wa-color-primary, #13c7c2);
+}
+
+.wa-shell-steps li.is-done .wa-shell-steps__dot i {
+  display: inline-block;
+}
+
+.wa-shell-steps li.is-current .wa-shell-steps__dot {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--wa-color-primary, #13c7c2) 22%, transparent);
+}
+
+.wa-shell-steps strong {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  color: var(--wa-color-text);
+}
+
+.wa-shell-steps span:not(.wa-shell-steps__dot) {
+  color: var(--wa-color-text-secondary, var(--wa-color-muted));
+  font-size: 0.75rem;
+}
+
+.wa-shell-block > .wa-shell-tabs {
+  width: 100%;
+  height: auto;
+  margin: -6px 0 14px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  border-bottom: 1px solid var(--wa-color-border-1, var(--wa-color-border));
+  gap: 0 4px;
+}
+
+.wa-shell-block > .wa-shell-tabs .wa-shell-tabs__btn {
+  height: auto;
+  min-height: 36px;
+  padding: 8px 12px;
+  border-radius: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.wa-shell-block > .wa-shell-tabs .wa-shell-tabs__btn.is-active {
+  background: transparent;
+  color: var(--wa-color-primary, #13c7c2);
+  border-bottom-color: var(--wa-color-primary, #13c7c2);
+  box-shadow: none;
+}
+@media (max-width: 1100px) {
+  .wa-shell-detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .wa-shell-kv {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .wa-shell-kv {
+    grid-template-columns: 1fr;
+  }
+}

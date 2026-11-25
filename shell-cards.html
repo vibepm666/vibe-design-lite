@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>工作台 / 卡片列表 — Vibe Design Lite | VibePM</title>
+  <meta name="description" content="Vibe Design Lite 工作台：卡片列表页样板。" />
+  <meta name="keywords" content="Vibe Design Lite,工作台,卡片列表,静态模板,VibePM" />
+  <meta name="author" content="VibePM" />
+  <meta name="theme-color" content="#13c7c2" />
+  <script src="./assets/common/js/theme.js"></script>
+  <link rel="stylesheet" href="./vendor/fontawesome_free/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/common/css/global.css" />
+  <link rel="stylesheet" href="./assets/common/css/chrome.css" />
+  <link rel="stylesheet" href="./assets/common/css/components.css" />
+  <link rel="stylesheet" href="./css/shell.css" />
+  <script src="./assets/common/js/shell-boot.js"></script>
+  <link rel="stylesheet" href="./css/shell-cards.css" />
+  <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml">
+  <noscript><style>body.wa-app-page{visibility:visible!important}</style></noscript>
+</head>
+<body class="wa-app-page">
+  <div class="wa-app" id="wa-app" data-wa-app data-shell-page="cards">
+    <div data-shell-content>
+      <section class="wa-app__panel">
+        <div class="wa-app__panel-head">
+          <h2>卡片列表</h2>
+          <p>以卡片呈现资源条目；适合封面、摘要与快捷操作并存的场景。</p>
+        </div>
+
+        <div class="wa-shell-card-toolbar">
+          <div class="wa-shell-card-toolbar__start">
+            <a class="wa-btn wa-btn--primary" href="./shell-form.html?mode=create">
+              <i class="fa-solid fa-plus" aria-hidden="true"></i>
+              新建
+            </a>
+            <button type="button" class="wa-btn wa-btn--secondary" id="card-refresh">
+              <i class="fa-solid fa-rotate" aria-hidden="true"></i>
+              刷新
+            </button>
+          </div>
+          <div class="wa-shell-card-toolbar__filters">
+            <div class="wa-field wa-field--icon wa-shell-card-search">
+              <i class="fa-solid fa-magnifying-glass wa-field__icon" aria-hidden="true"></i>
+              <span class="wa-sr-only">关键词</span>
+              <input class="wa-field__input" type="text" placeholder="搜索标题 / 产品 / 模块" data-wa-field-input autocomplete="off" id="card-filter" />
+              <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true">
+                <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="wa-field wa-field--select wa-shell-card-select">
+              <select class="wa-field__select" data-wa-combo data-wa-combo-clear data-placeholder="类型" aria-label="类型" id="card-type-filter">
+                <option value="">全部类型</option>
+                <option value="故障">故障</option>
+                <option value="咨询">咨询</option>
+                <option value="需求">需求</option>
+                <option value="投诉">投诉</option>
+              </select>
+            </div>
+            <div class="wa-field wa-field--select wa-shell-card-select">
+              <select class="wa-field__select" data-wa-combo data-wa-combo-clear data-placeholder="优先级" aria-label="优先级" id="card-priority-filter">
+                <option value="">全部优先级</option>
+                <option value="P0">P0</option>
+                <option value="P1">P1</option>
+                <option value="P2">P2</option>
+                <option value="P3">P3</option>
+              </select>
+            </div>
+            <div class="wa-field wa-field--select wa-shell-card-select">
+              <select class="wa-field__select" data-wa-combo data-wa-combo-clear data-placeholder="渠道" aria-label="渠道" id="card-channel-filter">
+                <option value="">全部渠道</option>
+                <option value="站内反馈">站内反馈</option>
+                <option value="邮件">邮件</option>
+                <option value="电话">电话</option>
+                <option value="企微">企微</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="wa-shell-card-grid" id="card-grid" aria-label="卡片列表">
+          <article class="wa-shell-card" data-card-type="故障" data-card-title="登录页验证码无法发送" data-card-priority="P1" data-card-channel="站内反馈">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">登录页验证码无法发送</h3>
+              <span class="wa-badge wa-badge--warn">待受理</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">会员中心</span>
+              <span class="wa-shell-card__meta">故障 · P1 · 站内反馈</span>
+            </div>
+            <p class="wa-shell-card__desc">部分用户点击获取验证码无响应，疑似短信通道限流。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">陈</span>
+                <span>陈可 · 2026-11-22 18:00</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t1">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t1">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="需求" data-card-title="导出报表增加时间筛选" data-card-priority="P2" data-card-channel="邮件">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">导出报表增加时间筛选</h3>
+              <span class="wa-badge wa-badge--run">处理中</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">工作台</span>
+              <span class="wa-shell-card__meta">需求 · P2 · 邮件</span>
+            </div>
+            <p class="wa-shell-card__desc">运营希望按自然周导出访问数据，并保留筛选条件。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">李</span>
+                <span>李晓雯 · 2026-11-25 12:00</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t2">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t2">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="咨询" data-card-title="如何开通消息推送" data-card-priority="P3" data-card-channel="企微">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">如何开通消息推送</h3>
+              <span class="wa-badge wa-badge--ok">已关闭</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">消息中心</span>
+              <span class="wa-shell-card__meta">咨询 · P3 · 企微</span>
+            </div>
+            <p class="wa-shell-card__desc">客户咨询站内信与邮件推送的开通步骤，已附操作说明。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">王</span>
+                <span>王立群 · 2026-11-18 17:30</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t3">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t3">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="故障" data-card-title="暗色主题下表格边框过浅" data-card-priority="P2" data-card-channel="电话">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">暗色主题下表格边框过浅</h3>
+              <span class="wa-badge wa-badge--run">处理中</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">门户</span>
+              <span class="wa-shell-card__meta">故障 · P2 · 电话</span>
+            </div>
+            <p class="wa-shell-card__desc">暗色模式下分割线对比度不足，影响扫描效率。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">周</span>
+                <span>周倩 · 2026-11-23 10:00</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t4">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t4">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="需求" data-card-title="卡片列表支持批量归档" data-card-priority="P1" data-card-channel="站内反馈">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">卡片列表支持批量归档</h3>
+              <span class="wa-badge wa-badge--ok">已关闭</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">会员中心</span>
+              <span class="wa-shell-card__meta">需求 · P1 · 站内反馈</span>
+            </div>
+            <p class="wa-shell-card__desc">希望在卡片视图勾选多条后一键归档，减少切换表格成本。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">赵</span>
+                <span>赵宁 · 2026-11-24 16:00</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t5">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t5">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="咨询" data-card-title="权限不足时的引导文案" data-card-priority="P3" data-card-channel="邮件">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">权限不足时的引导文案</h3>
+              <span class="wa-badge wa-badge--warn">待受理</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">工作台</span>
+              <span class="wa-shell-card__meta">咨询 · P3 · 邮件</span>
+            </div>
+            <p class="wa-shell-card__desc">确认异常页按钮文案与返回路径，已同步到异常页面样板。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">系</span>
+                <span>系统 · 2026-11-26 09:00</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-exception.html">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t6">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="故障" data-card-title="上传大图偶发超时" data-card-priority="P1" data-card-channel="企微">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">上传大图偶发超时</h3>
+              <span class="wa-badge wa-badge--warn">待受理</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">消息中心</span>
+              <span class="wa-shell-card__meta">故障 · P1 · 企微</span>
+            </div>
+            <p class="wa-shell-card__desc">超过 5MB 的封面图在弱网环境下失败率偏高，需补重试与进度提示。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">孙</span>
+                <span>孙浩 · 2026-11-22 20:00</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t7">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t7">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="需求" data-card-title="消息中心支持按项目筛选" data-card-priority="P2" data-card-channel="电话">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">消息中心支持按项目筛选</h3>
+              <span class="wa-badge wa-badge--run">处理中</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">门户</span>
+              <span class="wa-shell-card__meta">需求 · P2 · 电话</span>
+            </div>
+            <p class="wa-shell-card__desc">协作消息过多时，希望能按所属项目快速过滤未读项。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">吴</span>
+                <span>吴佳 · 2026-11-27 15:00</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t8">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t8">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="咨询" data-card-title="如何切换到暗色主题" data-card-priority="P3" data-card-channel="站内反馈">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">如何切换到暗色主题</h3>
+              <span class="wa-badge wa-badge--ok">已关闭</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">会员中心</span>
+              <span class="wa-shell-card__meta">咨询 · P3 · 站内反馈</span>
+            </div>
+            <p class="wa-shell-card__desc">已说明顶栏主题切换入口，并补充偏好记忆说明。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">郑</span>
+                <span>郑宇 · 2026-11-19 11:00</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t9">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t9">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="故障" data-card-title="筛选清空后宽度抖动" data-card-priority="P2" data-card-channel="邮件">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">筛选清空后宽度抖动</h3>
+              <span class="wa-badge wa-badge--ok">已关闭</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">工作台</span>
+              <span class="wa-shell-card__meta">故障 · P2 · 邮件</span>
+            </div>
+            <p class="wa-shell-card__desc">组合筛选清除按钮显隐时，表格工具栏宽度轻微跳动。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">冯</span>
+                <span>冯蕾 · 2026-11-21 14:00</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t10">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t10">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="需求" data-card-title="详情页增加关联动态折叠" data-card-priority="P2" data-card-channel="企微">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">详情页增加关联动态折叠</h3>
+              <span class="wa-badge wa-badge--run">处理中</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">消息中心</span>
+              <span class="wa-shell-card__meta">需求 · P2 · 企微</span>
+            </div>
+            <p class="wa-shell-card__desc">动态较多时默认折叠，仅展示最近两条，可展开查看全部。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">韩</span>
+                <span>韩雪 · 2026-11-28 18:00</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t11">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t11">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="咨询" data-card-title="演示账号权限范围说明" data-card-priority="P3" data-card-channel="电话">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">演示账号权限范围说明</h3>
+              <span class="wa-badge wa-badge--warn">待受理</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">门户</span>
+              <span class="wa-shell-card__meta">咨询 · P3 · 电话</span>
+            </div>
+            <p class="wa-shell-card__desc">已补充 demo 账号可访问页面清单，并指向异常页样板。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">曹</span>
+                <span>曹明 · 2026-11-29 10:30</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t12">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t12">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="故障" data-card-title="移动端侧栏遮罩穿透" data-card-priority="P1" data-card-channel="站内反馈">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">移动端侧栏遮罩穿透</h3>
+              <span class="wa-badge wa-badge--ok">已关闭</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">会员中心</span>
+              <span class="wa-shell-card__meta">故障 · P1 · 站内反馈</span>
+            </div>
+            <p class="wa-shell-card__desc">小屏打开导航后，遮罩层偶发无法拦截底层滚动。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">林</span>
+                <span>林舟 · 2026-11-22 19:00</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t13">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t13">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="需求" data-card-title="分页支持跳转到指定页" data-card-priority="P2" data-card-channel="邮件">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">分页支持跳转到指定页</h3>
+              <span class="wa-badge wa-badge--warn">待受理</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">工作台</span>
+              <span class="wa-shell-card__meta">需求 · P2 · 邮件</span>
+            </div>
+            <p class="wa-shell-card__desc">数据量大时希望输入页码直达，减少连续翻页成本。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">何</span>
+                <span>何敏 · 2026-11-30 13:00</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t14">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t14">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="咨询" data-card-title="如何导出当前筛选结果" data-card-priority="P3" data-card-channel="企微">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">如何导出当前筛选结果</h3>
+              <span class="wa-badge wa-badge--run">处理中</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">消息中心</span>
+              <span class="wa-shell-card__meta">咨询 · P3 · 企微</span>
+            </div>
+            <p class="wa-shell-card__desc">已说明导出跟随筛选条件，并补充空结果时的提示文案。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">许</span>
+                <span>许晴 · 2026-11-24 11:00</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t15">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t15">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="故障" data-card-title="消息未读红点偶发不消失" data-card-priority="P2" data-card-channel="电话">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">消息未读红点偶发不消失</h3>
+              <span class="wa-badge wa-badge--warn">待受理</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">门户</span>
+              <span class="wa-shell-card__meta">故障 · P2 · 电话</span>
+            </div>
+            <p class="wa-shell-card__desc">标为已读后切换筛选，红点状态偶尔回滚，需核对本地状态同步。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">马</span>
+                <span>马超 · 2026-11-23 16:30</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t16">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t16">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="需求" data-card-title="卡片支持快捷置顶" data-card-priority="P2" data-card-channel="站内反馈">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">卡片支持快捷置顶</h3>
+              <span class="wa-badge wa-badge--ok">已关闭</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">会员中心</span>
+              <span class="wa-shell-card__meta">需求 · P2 · 站内反馈</span>
+            </div>
+            <p class="wa-shell-card__desc">重要工单希望一键置顶，并在列表与卡片视图保持一致排序。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">唐</span>
+                <span>唐宁 · 2026-11-25 09:30</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t17">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t17">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="咨询" data-card-title="表单必填校验文案规范" data-card-priority="P3" data-card-channel="邮件">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">表单必填校验文案规范</h3>
+              <span class="wa-badge wa-badge--run">处理中</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">工作台</span>
+              <span class="wa-shell-card__meta">咨询 · P3 · 邮件</span>
+            </div>
+            <p class="wa-shell-card__desc">已统一必填提示语气，并同步到工单表单样板。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">蒋</span>
+                <span>蒋一 · 2026-11-26 18:00</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t18">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t18">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="故障" data-card-title="分页信息空格显示不一致" data-card-priority="P3" data-card-channel="企微">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">分页信息空格显示不一致</h3>
+              <span class="wa-badge wa-badge--warn">待受理</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">消息中心</span>
+              <span class="wa-shell-card__meta">故障 · P3 · 企微</span>
+            </div>
+            <p class="wa-shell-card__desc">共 N 条文案在不同页面空格不一致，统一为中文排版规范。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">卢</span>
+                <span>卢方 · 2026-11-27 10:00</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t19">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t19">编辑</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wa-shell-card" data-card-type="需求" data-card-title="空状态支持自定义插图" data-card-priority="P2" data-card-channel="电话">
+            <div class="wa-shell-card__head">
+              <h3 class="wa-shell-card__title">空状态支持自定义插图</h3>
+              <span class="wa-badge wa-badge--ok">已关闭</span>
+            </div>
+            <div class="wa-shell-card__meta-row">
+              <span class="wa-chip wa-shell-card__product" aria-label="所属产品">门户</span>
+              <span class="wa-shell-card__meta">需求 · P2 · 电话</span>
+            </div>
+            <p class="wa-shell-card__desc">提示页希望可替换插图与主文案，适配不同业务模块。</p>
+            <div class="wa-shell-card__foot">
+              <div class="wa-shell-card__user">
+                <span class="wa-shell-card__avatar" aria-hidden="true">程</span>
+                <span>程远 · 2026-11-28 15:00</span>
+              </div>
+              <div class="wa-shell-card__actions">
+                <a class="wa-link" href="./shell-detail.html?id=t20">查看</a>
+                <a class="wa-link" href="./shell-form.html?mode=edit&amp;id=t20">编辑</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="wa-empty wa-shell-card-empty" data-card-empty hidden role="status">
+          <i class="fa-solid fa-inbox wa-empty__icon" aria-hidden="true"></i>
+          <p class="wa-empty__title">暂无匹配结果</p>
+          <p class="wa-empty__desc">试试调整关键词或筛选条件，或清空后重新查看。</p>
+        </div>
+
+        <nav class="wa-pagination wa-shell-card-pager" aria-label="分页" data-card-pager>
+          <div class="wa-pagination__actions"></div>
+          <div class="wa-pagination__end">
+            <p class="wa-pagination__info" data-card-page-info>共 0 条 · 第 1 / 1 页</p>
+            <div class="wa-pagination__controls" data-card-page-controls></div>
+          </div>
+        </nav>
+      </section>
+    </div>
+  </div>
+
+  <script src="./assets/common/js/message.js"></script>
+  <script src="./assets/common/js/confirm.js"></script>
+  <script src="./assets/common/js/field.js"></script>
+  <script src="./assets/common/js/combo.js"></script>
+  <script src="./assets/common/js/page-loading.js"></script>
+  <script src="./assets/common/js/app-shell.js"></script>
+  <script src="./js/shell.js"></script>
+  <script src="./js/shell-cards.js"></script>
+</body>
+</html>

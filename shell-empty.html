@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>工作台 / 提示页面 — Vibe Design Lite | VibePM</title>
+  <meta name="description" content="Vibe Design Lite 工作台：提示页面（空状态）样板。" />
+  <meta name="keywords" content="Vibe Design Lite,工作台,提示页面,空状态,静态模板,VibePM" />
+  <meta name="author" content="VibePM" />
+  <meta name="theme-color" content="#13c7c2" />
+  <script src="./assets/common/js/theme.js"></script>
+  <link rel="stylesheet" href="./vendor/fontawesome_free/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/common/css/global.css" />
+  <link rel="stylesheet" href="./assets/common/css/chrome.css" />
+  <link rel="stylesheet" href="./assets/common/css/components.css" />
+  <link rel="stylesheet" href="./css/shell.css" />
+  <script src="./assets/common/js/shell-boot.js"></script>
+  <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml">
+  <noscript><style>body.wa-app-page{visibility:visible!important}</style></noscript>
+</head>
+<body class="wa-app-page">
+  <div class="wa-app" id="wa-app" data-wa-app data-shell-page="empty">
+    <div data-shell-content>
+      <section class="wa-app__panel">
+        <div class="wa-shell-empty" role="status">
+          <div class="wa-shell-empty__icon" aria-hidden="true">
+            <i class="fa-solid fa-clipboard-list"></i>
+          </div>
+          <h3 class="wa-shell-empty__title">还没有工单</h3>
+          <p class="wa-shell-empty__desc">创建第一张工单后，列表、筛选与跟进记录会出现在这里。</p>
+          <div class="wa-shell-empty__actions">
+            <a class="wa-btn wa-btn--primary" href="./shell-form.html?mode=create">新建工单</a>
+            <a class="wa-btn wa-btn--secondary" href="./shell-data.html">查看示例</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="./assets/common/js/message.js"></script>
+  <script src="./assets/common/js/confirm.js"></script>
+  <script src="./assets/common/js/page-loading.js"></script>
+  <script src="./assets/common/js/app-shell.js"></script>
+  <script src="./js/shell.js"></script>
+</body>
+</html>

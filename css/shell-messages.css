@@ -1,0 +1,153 @@
+.wa-shell-msg-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.wa-shell-msg-toolbar .wa-tabs__list {
+  flex-wrap: nowrap;
+  gap: 2px;
+  padding: 3px;
+}
+
+.wa-shell-msg-toolbar .wa-tabs__tab {
+  padding: 6px 14px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.wa-shell-messages {
+  display: grid;
+  gap: 0;
+  padding: 6px 16px;
+  border: 1px solid var(--wa-color-border-1, var(--wa-color-border));
+  border-radius: 12px;
+  background: var(--wa-color-surface);
+}
+
+.wa-shell-msg {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px 14px;
+  align-items: start;
+  padding: 18px 4px;
+  border-bottom: 1px solid var(--wa-color-border-1, var(--wa-color-border));
+}
+
+.wa-shell-msg[hidden] {
+  display: none !important;
+}
+
+.wa-shell-msg:last-child {
+  border-bottom: 0;
+}
+
+.wa-shell-msg.is-unread .wa-shell-msg__body > strong::after,
+.wa-shell-msg.is-unread .wa-shell-msg__head strong::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-left: 10px;
+  border-radius: 999px;
+  background: var(--wa-color-primary, #13c7c2);
+  vertical-align: 0.15em;
+}
+
+.wa-shell-msg__mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin-top: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--wa-color-primary, #13c7c2) 12%, transparent);
+  color: color-mix(in srgb, var(--wa-color-primary, #13c7c2) 72%, var(--wa-color-text));
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.wa-shell-msg__mark i {
+  display: block;
+  line-height: 1;
+  width: 1em;
+  text-align: center;
+}
+
+.wa-shell-msg__mark .fa-solid,
+.wa-shell-msg__mark .fas {
+  font-weight: 900;
+}
+
+.wa-shell-msg__mark .fa-regular,
+.wa-shell-msg__mark .far {
+  font-weight: 400;
+}
+
+.wa-shell-msg__mark .fa-light,
+.wa-shell-msg__mark .fal {
+  font-weight: 300;
+}
+
+.wa-shell-msg__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 12px;
+  row-gap: 6px;
+  align-items: start;
+}
+
+.wa-shell-msg__head {
+  display: contents;
+}
+
+.wa-shell-msg__body > strong,
+.wa-shell-msg__head strong {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--wa-color-text);
+}
+
+.wa-shell-msg__meta {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.wa-shell-msg__meta time {
+  color: var(--wa-color-text-secondary, var(--wa-color-muted));
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.wa-shell-msg__meta .wa-link {
+  font-size: 0.8125rem;
+}
+
+button.wa-link {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+.wa-shell-msg__body > p {
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0;
+  color: var(--wa-color-text-secondary, var(--wa-color-muted));
+  font-size: 0.875rem;
+  line-height: 1.45;
+}

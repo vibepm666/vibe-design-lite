@@ -1,0 +1,361 @@
+/** 页级入口：先共用版式，再本页区块 */
+@import url("./shared.css");
+
+/**
+ * 登录页：居中卡片壳；背景用落地页 wa-landing-bg + 当前主题色相
+ */
+
+body.wa-login-page {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.wa-login {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 32px 24px 48px;
+  font-family: var(--wa-font-sans);
+}
+
+.wa-login__card {
+  width: 100%;
+  max-width: 400px;
+  padding: 36px 28px 28px;
+  border: none;
+  border-radius: var(--wa-radius-lg, 20px);
+  /* 半透明玻璃卡 */
+  background: color-mix(in srgb, var(--wa-color-surface) 72%, transparent);
+  box-shadow: var(--wa-shadow-soft);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  backdrop-filter: blur(18px) saturate(1.15);
+  isolation: isolate;
+}
+
+html[data-theme="dark"] .wa-login__card {
+  background: color-mix(in srgb, var(--wa-color-surface) 62%, transparent);
+}
+
+.wa-login__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 0 24px;
+}
+
+.wa-login__logo {
+  display: inline-flex;
+  margin: 0 0 10px;
+  text-decoration: none;
+}
+
+.wa-login__logo .wa-brand__mark {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  font-size: 1.2rem;
+}
+
+.wa-login__logo:hover .wa-brand__mark {
+  background: color-mix(in srgb, var(--wa-color-primary) 88%, #000);
+}
+
+.wa-login__title {
+  margin: 0 0 4px;
+  font-family: var(--wa-font-display, var(--wa-font-sans));
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--wa-color-text-1, var(--wa-color-text));
+}
+
+.wa-login__lead {
+  margin: 0;
+  max-width: 18em;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--wa-color-muted);
+}
+
+.wa-login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: none;
+  width: 100%;
+}
+
+.wa-login__form .wa-form-item {
+  margin-bottom: 14px;
+  gap: 8px;
+}
+
+.wa-login__form .wa-label {
+  font-size: 13px;
+}
+
+/* 登录卡内输入：半透明灰底；悬停/聚焦只改描边光晕 */
+.wa-login__card .wa-field {
+  background: color-mix(in srgb, var(--wa-color-text) 5%, transparent);
+  border-color: color-mix(in srgb, var(--wa-color-text) 10%, transparent);
+  box-shadow: none;
+}
+
+.wa-login__card .wa-field:hover:not(:focus-within) {
+  background: color-mix(in srgb, var(--wa-color-text) 7%, transparent);
+  border-color: color-mix(in srgb, var(--wa-color-primary) 42%, var(--wa-color-border-2, var(--wa-color-border)));
+}
+
+.wa-login__card .wa-field:focus-within {
+  background: color-mix(in srgb, var(--wa-color-text) 4%, transparent);
+  border-color: var(--wa-color-primary);
+  box-shadow: 0 0 0 var(--wa-ctrl-ring, 3px) var(--wa-color-primary-soft);
+}
+
+html[data-theme="dark"] .wa-login__card .wa-field {
+  background: color-mix(in srgb, #fff 8%, transparent);
+  border-color: color-mix(in srgb, #fff 14%, transparent);
+}
+
+html[data-theme="dark"] .wa-login__card .wa-field:hover:not(:focus-within) {
+  background: color-mix(in srgb, #fff 11%, transparent);
+}
+
+html[data-theme="dark"] .wa-login__card .wa-field:focus-within {
+  background: color-mix(in srgb, #fff 6%, transparent);
+}
+
+.wa-login .wa-field__icon {
+  display: inline-flex;
+  opacity: 0.7;
+}
+
+.wa-login .wa-field--icon {
+  gap: 10px;
+}
+
+.wa-login__toggle-pwd {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--wa-color-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wa-login__toggle-pwd:hover {
+  color: var(--wa-color-text);
+  background: color-mix(in srgb, var(--wa-color-muted) 12%, transparent);
+}
+
+.wa-login__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 2px 0 4px;
+  font-size: 14px;
+}
+
+.wa-login__link {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  color: var(--wa-color-muted);
+}
+
+.wa-login__link:hover {
+  color: var(--wa-color-primary);
+}
+
+.wa-login__submit {
+  width: 100%;
+  min-height: var(--wa-field-h, 44px);
+  height: var(--wa-field-h, 44px);
+  margin-top: 10px;
+  border-radius: 10px;
+  gap: 8px;
+}
+
+.wa-login__register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 14px;
+  padding: 8px 4px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--wa-color-primary);
+  cursor: pointer;
+}
+
+.wa-login__register:hover {
+  opacity: 0.9;
+  background: color-mix(in srgb, var(--wa-color-primary) 6%, transparent);
+}
+
+.wa-login__social {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.wa-login__social-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 14px;
+  font-size: 12px;
+  color: var(--wa-color-muted);
+}
+
+.wa-login__social-label::before,
+.wa-login__social-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: color-mix(in srgb, var(--wa-color-border-2, var(--wa-color-border)) 70%, transparent);
+}
+
+.wa-login__social-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.wa-login__social-btn {
+  width: 44px;
+  height: 44px;
+  border: 1px solid color-mix(in srgb, var(--wa-color-text) 10%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--wa-color-text) 5%, transparent);
+  color: var(--wa-color-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  padding: 0;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.wa-login__social-btn:hover {
+  color: var(--wa-color-primary);
+  border-color: color-mix(in srgb, var(--wa-color-primary) 40%, transparent);
+  background: color-mix(in srgb, var(--wa-color-primary) 10%, transparent);
+}
+
+.wa-login__back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  color: var(--wa-color-text-secondary, var(--wa-color-muted));
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.wa-login__back:hover {
+  color: var(--wa-color-text);
+  transform: translateX(-2px);
+}
+
+.wa-login__back i {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.wa-login__hint {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--wa-color-muted);
+}
+
+.wa-login__hint code {
+  font-size: 0.92em;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--wa-color-primary) 10%, transparent);
+  color: var(--wa-color-primary);
+}
+
+/* 登录页表单弹窗 */
+body.wa-login-page #forget-modal .wa-modal__panel,
+body.wa-login-page #register-modal .wa-modal__panel {
+  width: min(420px, calc(100vw - 32px));
+}
+
+/* 邮箱框内「发送验证码」；.wa-field--suffix → assets/common/css/components.css */
+
+.wa-login__send {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0 6px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--wa-color-primary);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.wa-login__send:hover:not(:disabled) {
+  color: var(--wa-color-primary-strong, var(--wa-color-primary));
+  background: transparent;
+}
+
+.wa-login__send:disabled {
+  color: var(--wa-color-muted);
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+/* 六位验证码 .wa-otp → assets/common/css/components.css */
+
+@media (max-width: 520px) {
+  .wa-login {
+    gap: 22px;
+    padding: 24px 16px 36px;
+  }
+
+  .wa-login__card {
+    padding: 28px 20px 22px;
+  }
+
+  .wa-login__head {
+    margin-bottom: 22px;
+  }
+}

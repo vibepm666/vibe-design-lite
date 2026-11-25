@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>工作台 / 详情页面 — Vibe Design Lite | VibePM</title>
+  <meta name="description" content="Vibe Design Lite 工作台：详情页面样板。" />
+  <meta name="keywords" content="Vibe Design Lite,工作台,基础后台,详情页,工单,静态模板,VibePM" />
+  <meta name="author" content="VibePM" />
+  <meta name="theme-color" content="#13c7c2" />
+  <script src="./assets/common/js/theme.js"></script>
+  <link rel="stylesheet" href="./vendor/fontawesome_free/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/common/css/global.css" />
+  <link rel="stylesheet" href="./assets/common/css/chrome.css" />
+  <link rel="stylesheet" href="./assets/common/css/components.css" />
+  <link rel="stylesheet" href="./css/shell.css" />
+  <script src="./assets/common/js/shell-boot.js"></script>
+  <link rel="stylesheet" href="./css/shell-detail.css" />
+  <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml">
+  <noscript><style>body.wa-app-page{visibility:visible!important}</style></noscript>
+</head>
+<body class="wa-app-page">
+  <div class="wa-app" id="wa-app" data-wa-app data-shell-page="detail" data-crumb-extra="TK-20261120-018">
+    <div data-shell-content>
+      <section class="wa-app__panel">
+        <div class="wa-shell-pagehead wa-shell-pagehead--detail">
+          <div class="wa-shell-pagehead__main">
+            <div class="wa-shell-pagehead__title-row">
+              <h2 id="detail-title">登录页验证码无法发送</h2>
+              <span class="wa-badge wa-badge--run" id="detail-status">处理中</span>
+            </div>
+            <p class="wa-shell-pagehead__meta" id="detail-sub">
+              <span><i class="fa-solid fa-layer-group" aria-hidden="true"></i> 故障 · P1</span>
+              <span><i class="fa-solid fa-inbox" aria-hidden="true"></i> 站内反馈</span>
+              <span><i class="fa-solid fa-clock" aria-hidden="true"></i> 创建于 2026-11-20 10:12</span>
+            </p>
+          </div>
+          <div class="wa-shell-pagehead__actions">
+            <a class="wa-btn wa-btn--secondary" href="./shell-cards.html">
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+              返回
+            </a>
+            <a class="wa-btn wa-btn--primary" id="detail-edit" href="./shell-form.html?mode=edit&amp;id=t1">
+              <i class="fa-solid fa-pen" aria-hidden="true"></i>
+              编辑工单
+            </a>
+            <div class="wa-dropdown" data-wa-dropdown>
+              <button type="button" class="wa-btn wa-btn--secondary wa-dropdown__trigger" data-wa-dropdown-trigger aria-expanded="false" aria-haspopup="menu" aria-label="更多">
+                <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+              </button>
+              <ul class="wa-dropdown__menu wa-dropdown__menu--end" role="menu" hidden data-wa-dropdown-menu>
+                <li role="none">
+                  <button type="button" class="wa-dropdown__item" role="menuitem" data-detail-action="assign">
+                    <i class="fa-solid fa-user-check" aria-hidden="true"></i> 转派
+                  </button>
+                </li>
+                <li role="none">
+                  <button type="button" class="wa-dropdown__item" role="menuitem" data-detail-action="watch">
+                    <i class="fa-solid fa-bell" aria-hidden="true"></i> 关注
+                  </button>
+                </li>
+                <li role="none"><hr class="wa-dropdown__sep" /></li>
+                <li role="none">
+                  <button type="button" class="wa-dropdown__item wa-dropdown__item--danger" role="menuitem" data-detail-action="close">
+                    <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i> 关闭工单
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="wa-shell-detail-layout">
+          <div class="wa-shell-detail-layout__main">
+            <article class="wa-shell-block">
+              <header class="wa-shell-block__head">
+                <h3>基本信息</h3>
+                <span>最后更新 2026-11-21 11:02</span>
+              </header>
+              <dl class="wa-shell-kv">
+                <div class="wa-shell-kv__item">
+                  <dt>工单编号</dt>
+                  <dd data-detail-field="code">TK-20261120-018</dd>
+                </div>
+                <div class="wa-shell-kv__item">
+                  <dt>类型</dt>
+                  <dd data-detail-field="type">故障</dd>
+                </div>
+                <div class="wa-shell-kv__item">
+                  <dt>优先级</dt>
+                  <dd data-detail-field="priority">P1</dd>
+                </div>
+                <div class="wa-shell-kv__item">
+                  <dt>来源渠道</dt>
+                  <dd data-detail-field="channel">站内反馈</dd>
+                </div>
+                <div class="wa-shell-kv__item">
+                  <dt>严重程度</dt>
+                  <dd data-detail-field="severity">较重</dd>
+                </div>
+                <div class="wa-shell-kv__item">
+                  <dt>客户等级</dt>
+                  <dd data-detail-field="customer">重点</dd>
+                </div>
+                <div class="wa-shell-kv__item">
+                  <dt>业务线</dt>
+                  <dd data-detail-field="bizline">基础体验</dd>
+                </div>
+                <div class="wa-shell-kv__item">
+                  <dt>影响模块</dt>
+                  <dd data-detail-field="module">
+                    <span class="wa-chip-group wa-chip-group--readonly" aria-label="影响模块">
+                      <span class="wa-chip wa-chip--accent">登录</span>
+                      <span class="wa-chip wa-chip--accent">短信</span>
+                    </span>
+                  </dd>
+                </div>
+              </dl>
+            </article>
+
+            <article class="wa-shell-block">
+              <header class="wa-shell-block__head">
+                <h3>受理与排期</h3>
+              </header>
+              <dl class="wa-shell-kv">
+                <div class="wa-shell-kv__item">
+                  <dt>提交人</dt>
+                  <dd data-detail-field="reporter">李晓雯</dd>
+                </div>
+                <div class="wa-shell-kv__item">
+                  <dt>受理人</dt>
+                  <dd data-detail-field="assignee">陈可</dd>
+                </div>
+                <div class="wa-shell-kv__item">
+                  <dt>期望解决</dt>
+                  <dd data-detail-field="due">2026-11-22 18:00</dd>
+                </div>
+                <div class="wa-shell-kv__item">
+                  <dt>所属产品</dt>
+                  <dd data-detail-field="product">会员中心</dd>
+                </div>
+                <div class="wa-shell-kv__item">
+                  <dt>状态</dt>
+                  <dd data-detail-field="statusText">处理中</dd>
+                </div>
+                <div class="wa-shell-kv__item">
+                  <dt>关注人</dt>
+                  <dd data-detail-field="watcher">周宁</dd>
+                </div>
+                <div class="wa-shell-kv__item">
+                  <dt>影响范围</dt>
+                  <dd data-detail-field="impact">约 12% 新用户</dd>
+                </div>
+                <div class="wa-shell-kv__item">
+                  <dt>影响区域</dt>
+                  <dd data-detail-field="region">全国</dd>
+                </div>
+                <div class="wa-shell-kv__item">
+                  <dt>SLA 档位</dt>
+                  <dd data-detail-field="sla">加速</dd>
+                </div>
+              </dl>
+            </article>
+
+            <article class="wa-shell-block">
+              <header class="wa-shell-block__head">
+                <h3>问题详情</h3>
+              </header>
+              <dl class="wa-shell-kv">
+                <div class="wa-shell-kv__item wa-shell-kv__item--full">
+                  <dt>问题描述</dt>
+                  <dd data-detail-field="note">部分用户在登录页点击「获取验证码」无响应；弱网与高峰时段更明显。已排除前端按钮禁用，疑似短信通道限流或超时未回包。</dd>
+                </div>
+                <div class="wa-shell-kv__item">
+                  <dt>复现环境</dt>
+                  <dd data-detail-field="env">Chrome 131 / Windows 11 · 生产环境 · 手机号段 138****</dd>
+                </div>
+                <div class="wa-shell-kv__item">
+                  <dt>期望结果</dt>
+                  <dd data-detail-field="expect">验证码 5 秒内下发；失败时给出明确提示与重试入口。</dd>
+                </div>
+                <div class="wa-shell-kv__item">
+                  <dt>临时方案</dt>
+                  <dd data-detail-field="workaround">高峰时段引导用户改用邮箱验证码或稍后重试。</dd>
+                </div>
+                <div class="wa-shell-kv__item wa-shell-kv__item--full">
+                  <dt>附件</dt>
+                  <dd data-detail-field="attachments">
+                    <ul class="wa-shell-attach-list">
+                      <li>
+                        <span class="wa-shell-attach-list__icon" aria-hidden="true"><i class="fa-solid fa-file-image"></i></span>
+                        <span class="wa-shell-attach-list__body">
+                          <span class="wa-shell-attach-list__name">登录页无响应截图.png</span>
+                          <span class="wa-shell-attach-list__meta">PNG · 428 KB</span>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="wa-shell-attach-list__icon" aria-hidden="true"><i class="fa-solid fa-file-lines"></i></span>
+                        <span class="wa-shell-attach-list__body">
+                          <span class="wa-shell-attach-list__name">sms-gateway-20261120.log</span>
+                          <span class="wa-shell-attach-list__meta">LOG · 86 KB</span>
+                        </span>
+                      </li>
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
+            </article>
+
+            <article class="wa-shell-block">
+              <div class="wa-shell-tabs" role="tablist" aria-label="工单动态">
+                <button type="button" class="wa-shell-tabs__btn is-active" role="tab" aria-selected="true" data-detail-tab="logs">处理记录</button>
+                <button type="button" class="wa-shell-tabs__btn" role="tab" aria-selected="false" data-detail-tab="people">协作人员</button>
+                <button type="button" class="wa-shell-tabs__btn" role="tab" aria-selected="false" data-detail-tab="changes">变更记录</button>
+                <span class="wa-shell-tabs__meta" data-detail-tab-meta>3 条记录</span>
+              </div>
+
+              <div class="wa-shell-tab-panel" data-detail-panel="logs">
+                <ul class="wa-shell-timeline-list">
+                  <li class="wa-shell-timeline-list__item is-done">
+                    <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                    <div>
+                      <strong>系统已创建工单并通知值班</strong>
+                      <span>今天 10:12 · 系统</span>
+                    </div>
+                  </li>
+                  <li class="wa-shell-timeline-list__item is-done">
+                    <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                    <div>
+                      <strong>已指派给陈可跟进</strong>
+                      <span>今天 10:18 · 李晓雯</span>
+                    </div>
+                  </li>
+                  <li class="wa-shell-timeline-list__item is-active">
+                    <i class="fa-solid fa-circle-dot" aria-hidden="true"></i>
+                    <div>
+                      <strong>初步判断为短信通道限流，等待供应商回执</strong>
+                      <span>今天 11:02 · 陈可</span>
+                    </div>
+                  </li>
+                  <li class="wa-shell-timeline-list__item">
+                    <i class="fa-solid fa-circle" aria-hidden="true"></i>
+                    <div>
+                      <strong>补齐失败重试与进度提示后回归验证</strong>
+                      <span>待办 · 陈可</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="wa-shell-tab-panel" data-detail-panel="people" hidden>
+                <ul class="wa-shell-people">
+                  <li>
+                    <span class="wa-shell-people__avatar" aria-hidden="true">陈</span>
+                    <div class="wa-shell-people__body">
+                      <strong>陈可</strong>
+                      <div class="wa-shell-people__tags">
+                        <span>受理人</span>
+                        <span>前端</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="wa-shell-people__avatar" aria-hidden="true">李</span>
+                    <div class="wa-shell-people__body">
+                      <strong>李晓雯</strong>
+                      <div class="wa-shell-people__tags">
+                        <span>提交人</span>
+                        <span>运营</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="wa-shell-people__avatar" aria-hidden="true">周</span>
+                    <div class="wa-shell-people__body">
+                      <strong>周宁</strong>
+                      <div class="wa-shell-people__tags">
+                        <span>关注</span>
+                        <span>后端</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="wa-shell-tab-panel" data-detail-panel="changes" hidden>
+                <ul class="wa-shell-change-list">
+                  <li>
+                    <i class="fa-solid fa-flag" aria-hidden="true"></i>
+                    <div class="wa-shell-change-list__body">
+                      <strong>优先级 <em>P2</em><span class="wa-shell-change-list__arrow">→</span><em class="is-to">P1</em></strong>
+                      <span>今天 10:20 · 李晓雯</span>
+                    </div>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-user" aria-hidden="true"></i>
+                    <div class="wa-shell-change-list__body">
+                      <strong>受理人 <em>空</em><span class="wa-shell-change-list__arrow">→</span><em class="is-to">陈可</em></strong>
+                      <span>今天 10:18 · 系统</span>
+                    </div>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
+                    <div class="wa-shell-change-list__body">
+                      <strong>状态 <em>待受理</em><span class="wa-shell-change-list__arrow">→</span><em class="is-to">处理中</em></strong>
+                      <span>今天 10:18 · 系统</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <aside class="wa-shell-detail-layout__side">
+            <article class="wa-shell-block">
+              <header class="wa-shell-block__head">
+                <h3>处理进度</h3>
+              </header>
+              <p class="wa-shell-progress__value">45%</p>
+              <div class="wa-progress" aria-hidden="true">
+                <div class="wa-progress__bar" style="width: 45%"></div>
+              </div>
+              <p class="wa-shell-progress__hint">距期望解决还有约 31 小时</p>
+            </article>
+
+            <article class="wa-shell-block">
+              <header class="wa-shell-block__head">
+                <h3>关键指标</h3>
+              </header>
+              <dl class="wa-shell-stat">
+                <div>
+                  <dt>首次响应</dt>
+                  <dd>6 分钟</dd>
+                </div>
+                <div>
+                  <dt>跟进次数</dt>
+                  <dd>3 次</dd>
+                </div>
+                <div>
+                  <dt>相关附件</dt>
+                  <dd>2 个</dd>
+                </div>
+                <div>
+                  <dt>阻塞项</dt>
+                  <dd class="is-warn">1 项</dd>
+                </div>
+              </dl>
+            </article>
+
+            <article class="wa-shell-block">
+              <header class="wa-shell-block__head">
+                <h3>处理节点</h3>
+                <span>2 / 4</span>
+              </header>
+              <ol class="wa-shell-steps">
+                <li class="is-done">
+                  <span class="wa-shell-steps__dot" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+                  <div>
+                    <strong>已受理</strong>
+                    <span>11-20 10:18</span>
+                  </div>
+                </li>
+                <li class="is-done">
+                  <span class="wa-shell-steps__dot" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+                  <div>
+                    <strong>排查定位</strong>
+                    <span>11-21 11:02</span>
+                  </div>
+                </li>
+                <li class="is-current">
+                  <span class="wa-shell-steps__dot" aria-hidden="true"></span>
+                  <div>
+                    <strong>修复发布</strong>
+                    <span>进行中</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="wa-shell-steps__dot" aria-hidden="true"></span>
+                  <div>
+                    <strong>关闭确认</strong>
+                    <span>待开始</span>
+                  </div>
+                </li>
+              </ol>
+            </article>
+          </aside>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="./assets/common/js/message.js"></script>
+  <script src="./assets/common/js/confirm.js"></script>
+  <script src="./assets/common/js/dropdown.js"></script>
+  <script src="./assets/common/js/page-loading.js"></script>
+  <script src="./assets/common/js/app-shell.js"></script>
+  <script src="./js/shell.js"></script>
+  <script src="./js/shell-detail.js"></script>
+</body>
+</html>

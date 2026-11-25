@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>工作台 / 系统设置 — Vibe Design Lite | VibePM</title>
+  <meta name="description" content="Vibe Design Lite 工作台：系统设置样板。" />
+  <meta name="keywords" content="Vibe Design Lite,工作台,系统设置,账号,通知,主题,静态模板,VibePM" />
+  <meta name="author" content="VibePM" />
+  <meta name="theme-color" content="#13c7c2" />
+  <script src="./assets/common/js/theme.js"></script>
+  <link rel="stylesheet" href="./vendor/fontawesome_free/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/common/css/global.css" />
+  <link rel="stylesheet" href="./assets/common/css/chrome.css" />
+  <link rel="stylesheet" href="./assets/common/css/components.css" />
+  <link rel="stylesheet" href="./css/shell.css" />
+  <script src="./assets/common/js/shell-boot.js"></script>
+  <link rel="stylesheet" href="./css/shell-settings.css" />
+  <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml">
+  <noscript><style>body.wa-app-page{visibility:visible!important}</style></noscript>
+</head>
+<body class="wa-app-page">
+  <div class="wa-app" id="wa-app" data-wa-app data-shell-page="settings">
+    <div data-shell-content>
+      <section class="wa-app__panel">
+        <div class="wa-app__panel-head">
+          <h2>系统设置</h2>
+          <p>管理账号资料、通知偏好、外观主题与登录安全。</p>
+        </div>
+
+        <div class="wa-shell-settings">
+          <nav class="wa-shell-settings__nav" aria-label="设置分区">
+            <button type="button" class="wa-shell-settings__nav-btn is-active" role="tab" aria-selected="true" data-settings-tab="profile">
+              <i class="fa-solid fa-user" aria-hidden="true"></i>
+              账号资料
+            </button>
+            <button type="button" class="wa-shell-settings__nav-btn" role="tab" aria-selected="false" data-settings-tab="notify">
+              <i class="fa-solid fa-bell" aria-hidden="true"></i>
+              通知偏好
+            </button>
+            <button type="button" class="wa-shell-settings__nav-btn" role="tab" aria-selected="false" data-settings-tab="appearance">
+              <i class="fa-solid fa-palette" aria-hidden="true"></i>
+              外观主题
+            </button>
+            <button type="button" class="wa-shell-settings__nav-btn" role="tab" aria-selected="false" data-settings-tab="security">
+              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+              账号安全
+            </button>
+          </nav>
+
+          <div class="wa-shell-settings__main">
+          <div class="wa-shell-settings__panel" data-settings-panel="profile">
+            <article class="wa-shell-block">
+              <header class="wa-shell-block__head wa-shell-block__head--stack">
+                <h3>基本资料</h3>
+                <p>用于协作展示与工单默认提交人信息。</p>
+              </header>
+              <form class="wa-form" id="settings-profile-form" data-wa-validate novalidate>
+                <div class="wa-shell-settings__grid">
+                  <div class="wa-form-item" data-validate="required" data-error="请输入姓名">
+                    <label class="wa-label" for="settings-name">姓名 <span class="wa-req" aria-hidden="true">*</span></label>
+                    <div class="wa-field">
+                      <input class="wa-field__input" id="settings-name" name="name" type="text" value="王丽青" placeholder="真实姓名或昵称" data-wa-field-input required />
+                      <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+                    </div>
+                    <p class="wa-field__error" role="alert"></p>
+                  </div>
+                  <div class="wa-form-item" data-validate="email" data-error="请输入有效邮箱">
+                    <label class="wa-label" for="settings-email">工作邮箱 <span class="wa-req" aria-hidden="true">*</span></label>
+                    <div class="wa-field wa-field--icon">
+                      <i class="fa-solid fa-envelope wa-field__icon" aria-hidden="true"></i>
+                      <input class="wa-field__input" id="settings-email" name="email" type="email" value="wanglq@vibepm.net" placeholder="you@company.com" data-wa-field-input required />
+                      <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+                    </div>
+                    <p class="wa-field__error" role="alert"></p>
+                  </div>
+                  <div class="wa-form-item">
+                    <label class="wa-label" for="settings-phone">手机号</label>
+                    <div class="wa-field wa-field--icon">
+                      <i class="fa-solid fa-mobile-screen wa-field__icon" aria-hidden="true"></i>
+                      <input class="wa-field__input" id="settings-phone" name="phone" type="tel" value="13800138000" placeholder="用于紧急联系" data-wa-field-input />
+                      <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                  <div class="wa-form-item">
+                    <label class="wa-label" for="settings-title">职位</label>
+                    <div class="wa-field">
+                      <input class="wa-field__input" id="settings-title" name="title" type="text" value="产品经理" placeholder="职位或角色" data-wa-field-input />
+                      <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                  <div class="wa-form-item" data-validate="required" data-error="请选择部门">
+                    <label class="wa-label" for="settings-dept">部门 <span class="wa-req" aria-hidden="true">*</span></label>
+                    <div class="wa-field wa-field--select">
+                      <select class="wa-field__select" id="settings-dept" name="dept" data-wa-combo data-wa-combo-clear="0" data-placeholder="请选择部门" required>
+                        <option value="" disabled>请选择部门</option>
+                        <option value="产品" selected>产品</option>
+                        <option value="设计">设计</option>
+                        <option value="研发">研发</option>
+                        <option value="运营">运营</option>
+                        <option value="客户成功">客户成功</option>
+                      </select>
+                    </div>
+                    <p class="wa-field__error" role="alert"></p>
+                  </div>
+                  <div class="wa-form-item">
+                    <label class="wa-label" for="settings-empno">工号</label>
+                    <div class="wa-field wa-field--icon">
+                      <i class="fa-solid fa-id-badge wa-field__icon" aria-hidden="true"></i>
+                      <input class="wa-field__input" id="settings-empno" name="empno" type="text" value="PM-1024" placeholder="员工编号" data-wa-field-input />
+                      <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                  <div class="wa-form-item">
+                    <label class="wa-label" for="settings-display">对外显示名</label>
+                    <div class="wa-field">
+                      <input class="wa-field__input" id="settings-display" name="display" type="text" value="丽青" placeholder="协作列表中展示的名称" data-wa-field-input />
+                      <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                  <div class="wa-form-item">
+                    <label class="wa-label" for="settings-city">所在城市</label>
+                    <div class="wa-field wa-field--icon">
+                      <i class="fa-solid fa-location-dot wa-field__icon" aria-hidden="true"></i>
+                      <input class="wa-field__input" id="settings-city" name="city" type="text" value="上海" placeholder="城市" data-wa-field-input />
+                      <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                  <div class="wa-form-item">
+                    <label class="wa-label" for="settings-lang">界面语言</label>
+                    <div class="wa-field wa-field--select">
+                      <select class="wa-field__select" id="settings-lang" name="lang" data-wa-combo data-wa-combo-clear="0">
+                        <option value="zh-CN" selected>简体中文</option>
+                        <option value="zh-TW">繁體中文</option>
+                        <option value="en">English</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="wa-form-item">
+                    <label class="wa-label" for="settings-timezone">时区</label>
+                    <div class="wa-field wa-field--select">
+                      <select class="wa-field__select" id="settings-timezone" name="timezone" data-wa-combo data-wa-combo-clear="0">
+                        <option value="Asia/Shanghai" selected>中国标准时间 (UTC+8)</option>
+                        <option value="Asia/Hong_Kong">香港 (UTC+8)</option>
+                        <option value="Asia/Tokyo">东京 (UTC+9)</option>
+                        <option value="America/Los_Angeles">太平洋时间 (UTC-8)</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="wa-form-item wa-shell-settings__span">
+                    <label class="wa-label" for="settings-bio">个人简介</label>
+                    <div class="wa-field wa-field--textarea">
+                      <textarea class="wa-field__textarea" id="settings-bio" name="bio" rows="3" maxlength="120" placeholder="一句话介绍你的职责或擅长领域">负责工作台样板体验与交付规范。</textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="wa-shell-settings__actions">
+                  <button type="submit" class="wa-btn wa-btn--primary">保存资料</button>
+                </div>
+              </form>
+            </article>
+          </div>
+
+          <div class="wa-shell-settings__panel" data-settings-panel="notify" hidden>
+            <article class="wa-shell-block">
+              <header class="wa-shell-block__head wa-shell-block__head--stack">
+                <h3>通知渠道</h3>
+                <p>控制哪些事件会提醒你；可与消息中心联动。</p>
+              </header>
+              <div class="wa-shell-setting-list">
+                <div class="wa-shell-setting-row">
+                  <div class="wa-shell-setting-row__text">
+                    <strong>邮件通知</strong>
+                    <span>工单状态变更、@ 提及时发送邮件</span>
+                  </div>
+                  <label class="wa-switch"><input type="checkbox" id="settings-mail" role="switch" checked /><span>邮件</span></label>
+                </div>
+                <div class="wa-shell-setting-row">
+                  <div class="wa-shell-setting-row__text">
+                    <strong>桌面提醒</strong>
+                    <span>浏览器在前台时弹出轻提示</span>
+                  </div>
+                  <label class="wa-switch"><input type="checkbox" id="settings-desktop" role="switch" checked /><span>桌面</span></label>
+                </div>
+                <div class="wa-shell-setting-row">
+                  <div class="wa-shell-setting-row__text">
+                    <strong>协作 @ 我</strong>
+                    <span>评论与转派中被提及时通知</span>
+                  </div>
+                  <label class="wa-switch"><input type="checkbox" id="settings-mention" role="switch" checked /><span>提及</span></label>
+                </div>
+                <div class="wa-shell-setting-row">
+                  <div class="wa-shell-setting-row__text">
+                    <strong>系统公告</strong>
+                    <span>维护窗口、安全提醒等广播消息</span>
+                  </div>
+                  <label class="wa-switch"><input type="checkbox" id="settings-system" role="switch" checked /><span>系统</span></label>
+                </div>
+                <div class="wa-shell-setting-row">
+                  <div class="wa-shell-setting-row__text">
+                    <strong>免打扰时段</strong>
+                    <span>22:00–08:00 仅保留 P0 故障通知</span>
+                  </div>
+                  <label class="wa-switch"><input type="checkbox" id="settings-dnd" role="switch" /><span>免打扰</span></label>
+                </div>
+              </div>
+              <div class="wa-shell-settings__actions">
+                <button type="button" class="wa-btn wa-btn--primary" id="settings-notify-save">保存偏好</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="wa-shell-settings__panel" data-settings-panel="appearance" hidden>
+            <article class="wa-shell-block">
+              <header class="wa-shell-block__head wa-shell-block__head--stack">
+                <h3>主题外观</h3>
+                <p>与顶栏明暗切换同步；也可在此直接选择。</p>
+              </header>
+              <div class="wa-shell-setting-list">
+                <div class="wa-shell-setting-row">
+                  <div class="wa-shell-setting-row__text">
+                    <strong>色彩模式</strong>
+                    <span>浅色适合日间审阅，深色适合长时间操作</span>
+                  </div>
+                  <div class="wa-segment" data-wa-segment role="radiogroup" aria-label="色彩模式">
+                    <button type="button" class="wa-segment__item is-active" role="radio" aria-checked="true" data-wa-segment-item data-settings-theme="light">浅色</button>
+                    <button type="button" class="wa-segment__item" role="radio" aria-checked="false" data-wa-segment-item data-settings-theme="dark">深色</button>
+                  </div>
+                </div>
+                <div class="wa-shell-setting-row">
+                  <div class="wa-shell-setting-row__text">
+                    <strong>紧凑列表</strong>
+                    <span>减小卡片与表格行高，一屏展示更多内容</span>
+                  </div>
+                  <label class="wa-switch"><input type="checkbox" id="settings-compact" role="switch" /><span>紧凑</span></label>
+                </div>
+                <div class="wa-shell-setting-row">
+                  <div class="wa-shell-setting-row__text">
+                    <strong>减少动效</strong>
+                    <span>关闭非必要过渡动画</span>
+                  </div>
+                  <label class="wa-switch"><input type="checkbox" id="settings-reduce-motion" role="switch" /><span>减少动效</span></label>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="wa-shell-settings__panel" data-settings-panel="security" hidden>
+            <article class="wa-shell-block">
+              <header class="wa-shell-block__head wa-shell-block__head--stack">
+                <h3>修改密码</h3>
+                <p>演示校验流程；正式环境需对接账号服务。</p>
+              </header>
+              <form class="wa-form" id="settings-security-form" novalidate>
+                <div class="wa-shell-settings__grid">
+                  <div class="wa-form-item wa-shell-settings__span">
+                    <label class="wa-label" for="settings-pwd-current">当前密码</label>
+                    <div class="wa-field wa-field--icon">
+                      <i class="fa-solid fa-lock wa-field__icon" aria-hidden="true"></i>
+                      <input class="wa-field__input" id="settings-pwd-current" name="current" type="password" placeholder="请输入当前密码" autocomplete="current-password" data-wa-field-input />
+                    </div>
+                  </div>
+                  <div class="wa-form-item">
+                    <label class="wa-label" for="settings-pwd-new">新密码</label>
+                    <div class="wa-field wa-field--icon">
+                      <i class="fa-solid fa-key wa-field__icon" aria-hidden="true"></i>
+                      <input class="wa-field__input" id="settings-pwd-new" name="next" type="password" placeholder="至少 8 位" autocomplete="new-password" data-wa-field-input />
+                    </div>
+                  </div>
+                  <div class="wa-form-item">
+                    <label class="wa-label" for="settings-pwd-confirm">确认新密码</label>
+                    <div class="wa-field wa-field--icon">
+                      <i class="fa-solid fa-key wa-field__icon" aria-hidden="true"></i>
+                      <input class="wa-field__input" id="settings-pwd-confirm" name="confirm" type="password" placeholder="再次输入新密码" autocomplete="new-password" data-wa-field-input />
+                    </div>
+                  </div>
+                </div>
+                <div class="wa-shell-settings__actions">
+                  <button type="submit" class="wa-btn wa-btn--primary">更新密码</button>
+                </div>
+              </form>
+            </article>
+
+            <article class="wa-shell-block">
+              <header class="wa-shell-block__head wa-shell-block__head--stack">
+                <h3>修改邮箱</h3>
+                <p>更换后需验证新邮箱；登录与通知将发往新地址。</p>
+              </header>
+              <form class="wa-form" id="settings-email-form" data-wa-validate novalidate>
+                <div class="wa-shell-settings__grid">
+                  <div class="wa-form-item wa-shell-settings__span">
+                    <label class="wa-label" for="settings-email-current">当前邮箱</label>
+                    <div class="wa-field wa-field--icon">
+                      <i class="fa-solid fa-envelope wa-field__icon" aria-hidden="true"></i>
+                      <input class="wa-field__input" id="settings-email-current" type="email" value="wanglq@vibepm.net" readonly tabindex="-1" />
+                    </div>
+                  </div>
+                  <div class="wa-form-item" data-validate="email" data-error="请输入有效的新邮箱">
+                    <label class="wa-label" for="settings-email-new">新邮箱 <span class="wa-req" aria-hidden="true">*</span></label>
+                    <div class="wa-field wa-field--icon wa-shell-settings__code-field">
+                      <i class="fa-solid fa-envelope wa-field__icon" aria-hidden="true"></i>
+                      <input class="wa-field__input" id="settings-email-new" name="emailNew" type="email" placeholder="new@company.com" autocomplete="email" data-wa-field-input required />
+                      <button type="button" class="wa-btn wa-btn--text wa-shell-settings__code-btn" id="settings-email-send">获取验证码</button>
+                    </div>
+                    <p class="wa-field__error" role="alert"></p>
+                  </div>
+                  <div class="wa-form-item" data-validate="required" data-error="请输入验证码">
+                    <label class="wa-label" for="settings-email-code">邮箱验证码 <span class="wa-req" aria-hidden="true">*</span></label>
+                    <div class="wa-field wa-field--icon">
+                      <i class="fa-solid fa-shield-halved wa-field__icon" aria-hidden="true"></i>
+                      <input class="wa-field__input" id="settings-email-code" name="emailCode" type="text" inputmode="numeric" maxlength="6" placeholder="6 位验证码" data-wa-field-input required />
+                    </div>
+                    <p class="wa-field__error" role="alert"></p>
+                  </div>
+                </div>
+                <div class="wa-shell-settings__actions">
+                  <button type="submit" class="wa-btn wa-btn--primary">确认更换</button>
+                </div>
+              </form>
+            </article>
+
+            <article class="wa-shell-block">
+              <header class="wa-shell-block__head wa-shell-settings__devices-head">
+                <div class="wa-shell-block__head--stack">
+                  <h3>登录设备</h3>
+                  <p>查看近期会话；可一键退出其他设备。</p>
+                </div>
+                <button type="button" class="wa-btn wa-btn--secondary" id="settings-revoke-others">退出其他设备</button>
+              </header>
+              <ul class="wa-shell-settings__devices">
+                <li class="wa-shell-settings__device">
+                  <div class="wa-shell-settings__device-main">
+                    <span class="wa-shell-settings__device-icon" aria-hidden="true"><i class="fa-solid fa-laptop"></i></span>
+                    <div class="wa-shell-settings__device-meta">
+                      <strong>Windows · Chrome</strong>
+                      <span>上海 · 当前设备 · 刚刚活跃</span>
+                    </div>
+                  </div>
+                  <div class="wa-shell-settings__device-side">
+                    <span class="wa-badge wa-badge--run">本机</span>
+                  </div>
+                </li>
+                <li class="wa-shell-settings__device">
+                  <div class="wa-shell-settings__device-main">
+                    <span class="wa-shell-settings__device-icon" aria-hidden="true"><i class="fa-solid fa-mobile-screen"></i></span>
+                    <div class="wa-shell-settings__device-meta">
+                      <strong>iPhone · Safari</strong>
+                      <span>杭州 · 昨天 21:16</span>
+                    </div>
+                  </div>
+                  <div class="wa-shell-settings__device-side">
+                    <a class="wa-link" href="./login.html">重新登录</a>
+                  </div>
+                </li>
+                <li class="wa-shell-settings__device">
+                  <div class="wa-shell-settings__device-main">
+                    <span class="wa-shell-settings__device-icon" aria-hidden="true"><i class="fa-solid fa-desktop"></i></span>
+                    <div class="wa-shell-settings__device-meta">
+                      <strong>macOS · Edge</strong>
+                      <span>深圳 · 3 天前</span>
+                    </div>
+                  </div>
+                  <div class="wa-shell-settings__device-side">
+                    <a class="wa-link" href="./login.html">重新登录</a>
+                  </div>
+                </li>
+              </ul>
+            </article>
+          </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="./assets/common/js/message.js"></script>
+  <script src="./assets/common/js/confirm.js"></script>
+  <script src="./assets/common/js/field.js"></script>
+  <script src="./assets/common/js/form.js"></script>
+  <script src="./assets/common/js/combo.js"></script>
+  <script src="./assets/common/js/choice.js"></script>
+  <script src="./assets/common/js/page-loading.js"></script>
+  <script src="./assets/common/js/app-shell.js"></script>
+  <script src="./js/shell.js"></script>
+  <script src="./js/shell-settings.js"></script>
+</body>
+</html>

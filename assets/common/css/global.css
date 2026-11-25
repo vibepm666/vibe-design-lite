@@ -1,0 +1,298 @@
+/**
+ * Vibe Design Lite · 视觉 token 真源
+ * 亮/暗色板、字体栈、圆角与阴影；运行时只消费本文件变量。
+ * 字体文件：fonts/outfit、fonts/manrope（经 fonts/index.css）。
+ */
+@import url("../../fonts/index.css");
+
+:root {
+  color-scheme: light;
+
+  /* 字体：正文 Manrope · 标题 Outfit · 中文系统回落 */
+  --wa-font-sans: "Manrope", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --wa-font-display: "Outfit", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --wa-font-serif: var(--wa-font-display);
+
+  /* 文字：中性灰阶（主色只做强调，不染大面） */
+  --wa-color-text-1: rgba(17, 17, 19, 0.95);
+  --wa-color-text-2: #6b6c74;
+  --wa-color-text-3: #85868f;
+  --wa-color-text-4: rgba(17, 17, 19, 0.28);
+  --wa-color-text: #1c1d22;
+  --wa-color-text-secondary: var(--wa-color-text-2);
+  --wa-color-muted: var(--wa-color-text-3);
+
+  /* 面：浅底 + 玻璃卡片 */
+  --wa-color-bg: #f4f5f7;
+  --wa-color-surface: #ffffff;
+  --wa-color-glass: rgba(255, 255, 255, 0.62);
+  --wa-color-surface-soft: rgba(244, 245, 247, 0.55);
+  --wa-color-glass-border: rgba(17, 17, 19, 0.06);
+
+  /* 主色：清新青 */
+  --wa-color-primary: #13c7c2;
+  --wa-color-primary-rgb: 19, 199, 194;
+  --wa-color-primary-strong: #0fa19c;
+  --wa-color-accent: var(--wa-color-primary-strong);
+  --wa-color-primary-soft: rgba(19, 199, 194, 0.12);
+  --wa-color-on-primary: #ffffff;
+  /* 侧栏主色导航：相对 primary 压暗一阶，明暗同色 */
+  --wa-shell-primary-bg: color-mix(in srgb, var(--wa-color-primary) 82%, #000);
+  --wa-shell-primary-fg: var(--wa-color-on-primary);
+
+  --wa-color-border-1: rgba(17, 17, 19, 0.06);
+  --wa-color-border-2: rgba(17, 17, 19, 0.1);
+  --wa-color-border-3: rgba(17, 17, 19, 0.15);
+  --wa-color-border: var(--wa-color-border-2);
+  --wa-color-fill-1: rgba(17, 17, 19, 0.04);
+  --wa-color-fill-2: rgba(17, 17, 19, 0.07);
+  --wa-color-fill-3: rgba(17, 17, 19, 0.11);
+
+  --wa-border-w: 1px;
+  --wa-shadow-soft: 0 4px 12px rgba(15, 16, 20, 0.04), 0 14px 36px rgba(15, 16, 20, 0.08);
+  --wa-shadow-card: var(--wa-shadow-soft);
+  --wa-shadow-cta: 0 0 20px 2px rgba(19, 199, 194, 0.15);
+  --wa-shadow-button-hover: 0 10px 25px rgba(19, 199, 194, 0.3);
+
+  /* 圆角：卡片基准 16 */
+  --wa-radius-sm: 6px;
+  --wa-radius: 16px;
+  --wa-radius-xl: 14px;
+  --wa-radius-lg: 16px;
+  --wa-radius-pill: 999px;
+  --wa-input-radius: 8px;
+  /* 营销 / 通用表单外框；内层 = 外框 − 上下边框（各 1px） */
+  --wa-field-h: 44px;
+  --wa-field-inner-h: calc(var(--wa-field-h) - 2px);
+  /* 工作台密度：表格工具条 / 筛选 / 分页，以及壳内容区表单 */
+  --wa-app-field-h: 36px;
+  --wa-app-field-inner-h: calc(var(--wa-app-field-h) - 2px);
+  --wa-btn-radius-lg: 8px;
+  --wa-ctrl-ring: 3px;
+  --wa-ctrl-border: var(--wa-color-border-2);
+  --wa-btn-outline-bd: var(--wa-color-border-2);
+
+  --wa-container: 1160px;
+  --wa-space-section: 88px;
+  --site-nav-h: 64px;
+  --site-pad-x: 24px;
+
+  --wa-scrollbar-size: 8px;
+  --wa-scrollbar-track: transparent;
+  --wa-scrollbar-thumb: rgba(0, 0, 0, 0.18);
+  --wa-scrollbar-thumb-hover: rgba(0, 0, 0, 0.28);
+  --wa-scrollbar-thumb-active: rgba(0, 0, 0, 0.36);
+
+  --wa-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --wa-duration: 180ms;
+  --wa-duration-fast: 150ms;
+  --wa-theme-switch-duration: 720ms;
+
+  --wa-color-success: #10b981;
+  --wa-color-warning: #f5a623;
+  --wa-color-danger: #ef4444;
+  --wa-color-premium: #8b5cf6; /* 仅语义，不作第二主 CTA */
+  --wa-mask-bg: rgba(0, 0, 0, 0.45);
+  --wa-mask-blur: 12px;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --wa-color-text-1: rgba(255, 255, 255, 0.92);
+  --wa-color-text-2: #a8a9b2;
+  --wa-color-text-3: #8b8c96;
+  --wa-color-text-4: rgba(255, 255, 255, 0.3);
+  --wa-color-text: #ececef;
+  --wa-color-text-secondary: var(--wa-color-text-2);
+  --wa-color-muted: var(--wa-color-text-3);
+
+  /* 暗色：中性深灰面，不染主色 */
+  --wa-color-bg: #0c0d10;
+  --wa-color-surface: #1c1d22;
+  --wa-color-glass: rgba(28, 29, 34, 0.72);
+  --wa-color-surface-soft: rgba(36, 37, 42, 0.62);
+  --wa-color-glass-border: rgba(255, 255, 255, 0.08);
+
+  --wa-color-primary: #13c7c2;
+  --wa-color-primary-strong: #0fa19c;
+  --wa-color-accent: var(--wa-color-primary-strong);
+  --wa-color-primary-soft: rgba(19, 199, 194, 0.22);
+  --wa-color-on-primary: #ffffff;
+
+  --wa-color-border-1: rgba(255, 255, 255, 0.06);
+  --wa-color-border-2: rgba(255, 255, 255, 0.1);
+  --wa-color-border-3: rgba(255, 255, 255, 0.18);
+  --wa-color-border: var(--wa-color-border-2);
+  --wa-color-fill-1: rgba(255, 255, 255, 0.06);
+  --wa-color-fill-2: rgba(255, 255, 255, 0.1);
+  --wa-color-fill-3: rgba(255, 255, 255, 0.16);
+
+  --wa-shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.22), 0 14px 32px rgba(0, 0, 0, 0.16);
+  --wa-shadow-card: var(--wa-shadow-soft);
+  --wa-shadow-cta: 0 0 16px 1px rgba(19, 199, 194, 0.16);
+  --wa-shadow-button-hover: 0 8px 20px rgba(19, 199, 194, 0.28);
+  --wa-mask-bg: rgba(0, 0, 0, 0.62);
+
+  --wa-scrollbar-thumb: rgba(255, 255, 255, 0.14);
+  --wa-scrollbar-thumb-hover: rgba(255, 255, 255, 0.26);
+  --wa-scrollbar-thumb-active: rgba(255, 255, 255, 0.34);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--wa-scrollbar-thumb) var(--wa-scrollbar-track);
+}
+
+*::-webkit-scrollbar {
+  width: var(--wa-scrollbar-size);
+  height: var(--wa-scrollbar-size);
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--wa-scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--wa-scrollbar-thumb);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--wa-scrollbar-thumb-hover);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: var(--wa-scrollbar-thumb-active);
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+::selection {
+  background: var(--wa-color-primary);
+  color: var(--wa-color-on-primary);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--wa-font-sans);
+  font-size: 16px;
+  line-height: 1.625;
+  color: var(--wa-color-text);
+  background: var(--wa-color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 全局禁用悬停下划线 */
+a:hover,
+a:focus,
+a:active,
+a:focus-visible {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--wa-font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--wa-color-text-1);
+}
+
+h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  margin: 0 0 14px;
+}
+
+h3 {
+  font-size: 1.125rem;
+  margin: 0 0 10px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--wa-color-text);
+}
+
+.wa-theme-switch-fallback {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  pointer-events: none;
+  will-change: clip-path;
+}
+
+/* 明暗切换：从触发点圆形展开（View Transitions API；file:// 走 theme.js 遮罩降级） */
+html.wa-theme-switching::view-transition-old(root),
+html.wa-theme-switching::view-transition-new(root) {
+  animation-duration: var(--wa-theme-switch-duration);
+  animation-timing-function: var(--wa-ease);
+}
+
+html.wa-theme-switching::view-transition-old(root) {
+  z-index: 1;
+}
+
+html.wa-theme-switching::view-transition-new(root) {
+  z-index: 2;
+  animation-name: wa-theme-circle-reveal;
+}
+
+@keyframes wa-theme-circle-reveal {
+  from {
+    clip-path: circle(0 at var(--wa-theme-switch-x, 50%) var(--wa-theme-switch-y, 50%));
+  }
+  to {
+    clip-path: circle(var(--wa-theme-switch-r, 120vmax) at var(--wa-theme-switch-x, 50%) var(--wa-theme-switch-y, 50%));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html.wa-theme-switching::view-transition-old(root),
+  html.wa-theme-switching::view-transition-new(root) {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>展示区块 — Vibe Design Lite | VibePM</title>
+  <meta name="description" content="Vibe Design Lite 展示区块：步骤胶囊、提示卡、流程瓷砖、能力卡、阶梯与顺序列表等可整段复用的营销区块样板。" />
+  <meta name="keywords" content="Vibe Design Lite,展示区块,营销区块,步骤流程,能力卡,流程瓷砖,轻站,VibePM" />
+  <meta name="author" content="VibePM" />
+  <meta name="theme-color" content="#13c7c2" />
+  <script src="./assets/common/js/theme.js"></script>
+  <link rel="stylesheet" href="./vendor/fontawesome_free/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/common/css/global.css" />
+  <link rel="stylesheet" href="./assets/common/css/chrome.css" />
+  <link rel="stylesheet" href="./assets/common/css/components.css" />
+  <link rel="stylesheet" href="./css/showcase.css" />
+  <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml">
+</head>
+<body id="top" class="wa-landing-cover">
+  <div class="wa-landing-bg" aria-hidden="true">
+    <div class="wa-landing-bg__image"></div>
+    <div class="wa-landing-bg__glow"></div>
+    <div class="wa-landing-bg__aura"></div>
+    <div class="wa-landing-bg__dots"></div>
+  </div>
+
+  <div class="wa-shell">
+    <div class="wa-nav-shell">
+      <div class="wa-nav-shell__inner">
+        <header class="wa-nav wa-nav--card">
+          <a class="wa-brand" href="./index.html" aria-label="Vibe Design Lite，返回首页">
+            <span class="wa-brand__mark" aria-hidden="true"><i class="fa-solid fa-table-columns"></i></span>
+            <span class="wa-brand__name">Vibe Design Lite</span>
+          </a>
+
+          <nav class="wa-nav__links" aria-label="主导航">
+            <a href="./index.html">模板首页</a>
+            <a href="./components.html">常用组件</a>
+            <a href="./showcase.html" aria-current="page">展示区块</a>
+            <a href="./login.html" target="_blank" rel="noopener noreferrer">登录页面</a>
+            <a href="./shell-dashboard.html" target="_blank" rel="noopener noreferrer">工作台模板</a>
+            <a href="./tool.html" target="_blank" rel="noopener noreferrer">单页模板</a>
+          </nav>
+
+          <div class="wa-nav__actions">
+            <button type="button" class="wa-nav__icon-btn wa-nav__icon-btn--aux" data-modal-open="wechat-modal" aria-label="关注公众号" title="关注公众号">
+              <i class="fa-brands fa-weixin" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              class="wa-nav__icon-btn wa-nav__icon-btn--aux"
+              data-wa-theme-toggle
+              aria-pressed="false"
+              aria-label="切换主题"
+              title="切换主题"
+            >
+              <i class="fa-regular fa-moon" aria-hidden="true"></i>
+            </button>
+            <a
+              class="wa-nav__icon-btn wa-nav__icon-btn--aux"
+              href="https://www.vibepm.net/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="网站首页"
+              title="网站首页"
+            >
+              <i class="fa-solid fa-house" aria-hidden="true"></i>
+            </a>
+            <a
+              class="wa-btn wa-btn--primary wa-btn--sm wa-nav__home"
+              href="https://www.vibepm.net/home/templates/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="免费获取"
+            >
+              <i class="fa-solid fa-gift" aria-hidden="true"></i>
+              <span class="wa-nav__home-label">免费获取</span>
+            </a>
+            <button
+              type="button"
+              class="wa-nav__toggle"
+              data-nav-toggle
+              aria-expanded="false"
+              aria-controls="nav-drawer"
+              aria-label="打开菜单"
+            >
+              <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+          </div>
+        </header>
+
+        <div class="wa-nav__drawer" id="nav-drawer" data-nav-drawer>
+          <nav aria-label="移动导航">
+            <a href="./index.html">介绍首页</a>
+            <a href="./components.html">常用组件</a>
+            <a href="./showcase.html" aria-current="page">展示区块</a>
+            <a href="./login.html" target="_blank" rel="noopener noreferrer">登录页面</a>
+            <a href="./shell-dashboard.html" target="_blank" rel="noopener noreferrer">工作台模板</a>
+            <a href="./tool.html" target="_blank" rel="noopener noreferrer">单页模板</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <main class="wa-main">
+      <section class="wa-section wa-section--muted" id="showcase">
+        <div class="wa-container">
+          <div class="wa-sc-hero" id="sec-hero" aria-labelledby="sc-hero-title">
+            <div class="wa-sc-hero__inner">
+              <div class="wa-sc-hero__copy">
+                <p class="wa-sc-hero__kicker"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Showcase · blocks</p>
+                <h1 class="wa-sc-hero__title" id="sc-hero-title">纯静态轻站模板 无需从零搭建</h1>
+                <p class="wa-sc-hero__lead">
+                  可整段拷贝的营销展示样板：步骤胶囊、提示卡、流程瓷砖、能力卡、阶梯与顺序列表等，
+                  按需保留或删减，快速搭出落地页的中间叙事区。
+                </p>
+                <div class="wa-sc-hero__actions">
+                  <a class="wa-btn wa-btn--primary wa-btn--lg" href="./components.html">
+                     <i class="fa-solid fa-table-cells-large" aria-hidden="true"></i>
+                    常用组件
+                  </a>
+                  <a class="wa-btn wa-btn--soft wa-btn--lg" href="./index.html">
+                    <i class="fa-solid fa-house" aria-hidden="true"></i>
+                    模板首页
+                  </a>
+                </div>
+              </div>
+              <aside class="wa-sc-hero__aside" aria-label="设计令牌摘要">
+                <div class="wa-sc-hero__aside-head">Tokens</div>
+                <div class="wa-sc-token-stack">
+                  <div class="wa-sc-token">
+                    <span class="wa-sc-token__swatch" style="background: var(--wa-color-primary)"></span>
+                    <div>
+                      <div class="wa-sc-token__label">Primary</div>
+                      <div class="wa-sc-token__title">--wa-color-primary</div>
+                    </div>
+                  </div>
+                  <div class="wa-sc-token">
+                    <span class="wa-sc-token__swatch" style="background: var(--wa-color-primary-soft)"></span>
+                    <div>
+                      <div class="wa-sc-token__label">Soft</div>
+                      <div class="wa-sc-token__title">--wa-color-primary-soft</div>
+                    </div>
+                  </div>
+                  <div class="wa-sc-token">
+                    <span class="wa-sc-token__swatch wa-sc-token__swatch--bordered" style="background: var(--wa-color-bg)"></span>
+                    <div>
+                      <div class="wa-sc-token__label">Bg</div>
+                      <div class="wa-sc-token__title">--wa-color-bg</div>
+                    </div>
+                  </div>
+                  <div class="wa-sc-token">
+                    <span class="wa-sc-token__swatch wa-sc-token__swatch--bordered" style="background: var(--wa-color-surface)"></span>
+                    <div>
+                      <div class="wa-sc-token__label">Surface</div>
+                      <div class="wa-sc-token__title">--wa-color-surface</div>
+                    </div>
+                  </div>
+                </div>
+              </aside>
+              <div class="wa-sc-kpi" aria-label="本页概览">
+                <div class="wa-sc-kpi-item">
+                  <div class="wa-sc-kpi-value">7</div>
+                  <div class="wa-sc-kpi-label">展示模块</div>
+                </div>
+                <div class="wa-sc-kpi-item">
+                  <div class="wa-sc-kpi-value">5</div>
+                  <div class="wa-sc-kpi-label">步骤胶囊</div>
+                </div>
+                <div class="wa-sc-kpi-item">
+                  <div class="wa-sc-kpi-value">6</div>
+                  <div class="wa-sc-kpi-label">能力卡片</div>
+                </div>
+                <div class="wa-sc-kpi-item">
+                  <div class="wa-sc-kpi-value">1</div>
+                  <div class="wa-sc-kpi-label">行动号召</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="wa-gb-panel" aria-label="默认卡片组">
+            <p class="wa-gb-eyebrow"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Component · Tip Cards</p>
+            <h3 class="wa-gb-title">默认卡片组</h3>
+            <p class="wa-gb-desc">图标徽章 + 标题说明的硬边卡片，三列两行共六张。</p>
+            <div class="wa-tip-grid">
+              <article class="wa-tip-card">
+                <div class="wa-tip-card__icon" aria-hidden="true"><i class="fa-solid fa-rotate"></i></div>
+                <h4 class="wa-tip-card__title">别重复付费</h4>
+                <p class="wa-tip-card__body">同样的问题反复算 → 缓存它，别每次都花一次钱。</p>
+              </article>
+              <article class="wa-tip-card">
+                <div class="wa-tip-card__icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+                <h4 class="wa-tip-card__title">别为简单活付费</h4>
+                <p class="wa-tip-card__body">分类、摘要这种小活用旗舰模型 → 杀鸡用牛刀，贵几十倍。</p>
+              </article>
+              <article class="wa-tip-card">
+                <div class="wa-tip-card__icon" aria-hidden="true"><i class="fa-solid fa-filter"></i></div>
+                <h4 class="wa-tip-card__title">别传没用的 token</h4>
+                <p class="wa-tip-card__body">把一堆冗余历史、长文档全塞进去 → 每个 token 都在烧钱。</p>
+              </article>
+              <article class="wa-tip-card">
+                <div class="wa-tip-card__icon" aria-hidden="true"><i class="fa-solid fa-file-zipper"></i></div>
+                <h4 class="wa-tip-card__title">能压就先压</h4>
+                <p class="wa-tip-card__body">提示词与上下文先压缩再发送 → 同样效果，少花一半量。</p>
+              </article>
+              <article class="wa-tip-card">
+                <div class="wa-tip-card__icon" aria-hidden="true"><i class="fa-solid fa-layer-group"></i></div>
+                <h4 class="wa-tip-card__title">能批就别单跑</h4>
+                <p class="wa-tip-card__body">零散请求拆成批处理 → 摊薄固定开销，吞吐更高。</p>
+              </article>
+              <article class="wa-tip-card">
+                <div class="wa-tip-card__icon" aria-hidden="true"><i class="fa-solid fa-flask"></i></div>
+                <h4 class="wa-tip-card__title">蒸馏留给最后</h4>
+                <p class="wa-tip-card__body">路径未稳就上蒸馏 → 成本砸在错误方案上，返工更贵。</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="wa-gb-panel" id="step-pills" aria-label="步骤胶囊">
+            <p class="wa-gb-eyebrow"><i class="fa-solid fa-grip" aria-hidden="true"></i> Component · Step Pills</p>
+            <h3 class="wa-gb-title">步骤胶囊</h3>
+            <p class="wa-gb-desc">硬边步骤胶囊，可点选切换激活态。</p>
+            <div class="wa-step-grid" role="radiogroup" aria-label="步骤胶囊">
+              <button type="button" class="wa-step-pill" data-step-pill>
+                <div class="wa-step-pill__num">1</div>
+                <div class="wa-step-pill__title">缓存</div>
+                <div class="wa-step-pill__meta">降 40%</div>
+              </button>
+              <button type="button" class="wa-step-pill is-active" data-step-pill>
+                <div class="wa-step-pill__num">2</div>
+                <div class="wa-step-pill__title">路由</div>
+                <div class="wa-step-pill__meta">降 40%</div>
+              </button>
+              <button type="button" class="wa-step-pill" data-step-pill>
+                <div class="wa-step-pill__num">3</div>
+                <div class="wa-step-pill__title">压缩</div>
+                <div class="wa-step-pill__meta">降 25%</div>
+              </button>
+              <button type="button" class="wa-step-pill" data-step-pill>
+                <div class="wa-step-pill__num">4</div>
+                <div class="wa-step-pill__title">批处理</div>
+                <div class="wa-step-pill__meta">降 20%</div>
+              </button>
+              <button type="button" class="wa-step-pill" data-step-pill>
+                <div class="wa-step-pill__num">5</div>
+                <div class="wa-step-pill__title">蒸馏</div>
+                <div class="wa-step-pill__meta">降 30%</div>
+              </button>
+            </div>
+          </div>
+
+          <div class="wa-gb-panel" aria-label="流程瓷砖网格">
+            <p class="wa-gb-eyebrow"><i class="fa-solid fa-border-all" aria-hidden="true"></i> Component · Flow Tiles</p>
+            <h3 class="wa-gb-title">流程瓷砖网格</h3>
+            <p class="wa-gb-desc">双列硬边瓷砖，用于展示分步流程与关键节点。</p>
+            <p class="wa-cover-flow-label">Steps · 6</p>
+            <div class="wa-cover-flow-grid" aria-label="固定流程">
+              <div class="wa-cover-flow-tile">
+                <span class="wa-cover-flow-tile__icon" aria-hidden="true"><i class="fa-solid fa-download"></i></span>
+                <span class="wa-cover-flow-tile__text">
+                  <span class="wa-cover-flow-tile__title">识别输入</span>
+                  <span class="wa-cover-flow-tile__hint">原型 / 站点 / 混合</span>
+                </span>
+              </div>
+              <div class="wa-cover-flow-tile wa-cover-flow-tile--key">
+                <span class="wa-cover-flow-tile__icon" aria-hidden="true"><i class="fa-solid fa-border-all"></i></span>
+                <span class="wa-cover-flow-tile__text">
+                  <span class="wa-cover-flow-tile__title">界面盘点</span>
+                  <span class="wa-cover-flow-tile__hint">页面 · 动线 · 字段</span>
+                </span>
+              </div>
+              <div class="wa-cover-flow-tile">
+                <span class="wa-cover-flow-tile__icon" aria-hidden="true"><i class="fa-solid fa-tags"></i></span>
+                <span class="wa-cover-flow-tile__text">
+                  <span class="wa-cover-flow-tile__title">来源标注</span>
+                  <span class="wa-cover-flow-tile__hint">事实 · 推断 · 待补充</span>
+                </span>
+              </div>
+              <div class="wa-cover-flow-tile">
+                <span class="wa-cover-flow-tile__icon" aria-hidden="true"><i class="fa-solid fa-users"></i></span>
+                <span class="wa-cover-flow-tile__text">
+                  <span class="wa-cover-flow-tile__title">三视角补缺</span>
+                  <span class="wa-cover-flow-tile__hint">用户 · 商业 · 技术</span>
+                </span>
+              </div>
+              <div class="wa-cover-flow-tile">
+                <span class="wa-cover-flow-tile__icon" aria-hidden="true"><i class="fa-solid fa-bullseye"></i></span>
+                <span class="wa-cover-flow-tile__text">
+                  <span class="wa-cover-flow-tile__title">概念对齐</span>
+                  <span class="wa-cover-flow-tile__hint">定位 · MVP 边界</span>
+                </span>
+              </div>
+              <div class="wa-cover-flow-tile">
+                <span class="wa-cover-flow-tile__icon" aria-hidden="true"><i class="fa-solid fa-file-circle-check"></i></span>
+                <span class="wa-cover-flow-tile__text">
+                  <span class="wa-cover-flow-tile__title">落地交付</span>
+                  <span class="wa-cover-flow-tile__hint">PRD · 自检 · Word</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="wa-gb-panel" aria-label="能力卡网格">
+            <p class="wa-gb-eyebrow"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Component · Capability Cards</p>
+            <h3 class="wa-gb-title">能力卡网格</h3>
+            <p class="wa-gb-desc">顶条强调 + 图标标题的硬边能力卡，箭头提示阅读顺序。</p>
+            <div class="wa-cover-wf-stage">
+              <div class="wa-cover-workflow">
+                <div class="wa-cover-wf-row">
+                  <div class="wa-cover-wf-card">
+                    <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+                    <div class="en">ZERO</div>
+                    <div class="zh">从零生成</div>
+                  </div>
+                  <div class="wa-cover-wf-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></div>
+                  <div class="wa-cover-wf-card">
+                    <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>
+                    <div class="en">REVIEW</div>
+                    <div class="zh">评估改进</div>
+                  </div>
+                  <div class="wa-cover-wf-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></div>
+                  <div class="wa-cover-wf-card">
+                    <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+                    <div class="en">MERGE</div>
+                    <div class="zh">增量融合</div>
+                  </div>
+                </div>
+                <div class="wa-cover-wf-row">
+                  <div class="wa-cover-wf-card">
+                    <i class="fa-solid fa-copy" aria-hidden="true"></i>
+                    <div class="en">TEMPLATE</div>
+                    <div class="zh">模板套用</div>
+                  </div>
+                  <div class="wa-cover-wf-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></div>
+                  <div class="wa-cover-wf-card">
+                    <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+                    <div class="en">DOCS</div>
+                    <div class="zh">写文档</div>
+                  </div>
+                  <div class="wa-cover-wf-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></div>
+                  <div class="wa-cover-wf-card">
+                    <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+                    <div class="en">FLOW</div>
+                    <div class="zh">梳流程</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="wa-gb-panel" aria-label="阶梯列表">
+            <p class="wa-gb-eyebrow"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Component · Cascade List</p>
+            <h3 class="wa-gb-title">阶梯列表</h3>
+            <p class="wa-gb-desc">编号硬边行与状态标签，适合展示优先级或步骤顺序。</p>
+            <div class="wa-cascade-list">
+              <div class="wa-cascade-item">
+                <div class="wa-cascade-item__left">
+                  <div class="wa-cascade-item__num">1</div>
+                  <div>
+                    <h4 class="wa-cascade-item__title">语义缓存 (Semantic Caching)</h4>
+                    <p class="wa-cascade-item__desc">拦截 40% 以上的重复或相似请求</p>
+                  </div>
+                </div>
+                <div class="wa-cascade-item__tag"><i class="fa-solid fa-bolt" aria-hidden="true"></i> 最高性价比</div>
+              </div>
+              <div class="wa-cascade-item">
+                <div class="wa-cascade-item__left">
+                  <div class="wa-cascade-item__num">2</div>
+                  <div>
+                    <h4 class="wa-cascade-item__title">模型路由 (Model Routing)</h4>
+                    <p class="wa-cascade-item__desc">按任务复杂度分配模型，告别「大炮轰蚊子」</p>
+                  </div>
+                </div>
+                <div class="wa-cascade-item__tag is-muted"><i class="fa-solid fa-arrow-down" aria-hidden="true"></i></div>
+              </div>
+              <div class="wa-cascade-item">
+                <div class="wa-cascade-item__left">
+                  <div class="wa-cascade-item__num">3</div>
+                  <div>
+                    <h4 class="wa-cascade-item__title">Prompt 压缩 (Context Compression)</h4>
+                    <p class="wa-cascade-item__desc">缩减无效 Token，提升长文本响应速度</p>
+                  </div>
+                </div>
+                <div class="wa-cascade-item__tag is-muted"><i class="fa-solid fa-arrow-down" aria-hidden="true"></i></div>
+              </div>
+              <div class="wa-cascade-item">
+                <div class="wa-cascade-item__left">
+                  <div class="wa-cascade-item__num">4</div>
+                  <div>
+                    <h4 class="wa-cascade-item__title">异步批处理 (Batching)</h4>
+                    <p class="wa-cascade-item__desc">利用非峰值算力，最高提升 200% 吞吐量</p>
+                  </div>
+                </div>
+                <div class="wa-cascade-item__tag is-muted"><i class="fa-solid fa-arrow-down" aria-hidden="true"></i></div>
+              </div>
+              <div class="wa-cascade-item">
+                <div class="wa-cascade-item__left">
+                  <div class="wa-cascade-item__num">5</div>
+                  <div>
+                    <h4 class="wa-cascade-item__title">私有蒸馏 (Distillation)</h4>
+                    <p class="wa-cascade-item__desc">将大模型能力固化到小模型，极致工程化</p>
+                  </div>
+                </div>
+                <div class="wa-cascade-item__tag is-warn">最后才碰</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="wa-gb-panel" aria-label="顺序列表">
+            <p class="wa-gb-eyebrow"><i class="fa-solid fa-bars-staggered" aria-hidden="true"></i> Component · Soft List</p>
+            <h3 class="wa-gb-title">顺序列表</h3>
+            <p class="wa-gb-desc">透明底行、图标方标与右侧标签，用于轻量步骤序列。</p>
+            <div class="wa-soft-list">
+              <div class="wa-soft-item">
+                <div class="wa-soft-item__left">
+                  <div class="wa-soft-item__icon" aria-hidden="true"><i class="fa-solid fa-database"></i></div>
+                  <span class="wa-soft-item__title">缓存</span>
+                </div>
+                <span class="wa-soft-item__tag">最省力</span>
+              </div>
+              <div class="wa-soft-item">
+                <div class="wa-soft-item__left">
+                  <div class="wa-soft-item__icon" aria-hidden="true"><i class="fa-solid fa-route"></i></div>
+                  <span class="wa-soft-item__title">路由</span>
+                </div>
+                <span class="wa-soft-item__tag"><i class="fa-solid fa-arrow-down" aria-hidden="true"></i></span>
+              </div>
+              <div class="wa-soft-item">
+                <div class="wa-soft-item__left">
+                  <div class="wa-soft-item__icon" aria-hidden="true"><i class="fa-solid fa-file-zipper"></i></div>
+                  <span class="wa-soft-item__title">压缩</span>
+                </div>
+                <span class="wa-soft-item__tag"><i class="fa-solid fa-arrow-down" aria-hidden="true"></i></span>
+              </div>
+              <div class="wa-soft-item">
+                <div class="wa-soft-item__left">
+                  <div class="wa-soft-item__icon" aria-hidden="true"><i class="fa-solid fa-layer-group"></i></div>
+                  <span class="wa-soft-item__title">批处理</span>
+                </div>
+                <span class="wa-soft-item__tag"><i class="fa-solid fa-arrow-down" aria-hidden="true"></i></span>
+              </div>
+              <div class="wa-soft-item">
+                <div class="wa-soft-item__left">
+                  <div class="wa-soft-item__icon" aria-hidden="true"><i class="fa-solid fa-server"></i></div>
+                  <span class="wa-soft-item__title">蒸馏 / 自托管</span>
+                </div>
+                <span class="wa-soft-item__tag">最后才碰</span>
+              </div>
+            </div>
+            <p class="wa-gb-foot">前三招工程量很小，就能砍掉 <strong>40-60%</strong>。</p>
+          </div>
+
+          <div class="wa-gb-panel" id="convert" aria-label="行动号召">
+            <div class="wa-dl-cta">
+              <div class="wa-dl-cta__eyebrow">SECTION CTA</div>
+              <h3 class="wa-dl-cta__title">行动号召</h3>
+              <a class="wa-dl-cta__btn" href="./index.html#cta">
+                <span>前往底部行动区</span>
+                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="wa-follow-section" aria-label="关注条">
+            <p class="wa-gb-eyebrow"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Social CTA</p>
+            <h3 class="wa-gb-title">关注条</h3>
+            <p class="wa-gb-desc wa-gb-desc--center">刊尾关注条，用于展示品牌入口与社交链接。</p>
+            <div class="wa-follow-bar" role="group" aria-label="访问 Vibe Design Lite">
+              <div class="wa-follow-bar__text">
+                <div class="wa-follow-bar__label">VISIT US</div>
+                <div class="wa-follow-bar__title">Vibe Design Lite · 轻站模板</div>
+              </div>
+              <div class="wa-follow-bar__divider" aria-hidden="true"></div>
+              <div class="wa-follow-bar__icons">
+                <a class="wa-follow-icon" href="#top" aria-label="返回顶部">
+                  <i class="fa-solid fa-house" aria-hidden="true"></i>
+                </a>
+                <button type="button" class="wa-follow-icon" data-modal-open="wechat-modal" aria-label="微信">
+                  <i class="fa-brands fa-weixin" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="wa-follow-icon" data-modal-open="contact-modal" aria-label="邮件">
+                  <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    </main>
+
+    <footer class="wa-footer">
+      <div class="wa-footer__inner">
+        <div class="wa-footer__meta">
+          <span>© 2026 <a href="https://www.vibepm.net" target="_blank" rel="noopener noreferrer">VibePM</a></span>
+          <span class="wa-footer__sep" aria-hidden="true">·</span>
+          <span>Agent 产品协作与设计资产分享平台</span>
+        </div>
+        <nav class="wa-footer__links" aria-label="页脚导航">
+          <a href="https://www.vibepm.net" target="_blank" rel="noopener noreferrer">网站首页</a>
+          <span class="wa-footer__sep" aria-hidden="true">·</span>
+          <a href="#" data-modal-open="wechat-modal">关注我们</a>
+          <span class="wa-footer__sep" aria-hidden="true">·</span>
+          <a href="https://work.weixin.qq.com/kfid/kfc30961678e9017618" target="_blank" rel="noopener noreferrer">联系客服</a>
+          <span class="wa-footer__sep" aria-hidden="true">·</span>
+          <a href="https://my.feishu.cn/share/base/form/shrcnSIcBulea59IXEePDCgpOse" target="_blank" rel="noopener noreferrer">建议反馈</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
+  <div class="wa-float-tools" aria-label="快捷工具">
+    <a class="wa-float-tools__btn" href="./index.html#cta" title="咨询">
+      <i class="fa-solid fa-comment-dots" aria-hidden="true"></i>
+      <span>咨询</span>
+    </a>
+    <button type="button" class="wa-float-tools__btn" data-modal-open="wechat-modal" title="公众号">
+      <i class="fa-brands fa-weixin" aria-hidden="true"></i>
+      <span>公众号</span>
+    </button>
+    <a class="wa-float-tools__btn wa-float-tools__btn--top" href="#top" title="返回顶部" data-back-top>
+      <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+      <span>TOP</span>
+    </a>
+  </div>
+
+  <div class="wa-modal wa-modal--wechat" id="wechat-modal" role="dialog" aria-modal="true" aria-labelledby="wechat-modal-title" aria-hidden="true">
+    <div class="wa-modal__overlay" data-modal-close></div>
+    <div class="wa-modal__dialog">
+      <div class="wa-modal__panel" tabindex="-1" role="document">
+        <div class="wa-modal__body wa-modal__body--wechat">
+          <h2 class="wa-modal__wechat-title" id="wechat-modal-title">关注微信公众号</h2>
+          <p class="wa-modal__desc">扫描二维码关注VibePM公众号，获取最新AI产品协作与热门工具分享</p>
+          <div class="wa-modal__qr">
+            <img src="https://www.vibepm.net/assets/images/qrcode_gzh.png" alt="微信公众号二维码" width="200" height="200" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+      <button type="button" class="wa-modal__close wa-modal__close--float" data-modal-close aria-label="关闭">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="wa-modal" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" aria-hidden="true">
+    <div class="wa-modal__overlay" data-modal-close></div>
+    <div class="wa-modal__panel" tabindex="-1" role="document">
+      <div class="wa-modal__header">
+        <h2 class="wa-modal__title" id="contact-modal-title">预约演示</h2>
+        <button type="button" class="wa-modal__close" data-modal-close aria-label="关闭">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="wa-modal__body">
+        <p style="margin:0 0 14px;line-height:1.65;color:var(--wa-color-text-secondary)">虚构表单示意，替换为真实邮箱或第三方表单即可。</p>
+        <form class="wa-form" onsubmit="return false;">
+          <div class="wa-form-item">
+            <label class="wa-label" for="contact-email">工作邮箱</label>
+            <div class="wa-field">
+              <input class="wa-field__input" id="contact-email" type="email" placeholder="you@company.com" autocomplete="off" />
+            </div>
+          </div>
+          <div class="wa-form-item">
+            <label class="wa-label" for="contact-note">想了解什么</label>
+            <div class="wa-field wa-field--textarea">
+              <textarea class="wa-field__textarea" id="contact-note" rows="3" placeholder="例如：落地页改版、活动专题…"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="wa-modal__footer">
+        <button type="button" class="wa-btn wa-btn--secondary" data-modal-close>关闭</button>
+        <button type="button" class="wa-btn wa-btn--primary" data-modal-close data-kit-message="success" data-kit-message-text="提交成功">提交</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/common/js/toast.js"></script>
+  <script src="./assets/common/js/message.js"></script>
+  <script src="./assets/common/js/modal.js"></script>
+  <script src="./js/shared.js"></script>
+  <script src="./js/showcase.js"></script>
+</body>
+</html>

@@ -1,0 +1,2896 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>小工具页模板 — Vibe Design Lite</title>
+  <meta name="description" content="Vibe Design Lite 单文件小工具模板：页内 CSS/JS，外链仅图标库与字体，复制本文件即可改造。" />
+  <meta name="theme-color" content="#6c5ce7" />
+  <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml">
+  <!-- 外链：FA Free CDN（始终）+ Google Fonts；其余样式与脚本均内联。见同目录说明文档.md -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ========== 核心 Token ========== */
+    :root {
+      /* 字体与色板 token（与 Lite 默认栈一致） */
+      --wa-font-sans: "Manrope", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      --wa-font-display: "Outfit", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --wa-font-serif: var(--wa-font-display);
+      --wa-color-text-1: rgba(17, 17, 19, 0.95);
+      --wa-color-text: #1c1d22;
+      --wa-color-text-secondary: #6b6c74;
+      --wa-color-muted: #85868f;
+      --wa-color-bg: #f4f5f7;
+      --wa-color-surface: #ffffff;
+      --wa-color-glass: rgba(255, 255, 255, 0.72);
+      --wa-color-primary: #6c5ce7;
+      --wa-color-primary-rgb: 108, 92, 231;
+      --wa-color-primary-strong: #5649c0;
+      --wa-color-primary-soft: rgba(108, 92, 231, 0.12);
+      --wa-color-on-primary: #fff;
+      --wa-color-border: rgba(17, 17, 19, 0.1);
+      --wa-color-border-1: rgba(17, 17, 19, 0.06);
+      --wa-color-border-2: rgba(17, 17, 19, 0.1);
+      --wa-color-fill-1: rgba(17, 17, 19, 0.04);
+      --wa-color-fill-2: rgba(17, 17, 19, 0.07);
+      --wa-color-border-3: rgba(17, 17, 19, 0.15);
+      --wa-color-text-4: rgba(17, 17, 19, 0.28);
+      --wa-color-success: #10b981;
+      --wa-color-warning: #ff7d00;
+      --wa-color-danger: #f53f3f;
+      /* 阴影：近层轻扩散 + 远层抬升 */
+      --wa-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.03), 0 14px 36px rgba(0, 0, 0, 0.07);
+      --wa-radius-sm: 6px;
+      --wa-radius-md: 10px;
+      --wa-radius-lg: 16px;
+      --wa-radius-pill: 999px;
+      --wa-input-radius: 8px;
+      --wa-ctrl-ring: 3px;
+      --wa-duration: 180ms;
+      --wa-duration-fast: 150ms;
+      --wa-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --wa-color-text-1: rgba(255, 255, 255, 0.92);
+      --wa-color-text: #ececef;
+      --wa-color-text-secondary: #a8a9b2;
+      --wa-color-muted: #8b8c96;
+      --wa-color-bg: #0c0d10;
+      --wa-color-surface: #1c1d22;
+      --wa-color-glass: rgba(28, 29, 34, 0.78);
+      --wa-color-primary-soft: rgba(108, 92, 231, 0.22);
+      --wa-color-border: rgba(255, 255, 255, 0.1);
+      --wa-color-border-1: rgba(255, 255, 255, 0.06);
+      --wa-color-border-2: rgba(255, 255, 255, 0.1);
+      --wa-color-fill-1: rgba(255, 255, 255, 0.06);
+      --wa-color-fill-2: rgba(255, 255, 255, 0.1);
+      --wa-color-border-3: rgba(255, 255, 255, 0.18);
+      --wa-color-text-4: rgba(255, 255, 255, 0.3);
+      --wa-shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--wa-font-sans);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--wa-color-text);
+      background: var(--wa-color-bg);
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+    body::before, body::after {
+      content: "";
+      position: fixed;
+      width: 42vw;
+      height: 42vw;
+      max-width: 480px;
+      max-height: 480px;
+      border-radius: 50%;
+      filter: blur(48px);
+      pointer-events: none;
+      z-index: 0;
+      background: var(--wa-color-primary-soft);
+    }
+    body::before { top: -12vw; right: -8vw; }
+    body::after { bottom: -14vw; left: -10vw; }
+    ::selection { background: var(--wa-color-primary); color: #fff; }
+    code {
+      font-family: ui-monospace, Consolas, monospace;
+      font-size: 0.9em;
+      padding: 0.1em 0.35em;
+      border-radius: 4px;
+      background: var(--wa-color-primary-soft);
+      color: var(--wa-color-primary);
+    }
+
+    .wa-tool {
+      position: relative;
+      z-index: 1;
+      width: calc(100% - 40px);
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 0 56px;
+    }
+
+    .wa-card {
+      background: var(--wa-color-glass);
+      border: 1px solid var(--wa-color-border-1);
+      border-radius: var(--wa-radius-lg);
+      box-shadow: var(--wa-shadow-soft);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow: visible;
+    }
+
+    /* —— 导航 —— */
+    .wa-tool-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 18px;
+      margin-bottom: 20px;
+    }
+    .wa-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--wa-color-text-1);
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .wa-brand__mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: var(--wa-color-primary);
+      color: var(--wa-color-on-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .wa-tool-nav__actions { display: flex; align-items: center; gap: 8px; }
+    .wa-icon-btn {
+      width: 32px;
+      height: 32px;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid color-mix(in srgb, var(--wa-color-primary) 28%, transparent);
+      border-radius: var(--wa-radius-sm);
+      background: var(--wa-color-primary-soft);
+      color: var(--wa-color-primary);
+      cursor: pointer;
+      transition: background-color .15s ease, border-color .15s ease, color .15s ease, box-shadow .15s ease, transform .15s ease;
+    }
+    .wa-icon-btn:hover {
+      background: var(--wa-color-primary);
+      border-color: var(--wa-color-primary);
+      color: var(--wa-color-on-primary);
+      box-shadow: 0 8px 20px rgba(108, 92, 231, 0.28);
+      transform: translateY(-1px);
+    }
+
+    /* —— Hero / 区块 —— */
+    .wa-hero { position: relative; padding: 22px 24px; margin-bottom: 14px; }
+    .wa-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      height: 28px;
+      margin: 0 0 14px;
+      padding: 0 11px;
+      border: 1px solid var(--wa-color-border);
+      border-radius: var(--wa-radius-pill);
+      background: transparent;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      color: var(--wa-color-text-secondary);
+    }
+    .wa-eyebrow i {
+      font-size: 0.95em;
+      opacity: 0.9;
+    }
+    .wa-hero h1 {
+      margin: 4px 0 12px;
+      font-family: var(--wa-font-display);
+      font-size: clamp(32px, 5.5vw, 48px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      font-weight: 800;
+      color: var(--wa-color-text-1);
+    }
+    .wa-hero h1 .accent { color: var(--wa-color-primary); }
+    .wa-hero > p {
+      margin: 0;
+      max-width: 46em;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--wa-color-text-secondary);
+    }
+    .wa-hero__demo {
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px solid var(--wa-color-border-1);
+    }
+    .wa-hero__demo > .wa-label-sm { margin-bottom: 10px; }
+    .wa-hero__demo .wa-stats { margin-bottom: 16px; }
+
+    .wa-section { position: relative; padding: 22px 24px; margin: 0; }
+    .wa-section + .wa-section { margin-top: 14px; }
+    .wa-section__title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 6px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--wa-color-text-1);
+    }
+    .wa-section__title > i {
+      flex-shrink: 0;
+      font-size: 0.9em;
+      color: var(--wa-color-primary);
+      line-height: 1;
+    }
+    .wa-section__hint {
+      margin: 0 0 16px;
+      font-size: 13px;
+      color: var(--wa-color-muted);
+    }
+    .wa-block + .wa-block { margin-top: 18px; }
+    .wa-label-sm {
+      margin: 0 0 8px;
+      font-size: 13px;
+      font-weight: 650;
+      color: var(--wa-color-text-secondary);
+    }
+    .wa-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+    /* —— 数值 —— */
+    .wa-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    /* —— 提示卡片：三列栅格 —— */
+    .wa-tip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      width: 100%;
+    }
+    .wa-tip-card {
+      background: color-mix(in srgb, var(--wa-color-primary) 4%, var(--wa-color-surface));
+      border: 1px solid var(--wa-color-border);
+      border-radius: var(--wa-radius-lg);
+      padding: 20px;
+      box-sizing: border-box;
+      min-width: 0;
+      transition: border-color 150ms ease, transform 120ms ease;
+    }
+    .wa-tip-card:hover {
+      border-color: color-mix(in srgb, var(--wa-color-primary) 40%, var(--wa-color-border));
+      transform: translateY(-1px);
+    }
+    .wa-tip-card__icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--wa-color-primary);
+      color: var(--wa-color-on-primary);
+      border-radius: 8px;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+    .wa-tip-card__title {
+      font-size: 17px;
+      font-weight: 650;
+      margin: 0 0 8px;
+      color: var(--wa-color-text);
+    }
+    .wa-tip-card__body {
+      margin: 0;
+      font-size: 13px;
+      color: var(--wa-color-text-secondary);
+      line-height: 1.55;
+    }
+    .wa-stat {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      min-width: 0;
+      padding: 16px;
+      border: 1px solid color-mix(in srgb, var(--wa-color-border) 50%, transparent);
+      border-radius: var(--wa-radius-md);
+      background: transparent;
+      transition: border-color .15s ease, background-color .15s ease;
+    }
+    .wa-stat:hover {
+      border-color: color-mix(in srgb, var(--wa-color-primary) 28%, var(--wa-color-border));
+      background: color-mix(in srgb, var(--wa-color-primary) 3%, transparent);
+    }
+    .wa-stat__icon {
+      flex-shrink: 0;
+      margin-top: 1px;
+      font-size: 13px;
+      line-height: 1.2;
+      color: var(--wa-color-primary);
+      opacity: 0.85;
+    }
+    .wa-stat--accent .wa-stat__icon { color: var(--wa-color-primary); }
+    .wa-stat--success .wa-stat__icon { color: var(--wa-color-success); }
+    .wa-stat--warning .wa-stat__icon { color: var(--wa-color-warning); }
+    .wa-stat__body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 0;
+    }
+    .wa-stat__label {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--wa-color-muted);
+      line-height: 1.2;
+    }
+    .wa-stat__value {
+      margin: 0;
+      font-family: var(--wa-font-display, var(--wa-font-sans));
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      font-variant-numeric: tabular-nums;
+      color: var(--wa-color-text-1);
+    }
+    .wa-stat--accent .wa-stat__value { color: var(--wa-color-primary); }
+    .wa-stat--success .wa-stat__value { color: var(--wa-color-success); }
+    .wa-stat--warning .wa-stat__value { color: var(--wa-color-warning); }
+
+    /* —— 按钮 —— */
+    .wa-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      height: 40px;
+      padding: 0 16px;
+      border-radius: var(--wa-radius-sm);
+      border: 1px solid transparent;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color .15s ease, border-color .15s ease, color .15s ease, box-shadow .15s ease, transform .15s ease;
+    }
+    .wa-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+    .wa-btn--primary {
+      background: var(--wa-color-primary);
+      border-color: var(--wa-color-primary);
+      color: var(--wa-color-on-primary);
+    }
+    .wa-btn--primary:hover:not(:disabled) {
+      background: var(--wa-color-primary-strong);
+      border-color: var(--wa-color-primary-strong);
+      transform: translateY(-1px);
+    }
+    .wa-btn--soft {
+      background: var(--wa-color-primary-soft);
+      border-color: var(--wa-color-border);
+      color: var(--wa-color-primary);
+    }
+    .wa-btn--soft:hover:not(:disabled) {
+      background: var(--wa-color-primary);
+      border-color: var(--wa-color-primary);
+      color: var(--wa-color-on-primary);
+      box-shadow: 0 8px 20px rgba(108, 92, 231, 0.28);
+      transform: translateY(-1px);
+    }
+    .wa-btn--soft.wa-dropdown__trigger:hover:not(:disabled),
+    .wa-dropdown > .wa-btn--soft:hover:not(:disabled) {
+      transform: none;
+      box-shadow: none;
+    }
+    .wa-btn--outline {
+      background: transparent;
+      border-color: var(--wa-color-primary);
+      color: var(--wa-color-primary);
+    }
+    .wa-btn--outline:hover:not(:disabled) {
+      background: color-mix(in srgb, var(--wa-color-primary) 14%, transparent);
+      border-color: var(--wa-color-primary);
+      transform: translateY(-1px);
+    }
+    .wa-btn--outline.wa-dropdown__trigger:hover:not(:disabled),
+    .wa-dropdown > .wa-btn--outline:hover:not(:disabled) {
+      transform: none;
+    }
+    .wa-btn--secondary {
+      color: var(--wa-color-text);
+      background: var(--wa-color-surface);
+      border-color: var(--wa-color-border-2, var(--wa-color-border));
+    }
+    .wa-btn--secondary:hover:not(:disabled) {
+      background: var(--wa-color-fill-1);
+      border-color: var(--wa-color-border-3, var(--wa-color-border));
+      box-shadow: 0 0 0 var(--wa-ctrl-ring, 3px) var(--wa-color-fill-2);
+      transform: none;
+    }
+    .wa-btn--secondary:active:not(:disabled) {
+      background: var(--wa-color-fill-2);
+      border-color: var(--wa-color-border-3, var(--wa-color-border));
+      box-shadow: none;
+      transform: scale(0.95);
+    }
+    .wa-btn--secondary:disabled {
+      color: var(--wa-color-text-4);
+      background: var(--wa-color-surface);
+      border-color: var(--wa-color-border-2, var(--wa-color-border));
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .wa-btn--danger {
+      background: var(--wa-color-danger);
+      border-color: var(--wa-color-danger);
+      color: #fff;
+    }
+    .wa-btn--danger:hover:not(:disabled) {
+      background: color-mix(in srgb, var(--wa-color-danger) 88%, #000);
+      border-color: color-mix(in srgb, var(--wa-color-danger) 88%, #000);
+    }
+    .wa-btn--sm { height: 34px; padding: 0 12px; font-size: 13px; }
+
+    /* —— 下拉（菜单 fixed，避免抬高整卡导致阴影叠层突变） —— */
+    .wa-dropdown { position: relative; display: inline-block; }
+    .wa-dropdown__menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1100;
+      width: max-content;
+      min-width: 7.5rem;
+      max-width: min(18rem, calc(100vw - 16px));
+      margin: 0;
+      padding: 6px;
+      list-style: none;
+      border: 1px solid var(--wa-color-border);
+      border-radius: 10px;
+      background: var(--wa-color-surface);
+      box-shadow: 0 6px 20px color-mix(in srgb, #000 10%, transparent);
+      display: none;
+    }
+    html[data-theme="dark"] .wa-dropdown__menu {
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+    }
+    .wa-dropdown__menu.is-open { display: block; }
+    .wa-dropdown__item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 8px 10px;
+      border: none;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--wa-color-text);
+      font: inherit;
+      font-size: 13px;
+      text-align: left;
+      cursor: pointer;
+    }
+    .wa-dropdown__item:hover { background: var(--wa-color-primary-soft); color: var(--wa-color-primary); }
+
+    /* —— 表单：field / combo / check / radio —— */
+    .wa-form-item { margin-bottom: 14px; }
+    .wa-form__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+      padding-top: 4px;
+    }
+    .wa-label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--wa-color-text-1);
+    }
+    .wa-label .wa-req {
+      margin-left: 2px;
+      color: var(--wa-color-danger);
+    }
+    .wa-field__hint {
+      margin: 6px 0 0;
+      font-size: 12px;
+      color: var(--wa-color-muted);
+    }
+    .wa-field__error {
+      display: none;
+      margin: 6px 0 0;
+      font-size: 12px;
+      color: var(--wa-color-danger);
+    }
+    .wa-form-item.is-error .wa-field__error { display: block; }
+    .wa-form-item.is-error .wa-field__hint { display: none; }
+    .wa-form-item.is-error .wa-field {
+      border-color: var(--wa-color-danger);
+    }
+    .wa-form-item.is-error .wa-field:hover:not(:focus-within) {
+      border-color: color-mix(in srgb, var(--wa-color-danger) 72%, var(--wa-color-border));
+    }
+    .wa-form-item.is-error .wa-field:focus-within {
+      border-color: var(--wa-color-danger);
+      box-shadow: 0 0 0 var(--wa-ctrl-ring) color-mix(in srgb, var(--wa-color-danger) 22%, transparent);
+    }
+    .wa-field {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      width: 100%;
+      min-height: 44px;
+      margin: 0;
+      padding: 0 10px 0 14px;
+      border: 1px solid var(--wa-color-border-2);
+      border-radius: var(--wa-input-radius);
+      background: var(--wa-color-surface);
+      transition: border-color var(--wa-duration) var(--wa-ease), box-shadow var(--wa-duration) var(--wa-ease);
+    }
+    .wa-field:hover:not(:focus-within) {
+      border-color: color-mix(in srgb, var(--wa-color-primary) 42%, var(--wa-color-border-2));
+    }
+    .wa-field:focus-within {
+      border-color: var(--wa-color-primary);
+      box-shadow: 0 0 0 var(--wa-ctrl-ring) var(--wa-color-primary-soft);
+    }
+    .wa-field__input {
+      flex: 1 1 auto;
+      min-width: 0;
+      height: 42px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--wa-color-text);
+      font: inherit;
+      font-size: 14px;
+      line-height: 1.35;
+      outline: none;
+    }
+    .wa-field__input::placeholder { color: var(--wa-color-muted); opacity: 0.85; }
+    .wa-field__clear {
+      flex: 0 0 auto;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--wa-color-muted);
+      cursor: pointer;
+    }
+    .wa-field__clear.is-visible { display: inline-flex; }
+    .wa-field__clear:hover { color: var(--wa-color-text); }
+    .wa-field--textarea {
+      align-items: flex-start;
+      min-height: 0;
+      padding: 10px 14px;
+    }
+    .wa-field__textarea {
+      flex: 1 1 auto;
+      width: 100%;
+      min-height: 96px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      resize: vertical;
+      background: transparent;
+      color: var(--wa-color-text);
+      font: inherit;
+      font-size: 14px;
+      line-height: 1.5;
+      outline: none;
+    }
+    .wa-field__textarea::placeholder { color: var(--wa-color-muted); opacity: 0.85; }
+    /* —— 自定义下拉（对齐 components.css + combo.js：control / trail / clear） —— */
+    .wa-field--select {
+      position: relative;
+      padding-right: 10px;
+    }
+    .wa-field__select {
+      flex: 1 1 auto;
+      width: 100%;
+      min-width: 0;
+      height: 42px;
+      margin: 0;
+      padding: 0 22px 0 0;
+      border: 0;
+      background: transparent;
+      color: var(--wa-color-text);
+      font: inherit;
+      font-size: 14px;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+    .wa-combo { position: static; width: 100%; }
+    .wa-combo__native {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .wa-combo__control {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      width: 100%;
+      min-height: 42px;
+      height: 42px;
+    }
+    .wa-combo__trigger {
+      display: flex;
+      align-items: center;
+      flex: 1 1 auto;
+      min-width: 0;
+      min-height: 42px;
+      height: 42px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--wa-color-text);
+      font: inherit;
+      font-size: 14px;
+      text-align: left;
+      cursor: pointer;
+      outline: none;
+      box-shadow: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .wa-combo__trigger:focus,
+    .wa-combo__trigger:focus-visible {
+      outline: none;
+      box-shadow: none;
+    }
+    .wa-combo__trigger::-moz-focus-inner,
+    .wa-combo__option::-moz-focus-inner,
+    .wa-combo__clear::-moz-focus-inner {
+      border: 0;
+      padding: 0;
+    }
+    .wa-combo__value {
+      display: block;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .wa-combo__value.is-placeholder { color: var(--wa-color-muted); }
+    .wa-combo__trail {
+      position: relative;
+      flex: 0 0 auto;
+      width: 18px;
+      height: 18px;
+    }
+    .wa-combo__clear,
+    .wa-combo__chevron {
+      position: absolute;
+      inset: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--wa-color-muted);
+      cursor: pointer;
+    }
+    .wa-combo__clear {
+      display: none;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      z-index: 1;
+    }
+    .wa-combo__chevron {
+      font-size: 0.625rem;
+      opacity: 0.72;
+      transition: transform var(--wa-duration) var(--wa-ease), opacity var(--wa-duration-fast) ease;
+    }
+    .wa-field--select:hover .wa-combo__clear.is-visible,
+    .wa-combo__control:hover .wa-combo__clear.is-visible {
+      display: inline-flex;
+    }
+    .wa-field--select:hover .wa-combo__clear.is-visible ~ .wa-combo__chevron,
+    .wa-combo__control:hover .wa-combo__clear.is-visible ~ .wa-combo__chevron {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .wa-combo__clear:hover { color: var(--wa-color-text); }
+    .wa-combo__control:has(.wa-combo__trigger[aria-expanded="true"]) .wa-combo__chevron {
+      transform: rotate(180deg);
+    }
+    .wa-combo__list {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: auto;
+      box-sizing: border-box;
+      z-index: 1100;
+      margin: 0;
+      padding: 6px;
+      list-style: none;
+      border: 1px solid var(--wa-color-border);
+      border-radius: var(--wa-radius-sm);
+      background: var(--wa-color-surface);
+      box-shadow: var(--wa-shadow-soft);
+      max-height: 220px;
+      overflow-y: auto;
+    }
+    .wa-combo__list[hidden] { display: none; }
+    .wa-combo__list li { margin: 0; padding: 0; }
+    .wa-combo__option {
+      display: block;
+      width: 100%;
+      padding: 8px 10px;
+      border: 0;
+      border-radius: var(--wa-radius-sm);
+      background: transparent;
+      color: var(--wa-color-text);
+      font: inherit;
+      font-size: 13px;
+      line-height: 1.4;
+      text-align: left;
+      cursor: pointer;
+      outline: none;
+      box-shadow: none;
+      transition: background var(--wa-duration-fast) ease, color var(--wa-duration-fast) ease;
+    }
+    .wa-combo__option:hover,
+    .wa-combo__option:focus,
+    .wa-combo__option:focus-visible {
+      outline: none;
+      box-shadow: none;
+      background: var(--wa-color-fill-1);
+    }
+    .wa-combo__option[aria-selected="true"] {
+      background: var(--wa-color-primary-soft);
+      color: var(--wa-color-primary);
+      font-weight: 600;
+    }
+    .wa-field--select.is-open,
+    .wa-field:has(.wa-combo__trigger[aria-expanded="true"]) {
+      border-color: color-mix(in srgb, var(--wa-color-primary) 45%, transparent);
+      box-shadow: 0 0 0 1px color-mix(in srgb, var(--wa-color-primary) 20%, transparent);
+    }
+    .wa-check, .wa-radio {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.875rem;
+      line-height: 1.45;
+      color: var(--wa-color-text-secondary);
+      cursor: pointer;
+      user-select: none;
+    }
+    .wa-check input, .wa-radio input {
+      flex: 0 0 auto;
+      box-sizing: border-box;
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      padding: 0;
+      border: 1px solid var(--wa-color-border-2);
+      background: var(--wa-color-surface);
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      transition: border-color var(--wa-duration-fast) ease, background var(--wa-duration-fast) ease;
+    }
+    .wa-check input { border-radius: 3px; }
+    .wa-radio input { border-radius: 50%; }
+    .wa-check input:hover, .wa-radio input:hover {
+      border-color: color-mix(in srgb, var(--wa-color-primary) 45%, var(--wa-color-border));
+    }
+    .wa-check input:focus-visible, .wa-radio input:focus-visible {
+      outline: 2px solid var(--wa-color-primary);
+      outline-offset: 2px;
+    }
+    .wa-check input:checked {
+      border-color: var(--wa-color-primary);
+      background-color: var(--wa-color-primary);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M2.5 6.2 5 8.7 9.5 3.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 12px 12px;
+    }
+    .wa-radio input:checked {
+      border-color: var(--wa-color-primary);
+      background-color: var(--wa-color-primary);
+      background-image: radial-gradient(circle, #fff 0 3.5px, var(--wa-color-primary) 4px);
+    }
+    .wa-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.875rem;
+      line-height: 1.45;
+      color: var(--wa-color-text-secondary);
+      cursor: pointer;
+      user-select: none;
+    }
+    .wa-switch input {
+      flex: 0 0 auto;
+      box-sizing: border-box;
+      width: 40px;
+      height: 22px;
+      margin: 0;
+      padding: 0;
+      border: 1px solid color-mix(in srgb, var(--wa-color-border-2, var(--wa-color-border)) 55%, transparent);
+      border-radius: 999px;
+      background: var(--wa-color-fill-1, color-mix(in srgb, var(--wa-color-muted) 14%, transparent));
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      position: relative;
+      transition: background .18s ease, border-color .18s ease;
+    }
+    .wa-switch input::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 1px 3px color-mix(in srgb, #000 18%, transparent);
+      transform: translateY(-50%);
+      transition: transform .18s ease;
+    }
+    .wa-switch input:hover {
+      border-color: color-mix(in srgb, var(--wa-color-primary) 28%, var(--wa-color-border));
+    }
+    .wa-switch input:focus-visible {
+      outline: 2px solid var(--wa-color-primary);
+      outline-offset: 2px;
+    }
+    .wa-switch input:checked {
+      border-color: var(--wa-color-primary);
+      background: var(--wa-color-primary);
+    }
+    .wa-switch input:checked::after {
+      transform: translate(18px, -50%);
+    }
+    .wa-switch input:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    html[data-theme="dark"] .wa-switch input:not(:checked) {
+      background: color-mix(in srgb, var(--wa-color-muted) 22%, transparent);
+    }
+    .wa-choice__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      align-items: center;
+    }
+    .wa-choice__list--radio {
+      flex-wrap: nowrap;
+    }
+
+    /* Dropzone 样式（精简版；完整版见 assets/common/css/components.css） */
+    .wa-dropzone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 112px;
+      border: 1px dashed var(--wa-color-border);
+      border-radius: var(--wa-radius-md);
+      padding: 22px 16px 20px;
+      text-align: center;
+      color: var(--wa-color-text-secondary);
+      font-size: 13px;
+      line-height: 1.35;
+      background: var(--wa-color-fill-1);
+      cursor: pointer;
+      transition: border-color .15s ease, background .15s ease, color .15s ease;
+      margin-bottom: 14px;
+    }
+    .wa-dropzone > i {
+      font-size: 1.55rem;
+      line-height: 1;
+      opacity: 0.75;
+      margin-top: 2px;
+    }
+    .wa-dropzone > span { line-height: 1.35; }
+    .wa-dropzone__title {
+      color: var(--wa-color-text-secondary);
+      font-size: 13px;
+    }
+    .wa-dropzone__tip {
+      margin-top: -2px;
+      font-size: 12px;
+      line-height: 1.4;
+      color: color-mix(in srgb, var(--wa-color-text-secondary) 58%, transparent);
+    }
+    .wa-dropzone:hover .wa-dropzone__title,
+    .wa-dropzone.is-dragover .wa-dropzone__title { color: var(--wa-color-primary); }
+    .wa-dropzone:hover .wa-dropzone__tip,
+    .wa-dropzone.is-dragover .wa-dropzone__tip {
+      color: color-mix(in srgb, var(--wa-color-primary) 55%, transparent);
+    }
+    .wa-dropzone:hover, .wa-dropzone.is-dragover {
+      border-color: var(--wa-color-primary);
+      background: var(--wa-color-primary-soft);
+      color: var(--wa-color-primary);
+    }
+    /* 已选态：与 components 一致（实线 + 浅主色铺底） */
+    .wa-dropzone.is-filled {
+      border-style: solid;
+      border-color: rgba(var(--wa-color-primary-rgb), 0.35);
+      background: color-mix(in srgb, var(--wa-color-primary-soft) 55%, var(--wa-color-surface));
+    }
+    .wa-dropzone-list {
+      list-style: none;
+      margin: 10px 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .wa-dropzone-list[hidden] { display: none; }
+    .wa-dropzone-list__item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 8px 8px 8px 10px;
+      border: 1px solid var(--wa-color-border);
+      border-radius: var(--wa-radius-md, 10px);
+      background: var(--wa-color-surface);
+      color: var(--wa-color-text);
+    }
+    .wa-dropzone-list__icon {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: color-mix(in srgb, var(--wa-color-primary-soft) 70%, transparent);
+      color: var(--wa-color-primary);
+      font-size: 0.95rem;
+    }
+    .wa-dropzone-list__meta {
+      flex: 1 1 auto;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .wa-dropzone-list__name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--wa-color-text);
+    }
+    .wa-dropzone-list__size {
+      font-size: 12px;
+      color: var(--wa-color-text-secondary);
+    }
+    .wa-dropzone-list__remove {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--wa-color-text-secondary);
+      cursor: pointer;
+    }
+    .wa-dropzone-list__remove:hover {
+      background: color-mix(in srgb, #e5484d 12%, transparent);
+      color: #e5484d;
+    }
+    .wa-file-input { display: none; }
+
+    /* —— 标签 / 分段 / 面包屑 / 进度 —— */
+    .wa-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      height: 30px;
+      padding: 0 12px;
+      margin-right: 4px;
+      border-radius: var(--wa-radius-pill);
+      border: 1px solid var(--wa-color-border);
+      background: transparent;
+      color: var(--wa-color-text-secondary);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1;
+      box-sizing: border-box;
+    }
+    .wa-chip > i {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1em;
+      height: 1em;
+      font-size: 0.9em;
+      line-height: 1;
+      opacity: 0.9;
+    }
+    .wa-chip--accent {
+      background: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--wa-color-primary) 88%, #fff) 0%,
+        var(--wa-color-primary) 48%,
+        var(--wa-color-primary-strong) 100%
+      );
+      border-color: color-mix(in srgb, var(--wa-color-primary) 70%, var(--wa-color-primary-strong));
+      color: var(--wa-color-on-primary);
+      box-shadow: 0 4px 12px color-mix(in srgb, var(--wa-color-primary) 28%, transparent);
+    }
+    .wa-chip--marked {
+      background: color-mix(in srgb, var(--wa-color-primary) 10%, transparent);
+      border-color: color-mix(in srgb, var(--wa-color-primary) 45%, transparent);
+      color: var(--wa-color-primary);
+    }
+    .wa-chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+    .wa-chip-group .wa-chip { margin-right: 0; }
+    .wa-chip--option {
+      appearance: none;
+      -webkit-appearance: none;
+      margin: 0;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 400;
+      transition: background 150ms ease, border-color 150ms ease, color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+    }
+    .wa-chip--option:hover:not(.is-active) { transform: translateY(-1px); }
+    .wa-chip--option:focus-visible {
+      outline: 2px solid color-mix(in srgb, var(--wa-color-primary) 45%, transparent);
+      outline-offset: 2px;
+    }
+    .wa-chip--option.wa-chip--accent,
+    .wa-chip--option.is-active {
+      background: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--wa-color-primary) 88%, #fff) 0%,
+        var(--wa-color-primary) 48%,
+        var(--wa-color-primary-strong) 100%
+      );
+      border-color: color-mix(in srgb, var(--wa-color-primary) 70%, var(--wa-color-primary-strong));
+      color: var(--wa-color-on-primary);
+      font-weight: 400;
+      box-shadow: 0 4px 12px color-mix(in srgb, var(--wa-color-primary) 28%, transparent);
+    }
+    .wa-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      height: 22px;
+      padding: 0 8px;
+      border: 1px solid var(--wa-color-border);
+      border-radius: var(--wa-radius-pill);
+      background: transparent;
+      color: var(--wa-color-muted);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      box-sizing: border-box;
+    }
+    .wa-badge--accent {
+      background: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--wa-color-primary) 88%, #fff) 0%,
+        var(--wa-color-primary) 48%,
+        var(--wa-color-primary-strong) 100%
+      );
+      border-color: color-mix(in srgb, var(--wa-color-primary) 70%, var(--wa-color-primary-strong));
+      color: var(--wa-color-on-primary);
+      box-shadow: 0 4px 12px color-mix(in srgb, var(--wa-color-primary) 28%, transparent);
+    }
+    .wa-badge--outline { color: var(--wa-color-muted); }
+    /* 悬停提示：与 components.css .wa-tooltip / .wa-tip 统一暗色 */
+    .wa-tooltip {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--wa-color-border);
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--wa-color-text) 4%, transparent);
+      color: var(--wa-color-text-secondary, var(--wa-color-muted));
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1;
+      cursor: help;
+      --wa-tooltip-bg: #1c1d22;
+      --wa-tooltip-fg: #fff;
+    }
+    .wa-tooltip:hover,
+    .wa-tooltip:focus-visible { z-index: 50; outline: none; }
+    .wa-tooltip:focus-visible {
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--wa-color-primary) 45%, transparent);
+    }
+    .wa-tooltip__bubble {
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      z-index: 40;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transform: translateX(-50%);
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: var(--wa-tooltip-bg);
+      color: var(--wa-tooltip-fg, #fff);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.35;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.28),
+        0 2px 8px rgba(0, 0, 0, 0.18);
+      transition: opacity 0.18s ease;
+    }
+    .wa-tooltip__bubble > i {
+      flex: 0 0 auto;
+      font-size: 1em;
+      line-height: 1;
+      color: var(--wa-color-primary);
+    }
+    .wa-tooltip__bubble::after {
+      content: "";
+      position: absolute;
+      top: calc(100% - 1px);
+      left: 50%;
+      width: 0;
+      height: 0;
+      transform: translateX(-50%);
+      border-style: solid;
+      border-width: 6px 6px 0;
+      border-color: var(--wa-tooltip-bg) transparent transparent;
+    }
+    .wa-tooltip:hover .wa-tooltip__bubble,
+    .wa-tooltip:focus-visible .wa-tooltip__bubble { opacity: 1; }
+    .wa-row:has(.wa-chip),
+    .wa-row:has(.wa-badge) { gap: 10px; }
+    .wa-row .wa-chip,
+    .wa-row .wa-badge { margin-right: 0; }
+    .wa-segment {
+      display: inline-flex;
+      max-width: 100%;
+      overflow: hidden;
+      border: 1px solid var(--wa-color-border);
+      border-radius: 8px;
+      background: var(--wa-color-surface);
+    }
+    .wa-segment__item {
+      margin: 0;
+      padding: 8px 16px;
+      border: 0;
+      border-right: 1px solid var(--wa-color-border);
+      border-radius: 0;
+      background: transparent;
+      color: var(--wa-color-text);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.3;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+    }
+    .wa-segment__item:last-child { border-right: 0; }
+    .wa-segment__item:hover:not(.is-active) {
+      background: color-mix(in srgb, var(--wa-color-primary) 6%, transparent);
+      color: var(--wa-color-primary);
+    }
+    .wa-segment__item.is-active {
+      background: var(--wa-color-primary);
+      border-right-color: var(--wa-color-primary);
+      color: var(--wa-color-on-primary);
+      font-weight: 400;
+    }
+    .wa-segment__item:focus-visible {
+      outline: 2px solid var(--wa-color-primary);
+      outline-offset: -2px;
+      z-index: 1;
+    }
+    .wa-tabs__list {
+      display: inline-flex;
+      gap: 4px;
+      padding: 4px;
+      border: 1px solid color-mix(in srgb, var(--wa-color-border) 90%, transparent);
+      border-radius: var(--wa-radius-pill);
+      background: color-mix(in srgb, var(--wa-color-muted, #94a3b8) 8%, var(--wa-color-surface, #fff));
+    }
+    .wa-tabs__tab {
+      height: 32px;
+      padding: 0 14px;
+      border: none;
+      border-radius: var(--wa-radius-pill);
+      background: transparent;
+      color: var(--wa-color-text-secondary);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .wa-tabs__tab.is-active {
+      background: var(--wa-color-surface);
+      color: var(--wa-color-text);
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .wa-tabs__panel { margin-top: 12px; font-size: 14px; color: var(--wa-color-text-secondary); }
+    .wa-tabs__panel[hidden] { display: none; }
+    .wa-crumbs {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 400;
+    }
+    .wa-crumbs a,
+    .wa-crumbs__current {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--wa-color-text-secondary);
+      text-decoration: none;
+      font-weight: 400;
+    }
+    .wa-crumbs a:hover { color: var(--wa-color-primary); }
+    .wa-crumbs__home {
+      width: 22px;
+      height: 22px;
+      justify-content: center;
+      border-radius: 6px;
+    }
+    .wa-crumbs__home:hover { background: var(--wa-color-primary-soft); }
+    .wa-crumbs a > i,
+    .wa-crumbs__current > i {
+      font-size: 0.85em;
+      line-height: 1;
+      opacity: 0.75;
+    }
+    .wa-crumbs__home > i { font-size: 0.95em; opacity: 0.85; }
+    .wa-crumbs__sep { color: var(--wa-color-muted); }
+    .wa-crumbs__current { color: var(--wa-color-text-1); }
+    .wa-progress {
+      height: 12px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--wa-color-text) 6%, transparent);
+    }
+    .wa-progress__bar {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: var(--wa-color-primary);
+    }
+    .wa-progress-seg {
+      display: flex;
+      gap: 4px;
+      width: 100%;
+      height: 12px;
+    }
+    .wa-progress-seg__item {
+      flex: 1;
+      min-width: 0;
+      border-radius: 0;
+      background: color-mix(in srgb, var(--wa-color-text) 6%, transparent);
+    }
+    .wa-progress-seg__item:first-child { border-radius: 999px 0 0 999px; }
+    .wa-progress-seg__item:last-child { border-radius: 0 999px 999px 0; }
+    .wa-progress-seg__item.is-on { background: var(--wa-color-primary); }
+    html[data-theme="dark"] .wa-progress,
+    html[data-theme="dark"] .wa-progress-seg__item {
+      background: color-mix(in srgb, #fff 10%, transparent);
+    }
+    html[data-theme="dark"] .wa-progress-seg__item.is-on {
+      background: var(--wa-color-primary);
+    }
+
+    /* —— 页内提示 / 空状态 —— */
+    .wa-alert {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--wa-color-border-1);
+      background: var(--wa-color-primary-soft);
+      color: var(--wa-color-text);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .wa-alert + .wa-alert { margin-top: 10px; }
+    .wa-alert__mark {
+      color: var(--wa-color-primary);
+      flex-shrink: 0;
+      font-size: 1em;
+      line-height: 1;
+      margin: 0;
+    }
+    .wa-alert__body { min-width: 0; }
+    .wa-alert--strong {
+      background: var(--wa-color-primary);
+      border-color: var(--wa-color-primary);
+      color: var(--wa-color-on-primary);
+      font-weight: 700;
+    }
+    .wa-alert--strong .wa-alert__mark { color: inherit; }
+    .wa-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 22px 16px;
+      border: 1px dashed var(--wa-color-border);
+      border-radius: var(--wa-radius-md);
+      background: var(--wa-color-fill-1);
+      text-align: center;
+    }
+    .wa-empty__icon {
+      font-size: 2.25rem;
+      color: var(--wa-color-muted);
+      opacity: 0.85;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .wa-empty__title {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 650;
+      color: var(--wa-color-text);
+    }
+    .wa-empty__desc {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--wa-color-muted);
+    }
+
+    /* —— 吐司（正中暗色） —— */
+    .wa-message-host {
+      position: fixed;
+      inset: 0;
+      z-index: 1200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      padding: 24px;
+    }
+    .wa-message {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      max-width: min(92vw, 280px);
+      padding: 20px 22px 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      background: rgba(22, 24, 28, 0.92);
+      color: #f4f5f7;
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+      text-align: center;
+      pointer-events: auto;
+      animation: wa-msg-in .24s ease both;
+    }
+    .wa-message.is-leaving { animation: wa-msg-out .2s ease both; }
+    .wa-message__icon { font-size: 1.75rem; line-height: 1; }
+    .wa-message__text { font-size: 14px; font-weight: 500; line-height: 1.45; color: rgba(244,245,247,.92); }
+    .wa-message--info .wa-message__icon { color: var(--wa-color-primary); }
+    .wa-message--success .wa-message__icon { color: #3dd68c; }
+    .wa-message--warning .wa-message__icon { color: #ffb020; }
+    .wa-message--error .wa-message__icon { color: #ff6b6b; }
+    @keyframes wa-msg-in { from { opacity: 0; transform: scale(.92); } to { opacity: 1; transform: scale(1); } }
+    @keyframes wa-msg-out { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(.94); } }
+
+    /* —— 弹窗 —— */
+    .wa-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: none;
+    }
+    .wa-modal.is-open { display: block; }
+    .wa-modal__overlay {
+      position: absolute;
+      inset: 0;
+      background: color-mix(in srgb, #000 32%, transparent);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .wa-modal.is-open .wa-modal__overlay {
+      animation: wa-modal-overlay-in 220ms ease both;
+    }
+    .wa-modal__panel {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      width: min(92vw, 440px);
+      border-radius: 16px;
+      background: var(--wa-color-surface);
+      border: none;
+      box-shadow:
+        var(--wa-shadow-soft),
+        0 0 0 1px color-mix(in srgb, var(--wa-color-border) 72%, transparent);
+      outline: none;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .wa-modal.is-open .wa-modal__panel {
+      animation: wa-modal-in 280ms ease both;
+    }
+    @keyframes wa-modal-in {
+      from { opacity: 0; transform: translate3d(-50%, calc(-50% + 10px), 0) scale(0.985); }
+      to { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1); }
+    }
+    @keyframes wa-modal-overlay-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .wa-modal__header, .wa-modal__footer {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+    }
+    .wa-modal__header {
+      justify-content: space-between;
+      border-bottom: none;
+    }
+    .wa-modal__header::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: color-mix(in srgb, var(--wa-color-border) 58%, transparent);
+      transform: scaleY(0.5);
+      transform-origin: center bottom;
+      pointer-events: none;
+    }
+    .wa-modal__footer {
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      border-top: none;
+      padding: 12px 16px 16px;
+    }
+    .wa-modal__footer::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 1px;
+      background: color-mix(in srgb, var(--wa-color-border) 52%, transparent);
+      transform: scaleY(0.5);
+      transform-origin: center top;
+      pointer-events: none;
+    }
+    .wa-modal--confirm .wa-modal__footer::before,
+    .wa-modal--confirm .wa-modal__header::after {
+      content: none;
+    }
+    .wa-modal__title { margin: 0; font-size: 16px; font-weight: 650; line-height: 1.3; color: var(--wa-color-text); }
+    .wa-modal__body { padding: 16px 18px 20px; font-size: 14px; line-height: 1.65; color: var(--wa-color-text-secondary); }
+    .wa-modal__close {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px; height: 32px;
+      margin: 0; padding: 0;
+      border: none; border-radius: 8px;
+      background: transparent;
+      color: var(--wa-color-muted);
+      font-size: 14px;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 0.12s ease, color 0.12s ease;
+    }
+    .wa-modal__close:hover,
+    .wa-modal__close:focus-visible {
+      background: color-mix(in srgb, var(--wa-color-muted) 14%, transparent);
+      color: var(--wa-color-text);
+      outline: none;
+    }
+    .wa-modal__panel:focus { outline: none; }
+
+    /* 确认框 */
+    .wa-modal--confirm { z-index: 1100; }
+    .wa-modal--confirm .wa-modal__panel {
+      width: min(400px, calc(100vw - 32px));
+      padding: 22px 22px 18px;
+      border-radius: 14px;
+      overflow: visible;
+      box-shadow:
+        0 0 0 1px color-mix(in srgb, var(--wa-color-border) 70%, transparent),
+        0 18px 48px color-mix(in srgb, #000 14%, transparent);
+    }
+    .wa-modal--confirm .wa-modal__close--corner {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 2;
+    }
+    .wa-modal--confirm .wa-modal__body--confirm {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 4px 28px 0 0;
+      overflow: visible;
+    }
+    .wa-modal--confirm .wa-modal__icon {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      margin-top: 1px;
+      background: none;
+      border-radius: 0;
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--wa-color-warning);
+    }
+    .wa-modal--confirm-info .wa-modal__icon { color: var(--wa-color-primary); }
+    .wa-modal--confirm-warning .wa-modal__icon { color: var(--wa-color-warning); }
+    .wa-modal--confirm-danger .wa-modal__icon { color: var(--wa-color-danger); }
+    .wa-modal--confirm .wa-modal__copy {
+      flex: 1 1 auto;
+      min-width: 0;
+      padding-top: 2px;
+    }
+    .wa-modal--confirm .wa-modal__title {
+      margin: 0;
+      font-size: 1.0625rem;
+      font-weight: 650;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+    }
+    .wa-modal--confirm .wa-modal__message {
+      margin: 8px 0 0;
+      font-size: 0.875rem;
+      line-height: 1.65;
+      color: var(--wa-color-text-secondary);
+    }
+    .wa-modal--confirm .wa-modal__footer {
+      gap: 8px;
+      margin-top: 20px;
+      padding: 0;
+      border-top: none;
+    }
+    .wa-modal__footer .wa-btn,
+    .wa-modal--confirm .wa-modal__footer .wa-btn {
+      min-height: 36px;
+      height: 36px;
+      padding: 0 16px;
+      font-size: 13px;
+      border-radius: 8px;
+    }
+
+    /* —— 精简 Footer —— */
+    .wa-btn .wa-dropdown__caret {
+      font-size: 0.7em;
+      margin-left: 2px;
+      opacity: 0.45;
+      color: var(--wa-color-muted);
+    }
+    .wa-tool-foot {
+      margin-top: 40px;
+      padding-top: 8px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--wa-color-muted);
+    }
+    .wa-tool-foot a { color: inherit; text-decoration: none; }
+    .wa-tool-foot a:hover { color: var(--wa-color-primary); }
+
+    body.wa-modal-open,
+    html.wa-modal-open { overflow: hidden; }
+
+    @media (max-width: 720px) {
+      .wa-tool { width: calc(100% - 24px); padding-top: 16px; }
+      .wa-hero,
+      .wa-section { padding: 18px; }
+      .wa-stats { grid-template-columns: repeat(2, 1fr); }
+      .wa-tip-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wa-tool">
+    <header class="wa-card wa-tool-nav">
+      <a class="wa-brand" href="#">
+        <span class="wa-brand__mark" aria-hidden="true"><i class="fa-solid fa-table-columns"></i></span>
+        <span>Vibe Design Lite · 小工具</span>
+      </a>
+      <div class="wa-tool-nav__actions">
+        <button type="button" class="wa-icon-btn" data-wa-theme-toggle aria-label="切换主题" title="切换主题">
+          <i class="fa-solid fa-moon" data-theme-icon aria-hidden="true"></i>
+        </button>
+      </div>
+    </header>
+
+    <section class="wa-card wa-hero">
+      <span class="wa-eyebrow"><i class="fa-solid fa-wrench" aria-hidden="true"></i> 单文件模板 · Tool</span>
+      <h1>单文件小工具页，<span class="accent">复制即用</span></h1>
+      <p>
+        页内 CSS / JS，外链仅保留图标库与字体。下方为卡片示例与控件橱窗，
+        改造时保留壳层，替换业务区块即可。复制本文件到业务站后改标题与逻辑。
+      </p>
+
+      <div class="wa-hero__demo">
+        <p class="wa-label-sm">数字展示</p>
+        <div class="wa-stats" aria-live="polite">
+          <div class="wa-stat">
+            <i class="fa-solid fa-layer-group wa-stat__icon" aria-hidden="true"></i>
+            <div class="wa-stat__body">
+              <p class="wa-stat__label">总条目</p>
+              <p class="wa-stat__value" id="statTotal">128</p>
+            </div>
+          </div>
+          <div class="wa-stat wa-stat--accent">
+            <i class="fa-solid fa-arrows-rotate wa-stat__icon" aria-hidden="true"></i>
+            <div class="wa-stat__body">
+              <p class="wa-stat__label">已处理</p>
+              <p class="wa-stat__value" id="statDone">86</p>
+            </div>
+          </div>
+          <div class="wa-stat wa-stat--success">
+            <i class="fa-solid fa-circle-check wa-stat__icon" aria-hidden="true"></i>
+            <div class="wa-stat__body">
+              <p class="wa-stat__label">成功</p>
+              <p class="wa-stat__value" id="statOk">79</p>
+            </div>
+          </div>
+          <div class="wa-stat wa-stat--warning">
+            <i class="fa-solid fa-triangle-exclamation wa-stat__icon" aria-hidden="true"></i>
+            <div class="wa-stat__body">
+              <p class="wa-stat__label">待复核</p>
+              <p class="wa-stat__value" id="statWarn">7</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="wa-block">
+          <p class="wa-label-sm">按钮</p>
+          <div class="wa-row">
+            <button type="button" class="wa-btn wa-btn--primary" data-demo-run>
+              <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> 主要按钮
+            </button>
+            <button type="button" class="wa-btn wa-btn--soft" data-demo-message="success">
+              <i class="fa-solid fa-pen" aria-hidden="true"></i> 柔和按钮
+            </button>
+            <button type="button" class="wa-btn wa-btn--outline" data-demo-message="info">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> 描边按钮
+            </button>
+            <button type="button" class="wa-btn wa-btn--secondary" data-demo-message="info">
+              <i class="fa-solid fa-gear" aria-hidden="true"></i> 中性按钮
+            </button>
+            <div class="wa-dropdown" data-wa-dropdown>
+              <button type="button" class="wa-btn wa-btn--outline" data-wa-dropdown-trigger aria-expanded="false">
+                下拉菜单 <i class="fa-solid fa-chevron-down wa-dropdown__caret" aria-hidden="true"></i>
+              </button>
+              <ul class="wa-dropdown__menu" role="menu">
+                <li role="none"><button type="button" class="wa-dropdown__item" role="menuitem" data-demo-message="info"><i class="fa-solid fa-copy" aria-hidden="true"></i> 复制结果</button></li>
+                <li role="none"><button type="button" class="wa-dropdown__item" role="menuitem" data-demo-message="success"><i class="fa-solid fa-download" aria-hidden="true"></i> 导出文件</button></li>
+                <li role="none"><button type="button" class="wa-dropdown__item" role="menuitem" data-modal-open="demo-modal"><i class="fa-solid fa-window-restore" aria-hidden="true"></i> 打开弹窗</button></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wa-card wa-section">
+      <h2 class="wa-section__title"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i> 卡片示例</h2>
+      <p class="wa-section__hint">默认卡片组：图标徽章 + 标题说明，三列两行共六张，可整段拷贝改造。</p>
+
+      <div class="wa-tip-grid">
+        <article class="wa-tip-card">
+          <div class="wa-tip-card__icon" aria-hidden="true"><i class="fa-solid fa-rotate"></i></div>
+          <h4 class="wa-tip-card__title">别重复付费</h4>
+          <p class="wa-tip-card__body">同样的问题反复算 → 缓存它，别每次都花一次钱。</p>
+        </article>
+        <article class="wa-tip-card">
+          <div class="wa-tip-card__icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+          <h4 class="wa-tip-card__title">别为简单活付费</h4>
+          <p class="wa-tip-card__body">分类、摘要这种小活用旗舰模型 → 杀鸡用牛刀，贵几十倍。</p>
+        </article>
+        <article class="wa-tip-card">
+          <div class="wa-tip-card__icon" aria-hidden="true"><i class="fa-solid fa-filter"></i></div>
+          <h4 class="wa-tip-card__title">别传没用的 token</h4>
+          <p class="wa-tip-card__body">把一堆冗余历史、长文档全塞进去 → 每个 token 都在烧钱。</p>
+        </article>
+        <article class="wa-tip-card">
+          <div class="wa-tip-card__icon" aria-hidden="true"><i class="fa-solid fa-file-zipper"></i></div>
+          <h4 class="wa-tip-card__title">能压就先压</h4>
+          <p class="wa-tip-card__body">提示词与上下文先压缩再发送 → 同样效果，少花一半量。</p>
+        </article>
+        <article class="wa-tip-card">
+          <div class="wa-tip-card__icon" aria-hidden="true"><i class="fa-solid fa-layer-group"></i></div>
+          <h4 class="wa-tip-card__title">能批就别单跑</h4>
+          <p class="wa-tip-card__body">零散请求拆成批处理 → 摊薄固定开销，吞吐更高。</p>
+        </article>
+        <article class="wa-tip-card">
+          <div class="wa-tip-card__icon" aria-hidden="true"><i class="fa-solid fa-flask"></i></div>
+          <h4 class="wa-tip-card__title">蒸馏留给最后</h4>
+          <p class="wa-tip-card__body">路径未稳就上蒸馏 → 成本砸在错误方案上，返工更贵。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wa-card wa-section">
+      <h2 class="wa-section__title"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> 常用组件</h2>
+      <p class="wa-section__hint">轻量展示与导航控件，含可点选的 Chip 选项组。</p>
+
+      <div class="wa-block">
+        <p class="wa-label-sm">面包屑</p>
+        <nav class="wa-crumbs" aria-label="面包屑">
+          <a href="./index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> 首页</a>
+          <span class="wa-crumbs__sep" aria-hidden="true">/</span>
+          <a href="./tool.html">小工具</a>
+          <span class="wa-crumbs__sep" aria-hidden="true">/</span>
+          <span class="wa-crumbs__current" aria-current="page">模板</span>
+        </nav>
+      </div>
+
+      <div class="wa-block">
+        <p class="wa-label-sm">分段选择器</p>
+        <div class="wa-segment" data-wa-segment role="radiogroup" aria-label="链接类型">
+          <button type="button" class="wa-segment__item" role="radio" aria-checked="false" data-wa-segment-item>视频链接</button>
+          <button type="button" class="wa-segment__item" role="radio" aria-checked="false" data-wa-segment-item>达人链接</button>
+          <button type="button" class="wa-segment__item is-active" role="radio" aria-checked="true" data-wa-segment-item>视频词条</button>
+        </div>
+      </div>
+
+      <div class="wa-block">
+        <p class="wa-label-sm">胶囊选项卡</p>
+        <div class="wa-tabs" data-wa-tabs>
+          <div class="wa-tabs__list" role="tablist" aria-label="示例分段">
+            <button type="button" class="wa-tabs__tab is-active" role="tab" aria-selected="true" data-wa-tab="a" aria-controls="panel-a" id="tab-a">概览</button>
+            <button type="button" class="wa-tabs__tab" role="tab" aria-selected="false" data-wa-tab="b" aria-controls="panel-b" id="tab-b" tabindex="-1">明细</button>
+            <button type="button" class="wa-tabs__tab" role="tab" aria-selected="false" data-wa-tab="c" aria-controls="panel-c" id="tab-c" tabindex="-1">日志</button>
+          </div>
+          <div class="wa-tabs__panel is-active" id="panel-a" role="tabpanel" aria-labelledby="tab-a" data-wa-tab-panel="a">概览面板：放摘要指标或说明文案。</div>
+          <div class="wa-tabs__panel" id="panel-b" role="tabpanel" aria-labelledby="tab-b" data-wa-tab-panel="b" hidden>明细面板：放表格或列表结果。</div>
+          <div class="wa-tabs__panel" id="panel-c" role="tabpanel" aria-labelledby="tab-c" data-wa-tab-panel="c" hidden>日志面板：放运行记录。</div>
+        </div>
+      </div>
+
+      <div class="wa-block">
+        <p class="wa-label-sm">标签 · 徽章 · 工具提示</p>
+        <div class="wa-row">
+          <span class="wa-chip"><i class="fa-solid fa-tag" aria-hidden="true"></i> 中性标签</span>
+          <span class="wa-chip wa-chip--accent"><i class="fa-solid fa-star" aria-hidden="true"></i> 强调标签</span>
+          <span class="wa-chip wa-chip--marked"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> 信息标签</span>
+          <span class="wa-badge wa-badge--outline">v1.0</span>
+          <span class="wa-badge wa-badge--accent"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> PRO</span>
+          <span class="wa-tooltip" tabindex="0" aria-label="悬停或聚焦时显示说明">
+            ?
+            <span class="wa-tooltip__bubble" role="tooltip">
+              <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+              悬停或聚焦时显示说明
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="wa-block">
+        <p class="wa-label-sm">选项组</p>
+        <div class="wa-chip-group" data-wa-chip-group role="radiogroup" aria-label="状态筛选">
+          <button type="button" class="wa-chip wa-chip--option wa-chip--accent is-active" role="radio" aria-checked="true">草稿箱</button>
+          <button type="button" class="wa-chip wa-chip--option wa-chip--marked" role="radio" aria-checked="false">审阅中</button>
+          <button type="button" class="wa-chip wa-chip--option wa-chip--marked" role="radio" aria-checked="false">已发布</button>
+          <button type="button" class="wa-chip wa-chip--option wa-chip--marked" role="radio" aria-checked="false">已归档</button>
+        </div>
+      </div>
+
+      <div class="wa-block">
+        <p class="wa-label-sm">连续进度 · 68%</p>
+        <div class="wa-progress" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" aria-label="连续进度">
+          <span class="wa-progress__bar" style="width:68%"></span>
+        </div>
+      </div>
+
+      <div class="wa-block">
+        <p class="wa-label-sm">分段进度 · 4/6</p>
+        <div class="wa-progress-seg" role="img" aria-label="六段进度，已完成四段">
+          <span class="wa-progress-seg__item is-on"></span>
+          <span class="wa-progress-seg__item is-on"></span>
+          <span class="wa-progress-seg__item is-on"></span>
+          <span class="wa-progress-seg__item is-on"></span>
+          <span class="wa-progress-seg__item"></span>
+          <span class="wa-progress-seg__item"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="wa-card wa-section">
+      <h2 class="wa-section__title"><i class="fa-solid fa-keyboard" aria-hidden="true"></i> 表单组件</h2>
+      <p class="wa-section__hint">输入框、下拉框、复选框、单选框、开关、拖入上传；提交时显示校验反馈。</p>
+
+      <form class="wa-form" id="tool-form" novalidate>
+        <div class="wa-form-item" data-validate="required" data-error="请输入名称">
+          <label class="wa-label" for="tool-name">名称 <span class="wa-req">*</span></label>
+          <div class="wa-field">
+            <input class="wa-field__input" id="tool-name" name="name" type="text" placeholder="请输入名称" value="" autocomplete="off" data-wa-field-input />
+            <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+          </div>
+          <p class="wa-field__hint">聚焦且有内容时显示清空按钮</p>
+          <p class="wa-field__error" role="alert"></p>
+        </div>
+        <div class="wa-form-item" data-validate="email" data-error="请输入有效的邮箱地址">
+          <label class="wa-label" for="tool-email">邮箱 <span class="wa-req">*</span></label>
+          <div class="wa-field">
+            <input class="wa-field__input" id="tool-email" name="email" type="email" placeholder="name@example.com" value="" autocomplete="off" data-wa-field-input />
+            <button type="button" class="wa-field__clear" data-wa-field-clear aria-label="清空" aria-hidden="true"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></button>
+          </div>
+          <p class="wa-field__error" role="alert"></p>
+        </div>
+        <div class="wa-form-item">
+          <label class="wa-label" for="tool-mode">模式</label>
+          <div class="wa-field wa-field--select">
+            <select class="wa-field__select" id="tool-mode" name="mode" data-wa-combo>
+              <option value="" disabled>请选择</option>
+              <option value="fast" selected>快速</option>
+              <option value="safe">稳妥</option>
+              <option value="batch">批量</option>
+            </select>
+          </div>
+        </div>
+        <div class="wa-form-item">
+          <label class="wa-label" for="tool-note">备注</label>
+          <div class="wa-field wa-field--textarea">
+            <textarea class="wa-field__textarea" id="tool-note" name="note" rows="3" placeholder="补充说明…"></textarea>
+          </div>
+        </div>
+        <!-- 上传：本页精简版（每次选择覆盖）；完整拖放/追加/数量上限见控件库 dropzone -->
+        <div class="wa-form-item">
+          <label class="wa-label" for="fileInput">文件上传</label>
+          <div class="wa-dropzone" id="dropzone" role="button" tabindex="0" aria-label="上传文件">
+            <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+            <span class="wa-dropzone__title">点击或拖拽文件到此处</span>
+            <span class="wa-dropzone__tip">支持 JPG / PNG / PDF / ZIP 格式，单文件不超过 10MB</span>
+          </div>
+          <ul class="wa-dropzone-list" id="dropzone-list" hidden aria-label="已选文件"></ul>
+          <input
+            type="file"
+            class="wa-file-input"
+            id="fileInput"
+            multiple
+            accept=".jpg,.jpeg,.png,.pdf,.zip,image/jpeg,image/png,application/pdf,application/zip"
+          />
+        </div>
+        <div class="wa-form-item">
+          <p class="wa-label">复选框</p>
+          <div class="wa-choice__list">
+            <label class="wa-check"><input type="checkbox" name="remember" checked /> 记住选项</label>
+          </div>
+        </div>
+        <div class="wa-form-item">
+          <p class="wa-label">单选框</p>
+          <div class="wa-choice__list wa-choice__list--radio" role="radiogroup" aria-label="可见性">
+            <label class="wa-radio"><input type="radio" name="tool-vis" value="public" checked /> 公开</label>
+            <label class="wa-radio"><input type="radio" name="tool-vis" value="private" /> 私有</label>
+          </div>
+        </div>
+        <div class="wa-form-item">
+          <p class="wa-label">开关</p>
+          <div class="wa-choice__list">
+            <label class="wa-switch"><input type="checkbox" name="dedupe" role="switch" checked /> 自动去重</label>
+          </div>
+        </div>
+        <div class="wa-form__actions">
+          <button type="submit" class="wa-btn wa-btn--primary">提交</button>
+          <button type="reset" class="wa-btn wa-btn--secondary">重置</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="wa-card wa-section">
+      <h2 class="wa-section__title"><i class="fa-solid fa-message" aria-hidden="true"></i> 反馈提示</h2>
+      <p class="wa-section__hint">吐司提示、弹窗交互、页内提示与空状态。</p>
+
+      <div class="wa-block">
+        <p class="wa-label-sm">吐司提示</p>
+        <div class="wa-row">
+          <button type="button" class="wa-btn wa-btn--soft" data-demo-message="info"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> 信息</button>
+          <button type="button" class="wa-btn wa-btn--soft" data-demo-message="success"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> 成功</button>
+            <button type="button" class="wa-btn wa-btn--soft" data-demo-message="warning"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> 警告</button>
+          <button type="button" class="wa-btn wa-btn--soft" data-demo-message="error"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i> 错误</button>
+        </div>
+      </div>
+
+      <div class="wa-block">
+        <p class="wa-label-sm">弹窗交互</p>
+        <div class="wa-row">
+          <button type="button" class="wa-btn wa-btn--primary" data-modal-open="demo-modal"><i class="fa-solid fa-window-maximize" aria-hidden="true"></i> 标准弹窗</button>
+          <button type="button" class="wa-btn wa-btn--outline" data-demo-confirm><i class="fa-solid fa-circle-question" aria-hidden="true"></i> 确认弹窗</button>
+        </div>
+      </div>
+
+      <div class="wa-block">
+        <p class="wa-label-sm">页内提示</p>
+        <div class="wa-alert" role="status">
+          <i class="fa-solid fa-circle-info wa-alert__mark" aria-hidden="true"></i>
+          <span class="wa-alert__body">本地处理示例：数据不离开浏览器，可按业务替换文案。</span>
+        </div>
+        <div class="wa-alert wa-alert--strong" role="status">
+          <i class="fa-solid fa-circle-check wa-alert__mark" aria-hidden="true"></i>
+          <span class="wa-alert__body"><b>已就绪。</b>可替换为业务成功提示。</span>
+        </div>
+      </div>
+
+      <div class="wa-block">
+        <p class="wa-label-sm">空状态</p>
+        <div class="wa-empty" role="status">
+          <i class="fa-solid fa-inbox wa-empty__icon" aria-hidden="true"></i>
+          <p class="wa-empty__title">暂无数据</p>
+          <p class="wa-empty__desc">处理完成后显示在这里。</p>
+        </div>
+      </div>
+    </section>
+
+    <p class="wa-tool-foot">
+      © 2026 <a href="https://www.vibepm.net" target="_blank" rel="noopener noreferrer">VibePM</a>
+      · 工具模板页 
+    </p>
+  </div>
+
+  <div class="wa-modal" id="demo-modal" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title" aria-hidden="true">
+    <div class="wa-modal__overlay" data-modal-close></div>
+    <div class="wa-modal__panel" tabindex="-1" role="document">
+      <div class="wa-modal__header">
+        <h2 class="wa-modal__title" id="demo-modal-title">标准弹窗</h2>
+        <button type="button" class="wa-modal__close" data-modal-close aria-label="关闭"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+      <div class="wa-modal__body">可放说明、表单或结果预览。页脚放取消 / 确认。</div>
+      <div class="wa-modal__footer">
+        <button type="button" class="wa-btn wa-btn--outline" data-modal-close>取消</button>
+        <button type="button" class="wa-btn wa-btn--primary" data-modal-close data-demo-message="success">确认</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wa-modal wa-modal--confirm wa-modal--confirm-danger" id="confirm-modal" role="alertdialog" aria-modal="true" aria-labelledby="confirm-title" aria-describedby="confirm-message" aria-hidden="true">
+    <div class="wa-modal__overlay" data-confirm-cancel></div>
+    <div class="wa-modal__panel" tabindex="-1" role="document">
+      <button type="button" class="wa-modal__close wa-modal__close--corner" data-confirm-cancel aria-label="关闭">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+      <div class="wa-modal__body wa-modal__body--confirm">
+        <div class="wa-modal__icon" aria-hidden="true"><i class="fa-solid fa-circle-exclamation"></i></div>
+        <div class="wa-modal__copy">
+          <h2 class="wa-modal__title" id="confirm-title">确认清空？</h2>
+          <p class="wa-modal__message" id="confirm-message">此操作仅作示意，可替换为真实危险操作说明。确认后不可撤销。</p>
+        </div>
+      </div>
+      <div class="wa-modal__footer">
+        <button type="button" class="wa-btn wa-btn--secondary" data-confirm-cancel>取消</button>
+        <button type="button" class="wa-btn wa-btn--danger" data-confirm-ok>确认</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* —— 自定义下拉（内联自 combo.js，保持单文件可复制） —— */
+    (function () {
+      "use strict";
+
+      var openComboApi = null;
+      var comboPlaceRaf = 0;
+
+      function scheduleComboPlace(fn) {
+        if (comboPlaceRaf) return;
+        comboPlaceRaf = window.requestAnimationFrame(function () {
+          comboPlaceRaf = 0;
+          fn();
+        });
+      }
+
+      function findClearIndex(select) {
+        var i;
+        var disabledEmpty = -1;
+        for (i = 0; i < select.options.length; i += 1) {
+          if (select.options[i].value) continue;
+          if (!select.options[i].disabled) return i;
+          if (disabledEmpty < 0) disabledEmpty = i;
+        }
+        return disabledEmpty;
+      }
+
+      function isClearable(select) {
+        return select.getAttribute("data-wa-combo-clear") !== "0";
+      }
+
+      function enhanceCombo(select) {
+        if (!select || select.dataset.waComboReady === "1") return;
+        select.dataset.waComboReady = "1";
+
+        var field = select.closest(".wa-field") || select.parentNode;
+        var combo = document.createElement("div");
+        combo.className = "wa-combo";
+
+        var control = document.createElement("div");
+        control.className = "wa-combo__control";
+
+        var trigger = document.createElement("button");
+        trigger.type = "button";
+        trigger.className = "wa-combo__trigger";
+        trigger.setAttribute("aria-haspopup", "listbox");
+        trigger.setAttribute("aria-expanded", "false");
+        if (select.id) trigger.id = select.id + "-trigger";
+        if (select.getAttribute("aria-labelledby")) {
+          trigger.setAttribute("aria-labelledby", select.getAttribute("aria-labelledby"));
+        }
+        if (select.getAttribute("aria-label")) {
+          trigger.setAttribute("aria-label", select.getAttribute("aria-label"));
+        }
+
+        var valueEl = document.createElement("span");
+        valueEl.className = "wa-combo__value";
+        trigger.appendChild(valueEl);
+
+        var trail = document.createElement("span");
+        trail.className = "wa-combo__trail";
+
+        var clearBtn = null;
+        var clearable = isClearable(select);
+        if (clearable) {
+          clearBtn = document.createElement("button");
+          clearBtn.type = "button";
+          clearBtn.className = "wa-combo__clear";
+          clearBtn.setAttribute("aria-label", "清除");
+          clearBtn.setAttribute("aria-hidden", "true");
+          clearBtn.innerHTML = '<i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>';
+          trail.appendChild(clearBtn);
+        }
+
+        var chevron = document.createElement("i");
+        chevron.className = "fa-solid fa-chevron-down wa-combo__chevron";
+        chevron.setAttribute("aria-hidden", "true");
+        trail.appendChild(chevron);
+
+        var list = document.createElement("ul");
+        list.className = "wa-combo__list";
+        list.setAttribute("role", "listbox");
+        list.hidden = true;
+        if (select.id) list.id = select.id + "-list";
+        trigger.setAttribute("aria-controls", list.id);
+
+        function placeholderText() {
+          var i;
+          for (i = 0; i < select.options.length; i += 1) {
+            if (!select.options[i].value) {
+              return select.options[i].textContent || "请选择";
+            }
+          }
+          return select.getAttribute("data-placeholder") || "请选择";
+        }
+
+        function syncClear() {
+          if (!clearBtn) return;
+          var show = !!select.value;
+          clearBtn.classList.toggle("is-visible", show);
+          clearBtn.setAttribute("aria-hidden", show ? "false" : "true");
+        }
+
+        function syncLabel() {
+          var isEmpty = !select.value;
+          var opt = isEmpty ? null : select.options[select.selectedIndex];
+          valueEl.textContent = isEmpty ? placeholderText() : (opt && opt.textContent) || placeholderText();
+          valueEl.classList.toggle("is-placeholder", isEmpty);
+          Array.prototype.forEach.call(list.querySelectorAll(".wa-combo__option"), function (btn) {
+            btn.setAttribute("aria-selected", btn.getAttribute("data-value") === select.value ? "true" : "false");
+          });
+          syncClear();
+        }
+
+        Array.prototype.forEach.call(select.options, function (opt) {
+          if (!opt.value) return;
+          var li = document.createElement("li");
+          var btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "wa-combo__option";
+          btn.setAttribute("role", "option");
+          btn.setAttribute("data-value", opt.value);
+          btn.textContent = opt.textContent;
+          btn.addEventListener("click", function () {
+            select.value = opt.value;
+            select.dispatchEvent(new Event("change", { bubbles: true }));
+            syncLabel();
+            setOpen(false);
+            trigger.focus();
+          });
+          li.appendChild(btn);
+          list.appendChild(li);
+        });
+
+        function placeList() {
+          var anchor = field || trigger;
+          var r = anchor.getBoundingClientRect();
+          list.style.top = Math.round(r.bottom + 6) + "px";
+          list.style.left = Math.round(r.left) + "px";
+          list.style.width = Math.round(r.width) + "px";
+        }
+
+        function setOpen(open) {
+          if (open) {
+            if (openComboApi && openComboApi !== api) openComboApi.setOpen(false);
+            if (window.WA_DROPDOWN && typeof window.WA_DROPDOWN.closeAll === "function") {
+              window.WA_DROPDOWN.closeAll();
+            }
+            openComboApi = api;
+          } else if (openComboApi === api) {
+            openComboApi = null;
+          }
+          trigger.setAttribute("aria-expanded", open ? "true" : "false");
+          list.hidden = !open;
+          if (field && field.classList) field.classList.toggle("is-open", open);
+          if (open) placeList();
+        }
+
+        var api = {
+          setOpen: setOpen,
+          place: placeList,
+          isOpen: function () {
+            return !list.hidden;
+          },
+          trigger: trigger,
+          contains: function (node) {
+            return combo.contains(node) || list.contains(node);
+          },
+        };
+
+        function toggleOpen(ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          setOpen(list.hidden);
+        }
+
+        trigger.addEventListener("click", toggleOpen);
+        chevron.addEventListener("click", toggleOpen);
+        list.addEventListener("click", function (ev) {
+          ev.stopPropagation();
+        });
+
+        if (clearBtn) {
+          clearBtn.addEventListener("mousedown", function (ev) {
+            ev.preventDefault();
+          });
+          clearBtn.addEventListener("click", function (ev) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            var emptyIdx = findClearIndex(select);
+            if (emptyIdx >= 0) select.selectedIndex = emptyIdx;
+            else select.value = "";
+            select.dispatchEvent(new Event("change", { bubbles: true }));
+            syncLabel();
+            setOpen(false);
+            trigger.focus();
+          });
+        }
+
+        select.classList.add("wa-combo__native");
+        select.parentNode.insertBefore(combo, select);
+        combo.appendChild(select);
+        control.appendChild(trigger);
+        control.appendChild(trail);
+        combo.appendChild(control);
+        document.body.appendChild(list);
+        if (!select.value) {
+          for (var pi = 0; pi < select.options.length; pi += 1) {
+            if (!select.options[pi].value) {
+              select.selectedIndex = pi;
+              break;
+            }
+          }
+        }
+        syncLabel();
+        select.addEventListener("change", syncLabel);
+      }
+
+      function closeAll() {
+        if (openComboApi) openComboApi.setOpen(false);
+      }
+
+      function bind(root) {
+        var scope = root && root.querySelectorAll ? root : document;
+        scope.querySelectorAll("select[data-wa-combo]").forEach(enhanceCombo);
+      }
+
+      document.addEventListener("click", function () {
+        closeAll();
+      });
+      document.addEventListener("keydown", function (ev) {
+        if (ev.key !== "Escape") return;
+        if (!openComboApi || !openComboApi.isOpen()) return;
+        var t = openComboApi.trigger;
+        closeAll();
+        if (t) {
+          try {
+            t.focus();
+          } catch (e) {}
+        }
+      });
+      window.addEventListener("resize", function () {
+        scheduleComboPlace(function () {
+          if (openComboApi && openComboApi.isOpen()) openComboApi.place();
+        });
+      });
+      window.addEventListener(
+        "scroll",
+        function () {
+          scheduleComboPlace(function () {
+            if (openComboApi && openComboApi.isOpen()) openComboApi.place();
+          });
+        },
+        true
+      );
+
+      window.WA_COMBO = {
+        bind: bind,
+        closeAll: closeAll,
+      };
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", function () {
+          bind();
+        });
+      } else {
+        bind();
+      }
+    })();
+  </script>
+  <script>
+    (function () {
+      "use strict";
+
+      var THEME_KEY = "starter-tool-theme-mode";
+
+      /* —— 主题 —— */
+      function applyTheme(mode) {
+        var dark = mode === "dark";
+        document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+        var icon = document.querySelector("[data-theme-icon]");
+        if (icon) {
+          icon.className = dark ? "fa-solid fa-lightbulb" : "fa-solid fa-moon";
+        }
+        var btn = document.querySelector("[data-wa-theme-toggle]");
+        if (btn) btn.setAttribute("aria-pressed", dark ? "true" : "false");
+        try { localStorage.setItem(THEME_KEY, dark ? "dark" : "light"); } catch (e) {}
+      }
+      (function initTheme() {
+        var saved = null;
+        try { saved = localStorage.getItem(THEME_KEY); } catch (e) {}
+        if (saved === "dark" || saved === "light") applyTheme(saved);
+        else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) applyTheme("dark");
+        else applyTheme("light");
+      })();
+      document.querySelectorAll("[data-wa-theme-toggle]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var cur = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+          applyTheme(cur === "dark" ? "light" : "dark");
+        });
+      });
+
+      /* —— 输入清空 —— */
+      document.querySelectorAll(".wa-field").forEach(function (field) {
+        if (field.classList.contains("wa-field--textarea") || field.classList.contains("wa-field--select")) return;
+        var input = field.querySelector("[data-wa-field-input]");
+        var clearBtn = field.querySelector("[data-wa-field-clear]");
+        if (!input || !clearBtn) return;
+        function syncClear() {
+          var show = !!(input.value) && field.matches(":focus-within");
+          clearBtn.classList.toggle("is-visible", show);
+          clearBtn.setAttribute("aria-hidden", show ? "false" : "true");
+        }
+        input.addEventListener("input", syncClear);
+        input.addEventListener("focus", syncClear);
+        input.addEventListener("blur", function () { window.setTimeout(syncClear, 120); });
+        clearBtn.addEventListener("mousedown", function (e) { e.preventDefault(); });
+        clearBtn.addEventListener("click", function () {
+          input.value = "";
+          syncClear();
+          input.focus();
+        });
+        syncClear();
+      });
+
+      /* —— 吐司 —— */
+      var MSG_ICONS = {
+        info: "fa-solid fa-circle-info",
+        success: "fa-solid fa-circle-check",
+        warning: "fa-solid fa-circle-exclamation",
+        error: "fa-solid fa-circle-xmark"
+      };
+      function ensureMessageHost() {
+        var host = document.getElementById("wa-message-host");
+        if (host) return host;
+        host = document.createElement("div");
+        host.id = "wa-message-host";
+        host.className = "wa-message-host";
+        host.setAttribute("aria-live", "polite");
+        document.body.appendChild(host);
+        return host;
+      }
+      function clearMessages() {
+        var host = document.getElementById("wa-message-host");
+        if (!host) return;
+        Array.prototype.slice.call(host.querySelectorAll(".wa-message")).forEach(function (el) {
+          el.classList.add("is-leaving");
+          window.setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 200);
+        });
+      }
+      function showMessage(text, type) {
+        type = MSG_ICONS[type] ? type : "info";
+        var host = ensureMessageHost();
+        clearMessages();
+        var el = document.createElement("div");
+        el.className = "wa-message wa-message--" + type;
+        el.setAttribute("role", "status");
+        el.innerHTML = '<i class="' + MSG_ICONS[type] + ' wa-message__icon" aria-hidden="true"></i><span class="wa-message__text"></span>';
+        el.querySelector(".wa-message__text").textContent = text;
+        host.appendChild(el);
+        window.setTimeout(function () {
+          el.classList.add("is-leaving");
+          window.setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 200);
+        }, 2200);
+      }
+      window.WA_MESSAGE = {
+        show: function (t, o) { showMessage(t, (o && o.type) || "info"); },
+        clear: clearMessages,
+        info: function (t) { showMessage(t, "info"); },
+        success: function (t) { showMessage(t, "success"); },
+        warning: function (t) { showMessage(t, "warning"); },
+        error: function (t) { showMessage(t, "error"); }
+      };
+
+      /* —— 浮层：共用定位帧 / 关闭 —— */
+      var layerRaf = 0;
+      function scheduleLayerPlace(fn) {
+        if (layerRaf) return;
+        layerRaf = window.requestAnimationFrame(function () {
+          layerRaf = 0;
+          fn();
+        });
+      }
+
+      function closeOpenCombo() {
+        if (window.WA_COMBO && typeof window.WA_COMBO.closeAll === "function") {
+          window.WA_COMBO.closeAll();
+        }
+      }
+
+      /* —— 操作菜单下拉 —— */
+      var dropdownMenus = typeof WeakMap !== "undefined" ? new WeakMap() : null;
+
+      function getDropdownMenu(root) {
+        if (dropdownMenus && dropdownMenus.has(root)) return dropdownMenus.get(root);
+        return root.querySelector(".wa-dropdown__menu");
+      }
+
+      function placeDropdownMenu(root) {
+        var trigger = root.querySelector("[data-wa-dropdown-trigger]");
+        var menu = getDropdownMenu(root);
+        if (!trigger || !menu) return;
+        var r = trigger.getBoundingClientRect();
+        /* 按内容测宽，不强制拉齐触发器 */
+        menu.style.minWidth = "";
+        menu.style.width = "";
+        var w = Math.ceil(menu.getBoundingClientRect().width) || 120;
+        var left = r.left;
+        if (left + w > window.innerWidth - 8) left = Math.max(8, window.innerWidth - w - 8);
+        if (left < 8) left = 8;
+        menu.style.top = Math.round(r.bottom + 8) + "px";
+        menu.style.left = Math.round(left) + "px";
+      }
+      function closeAllDropdowns() {
+        document.querySelectorAll("[data-wa-dropdown].is-open").forEach(function (root) {
+          root.classList.remove("is-open");
+          var t = root.querySelector("[data-wa-dropdown-trigger]");
+          if (t) t.setAttribute("aria-expanded", "false");
+          var m = getDropdownMenu(root);
+          if (m) m.classList.remove("is-open");
+        });
+      }
+      document.querySelectorAll("[data-wa-dropdown]").forEach(function (root) {
+        var trigger = root.querySelector("[data-wa-dropdown-trigger]");
+        var menu = root.querySelector(".wa-dropdown__menu");
+        if (!trigger || !menu) return;
+        if (dropdownMenus) dropdownMenus.set(root, menu);
+        if (menu.parentNode !== document.body) document.body.appendChild(menu);
+        trigger.addEventListener("click", function (e) {
+          e.stopPropagation();
+          var willOpen = !root.classList.contains("is-open");
+          closeAllDropdowns();
+          closeOpenCombo();
+          if (willOpen) {
+            root.classList.add("is-open");
+            menu.classList.add("is-open");
+            trigger.setAttribute("aria-expanded", "true");
+            placeDropdownMenu(root);
+          }
+        });
+        menu.addEventListener("click", function (e) { e.stopPropagation(); });
+        menu.querySelectorAll(".wa-dropdown__item").forEach(function (item) {
+          item.addEventListener("click", function () {
+            root.classList.remove("is-open");
+            menu.classList.remove("is-open");
+            trigger.setAttribute("aria-expanded", "false");
+          });
+        });
+      });
+
+      document.addEventListener("click", function () {
+        closeAllDropdowns();
+        closeOpenCombo();
+      });
+      document.addEventListener("keydown", function (ev) {
+        if (ev.key !== "Escape") return;
+        if (document.querySelector(".wa-combo__trigger[aria-expanded='true']")) {
+          closeOpenCombo();
+          return;
+        }
+        if (document.querySelector("[data-wa-dropdown].is-open")) {
+          closeAllDropdowns();
+          return;
+        }
+        var openModalEl = document.querySelector(".wa-modal.is-open");
+        if (openModalEl) {
+          if (openModalEl.id === "confirm-modal") finishConfirm(false);
+          else closeModal(openModalEl);
+        }
+      });
+      window.addEventListener("resize", function () {
+        scheduleLayerPlace(function () {
+          document.querySelectorAll("[data-wa-dropdown].is-open").forEach(placeDropdownMenu);
+        });
+      });
+      window.addEventListener("scroll", function () {
+        scheduleLayerPlace(function () {
+          document.querySelectorAll("[data-wa-dropdown].is-open").forEach(placeDropdownMenu);
+        });
+      }, true);
+
+      /* —— 分段选择器 —— */
+      document.querySelectorAll("[data-wa-segment]").forEach(function (root) {
+        var items = Array.prototype.slice.call(root.querySelectorAll("[data-wa-segment-item]"));
+        if (!items.length) return;
+        root.addEventListener("click", function (e) {
+          var item = e.target.closest("[data-wa-segment-item]");
+          if (!item || !root.contains(item)) return;
+          items.forEach(function (el) {
+            var on = el === item;
+            el.classList.toggle("is-active", on);
+            el.setAttribute("aria-checked", on ? "true" : "false");
+          });
+        });
+      });
+
+      /* —— Chip 选项组 —— */
+      document.querySelectorAll("[data-wa-chip-group]").forEach(function (group) {
+        var chips = Array.prototype.slice.call(group.querySelectorAll('[role="radio"]'));
+        if (!chips.length) return;
+        group.addEventListener("click", function (e) {
+          var chip = e.target.closest('[role="radio"]');
+          if (!chip || !group.contains(chip)) return;
+          chips.forEach(function (item) {
+            var selected = item === chip;
+            item.classList.toggle("is-active", selected);
+            item.classList.toggle("wa-chip--accent", selected);
+            item.classList.toggle("wa-chip--marked", !selected);
+            item.setAttribute("aria-checked", selected ? "true" : "false");
+          });
+        });
+      });
+
+      /* —— Tabs —— */
+      document.querySelectorAll("[data-wa-tabs]").forEach(function (root) {
+        var tabs = Array.prototype.slice.call(root.querySelectorAll("[data-wa-tab]"));
+        var panels = Array.prototype.slice.call(root.querySelectorAll("[data-wa-tab-panel]"));
+        tabs.forEach(function (tab) {
+          tab.addEventListener("click", function () {
+            var key = tab.getAttribute("data-wa-tab");
+            tabs.forEach(function (t) {
+              var on = t === tab;
+              t.classList.toggle("is-active", on);
+              t.setAttribute("aria-selected", on ? "true" : "false");
+              t.tabIndex = on ? 0 : -1;
+            });
+            panels.forEach(function (p) {
+              var on = p.getAttribute("data-wa-tab-panel") === key;
+              p.classList.toggle("is-active", on);
+              if (on) p.removeAttribute("hidden");
+              else p.setAttribute("hidden", "");
+            });
+          });
+        });
+      });
+
+      /* —— Modal / Confirm —— */
+      var modalPrevFocus = null;
+      var confirmModal = document.getElementById("confirm-modal");
+      var confirmResolver = null;
+
+      function setBodyModalLock(open) {
+        document.body.classList.toggle("wa-modal-open", open);
+        document.documentElement.classList.toggle("wa-modal-open", open);
+      }
+      function anyModalOpen() {
+        return !!document.querySelector(".wa-modal.is-open");
+      }
+      function openModal(id) {
+        var modal = document.getElementById(id);
+        if (!modal) return;
+        modalPrevFocus = document.activeElement;
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        setBodyModalLock(true);
+        var focusEl = modal.querySelector(".wa-modal__close, .wa-btn, [data-modal-close]");
+        if (focusEl) window.setTimeout(function () { try { focusEl.focus(); } catch (e) {} }, 0);
+      }
+      function closeModal(modal) {
+        if (!modal) return;
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        if (!anyModalOpen()) setBodyModalLock(false);
+        if (modalPrevFocus && typeof modalPrevFocus.focus === "function") {
+          try { modalPrevFocus.focus(); } catch (e) {}
+        }
+        modalPrevFocus = null;
+      }
+      function openConfirm() {
+        return new Promise(function (resolve) {
+          confirmResolver = resolve;
+          if (!confirmModal) {
+            resolve(false);
+            return;
+          }
+          modalPrevFocus = document.activeElement;
+          confirmModal.classList.add("is-open");
+          confirmModal.setAttribute("aria-hidden", "false");
+          setBodyModalLock(true);
+          window.setTimeout(function () {
+            var cancelBtn = confirmModal.querySelector(".wa-modal__footer [data-confirm-cancel]");
+            if (cancelBtn) try { cancelBtn.focus(); } catch (e) {}
+          }, 0);
+        });
+      }
+      function finishConfirm(ok) {
+        if (confirmModal) {
+          confirmModal.classList.remove("is-open");
+          confirmModal.setAttribute("aria-hidden", "true");
+        }
+        if (!anyModalOpen()) setBodyModalLock(false);
+        if (modalPrevFocus && typeof modalPrevFocus.focus === "function") {
+          try { modalPrevFocus.focus(); } catch (e) {}
+        }
+        modalPrevFocus = null;
+        if (confirmResolver) {
+          confirmResolver(!!ok);
+          confirmResolver = null;
+        }
+      }
+      document.querySelectorAll("[data-modal-open]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          openModal(btn.getAttribute("data-modal-open"));
+        });
+      });
+      document.querySelectorAll(".wa-modal").forEach(function (modal) {
+        if (modal.id === "confirm-modal") return;
+        modal.querySelectorAll("[data-modal-close]").forEach(function (el) {
+          el.addEventListener("click", function () { closeModal(modal); });
+        });
+      });
+      if (confirmModal) {
+        confirmModal.querySelectorAll("[data-confirm-cancel]").forEach(function (el) {
+          el.addEventListener("click", function () { finishConfirm(false); });
+        });
+        confirmModal.querySelectorAll("[data-confirm-ok]").forEach(function (el) {
+          el.addEventListener("click", function () { finishConfirm(true); });
+        });
+      }
+
+      /*
+       * Dropzone 精简版（本页内联，保持单文件可复制）
+       * 保留：点击 / 拖拽、下方列表与移除、JPG/PNG/PDF/ZIP + 10MB 校验、一次多选（每次覆盖已选）
+       * 不含：追加合并、去重、max-files、按类型换图标、focus/pickingGuard 等边角逻辑
+       */
+      var dropzone = document.getElementById("dropzone");
+      var fileInput = document.getElementById("fileInput");
+      var dropList = document.getElementById("dropzone-list");
+      var DROP_MAX_SIZE = 10 * 1024 * 1024; // 与框内 tip / accept 上限一致
+      var DROP_EXT_RE = /\.(jpe?g|png|pdf|zip)$/i;
+
+      function dropFormatSize(bytes) {
+        var n = Number(bytes) || 0;
+        if (n < 1024) return n + " B";
+        if (n < 1024 * 1024) return (n / 1024).toFixed(n < 10 * 1024 ? 1 : 0) + " KB";
+        return (n / (1024 * 1024)).toFixed(n < 10 * 1024 * 1024 ? 1 : 0) + " MB";
+      }
+
+      function dropAllowed(file) {
+        if (!DROP_EXT_RE.test(file.name || "")) return "type";
+        if (file.size > DROP_MAX_SIZE) return "size";
+        return "";
+      }
+
+      function dropRender() {
+        var files = fileInput && fileInput.files ? fileInput.files : null;
+        var n = files ? files.length : 0;
+        if (dropzone) dropzone.classList.toggle("is-filled", n > 0);
+        if (!dropList) return;
+        dropList.innerHTML = "";
+        dropList.hidden = n === 0;
+        for (var i = 0; i < n; i += 1) {
+          var file = files[i];
+          var li = document.createElement("li");
+          li.className = "wa-dropzone-list__item";
+          li.innerHTML =
+            '<span class="wa-dropzone-list__icon" aria-hidden="true"><i class="fa-solid fa-file"></i></span>' +
+            '<div class="wa-dropzone-list__meta"><span class="wa-dropzone-list__name"></span><span class="wa-dropzone-list__size"></span></div>' +
+            '<button type="button" class="wa-dropzone-list__remove" data-drop-remove="' + i + '" aria-label="移除"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>';
+          li.querySelector(".wa-dropzone-list__name").textContent = file.name;
+          li.querySelector(".wa-dropzone-list__name").title = file.name;
+          li.querySelector(".wa-dropzone-list__size").textContent = dropFormatSize(file.size);
+          dropList.appendChild(li);
+        }
+      }
+
+      /** 每次选择/拖入：校验后整表覆盖（不追加）；提示不带长文件名 */
+      function dropCommit(fileList) {
+        if (!fileInput || !fileList || !fileList.length) return;
+        var dt = new DataTransfer();
+        var nType = 0;
+        var nSize = 0;
+        for (var i = 0; i < fileList.length; i += 1) {
+          var why = dropAllowed(fileList[i]);
+          if (why === "type") { nType += 1; continue; }
+          if (why === "size") { nSize += 1; continue; }
+          try { dt.items.add(fileList[i]); } catch (err) {}
+        }
+        try { fileInput.files = dt.files; } catch (err) {}
+        dropRender();
+        var tips = [];
+        if (nType) tips.push(nType === 1 ? "文件格式不支持" : "有 " + nType + " 个文件格式不支持");
+        if (nSize) tips.push(nSize === 1 ? "文件超过 10MB，请压缩后重试" : "有 " + nSize + " 个文件超过 10MB");
+        if (tips.length) showMessage(tips.join("；"), "warning");
+      }
+
+      function dropRemoveAt(index) {
+        if (!fileInput || !fileInput.files) return;
+        var dt = new DataTransfer();
+        for (var i = 0; i < fileInput.files.length; i += 1) {
+          if (i !== index) dt.items.add(fileInput.files[i]);
+        }
+        try { fileInput.files = dt.files; } catch (err) {}
+        dropRender();
+      }
+
+      function dropClear() {
+        if (fileInput) {
+          try { fileInput.value = ""; } catch (err) {}
+        }
+        dropRender();
+      }
+
+      if (dropzone && fileInput) {
+        dropzone.addEventListener("click", function () { fileInput.click(); });
+        dropzone.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            fileInput.click();
+          }
+        });
+        ["dragenter", "dragover"].forEach(function (ev) {
+          dropzone.addEventListener(ev, function (e) {
+            e.preventDefault();
+            dropzone.classList.add("is-dragover");
+          });
+        });
+        ["dragleave", "drop"].forEach(function (ev) {
+          dropzone.addEventListener(ev, function (e) {
+            e.preventDefault();
+            dropzone.classList.remove("is-dragover");
+          });
+        });
+        dropzone.addEventListener("drop", function (e) {
+          dropCommit(e.dataTransfer && e.dataTransfer.files);
+        });
+        fileInput.addEventListener("change", function () {
+          dropCommit(fileInput.files);
+        });
+        if (dropList) {
+          dropList.addEventListener("click", function (e) {
+            var btn = e.target && e.target.closest ? e.target.closest("[data-drop-remove]") : null;
+            if (!btn) return;
+            e.preventDefault();
+            var idx = parseInt(btn.getAttribute("data-drop-remove"), 10);
+            if (!isNaN(idx)) dropRemoveAt(idx);
+          });
+        }
+      }
+
+      /* —— 表单校验（提交时显示） —— */
+      (function bindToolForm() {
+        var form = document.getElementById("tool-form");
+        if (!form) return;
+        var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        function setItemError(item, msg) {
+          var err = item.querySelector(".wa-field__error");
+          item.classList.toggle("is-error", !!msg);
+          if (err) err.textContent = msg || "";
+        }
+
+        function clearErrors() {
+          form.querySelectorAll(".wa-form-item.is-error").forEach(function (item) {
+            setItemError(item, "");
+          });
+        }
+
+        function validate() {
+          var ok = true;
+          var firstBad = null;
+          form.querySelectorAll(".wa-form-item[data-validate]").forEach(function (item) {
+            var input = item.querySelector("input, textarea, select");
+            if (!input) return;
+            var rule = item.getAttribute("data-validate");
+            var message = item.getAttribute("data-error") || "请检查该项";
+            var value = String(input.value || "").trim();
+            var bad = false;
+            if (rule === "required") bad = !value;
+            else if (rule === "email") bad = !value || !emailRe.test(value);
+            setItemError(item, bad ? message : "");
+            if (bad) {
+              ok = false;
+              if (!firstBad) firstBad = input;
+            }
+          });
+          return { ok: ok, firstBad: firstBad };
+        }
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var result = validate();
+          if (!result.ok) {
+            showMessage("请完善标红的表单项", "warning");
+            return;
+          }
+          showMessage("提交成功", "success");
+        });
+
+        form.addEventListener("reset", function () {
+          window.setTimeout(function () {
+            clearErrors();
+            clearMessages();
+            var mode = document.getElementById("tool-mode");
+            if (mode) {
+              mode.value = "fast";
+              mode.dispatchEvent(new Event("change", { bubbles: true }));
+            }
+            dropClear();
+            showMessage("已重置", "info");
+          }, 0);
+        });
+
+        form.addEventListener("focusin", function (e) {
+          var t = e.target;
+          if (!t || !t.closest) return;
+          if (!t.closest("input, textarea, select, .wa-combo__trigger")) return;
+          clearErrors();
+          clearMessages();
+        });
+      })();
+
+      /* —— Demo wiring —— */
+      document.querySelectorAll("[data-demo-message]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var type = btn.getAttribute("data-demo-message") || "info";
+          var map = {
+            info: "这是一条吐司提示",
+            success: "操作成功",
+            warning: "请注意检查输入",
+            error: "操作失败，请重试"
+          };
+          showMessage(map[type] || map.info, type);
+        });
+      });
+      var runBtn = document.querySelector("[data-demo-run]");
+      if (runBtn) {
+        runBtn.addEventListener("click", function () {
+          var done = document.getElementById("statDone");
+          var ok = document.getElementById("statOk");
+          if (done) done.textContent = String(Number(done.textContent || 0) + 1);
+          if (ok) ok.textContent = String(Number(ok.textContent || 0) + 1);
+          showMessage("已执行示例操作", "success");
+        });
+      }
+      var confirmBtn = document.querySelector("[data-demo-confirm]");
+      if (confirmBtn) {
+        confirmBtn.addEventListener("click", function () {
+          openConfirm().then(function (ok) {
+            showMessage(ok ? "已确认" : "已取消", ok ? "success" : "info");
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
