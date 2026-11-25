@@ -105,25 +105,54 @@
   if (securityForm) {
     securityForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      var cur = document.getElementById("settings-pwd-current");
       var next = document.getElementById("settings-pwd-new");
       var again = document.getElementById("settings-pwd-confirm");
-      var c = cur ? String(cur.value || "") : "";
+      var itemNew = next ? next.closest(".wa-form-item") : null;
+      var itemAgain = again ? again.closest(".wa-form-item") : null;
+      if (window.WA_FORM && typeof WA_FORM.validate === "function") {
+        var check = WA_FORM.validate(securityForm);
+        if (!check.ok) {
+          if (check.firstBad) {
+            try {
+              check.firstBad.focus();
+            } catch (err) {}
+          }
+          return;
+        }
+      }
       var n = next ? String(next.value || "") : "";
       var a = again ? String(again.value || "") : "";
-      if (!c || !n || !a) {
-        tip("请完整填写密码字段", "warning");
-        return;
+      var customBad = false;
+      if (window.WA_FORM && typeof WA_FORM.setItemError === "function") {
+        WA_FORM.setItemError(itemNew, "");
+        WA_FORM.setItemError(itemAgain, "");
       }
       if (n.length < 8) {
-        tip("新密码至少 8 位", "warning");
-        return;
+        if (window.WA_FORM && typeof WA_FORM.setItemError === "function") {
+          WA_FORM.setItemError(itemNew, "新密码至少 8 位");
+        }
+        customBad = true;
+        if (next) {
+          try {
+            next.focus();
+          } catch (err) {}
+        }
+      } else if (n !== a) {
+        if (window.WA_FORM && typeof WA_FORM.setItemError === "function") {
+          WA_FORM.setItemError(itemAgain, "两次输入的新密码不一致");
+        }
+        customBad = true;
+        if (again) {
+          try {
+            again.focus();
+          } catch (err) {}
+        }
       }
-      if (n !== a) {
-        tip("两次输入的新密码不一致", "warning");
-        return;
-      }
+      if (customBad) return;
       tip("密码已更新");
+      if (window.WA_FORM && typeof WA_FORM.clearErrors === "function") {
+        WA_FORM.clearErrors(securityForm);
+      }
       securityForm.reset();
     });
   }

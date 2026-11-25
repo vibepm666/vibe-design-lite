@@ -435,13 +435,13 @@
       '<td class="wa-table__ops" data-col="ops">' +
       '<div class="wa-dropdown" data-wa-dropdown>' +
       '<button type="button" class="wa-btn wa-btn--ghost wa-dropdown__trigger" data-wa-dropdown-trigger aria-expanded="false" aria-haspopup="menu" aria-label="更多">' +
-      '<i class="fa-solid fa-ellipsis" aria-hidden="true"></i>' +
+      '<i class="fa-regular fa-ellipsis" aria-hidden="true"></i>' +
       "</button>" +
       '<ul class="wa-dropdown__menu wa-dropdown__menu--end" role="menu" hidden data-wa-dropdown-menu>' +
-      '<li role="none"><button type="button" class="wa-dropdown__item" role="menuitem" data-shell-row="view"><i class="fa-solid fa-eye" aria-hidden="true"></i> 查看</button></li>' +
-      '<li role="none"><button type="button" class="wa-dropdown__item" role="menuitem" data-shell-row="edit"><i class="fa-solid fa-pen" aria-hidden="true"></i> 编辑</button></li>' +
+      '<li role="none"><button type="button" class="wa-dropdown__item" role="menuitem" data-shell-row="view"><i class="fa-regular fa-eye" aria-hidden="true"></i> 查看</button></li>' +
+      '<li role="none"><button type="button" class="wa-dropdown__item" role="menuitem" data-shell-row="edit"><i class="fa-regular fa-pen" aria-hidden="true"></i> 编辑</button></li>' +
       '<li role="none"><hr class="wa-dropdown__sep" /></li>' +
-      '<li role="none"><button type="button" class="wa-dropdown__item wa-dropdown__item--danger" role="menuitem" data-shell-row="delete"><i class="fa-solid fa-trash" aria-hidden="true"></i> 删除</button></li>' +
+      '<li role="none"><button type="button" class="wa-dropdown__item wa-dropdown__item--danger" role="menuitem" data-shell-row="delete"><i class="fa-regular fa-trash" aria-hidden="true"></i> 删除</button></li>' +
       "</ul></div></td>"
     );
   }
@@ -623,7 +623,7 @@
     addBtn("", pageNum - 1, {
       disabled: pageNum <= 1,
       aria: "上一页",
-      html: '<i class="fa-solid fa-chevron-left" aria-hidden="true"></i>',
+      html: '<i class="fa-regular fa-chevron-left" aria-hidden="true"></i>',
     });
 
     var windowSize = 3;
@@ -660,7 +660,7 @@
     addBtn("", pageNum + 1, {
       disabled: pageNum >= pages,
       aria: "下一页",
-      html: '<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>',
+      html: '<i class="fa-regular fa-chevron-right" aria-hidden="true"></i>',
     });
   }
 
@@ -940,8 +940,6 @@
       }
       var data = readFormProject();
       if (!data.name) {
-        tip("请填写项目名称", "warning");
-        if (projectFields.name) projectFields.name.focus();
         return;
       }
       if (mode === "edit") data.updated = nowStamp();

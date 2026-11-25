@@ -251,28 +251,31 @@
                 <h3>修改密码</h3>
                 <p>演示校验流程；正式环境需对接账号服务。</p>
               </header>
-              <form class="wa-form" id="settings-security-form" novalidate>
+              <form class="wa-form" id="settings-security-form" data-wa-validate novalidate>
                 <div class="wa-shell-settings__grid">
-                  <div class="wa-form-item wa-shell-settings__span">
+                  <div class="wa-form-item wa-shell-settings__span" data-validate="required" data-error="请输入当前密码">
                     <label class="wa-label" for="settings-pwd-current">当前密码</label>
                     <div class="wa-field wa-field--icon">
                       <i class="fa-solid fa-lock wa-field__icon" aria-hidden="true"></i>
-                      <input class="wa-field__input" id="settings-pwd-current" name="current" type="password" placeholder="请输入当前密码" autocomplete="current-password" data-wa-field-input />
+                      <input class="wa-field__input" id="settings-pwd-current" name="current" type="password" placeholder="请输入当前密码" autocomplete="current-password" data-wa-field-input required />
                     </div>
+                    <p class="wa-field__error" role="alert"></p>
                   </div>
-                  <div class="wa-form-item">
+                  <div class="wa-form-item" data-validate="required" data-error="请输入新密码">
                     <label class="wa-label" for="settings-pwd-new">新密码</label>
                     <div class="wa-field wa-field--icon">
                       <i class="fa-solid fa-key wa-field__icon" aria-hidden="true"></i>
-                      <input class="wa-field__input" id="settings-pwd-new" name="next" type="password" placeholder="至少 8 位" autocomplete="new-password" data-wa-field-input />
+                      <input class="wa-field__input" id="settings-pwd-new" name="next" type="password" placeholder="至少 8 位" autocomplete="new-password" data-wa-field-input required />
                     </div>
+                    <p class="wa-field__error" role="alert"></p>
                   </div>
-                  <div class="wa-form-item">
+                  <div class="wa-form-item" data-validate="required" data-error="请再次输入新密码">
                     <label class="wa-label" for="settings-pwd-confirm">确认新密码</label>
                     <div class="wa-field wa-field--icon">
                       <i class="fa-solid fa-key wa-field__icon" aria-hidden="true"></i>
-                      <input class="wa-field__input" id="settings-pwd-confirm" name="confirm" type="password" placeholder="再次输入新密码" autocomplete="new-password" data-wa-field-input />
+                      <input class="wa-field__input" id="settings-pwd-confirm" name="confirm" type="password" placeholder="再次输入新密码" autocomplete="new-password" data-wa-field-input required />
                     </div>
+                    <p class="wa-field__error" role="alert"></p>
                   </div>
                 </div>
                 <div class="wa-shell-settings__actions">

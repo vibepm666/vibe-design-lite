@@ -121,14 +121,15 @@
       }, 0);
     });
 
-    form.addEventListener("focusin", function (e) {
+    function clearItemErrorOnEdit(e) {
       var t = e.target;
-      if (!t || !t.closest) return;
-      if (!t.closest("input, textarea, select, .wa-combo__trigger")) return;
+      if (!t || !t.matches || !t.matches("input, textarea, select")) return;
       var item = t.closest(".wa-form-item");
-      if (item) setItemError(item, "");
-      /* 不在此 clear 吐司：校验后 focus 首错字段会立刻清掉刚弹出的提示 */
-    });
+      if (item && item.classList.contains("is-error")) setItemError(item, "");
+    }
+
+    form.addEventListener("input", clearItemErrorOnEdit);
+    form.addEventListener("change", clearItemErrorOnEdit);
   }
 
   function bindValidate(root) {
@@ -147,6 +148,7 @@
     bindValidate: bindValidate,
     validate: validate,
     clearErrors: clearErrors,
+    setItemError: setItemError,
   };
 
   if (document.readyState === "loading") {
