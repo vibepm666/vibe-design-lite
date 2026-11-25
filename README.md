@@ -21,49 +21,35 @@
 
 ## 预览截图
 
-> 预览图带圆角描边，便于在 README 中与背景区分；GitHub 上可正常渲染下列 HTML。
+> 圆角与描边已烘焙进 PNG（GitHub README 会剥离 `<img>` 的 `style`，CSS 边框不可靠）。换图后可在本机运行：`python scripts/frame-screenshots.py`。
 
 **落地首页** · `index.html`
 
-<p align="center">
-  <img src="./screenshot/vibe-design-lite-01.png" alt="落地首页" width="960" style="max-width:100%;border:1px solid #e4e4e8;border-radius:12px;box-shadow:0 4px 24px rgba(17,17,19,0.06);" />
-</p>
+<p align="center"><img src="./screenshot/vibe-design-lite-01.png" alt="落地首页" width="900" /></p>
 
 **常用组件** · `components.html`
 
-<p align="center">
-  <img src="./screenshot/vibe-design-lite-02.png" alt="常用组件" width="960" style="max-width:100%;border:1px solid #e4e4e8;border-radius:12px;box-shadow:0 4px 24px rgba(17,17,19,0.06);" />
-</p>
+<p align="center"><img src="./screenshot/vibe-design-lite-02.png" alt="常用组件" width="900" /></p>
 
 **登录页** · `login.html`
 
-<p align="center">
-  <img src="./screenshot/vibe-design-lite-03.png" alt="登录页" width="960" style="max-width:100%;border:1px solid #e4e4e8;border-radius:12px;box-shadow:0 4px 24px rgba(17,17,19,0.06);" />
-</p>
+<p align="center"><img src="./screenshot/vibe-design-lite-03.png" alt="登录页" width="900" /></p>
 
 **工作台概览** · `shell-dashboard.html`（亮色）
 
-<p align="center">
-  <img src="./screenshot/vibe-design-lite-04.png" alt="工作台概览" width="960" style="max-width:100%;border:1px solid #e4e4e8;border-radius:12px;box-shadow:0 4px 24px rgba(17,17,19,0.06);" />
-</p>
+<p align="center"><img src="./screenshot/vibe-design-lite-04.png" alt="工作台概览" width="900" /></p>
 
 **数据列表** · `shell-data.html`（亮色）
 
-<p align="center">
-  <img src="./screenshot/vibe-design-lite-05.png" alt="数据列表" width="960" style="max-width:100%;border:1px solid #e4e4e8;border-radius:12px;box-shadow:0 4px 24px rgba(17,17,19,0.06);" />
-</p>
+<p align="center"><img src="./screenshot/vibe-design-lite-05.png" alt="数据列表" width="900" /></p>
 
 **卡片列表** · `shell-cards.html`（暗色）
 
-<p align="center">
-  <img src="./screenshot/vibe-design-lite-06.png" alt="卡片列表" width="960" style="max-width:100%;border:1px solid #e4e4e8;border-radius:12px;box-shadow:0 4px 24px rgba(17,17,19,0.06);" />
-</p>
+<p align="center"><img src="./screenshot/vibe-design-lite-06.png" alt="卡片列表" width="900" /></p>
 
 **表单页面** · `shell-form.html`（暗色）
 
-<p align="center">
-  <img src="./screenshot/vibe-design-lite-07.png" alt="表单页面" width="960" style="max-width:100%;border:1px solid #e4e4e8;border-radius:12px;box-shadow:0 4px 24px rgba(17,17,19,0.06);" />
-</p>
+<p align="center"><img src="./screenshot/vibe-design-lite-07.png" alt="表单页面" width="900" /></p>
 
 ---
 
