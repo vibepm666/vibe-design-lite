@@ -1800,7 +1800,6 @@ html[data-theme="dark"] .wa-tabs__tab.is-active {
 .wa-table tbody tr.is-selected,
 .wa-table tbody tr:has(input[type="checkbox"]:checked) {
   background: color-mix(in srgb, var(--wa-color-primary) 9%, var(--wa-color-surface));
-  box-shadow: inset 3px 0 0 0 var(--wa-color-primary);
 }
 
 .wa-table tbody tr.is-selected:hover,

@@ -236,6 +236,7 @@
     if (openComboApi) openComboApi.setOpen(false);
   }
 
+  /** 校验聚焦：label for 挂在 trigger 上，firstBad 仍是隐藏 select */
   function focusTarget(field) {
     if (!field) return null;
     if (field.tagName === "SELECT" && field.dataset.waComboReady === "1") {
@@ -253,6 +254,7 @@
     return field;
   }
 
+  /** 按原 select id 或按钮 id 取隐藏 select（筛选脚本用） */
   function getNativeSelect(ref) {
     if (!ref) return null;
     var el = typeof ref === "string" ? document.getElementById(ref) : ref;
